@@ -1,4 +1,26 @@
 {
   "version": "0.2.0",
-  "configurations": []
+  "configurations": [
+    {
+      "name": "tBloC - Debug",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "debug",
+      "program": "packages/bloc/example/lib/main.dart"
+    },
+    {
+      "name": "tBloC - Profile",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile",
+      "program": "packages/bloc/example/lib/main.dart"
+    },
+    {
+      "name": "tBloC - Release",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release",
+      "program": "packages/bloc/example/lib/main.dart"
+    }
+  ]
 }

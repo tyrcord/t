@@ -1,0 +1,26 @@
+name: tbloc
+version: 0.20.1
+description: A dart library that helps you to implement the BLoC pattern.
+homepage: https://github.com/tyrcord/t/tree/main/packages/tbloc
+issue_tracker: https://github.com/tyrcord/t/tree/main/packages/tbloc/issues
+
+environment:
+  sdk: '>=2.19.5 <3.0.0'
+  flutter: ">=3.3.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  meta: ^1.8.0
+  async: ^2.9.0
+  rxdart: ^0.27.7
+  subx: ^1.2.0
+  provider: ^6.0.5
+  tuple: ^2.0.1
+  tmodel: ^0.5.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  dart_code_metrics: ^5.5.1
