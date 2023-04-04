@@ -1,3 +1,7 @@
+## 0.5.1
+
+ - **FEAT**: add existing libraries.
+
 # Changelog
 
 ## [0.5.0](https://github.com/tyrcord/tmodel_dart/releases/tag/v0.5.0) (2022-10-12)

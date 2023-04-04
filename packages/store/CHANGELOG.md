@@ -1,3 +1,7 @@
+## 0.8.5
+
+ - **FEAT**: add existing libraries.
+
 # Changelog
 
 ## [0.8.4](https://github.com/tyrcord/tstore_dart/releases/tag/0.8.4) (2023-01-15)

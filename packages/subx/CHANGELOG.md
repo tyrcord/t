@@ -1,3 +1,9 @@
+## 1.3.0
+
+ - **FEAT**: minor improvements.
+ - **FEAT**: add existing libraries.
+ - **FEAT**: add subx package.
+
 # Changelog
 
 ## [1.2.0](https://github.com/tyrcord/subx/releases/tag/1.2.0) (2022-10-12)

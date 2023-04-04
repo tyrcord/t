@@ -1,3 +1,9 @@
+## 0.20.2
+
+ - **FEAT**: sampleEvent.
+ - **FEAT**: minor improvements.
+ - **FEAT**: add existing libraries.
+
 # Changelog
 
 ## [0.20.1](https://github.com/tyrcord/tbloc_dart/releases/tag/0.20.1) (2023-02-10)
