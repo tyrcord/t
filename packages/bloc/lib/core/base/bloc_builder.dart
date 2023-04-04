@@ -52,10 +52,10 @@ class BlocBuilderWidget<S extends BlocState> extends StatefulWidget
   });
 
   @override
-  _BlocBuilderWidgetState<S> createState() => _BlocBuilderWidgetState<S>();
+  BlocBuilderWidgetState<S> createState() => BlocBuilderWidgetState<S>();
 }
 
-class _BlocBuilderWidgetState<S extends BlocState>
+class BlocBuilderWidgetState<S extends BlocState>
     extends State<BlocBuilderWidget<S>> with BlocBuilderMixin {
   late Stream<S> _stream;
 

@@ -26,7 +26,9 @@ class SubxList {
   ///
   ///     subxList.add([observable.listen(...)]);
   void addAll(Iterable<StreamSubscription<dynamic>> values) {
-    values.forEach((StreamSubscription<dynamic> value) => add(value));
+    for (var value in values) {
+      add(value);
+    }
   }
 
   ///

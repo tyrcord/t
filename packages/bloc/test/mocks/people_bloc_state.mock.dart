@@ -10,19 +10,17 @@ class PeopleBlocState extends HydratedBlocState {
   final String? lastname;
   final bool? isMarrying;
   final bool isSingle;
-  @override
-  final bool hydrated;
   final int? age;
 
-  PeopleBlocState({
-    this.hydrated = false,
+  const PeopleBlocState({
+    super.hydrated = false,
     this.isSingle = true,
     dynamic exception,
     this.isMarrying,
     this.firstname,
     this.lastname,
     this.age,
-  }) : super(hydrated: hydrated, error: exception);
+  }) : super(error: exception);
 
   PeopleBlocState copyWithPayload(PeopleBlocEventPayload payload) {
     return copyWith(

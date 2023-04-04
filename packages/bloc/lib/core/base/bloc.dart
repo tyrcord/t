@@ -100,7 +100,7 @@ abstract class Bloc<S extends BlocState> {
   /// Optional callback method to initialize the BloC's state.
   @protected
   S initState() {
-    final message = 'A BloC\'s state should be initialized when instancied';
+    const message = 'A BloC\'s state should be initialized when instancied';
     throw UnimplementedError(message);
   }
 
@@ -197,11 +197,14 @@ abstract class Bloc<S extends BlocState> {
   void close() {
     if (!closed && canClose()) {
       closed = true;
-      publishers.forEach((PublishSubject publisher) => publisher.close());
       stateController.close();
       errorController.close();
       subxList.cancelAll();
       subxMap.cancelAll();
+
+      for (var publisher in publishers) {
+        publisher.close();
+      }
     }
   }
 

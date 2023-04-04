@@ -93,7 +93,9 @@ abstract class BidirectionalBloc<E extends BlocEvent, S extends BlocState>
     }
 
     return source.switchMap((BlocEvent event) {
-      cancelableOperations.forEach((operation) => operation.cancel());
+      for (var operation in cancelableOperations) {
+        operation.cancel();
+      }
 
       return _handleEvent(event);
     });

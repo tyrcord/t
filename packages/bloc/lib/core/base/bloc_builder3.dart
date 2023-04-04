@@ -37,11 +37,11 @@ class BlocBuilderWidget3<S1 extends BlocState, S2 extends BlocState,
   });
 
   @override
-  _BlocBuilderWidget3State<S1, S2, S3> createState() =>
-      _BlocBuilderWidget3State<S1, S2, S3>();
+  BlocBuilderWidget3State<S1, S2, S3> createState() =>
+      BlocBuilderWidget3State<S1, S2, S3>();
 }
 
-class _BlocBuilderWidget3State<S1 extends BlocState, S2 extends BlocState,
+class BlocBuilderWidget3State<S1 extends BlocState, S2 extends BlocState,
         S3 extends BlocState> extends State<BlocBuilderWidget3<S1, S2, S3>>
     with BlocBuilderMixin {
   late Stream<List<BlocState>>? _stream;

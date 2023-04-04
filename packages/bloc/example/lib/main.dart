@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:fastyle_dart/fastyle_dart.dart';
 import 'package:tbloc/tbloc.dart';
 import 'package:flutter/material.dart';

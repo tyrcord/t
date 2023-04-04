@@ -19,7 +19,7 @@ void main() {
   group('BlocBuilder', () {
     late BidirectionalPeopleBloc bloc;
 
-    final defaultState = PeopleBlocState(
+    const defaultState = PeopleBlocState(
       age: 42,
       firstname: 'foo',
       lastname: 'bar',

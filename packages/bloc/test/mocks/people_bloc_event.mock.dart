@@ -27,30 +27,30 @@ class PeopleBlocEventPayload {
 
 class PeopleBlocEvent
     extends BlocEvent<PeopleBlocEventPayloadType, PeopleBlocEventPayload> {
-  PeopleBlocEvent.error()
+  const PeopleBlocEvent.error()
       : super(
           type: PeopleBlocEventPayloadType.error,
           error: 'error',
         );
 
-  PeopleBlocEvent.married({PeopleBlocEventPayload? payload})
+  const PeopleBlocEvent.married({PeopleBlocEventPayload? payload})
       : super(
           type: PeopleBlocEventPayloadType.married,
           payload: payload,
         );
 
-  PeopleBlocEvent.updateInformation({PeopleBlocEventPayload? payload})
+  const PeopleBlocEvent.updateInformation({PeopleBlocEventPayload? payload})
       : super(
           type: PeopleBlocEventPayloadType.updateInformation,
           payload: payload,
         );
 
-  PeopleBlocEvent.marrySomeone()
+  const PeopleBlocEvent.marrySomeone()
       : super(type: PeopleBlocEventPayloadType.marry);
 
-  PeopleBlocEvent.updateMultipleInformation()
+  const PeopleBlocEvent.updateMultipleInformation()
       : super(type: PeopleBlocEventPayloadType.multiple);
 
-  PeopleBlocEvent.errorDelayed()
+  const PeopleBlocEvent.errorDelayed()
       : super(type: PeopleBlocEventPayloadType.errorDelayed);
 }

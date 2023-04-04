@@ -12,7 +12,7 @@ void main() {
   group('BidirectionalBloc', () {
     late BidirectionalPeopleBloc bloc;
 
-    final defaultState = PeopleBlocState(
+    const defaultState = PeopleBlocState(
       age: 42,
       firstname: 'foo',
       lastname: 'bar',
@@ -29,6 +29,7 @@ void main() {
     group('#BidirectionalPeopleBloc()', () {
       test('should return a BidirectionalPeopleBloc object', () {
         expect(
+          // ignore: unnecessary_type_check
           BidirectionalPeopleBloc(initialState: defaultState)
               is BidirectionalPeopleBloc,
           equals(true),
@@ -70,7 +71,7 @@ void main() {
 
         expect(
           lastState ==
-              PeopleBlocState(
+              const PeopleBlocState(
                 age: 12,
                 firstname: 'foo',
                 lastname: 'qux',
@@ -93,13 +94,14 @@ void main() {
             ]),
           );
 
-          bloc.addEvent(PeopleBlocEvent.updateMultipleInformation());
+          bloc.addEvent(const PeopleBlocEvent.updateMultipleInformation());
         },
       );
     });
 
     group('#onData', () {
       test('should be an Stream', () {
+        // ignore: unnecessary_type_check
         expect(bloc.onData is Stream, equals(true));
       });
 
@@ -153,7 +155,7 @@ void main() {
             ]),
           );
 
-          bloc.addEvent(PeopleBlocEvent.marrySomeone());
+          bloc.addEvent(const PeopleBlocEvent.marrySomeone());
         },
       );
 
@@ -189,7 +191,7 @@ void main() {
         'should not dispatch states when the state has not changed',
         () async {
           var count = 0;
-          var listenCallback = (state) => count++;
+          listenCallback(state) => count++;
           var listenCallbackAsync1 = expectAsync1(listenCallback, count: 1);
           var event = PeopleBlocEvent.updateInformation(
             payload: PeopleBlocEventPayload(
@@ -212,6 +214,7 @@ void main() {
 
     group('#onError', () {
       test('should be an Stream', () {
+        // ignore: unnecessary_type_check
         expect(bloc.onError is Stream, equals(true));
       });
 
@@ -224,12 +227,13 @@ void main() {
           ]),
         );
 
-        bloc.addEvent(PeopleBlocEvent.error());
+        bloc.addEvent(const PeopleBlocEvent.error());
       });
     });
 
     group('#onEvent', () {
       test('should be an Stream', () {
+        // ignore: unnecessary_type_check
         expect(bloc.onEvent is Stream, equals(true));
       });
 
@@ -320,7 +324,7 @@ void main() {
         );
 
         // micro task async
-        bloc.addEvent(PeopleBlocEvent.errorDelayed());
+        bloc.addEvent(const PeopleBlocEvent.errorDelayed());
 
         // wait for event to be handled
         await Future.delayed(const Duration(milliseconds: 50));
