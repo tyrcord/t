@@ -71,6 +71,34 @@ double evaluateExpression(String expression) {
       .toDouble(); // Call parseExpression and convert the result to double.
 }
 
+// This function takes a string `operation` as input and returns a list of two
+// lists, where the first list contains the operands and the second list
+// contains the operators.
+List<List<String>> parseSimpleOperation(String operation) {
+  // Define a regular expression called `operators` that matches any of
+  // the four basic arithmetic operators: `+`, `-`, `*`, or `/`.
+  final operators = RegExp(r'([+\-*/])');
+
+  // Split the `operation` string into a list of operands using
+  // the `split` method, passing in the `operators` regular expression as
+  // the separator. Each operand is trimmed of leading and trailing whitespace
+  // using the `trim` method before being added to the list.
+  final operands = operation.split(operators).map((operand) {
+    return operand.trim();
+  }).toList();
+
+  // Find all matches of the `operators` regular expression in the `operation`
+  // string using the `allMatches` method. Extract the matched operators using
+  // the `group` method and add them to a new list called `operatorsList`.
+  final operatorsList = operators.allMatches(operation).map((match) {
+    return match.group(0)!;
+  }).toList();
+
+  // Return a list containing the `operands` list and the `operatorsList` list
+  // as its two elements.
+  return [operands, operatorsList];
+}
+
 // Function to apply an operator to the top two values in the values stack.
 void applyOperation(String operator, List<Decimal> values) {
   Decimal b = values.removeLast();

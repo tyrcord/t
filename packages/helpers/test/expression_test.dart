@@ -58,6 +58,85 @@ void main() {
     });
   });
 
+  group('parseSimpleOperation', () {
+    test('parses addition operation', () {
+      const operation = '1 + 2';
+      final result = parseSimpleOperation(operation);
+      expect(
+          result,
+          equals([
+            ['1', '2'],
+            ['+']
+          ]));
+    });
+
+    test('parses subtraction operation', () {
+      const operation = '3 - 4';
+      final result = parseSimpleOperation(operation);
+      expect(
+          result,
+          equals([
+            ['3', '4'],
+            ['-']
+          ]));
+    });
+
+    test('parses multiplication operation', () {
+      const operation = '5 * 6';
+      final result = parseSimpleOperation(operation);
+      expect(
+          result,
+          equals([
+            ['5', '6'],
+            ['*']
+          ]));
+    });
+
+    test('parses division operation', () {
+      const operation = '7 / 8';
+      final result = parseSimpleOperation(operation);
+      expect(
+          result,
+          equals([
+            ['7', '8'],
+            ['/']
+          ]));
+    });
+
+    test('parses operation with no spaces', () {
+      const operation = '9+10';
+      final result = parseSimpleOperation(operation);
+      expect(
+          result,
+          equals([
+            ['9', '10'],
+            ['+']
+          ]));
+    });
+
+    test('parses operation with multiple operators', () {
+      const operation = '11 + 12 * 13 / 14 - 15';
+      final result = parseSimpleOperation(operation);
+      expect(
+          result,
+          equals([
+            ['11', '12', '13', '14', '15'],
+            ['+', '*', '/', '-']
+          ]));
+    });
+
+    test('parses operation with leading/trailing spaces', () {
+      const operation = '   16   /   17  ';
+      final result = parseSimpleOperation(operation);
+      expect(
+          result,
+          equals([
+            ['16', '17'],
+            ['/']
+          ]));
+    });
+  });
+
   // Test cases for isDigit function
   test('isDigit', () {
     expect(isDigit('0'), true);
