@@ -54,15 +54,21 @@ class BidirectionalPeopleBloc
     }
   }
 
-  BlocThrottleEventCallback<PeopleBlocEvent> putThrottleEvent(
-    BlocThrottleEventCallback<PeopleBlocEvent> function,
+  BlocEventCallback<PeopleBlocEvent> putThrottleEvent(
+    BlocEventCallback<PeopleBlocEvent> function,
   ) {
     return throttleEvent(function);
   }
 
-  BlocDebounceEventCallback<PeopleBlocEvent> putDebounceEvent(
-    BlocDebounceEventCallback<PeopleBlocEvent> function,
+  BlocEventCallback<PeopleBlocEvent> putDebounceEvent(
+    BlocEventCallback<PeopleBlocEvent> function,
   ) {
     return debounceEvent(function);
+  }
+
+  BlocEventCallback<PeopleBlocEvent> putSampleEvent(
+    BlocEventCallback<PeopleBlocEvent> function,
+  ) {
+    return sampleEvent(function);
   }
 }

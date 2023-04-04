@@ -153,23 +153,23 @@ abstract class BidirectionalBloc<E extends BlocEvent, S extends BlocState>
   ///      final throttled = throttleEvent((BlocEvent event) {
   ///          // heavy stuff
   ///      });
-  BlocThrottleEventCallback<E> throttleEvent(
-    BlocThrottleEventCallback<E> function, {
+  BlocEventCallback<E> throttleEvent(
+    BlocEventCallback<E> function, {
     Duration duration = const Duration(milliseconds: 300),
   }) {
-    final throttler = PublishSubject<Tuple2<BlocThrottleEventCallback<E>, E>>();
+    final throttler = PublishSubject<Tuple2<BlocEventCallback<E>, E>>();
     publishers.add(throttler);
 
     subxList.add(
       throttler
           .throttleTime(duration)
-          .listen((Tuple2<BlocThrottleEventCallback<E>, E> tuple) {
+          .listen((Tuple2<BlocEventCallback<E>, E> tuple) {
         tuple.item1(tuple.item2);
       }),
     );
 
     return (E event) {
-      final tuple = Tuple2<BlocThrottleEventCallback<E>, E>(function, event);
+      final tuple = Tuple2<BlocEventCallback<E>, E>(function, event);
       throttler.add(tuple);
     };
   }
@@ -181,24 +181,43 @@ abstract class BidirectionalBloc<E extends BlocEvent, S extends BlocState>
   ///      final debounced = debounce((BlocEvent event) {
   ///          // heavy stuff
   ///      });
-  BlocDebounceEventCallback<E> debounceEvent(
-    BlocDebounceEventCallback<E> function, {
+  BlocEventCallback<E> debounceEvent(
+    BlocEventCallback<E> function, {
     Duration delay = const Duration(milliseconds: 300),
   }) {
-    final debouncer = PublishSubject<Tuple2<BlocDebounceEventCallback<E>, E>>();
+    final debouncer = PublishSubject<Tuple2<BlocEventCallback<E>, E>>();
     publishers.add(debouncer);
 
     subxList.add(
       debouncer
           .debounceTime(delay)
-          .listen((Tuple2<BlocDebounceEventCallback<E>, E> tuple) {
+          .listen((Tuple2<BlocEventCallback<E>, E> tuple) {
         tuple.item1(tuple.item2);
       }),
     );
 
     return (E event) {
-      final tuple = Tuple2<BlocDebounceEventCallback<E>, E>(function, event);
+      final tuple = Tuple2<BlocEventCallback<E>, E>(function, event);
       debouncer.add(tuple);
+    };
+  }
+
+  BlocEventCallback<E> sampleEvent(
+    BlocEventCallback<E> function, {
+    Duration delay = const Duration(milliseconds: 300),
+  }) {
+    final sampler = PublishSubject<Tuple2<BlocEventCallback<E>, E>>();
+    publishers.add(sampler);
+
+    subxList.add(
+      sampler.sampleTime(delay).listen((Tuple2<BlocEventCallback<E>, E> tuple) {
+        tuple.item1(tuple.item2);
+      }),
+    );
+
+    return (E event) {
+      final tuple = Tuple2<BlocEventCallback<E>, E>(function, event);
+      sampler.add(tuple);
     };
   }
 

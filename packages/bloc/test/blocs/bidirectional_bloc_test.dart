@@ -376,19 +376,19 @@ void main() {
 
     group('#debounceEvent()', () {
       test('should return a debounced function', () async {
-        final throttled = bloc.putDebounceEvent(
+        final debounced = bloc.putDebounceEvent(
           (event) => bloc.addEvent(event),
         );
 
-        throttled(PeopleBlocEvent.updateInformation(
+        debounced(PeopleBlocEvent.updateInformation(
           payload: PeopleBlocEventPayload(firstname: 'baz'),
         ));
 
-        throttled(PeopleBlocEvent.updateInformation(
+        debounced(PeopleBlocEvent.updateInformation(
           payload: PeopleBlocEventPayload(firstname: 'qux'),
         ));
 
-        throttled(PeopleBlocEvent.updateInformation(
+        debounced(PeopleBlocEvent.updateInformation(
           payload: PeopleBlocEventPayload(firstname: 'quz'),
         ));
 
@@ -407,6 +407,35 @@ void main() {
             expect(state.firstname, equals('quz'));
           },
         );
+      });
+    });
+
+    group('#sampleEvent()', () {
+      test('should sample events at a fixed interval', () async {
+        final debouncedFunction = bloc.putSampleEvent(
+          (event) => bloc.addEvent(event),
+        );
+
+        // Add three events to the debounced function at 100ms intervals
+        debouncedFunction(PeopleBlocEvent.updateInformation(
+          payload: PeopleBlocEventPayload(firstname: 'baz'),
+        ));
+
+        debouncedFunction(PeopleBlocEvent.updateInformation(
+          payload: PeopleBlocEventPayload(firstname: 'qux'),
+        ));
+
+        await Future.delayed(const Duration(milliseconds: 350));
+
+        debouncedFunction(PeopleBlocEvent.updateInformation(
+          payload: PeopleBlocEventPayload(firstname: 'quz'),
+        ));
+
+        expect(bloc.currentState.firstname, equals('qux'));
+
+        await Future.delayed(const Duration(milliseconds: 350));
+
+        expect(bloc.currentState.firstname, equals('quz'));
       });
     });
 
