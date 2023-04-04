@@ -1,4 +1,4 @@
-library tbloc_dart;
+library tbloc;
 
 export './core/base/base.dart';
 export './core/events/events.dart';

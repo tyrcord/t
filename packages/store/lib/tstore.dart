@@ -1,3 +1,3 @@
-library tstore_dart;
+library tstore;
 
 export 'logic/logic.dart';
