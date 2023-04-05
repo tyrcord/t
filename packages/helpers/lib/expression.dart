@@ -74,29 +74,39 @@ double evaluateExpression(String expression) {
 // This function takes a string `operation` as input and returns a list of two
 // lists, where the first list contains the operands and the second list
 // contains the operators.
-List<List<String>> parseSimpleOperation(String operation) {
-  // Define a regular expression called `operators` that matches any of
-  // the four basic arithmetic operators: `+`, `-`, `*`, or `/`.
-  final operators = RegExp(r'([+\-*/])');
+List<Object?>? parseSimpleOperation(String expression) {
+  // Define a regular expression called `pattern` that matches the format of
+  // "operand operator operand = result".
+  final pattern =
+      RegExp(r'^\s*(-?\d+)\s*([+\-*/])\s*(-?\d+)(?:\s*=\s*(-?\d+))?\s*$');
 
-  // Split the `operation` string into a list of operands using
-  // the `split` method, passing in the `operators` regular expression as
-  // the separator. Each operand is trimmed of leading and trailing whitespace
-  // using the `trim` method before being added to the list.
-  final operands = operation.split(operators).map((operand) {
-    return operand.trim();
-  }).toList();
+  // Use the `firstMatch` method of the `RegExp` class to extract the operands,
+  // operator, and result from the `expression` string.
+  final match = pattern.firstMatch(expression);
 
-  // Find all matches of the `operators` regular expression in the `operation`
-  // string using the `allMatches` method. Extract the matched operators using
-  // the `group` method and add them to a new list called `operatorsList`.
-  final operatorsList = operators.allMatches(operation).map((match) {
-    return match.group(0)!;
-  }).toList();
+  if (match == null) {
+    // Return null if the expression doesn't match the expected format.
+    return null;
+  }
 
-  // Return a list containing the `operands` list and the `operatorsList` list
-  // as its two elements.
-  return [operands, operatorsList];
+  // Extract the operands, operator, and result from the `Match` object.
+  final operand1 = match.group(1);
+  final operator = match.group(2);
+  final operand2 = match.group(3);
+  final result = match.group(4);
+
+  // Create a list of the operands and operator.
+  final operands = [operand1, operand2];
+
+  if (result == null) {
+    // If there is no result, return a list containing the `operands` list and
+    // `operator` string as its two elements.
+    return [operands, operator];
+  } else {
+    // If there is a result, return a list containing the `operands` list,
+    // `operator` string, and `result` string as its three elements.
+    return [operands, operator, result];
+  }
 }
 
 // Function to apply an operator to the top two values in the values stack.

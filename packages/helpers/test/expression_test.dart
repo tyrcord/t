@@ -66,7 +66,7 @@ void main() {
           result,
           equals([
             ['1', '2'],
-            ['+']
+            '+'
           ]));
     });
 
@@ -77,7 +77,7 @@ void main() {
           result,
           equals([
             ['3', '4'],
-            ['-']
+            '-'
           ]));
     });
 
@@ -88,7 +88,7 @@ void main() {
           result,
           equals([
             ['5', '6'],
-            ['*']
+            '*'
           ]));
     });
 
@@ -99,7 +99,7 @@ void main() {
           result,
           equals([
             ['7', '8'],
-            ['/']
+            '/'
           ]));
     });
 
@@ -110,19 +110,23 @@ void main() {
           result,
           equals([
             ['9', '10'],
-            ['+']
+            '+'
           ]));
     });
 
-    test('parses operation with multiple operators', () {
-      const operation = '11 + 12 * 13 / 14 - 15';
-      final result = parseSimpleOperation(operation);
-      expect(
-          result,
-          equals([
-            ['11', '12', '13', '14', '15'],
-            ['+', '*', '/', '-']
-          ]));
+    test('Test with valid expression and result', () {
+      expect(parseSimpleOperation('5 + 3 = 8'), [
+        ['5', '3'],
+        '+',
+        '8'
+      ]);
+    });
+
+    test('Test with valid expression and no result', () {
+      expect(parseSimpleOperation('4 - 2'), [
+        ['4', '2'],
+        '-'
+      ]);
     });
 
     test('parses operation with leading/trailing spaces', () {
@@ -132,9 +136,44 @@ void main() {
           result,
           equals([
             ['16', '17'],
-            ['/']
+            '/'
           ]));
     });
+
+    test('Test with invalid input type', () {
+      expect(parseSimpleOperation('5'), null);
+    });
+
+    test('Test with empty string', () {
+      expect(parseSimpleOperation(''), null);
+    });
+
+    test('Test with invalid expression', () {
+      expect(parseSimpleOperation('3 + * 2'), null);
+    });
+
+    test('parses negative number as first operand', () {
+      const operation = '-9+6';
+      final result = parseSimpleOperation(operation);
+      expect(
+          result,
+          equals([
+            ['-9', '6'],
+            '+'
+          ]));
+    });
+  });
+
+  test('parses negative number as second operand', () {
+    const operation = '-9-6=-15';
+    final result = parseSimpleOperation(operation);
+    expect(
+        result,
+        equals([
+          ['-9', '6'],
+          '-',
+          '-15'
+        ]));
   });
 
   // Test cases for isDigit function
