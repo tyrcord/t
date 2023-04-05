@@ -1,3 +1,7 @@
+## 0.0.4
+
+ - **FEAT**: parseSimpleOperation support more cases.
+
 ## 0.0.3
 
  - **FEAT**: add colors helpers.
