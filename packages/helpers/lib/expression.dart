@@ -74,7 +74,7 @@ double evaluateExpression(String expression) {
 // This function takes a string `operation` as input and returns a list of two
 // lists, where the first list contains the operands and the second list
 // contains the operators.
-List<Object?>? parseSimpleOperation(String expression) {
+List<Object>? parseSimpleOperation(String expression) {
   // Define a regular expression called `pattern` that matches the format of
   // "operand operator operand = result".
   final pattern =
@@ -94,6 +94,11 @@ List<Object?>? parseSimpleOperation(String expression) {
   final operator = match.group(2);
   final operand2 = match.group(3);
   final result = match.group(4);
+
+  if (operand1 == null || operator == null || operand2 == null) {
+    // Return null if any of the operands or operator is null.
+    return null;
+  }
 
   // Create a list of the operands and operator.
   final operands = [operand1, operand2];
