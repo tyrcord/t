@@ -7,21 +7,29 @@ void main() {
     test('addition', () {
       expect(evaluateExpression('3+5'), 8.0);
       expect(evaluateExpression('3.4+5.6'), 9.0);
+      expect(evaluateExpression('-8+2'), -6.0);
     });
 
     test('subtraction', () {
       expect(evaluateExpression('10-3'), 7.0);
       expect(evaluateExpression('10.45-3.76'), 6.69);
+      expect(evaluateExpression('-9-9'), -18);
     });
 
     test('multiplication', () {
       expect(evaluateExpression('4*5'), 20.0);
       expect(evaluateExpression('4.56*5.75'), 26.22);
+      expect(evaluateExpression('4.56×5.75'), 26.22);
+      //FIXME:
+      expect(evaluateExpression('-9*-9'), 81);
     });
 
     test('division', () {
       expect(evaluateExpression('15/3'), 5.0);
       expect(evaluateExpression('15/3.2'), 4.6875);
+      expect(evaluateExpression('15÷3.2'), 4.6875);
+      //FIXME:
+      expect(evaluateExpression('-9/-9'), 1);
     });
 
     test('combined operations', () {
@@ -64,10 +72,10 @@ void main() {
       final result = parseSimpleOperation(operation);
       expect(
           result,
-          equals([
-            ['1', '2'],
-            '+'
-          ]));
+          equals(const TSimpleOperation(
+            operands: ['1', '2'],
+            operator: '+',
+          )));
     });
 
     test('parses subtraction operation', () {
@@ -75,32 +83,54 @@ void main() {
       final result = parseSimpleOperation(operation);
       expect(
           result,
-          equals([
-            ['3', '4'],
-            '-'
-          ]));
+          equals(const TSimpleOperation(
+            operands: ['3', '4'],
+            operator: '-',
+          )));
     });
 
-    test('parses multiplication operation', () {
+    test('parses multiplication * operation', () {
       const operation = '5 * 6';
       final result = parseSimpleOperation(operation);
       expect(
           result,
-          equals([
-            ['5', '6'],
-            '*'
-          ]));
+          equals(const TSimpleOperation(
+            operands: ['5', '6'],
+            operator: '*',
+          )));
     });
 
-    test('parses division operation', () {
+    test('parses multiplication × operation', () {
+      const operation = '5 × 6';
+      final result = parseSimpleOperation(operation);
+      expect(
+          result,
+          equals(const TSimpleOperation(
+            operands: ['5', '6'],
+            operator: '×',
+          )));
+    });
+
+    test('parses division ÷ operation', () {
+      const operation = '7 ÷ 8';
+      final result = parseSimpleOperation(operation);
+      expect(
+          result,
+          equals(const TSimpleOperation(
+            operands: ['7', '8'],
+            operator: '÷',
+          )));
+    });
+
+    test('parses division / operation', () {
       const operation = '7 / 8';
       final result = parseSimpleOperation(operation);
       expect(
           result,
-          equals([
-            ['7', '8'],
-            '/'
-          ]));
+          equals(const TSimpleOperation(
+            operands: ['7', '8'],
+            operator: '/',
+          )));
     });
 
     test('parses operation with no spaces', () {
@@ -108,25 +138,37 @@ void main() {
       final result = parseSimpleOperation(operation);
       expect(
           result,
-          equals([
-            ['9', '10'],
-            '+'
-          ]));
+          equals(const TSimpleOperation(
+            operands: ['9', '10'],
+            operator: '+',
+          )));
     });
 
     test('Test with valid expression and result', () {
-      expect(parseSimpleOperation('5 + 3 = 8'), [
-        ['5', '3'],
-        '+',
-        '8'
-      ]);
+      expect(
+          parseSimpleOperation('5 / 2 = 2.5'),
+          const TSimpleOperation(
+            operands: ['5', '2'],
+            operator: '/',
+            result: '2.5',
+          ));
+
+      expect(
+          parseSimpleOperation('5 + 3 = 8'),
+          const TSimpleOperation(
+            operands: ['5', '3'],
+            operator: '+',
+            result: '8',
+          ));
     });
 
     test('Test with valid expression and no result', () {
-      expect(parseSimpleOperation('4 - 2'), [
-        ['4', '2'],
-        '-'
-      ]);
+      expect(
+          parseSimpleOperation('4 - 2'),
+          const TSimpleOperation(
+            operands: ['4', '2'],
+            operator: '-',
+          ));
     });
 
     test('parses operation with leading/trailing spaces', () {
@@ -134,10 +176,10 @@ void main() {
       final result = parseSimpleOperation(operation);
       expect(
           result,
-          equals([
-            ['16', '17'],
-            '/'
-          ]));
+          equals(const TSimpleOperation(
+            operands: ['16', '17'],
+            operator: '/',
+          )));
     });
 
     test('Test with invalid input type', () {
@@ -155,25 +197,26 @@ void main() {
     test('parses negative number as first operand', () {
       const operation = '-9+6';
       final result = parseSimpleOperation(operation);
+
       expect(
           result,
-          equals([
-            ['-9', '6'],
-            '+'
-          ]));
+          equals(const TSimpleOperation(
+            operands: ['-9', '6'],
+            operator: '+',
+          )));
     });
-  });
 
-  test('parses negative number as second operand', () {
-    const operation = '-9-6=-15';
-    final result = parseSimpleOperation(operation);
-    expect(
-        result,
-        equals([
-          ['-9', '6'],
-          '-',
-          '-15'
-        ]));
+    test('parses negative number as second operand', () {
+      const operation = '-9-6=-15';
+      final result = parseSimpleOperation(operation);
+      expect(
+          result,
+          equals(const TSimpleOperation(
+            operands: ['-9', '6'],
+            operator: '-',
+            result: '-15',
+          )));
+    });
   });
 
   // Test cases for isDigit function
@@ -202,6 +245,18 @@ void main() {
     expect(isOperator('0'), false);
     expect(isOperator('9'), false);
     expect(isOperator('a'), false);
+  });
+
+  // Test cases for isUnaryOperator function
+  test('isUnaryOperator', () {
+    expect(isUnaryOperator('2+3', 1), false);
+    expect(isUnaryOperator('-2', 0), true);
+    expect(isUnaryOperator('2 - -3', 4), true);
+    expect(isUnaryOperator('2*-3', 1), false);
+    expect(isUnaryOperator('2*-3', 1), false);
+    expect(isUnaryOperator('2 -(-3)', 3), false);
+    expect(isUnaryOperator('- 2', 0), true);
+    expect(isUnaryOperator('', 0), false);
   });
 
   // Test cases for applyOperation function

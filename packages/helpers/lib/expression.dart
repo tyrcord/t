@@ -1,4 +1,5 @@
 import 'package:decimal/decimal.dart';
+import 'package:t_helpers/models/models.dart';
 
 // The main function that evaluates an arithmetic expression and
 // returns the result as a double.
@@ -17,15 +18,28 @@ double evaluateExpression(String expression) {
         i++; // Ignore spaces.
       } else if (isOperator(expression[i])) {
         // If the current character is an operator.
-        // If the current operator has lower or equal precedence than
-        // the last operator in the stack, apply the last operator.
-        while (operators.isNotEmpty &&
-            precedence(expression[i]) <= precedence(operators.last)) {
-          applyOperation(operators.removeLast(), values);
-        }
+        if (isUnaryOperator(expression, i)) {
+          // If the current character is a unary operator, parse the number with a negative sign.
+          i++;
+          int j = i;
+          while (j < expression.length && isDigit(expression[j])) {
+            j++;
+          }
+          var dValue = Decimal.parse('-${expression.substring(i, j)}');
+          values.add(dValue); // Add the parsed number to the values stack.
+          i = j;
+        } else {
+          // If the current operator has lower or equal precedence than
+          // the last operator in the stack, apply the last operator.
+          while (operators.isNotEmpty &&
+              precedence(expression[i]) <= precedence(operators.last)) {
+            applyOperation(operators.removeLast(), values);
+          }
 
-        operators.add(expression[i]); // Add the current operator to the stack.
-        i++;
+          operators
+              .add(expression[i]); // Add the current operator to the stack.
+          i++;
+        }
       } else if (expression[i] == '(') {
         // If the current character is an open parenthesis.
         i++;
@@ -43,13 +57,8 @@ double evaluateExpression(String expression) {
         return values.last; // Return the last value in the stack.
       } else {
         // If the current character is a digit or a decimal point.
-        int j = i + 1;
-        int decimalCount = expression[i] == '.' ? 1 : 0;
-
-        // Parse the entire number.
-        while (j < expression.length &&
-            (isDigit(expression[j]) ||
-                (expression[j] == '.' && decimalCount++ == 0))) {
+        int j = i;
+        while (j < expression.length && isDigit(expression[j])) {
           j++;
         }
 
@@ -74,11 +83,11 @@ double evaluateExpression(String expression) {
 // This function takes a string `operation` as input and returns a list of two
 // lists, where the first list contains the operands and the second list
 // contains the operators.
-List<Object>? parseSimpleOperation(String expression) {
+TSimpleOperation? parseSimpleOperation(String expression) {
   // Define a regular expression called `pattern` that matches the format of
   // "operand operator operand = result".
-  final pattern =
-      RegExp(r'^\s*(-?\d+)\s*([+\-*/])\s*(-?\d+)(?:\s*=\s*(-?\d+))?\s*$');
+  final pattern = RegExp(
+      r'^\s*(-?\d+(?:\.\d+)?)\s*([+\-*/×÷])\s*(-?\d+(?:\.\d+)?)(?:\s*=\s*(-?\d+(?:\.\d+)?))?\s*$');
 
   // Use the `firstMatch` method of the `RegExp` class to extract the operands,
   // operator, and result from the `expression` string.
@@ -100,18 +109,11 @@ List<Object>? parseSimpleOperation(String expression) {
     return null;
   }
 
-  // Create a list of the operands and operator.
-  final operands = [operand1, operand2];
-
-  if (result == null) {
-    // If there is no result, return a list containing the `operands` list and
-    // `operator` string as its two elements.
-    return [operands, operator];
-  } else {
-    // If there is a result, return a list containing the `operands` list,
-    // `operator` string, and `result` string as its three elements.
-    return [operands, operator, result];
-  }
+  return TSimpleOperation(
+    operands: [operand1, operand2],
+    operator: operator,
+    result: result,
+  );
 }
 
 // Function to apply an operator to the top two values in the values stack.
@@ -129,9 +131,11 @@ void applyOperation(String operator, List<Decimal> values) {
       result = a - b;
       break;
     case '*':
+    case '×':
       result = a * b;
       break;
     case '/':
+    case '÷':
       if (b == Decimal.zero) throw Exception('Division by zero');
       result = (a / b).toDecimal(scaleOnInfinitePrecision: 32);
       break;
@@ -149,7 +153,8 @@ bool isDigit(String char) =>
     char == '.';
 
 // Function to check if a character is an operator
-bool isOperator(String s) => s == '+' || s == '-' || s == '*' || s == '/';
+bool isOperator(String s) =>
+    s == '+' || s == '-' || s == '*' || s == '/' || s == '×' || s == '÷';
 
 // Function to return the precedence of an operator
 int precedence(String operator) {
@@ -159,8 +164,47 @@ int precedence(String operator) {
       return 1;
     case '*':
     case '/':
+    case '×':
+    case '÷':
       return 2;
   }
 
   return 0;
+}
+
+// Check whether a character in an expression is a unary operator.
+bool isUnaryOperator(String expression, int index) {
+  // If the index is invalid, the character cannot be a unary operator.
+  if (index >= expression.length) {
+    return false;
+  }
+
+  // Extract the character at the given index.
+  String operator = expression.substring(index, index + 1);
+
+  // If the character is not a minus sign, it cannot be a unary operator.
+  if (operator != '-') {
+    return false;
+  }
+
+  // If the character is a minus sign, check if it's a unary operator by
+  // examining the previous character in the expression.
+  if (index == 0) {
+    // If the minus sign is the first character in the expression, it is a
+    // unary operator.
+    return true;
+  }
+
+  // Extract the previous character in the expression.
+  String prevChar = expression.substring(index - 1, index);
+
+  // Check if the previous character is an operator, left parenthesis, or
+  // space. If it is any of these, then the minus sign is a unary operator.
+  if (isOperator(prevChar) || prevChar == '(' || prevChar == ' ') {
+    return true;
+  }
+
+  // If the previous character is not an operator, left parenthesis, or
+  // space, the minus sign is not a unary operator.
+  return false;
 }
