@@ -14,7 +14,8 @@ class TSimpleOperation extends TModel {
 
   bool get isValid {
     return operands.isNotEmpty &&
-        operands.every((operand) => operand.isNotEmpty) &&
+        operands.length == 2 &&
+        operands.every((operand) => isNumber(operand)) &&
         (operator == null || operator!.isNotEmpty);
   }
 
@@ -32,47 +33,69 @@ class TSimpleOperation extends TModel {
   }
 
   String get lastOperand {
-    return operands.isNotEmpty ? operands.last : '';
-  }
-
-  TSimpleOperation append(String char) {
-    final List<String> updatedOperands = List<String>.from(operands);
-    final int lastIndex = updatedOperands.length - 1;
-
-    if (lastOperand.isNotEmpty && !hasOperator && isOperator(char)) {
-      return copyWith(operator: char);
-    }
-
-    if (char == '.') {
-      final operand = hasOperator && operands.length == 1 ? '' : lastOperand;
-
-      if (operand.contains('.')) {
-        return this;
-      } else if (operand.isEmpty) {
-        if (operands.length == 2) {
-          updatedOperands[lastIndex] = '0.';
-        } else {
-          updatedOperands.add('0.');
-        }
-      } else {
-        updatedOperands[lastIndex] = '$operand.';
+    if (operands.isNotEmpty) {
+      if (operands.length == 1 && hasOperator) {
+        return '';
       }
 
-      return copyWith(operands: updatedOperands);
+      return operands.last;
     }
 
+    return '';
+  }
+
+  // The append method appends a given character to the current operation
+  TSimpleOperation append(String char) {
+    // Create a copy of the current operands list
+    final List<String> updatedOperands = List<String>.from(operands);
+
+    // Get the index of the last element in the updated operands list
+    final int lastIndex = updatedOperands.length - 1;
+
+    // Prevent adding a new operator or operand if the current operand
+    // has no digit
+    if (lastOperand == '-' && isOperator(char)) {
+      return this;
+    }
+
+    // If the last operand is not empty and the new character is an operator
+    if (isOperator(char) && operands.length < 2) {
+      if (lastOperand.isNotEmpty || hasOperator) {
+        return _updateOperator(char);
+      }
+    } else if (isOperator(char) && operands.length == 2) {
+      return this;
+    }
+
+    // If the new character is a '.', handle it
+    if (char == '.') {
+      return _updateDecimal(updatedOperands);
+    }
+
+    // Prevent multiple negative signs in an operand
+    if (char == '-' && lastOperand.startsWith('-')) {
+      return this;
+    }
+
+    // If the current operation has an operator and only one operand,
+    // add the new character to the operands list
     if (hasOperator && lastIndex == 0) {
       updatedOperands.add(char);
     } else if (lastOperand.isEmpty) {
+      // If the new character is an operator that is not '-',
+      // return the current object
       if (isOperator(char) && char != '-') {
         return this;
       }
 
+      // Otherwise, add the new character to the operands list
       updatedOperands.add(char);
     } else if (lastOperand.isNotEmpty) {
+      // If the last operand is not empty, append the new character
       updatedOperands[lastIndex] = lastOperand + char;
     }
 
+    // Return a copy of the current object with the updated operands
     return copyWith(operands: updatedOperands);
   }
 
@@ -163,6 +186,43 @@ class TSimpleOperation extends TModel {
     }
 
     return result != null ? '$operandsString=$result' : operandsString;
+  }
+
+  TSimpleOperation _updateOperator(String char) {
+    return copyWith(operator: char);
+  }
+
+  TSimpleOperation _updateDecimal(List<String> operands) {
+    // Get the index of the last element in the updated operands list
+    final int lastIndex = operands.length - 1;
+
+    // If the last operand already contains a '.', return the current object
+    if (lastOperand.contains('.')) {
+      return this;
+    }
+
+    // If the last operand is empty
+    else if (lastOperand.isEmpty) {
+      // If the operation has only two operands, add '0.' to
+      // the updated operands list
+      if (operands.length == 2) {
+        operands[lastIndex] = '0.';
+      }
+
+      // Otherwise, add '0.' to the end of the current last operand
+      else {
+        operands.add('0.');
+      }
+    }
+
+    // If the last operand is not empty, replace the last operand with
+    // the last operand + '.'
+    else {
+      operands[lastIndex] = '$lastOperand.';
+    }
+
+    // Return a copy of the current object with the updated operands
+    return copyWith(operands: operands);
   }
 
   @override

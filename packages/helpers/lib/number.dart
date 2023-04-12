@@ -10,3 +10,9 @@ bool isDoubleInteger(double number) {
   // integer, so return false.
   return number == roundedValue;
 }
+
+bool isNumber(String str) {
+  final doubleValue = double.tryParse(str);
+
+  return doubleValue != null;
+}

@@ -8,19 +8,21 @@ void main() {
       expect(evaluateExpression('3+5'), 8.0);
       expect(evaluateExpression('3.4+5.6'), 9.0);
       expect(evaluateExpression('-8+2'), -6.0);
+      expect(evaluateExpression('-8.5+2'), -6.5);
+      expect(evaluateExpression('8+0.'), 8);
     });
 
     test('subtraction', () {
       expect(evaluateExpression('10-3'), 7.0);
       expect(evaluateExpression('10.45-3.76'), 6.69);
       expect(evaluateExpression('-9-9'), -18);
+      expect(evaluateExpression('-9-9.5'), -18.5);
     });
 
     test('multiplication', () {
       expect(evaluateExpression('4*5'), 20.0);
       expect(evaluateExpression('4.56*5.75'), 26.22);
       expect(evaluateExpression('4.56×5.75'), 26.22);
-      //FIXME:
       expect(evaluateExpression('-9*-9'), 81);
     });
 
@@ -28,7 +30,6 @@ void main() {
       expect(evaluateExpression('15/3'), 5.0);
       expect(evaluateExpression('15/3.2'), 4.6875);
       expect(evaluateExpression('15÷3.2'), 4.6875);
-      //FIXME:
       expect(evaluateExpression('-9/-9'), 1);
     });
 
