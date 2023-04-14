@@ -220,62 +220,106 @@ void main() {
     });
   });
 
-  // Test cases for isDigit function
-  test('isDigit', () {
-    expect(isDigit('0'), true);
-    expect(isDigit('9'), true);
-    expect(isDigit('.'), true);
-    expect(isDigit('a'), false);
-    expect(isDigit('+'), false);
-  });
+  // Test cases for applyOperation function
+  group('applyOperation', () {
+    test('Applies addition correctly', () {
+      final values = [Decimal.parse('1.23'), Decimal.parse('4.56')];
+      applyOperation('+', values);
+      expect(values, equals([Decimal.parse('5.79')]));
+    });
 
-  // Test cases for precedence function
-  test('precedence', () {
-    expect(precedence('+'), 1);
-    expect(precedence('-'), 1);
-    expect(precedence('*'), 2);
-    expect(precedence('/'), 2);
+    test('Applies subtraction correctly', () {
+      final values = [Decimal.parse('7.89'), Decimal.parse('4.56')];
+      applyOperation('-', values);
+      expect(values, equals([Decimal.parse('3.33')]));
+    });
+
+    test('Applies multiplication correctly', () {
+      final values = [Decimal.parse('1.23'), Decimal.parse('4.56')];
+      applyOperation('*', values);
+      expect(values, equals([Decimal.parse('5.6088')]));
+    });
+
+    test('Applies division correctly', () {
+      final values = [Decimal.parse('7.89'), Decimal.parse('2.0')];
+      applyOperation('/', values);
+      expect(values, equals([Decimal.parse('3.945')]));
+    });
+
+    test('Applies multiplication with "×" correctly', () {
+      final values = [Decimal.parse('1.23'), Decimal.parse('4.56')];
+      applyOperation('×', values);
+      expect(values, equals([Decimal.parse('5.6088')]));
+    });
+
+    test('Applies division with "÷" correctly', () {
+      final values = [Decimal.parse('7.89'), Decimal.parse('2.0')];
+      applyOperation('÷', values);
+      expect(values, equals([Decimal.parse('3.945')]));
+    });
+
+    test('Throws exception for division by zero', () {
+      final values = [Decimal.parse('7.89'), Decimal.zero];
+      expect(() => applyOperation('/', values), throwsException);
+    });
+
+    test('Throws exception for invalid operator', () {
+      final values = [Decimal.parse('1.23'), Decimal.parse('4.56')];
+      expect(() => applyOperation('%', values), throwsException);
+    });
   });
 
   // Test cases for isOperator function
-  test('isOperator', () {
-    expect(isOperator('+'), true);
-    expect(isOperator('-'), true);
-    expect(isOperator('*'), true);
-    expect(isOperator('/'), true);
-    expect(isOperator('0'), false);
-    expect(isOperator('9'), false);
-    expect(isOperator('a'), false);
+  group('isOperator', () {
+    test('Returns true for arithmetic operators', () {
+      expect(isOperator('+'), isTrue);
+      expect(isOperator('-'), isTrue);
+      expect(isOperator('*'), isTrue);
+      expect(isOperator('/'), isTrue);
+      expect(isOperator('×'), isTrue);
+      expect(isOperator('÷'), isTrue);
+    });
+
+    test('Returns false for non-operators', () {
+      expect(isOperator(''), isFalse);
+      expect(isOperator('abc'), isFalse);
+      expect(isOperator('123'), isFalse);
+      expect(isOperator('('), isFalse);
+      expect(isOperator(')'), isFalse);
+    });
+  });
+
+  // Test cases for precedence function
+  group('precedence', () {
+    test('Returns 1 for addition and subtraction', () {
+      expect(precedence('+'), equals(1));
+      expect(precedence('-'), equals(1));
+    });
+
+    test('Returns 2 for multiplication and division', () {
+      expect(precedence('*'), equals(2));
+      expect(precedence('/'), equals(2));
+      expect(precedence('×'), equals(2));
+      expect(precedence('÷'), equals(2));
+    });
+
+    test('Returns 0 for unknown operators', () {
+      expect(precedence('%'), equals(0));
+      expect(precedence('^'), equals(0));
+      expect(precedence('#'), equals(0));
+    });
   });
 
   // Test cases for isUnaryOperator function
   test('isUnaryOperator', () {
-    expect(isUnaryOperator('2+3', 1), false);
-    expect(isUnaryOperator('-2', 0), true);
-    expect(isUnaryOperator('2 - -3', 4), true);
-    expect(isUnaryOperator('2*-3', 1), false);
-    expect(isUnaryOperator('2*-3', 1), false);
-    expect(isUnaryOperator('2 -(-3)', 3), false);
-    expect(isUnaryOperator('- 2', 0), true);
-    expect(isUnaryOperator('', 0), false);
-  });
-
-  // Test cases for applyOperation function
-  test('applyOperation', () {
-    List<Decimal> values = [Decimal.fromInt(4), Decimal.fromInt(2)];
-    applyOperation('+', values);
-    expect(values.last, Decimal.fromInt(6));
-
-    values = [Decimal.fromInt(4), Decimal.fromInt(2)];
-    applyOperation('-', values);
-    expect(values.last, Decimal.fromInt(2));
-
-    values = [Decimal.fromInt(4), Decimal.fromInt(2)];
-    applyOperation('*', values);
-    expect(values.last, Decimal.fromInt(8));
-
-    values = [Decimal.fromInt(4), Decimal.fromInt(2)];
-    applyOperation('/', values);
-    expect(values.last, Decimal.parse('2.0'));
+    expect(isNegativeUnaryOperator('2+3', 1), false);
+    expect(isNegativeUnaryOperator('-2', 0), true);
+    expect(isNegativeUnaryOperator('2--3', 2), true);
+    expect(isNegativeUnaryOperator('2*-3', 1), false);
+    expect(isNegativeUnaryOperator('2*-3', 1), false);
+    expect(isNegativeUnaryOperator('2-(-3)', 1), false);
+    expect(isNegativeUnaryOperator('2-(-3)', 3), true);
+    expect(isNegativeUnaryOperator('- 2', 0), true);
+    expect(isNegativeUnaryOperator('', 0), false);
   });
 }

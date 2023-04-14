@@ -1,5 +1,6 @@
 import 'package:t_helpers/helpers.dart';
 import 'package:tmodel/tmodel.dart';
+import 'package:intl/intl.dart';
 
 class TSimpleOperation extends TModel {
   final List<String> operands;
@@ -15,7 +16,7 @@ class TSimpleOperation extends TModel {
   bool get isValid {
     return operands.isNotEmpty &&
         operands.length == 2 &&
-        operands.every((operand) => isNumber(operand)) &&
+        operands.every((operand) => isStringNumber(operand)) &&
         (operator == null || operator!.isNotEmpty);
   }
 
@@ -42,6 +43,19 @@ class TSimpleOperation extends TModel {
     }
 
     return '';
+  }
+
+  TSimpleOperation replaceLastOperand(String operand) {
+    final updatedOperands = List<String>.from(operands);
+    updatedOperands.removeLast();
+    updatedOperands.add(operand);
+    print(updatedOperands);
+
+    return TSimpleOperation(
+      operands: updatedOperands,
+      operator: operator,
+      result: result,
+    );
   }
 
   // The append method appends a given character to the current operation
@@ -129,8 +143,10 @@ class TSimpleOperation extends TModel {
     if (updatedOperands.length == 1 && operator != null) {
       operator = null;
     } else if (lastOperand.isNotEmpty) {
-      updatedOperands[lastIndex] =
-          lastOperand.substring(0, lastOperand.length - 1);
+      updatedOperands[lastIndex] = lastOperand.substring(
+        0,
+        lastOperand.length - 1,
+      );
     }
 
     if (updatedOperands.isNotEmpty && updatedOperands.last.isEmpty) {
@@ -186,6 +202,34 @@ class TSimpleOperation extends TModel {
     }
 
     return result != null ? '$operandsString=$result' : operandsString;
+  }
+
+  String format({bool pretty = false}) {
+    late final String operandsString;
+
+    if (operands.length > 1) {
+      operandsString = operands.map(_formatOperand).join(operator ?? '');
+    } else {
+      operandsString = _formatOperand(operands[0]) + (operator ?? '');
+    }
+
+    return result != null ? '$operandsString=$result' : operandsString;
+  }
+
+  String _formatOperand(String operand) {
+    final value = double.tryParse(operand);
+
+    if (value != null) {
+      final formattedOperand = formatDecimal(value);
+
+      if (operand.endsWith('.')) {
+        return '$formattedOperand.';
+      }
+
+      return formattedOperand;
+    }
+
+    return operand;
   }
 
   TSimpleOperation _updateOperator(String char) {
