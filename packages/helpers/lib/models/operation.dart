@@ -211,6 +211,10 @@ class TSimpleOperation extends TModel {
   String toString() {
     late final String operandsString;
 
+    if (operands.isEmpty) {
+      return '';
+    }
+
     if (operands.length > 1) {
       operandsString = operands.join(operator ?? '');
     } else {
@@ -223,6 +227,10 @@ class TSimpleOperation extends TModel {
   /// Returns a formatted string representation of the current operation.
   String format() {
     late final String operandsString;
+
+    if (operands.isEmpty) {
+      return '';
+    }
 
     if (operands.length > 1) {
       operandsString = operands.map(_formatOperand).join(operator ?? '');
