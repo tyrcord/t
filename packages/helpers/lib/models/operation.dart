@@ -1,18 +1,22 @@
 import 'package:t_helpers/helpers.dart';
 import 'package:tmodel/tmodel.dart';
-import 'package:intl/intl.dart';
 
+/// A class representing a simple arithmetic operation with two operands
+/// and one operator.
 class TSimpleOperation extends TModel {
   final List<String> operands;
   final String? operator;
   final String? result;
 
+  /// Constructs a new `TSimpleOperation` instance with the given operands,
+  /// operator, and result.
   const TSimpleOperation({
     this.operands = const <String>[],
     this.operator,
     this.result,
   });
 
+  /// Checks if the current operation is valid.
   bool get isValid {
     return operands.isNotEmpty &&
         operands.length == 2 &&
@@ -20,19 +24,23 @@ class TSimpleOperation extends TModel {
         (operator == null || operator!.isNotEmpty);
   }
 
+  /// Checks if the current operation has an operator.
   bool get hasOperator {
     return operator != null && operator!.isNotEmpty;
   }
 
+  /// Returns the total length of the current operation.
   int get length {
     return operands.fold<int>(0, (sum, operand) => sum + operand.length) +
         (operator?.length ?? 0);
   }
 
+  /// Checks if the current operation is empty.
   bool get isEmpty {
     return operands.isEmpty && operator == null && result == null;
   }
 
+  /// Returns the last operand of the current operation.
   String get lastOperand {
     if (operands.isNotEmpty) {
       if (operands.length == 1 && hasOperator) {
@@ -45,11 +53,11 @@ class TSimpleOperation extends TModel {
     return '';
   }
 
+  /// Replaces the last operand of the current operation with the given operand.
   TSimpleOperation replaceLastOperand(String operand) {
     final updatedOperands = List<String>.from(operands);
     updatedOperands.removeLast();
     updatedOperands.add(operand);
-    print(updatedOperands);
 
     return TSimpleOperation(
       operands: updatedOperands,
@@ -58,7 +66,7 @@ class TSimpleOperation extends TModel {
     );
   }
 
-  // The append method appends a given character to the current operation
+  /// Appends a given character to the current operation.
   TSimpleOperation append(String char) {
     // Create a copy of the current operands list
     final List<String> updatedOperands = List<String>.from(operands);
@@ -113,6 +121,7 @@ class TSimpleOperation extends TModel {
     return copyWith(operands: updatedOperands);
   }
 
+  /// Evaluates the current operation and returns the result.
   TSimpleOperation evaluate() {
     final result = evaluateExpression(toString());
 
@@ -123,6 +132,7 @@ class TSimpleOperation extends TModel {
     );
   }
 
+  /// Clears the current operation.
   TSimpleOperation clear() {
     return const TSimpleOperation(
       operands: <String>[],
@@ -131,6 +141,7 @@ class TSimpleOperation extends TModel {
     );
   }
 
+  /// Deletes the last character of the current operation.
   TSimpleOperation deleteLastCharacter() {
     final List<String> updatedOperands = List<String>.from(operands);
     final int lastIndex = updatedOperands.length - 1;
@@ -160,6 +171,8 @@ class TSimpleOperation extends TModel {
     );
   }
 
+  /// Creates a copy of the current operation with the specified operands,
+  /// operator, and result.
   @override
   TSimpleOperation copyWith({
     List<String>? operands,
@@ -173,6 +186,7 @@ class TSimpleOperation extends TModel {
     );
   }
 
+  /// Creates a clone of the current operation.
   @override
   TModel clone() {
     return TSimpleOperation(
@@ -182,6 +196,7 @@ class TSimpleOperation extends TModel {
     );
   }
 
+  /// Merges the current operation with another operation.
   @override
   TSimpleOperation merge(covariant TSimpleOperation model) {
     return TSimpleOperation(
@@ -191,6 +206,7 @@ class TSimpleOperation extends TModel {
     );
   }
 
+  /// Returns a string representation of the current operation.
   @override
   String toString() {
     late final String operandsString;
@@ -204,7 +220,8 @@ class TSimpleOperation extends TModel {
     return result != null ? '$operandsString=$result' : operandsString;
   }
 
-  String format({bool pretty = false}) {
+  /// Returns a formatted string representation of the current operation.
+  String format() {
     late final String operandsString;
 
     if (operands.length > 1) {
@@ -216,6 +233,7 @@ class TSimpleOperation extends TModel {
     return result != null ? '$operandsString=$result' : operandsString;
   }
 
+  /// Helper method to format an operand.
   String _formatOperand(String operand) {
     final value = double.tryParse(operand);
 
@@ -232,10 +250,12 @@ class TSimpleOperation extends TModel {
     return operand;
   }
 
+  /// Helper method to update the operator.
   TSimpleOperation _updateOperator(String char) {
     return copyWith(operator: char);
   }
 
+  /// Helper method to update the decimal point in the current operation.
   TSimpleOperation _updateDecimal(List<String> operands) {
     // Get the index of the last element in the updated operands list
     final int lastIndex = operands.length - 1;

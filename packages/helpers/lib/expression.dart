@@ -1,8 +1,22 @@
 import 'package:decimal/decimal.dart';
 import 'package:t_helpers/helpers.dart';
 
-// The main function that evaluates an arithmetic expression and
-// returns the result as a double.
+/// Evaluates an arithmetic expression and returns the result as a `double`.
+///
+/// The `expression` parameter is a string that represents the arithmetic
+/// expression to evaluate.
+///
+/// Example:
+///
+/// ```dart
+/// void main() {
+///   // Evaluate an arithmetic expression and print the result.
+///   final result = evaluateExpression('2 * (3 + 4) / 5');
+///   print(result); // Output: 2.80
+/// }
+/// ```
+///
+/// Returns the result of the arithmetic expression as a `double`.
 double evaluateExpression(String expression) {
   int i = 0;
 
@@ -86,9 +100,20 @@ double evaluateExpression(String expression) {
       .toDouble(); // Call parseExpression and convert the result to double.
 }
 
-// This function takes a string `operation` as input and returns a list of two
-// lists, where the first list contains the operands and the second list
-// contains the operators.
+/// Parses a simple mathematical operation expression and returns a
+/// `TSimpleOperation` object that represents the operation.
+///
+/// The `expression` parameter is a string that represents the mathematical
+/// operation in the format of "operand operator operand = result", where
+/// `operand` is a number (positive or negative), `operator` is a mathematical
+/// operator (`+`, `-`, `*`, `/`, `×`, or `÷`), and `result` is an optional
+/// number that represents the result of the operation.
+///
+/// This function only supports simple operations with two operands and one
+/// operator. If the input `expression` is not in the expected format, or if
+/// the operands or operator are not valid, the function returns `null`.
+///
+/// Returns a `TSimpleOperation` object that represents the operation.
 TSimpleOperation? parseSimpleOperation(String expression) {
   // Define a regular expression called `pattern` that matches the format of
   // "operand operator operand = result".
@@ -175,9 +200,10 @@ bool isOperator(String s) {
   return s == '+' || s == '-' || s == '*' || s == '/' || s == '×' || s == '÷';
 }
 
-/// Returns an integer representing the precedence level of the given [operator].
+/// Returns an integer representing the precedence level of
+/// the given [operator].
 ///
-/// This function returns 1 for addition and subtraction operators ('+' and '-'),
+/// This function returns 1 for addition and subtraction operators ('+' and '-')
 /// and 2 for multiplication and division operators ('*', '/', '×', and '÷').
 /// For any other operator, the function returns 0.
 int precedence(String operator) {

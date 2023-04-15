@@ -11,7 +11,9 @@ bool isDoubleInteger(double number) {
 
 /// Returns `true` if [str] represents a valid number, `false` otherwise.
 ///
-/// This function attempts to parse the input string as a double using the [double.tryParse] method. If the conversion succeeds, the function returns `true`. Otherwise, it returns `false`.
+/// This function attempts to parse the input string as a double using
+/// the [double.tryParse] method. If the conversion succeeds, the function
+/// returns `true`. Otherwise, it returns `false`.
 bool isStringNumber(String str) {
   final doubleValue = double.tryParse(str);
 
@@ -20,9 +22,12 @@ bool isStringNumber(String str) {
 
 /// Formats a [num] value as a string with the specified [locale] and [pattern].
 ///
-/// The [locale] argument is optional and defaults to `'en_US'`, which is the locale for the United States.
+/// The [locale] argument is optional and defaults to `'en_US'`, which is
+/// the locale for the United States.
 ///
-/// The [pattern] argument is optional and defaults to `'#,##0.######'`, which formats the number with commas for the thousands separator and a period for the decimal separator, and includes up to six decimal places.
+/// The [pattern] argument is optional and defaults to `'#,##0.######'`,
+/// which formats the number with commas for the thousands separator and
+/// a period for the decimal separator, and includes up to six decimal places.
 ///
 /// Returns the formatted number as a [String].
 String formatDecimal(
