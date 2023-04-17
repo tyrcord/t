@@ -1,3 +1,9 @@
+## 0.0.5
+
+ - **FIX**: bunch of fixes.
+ - **FEAT**: improvments.
+ - **FEAT**: add TSimpleOperation model.
+
 ## 0.0.4+1
 
  - **FIX**: minor fixes.
