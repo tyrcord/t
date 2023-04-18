@@ -65,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  buildContent() {
+  Widget buildContent() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
@@ -80,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  buildActions() {
+  Widget buildActions() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[

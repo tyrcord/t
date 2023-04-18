@@ -232,13 +232,14 @@ bool isNegativeUnaryOperator(String expression, int index) {
   // Extract the character at the given index.
   String operator = expression.substring(index, index + 1);
 
-  // If the character is not a minus sign, it cannot be a negative unary operator.
+  // If the character is not a minus sign,
+  // it cannot be a negative unary operator.
   if (operator != '-') {
     return false;
   }
 
-  // If the character is a minus sign, check if it's a negative unary operator by
-  // examining the previous character in the expression.
+  // If the character is a minus sign, check if it's a negative unary operator
+  // by examining the previous character in the expression.
   if (index == 0) {
     // If the minus sign is the first character in the expression, it is a
     // unary operator.

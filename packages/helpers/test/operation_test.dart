@@ -871,7 +871,7 @@ void main() {
         operator: '+',
         result: '5',
       );
-      final clonedOperation = operation.clone() as TSimpleOperation;
+      final clonedOperation = operation.clone();
       expect(clonedOperation.operands, equals(operation.operands));
       expect(clonedOperation.operator, equals(operation.operator));
       expect(clonedOperation.result, equals(operation.result));
@@ -884,7 +884,7 @@ void main() {
         operator: '+',
         result: '5',
       );
-      final clonedOperation = operation.clone() as TSimpleOperation;
+      final clonedOperation = operation.clone();
       expect(clonedOperation, isNot(same(operation)));
     });
   });
