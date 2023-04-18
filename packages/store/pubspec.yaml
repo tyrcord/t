@@ -5,15 +5,15 @@ repository: https://github.com/tyrcord/t/tree/main/packages/tstore
 issue_tracker: https://github.com/tyrcord/t/tree/main/packages/tstore/issues
 
 environment:
-  sdk: '>=2.19.5 <3.0.0'
-  flutter: ">=3.3.0"
+  sdk: '>=2.19.6 <3.0.0'
+  flutter: ">=3.7.0"
 
 dependencies:
   flutter:
     sdk: flutter
   hive: ^2.2.3
   hive_flutter: ^1.1.0
-  rxdart: ^0.27.5
+  rxdart: ^0.27.7
   meta: ^1.8.0
   equatable: ^2.0.5
   tmodel: ^0.5.1
@@ -22,5 +22,5 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
-  dart_code_metrics: ^5.5.1
+  flutter_lints: ^2.0.1
+  dart_code_metrics: ^5.7.2
