@@ -1,3 +1,7 @@
+## 0.5.2
+
+ - **FEAT**: update dependencies.
+
 ## 0.5.1
 
  - **FEAT**: add existing libraries.

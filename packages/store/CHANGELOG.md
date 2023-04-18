@@ -1,3 +1,7 @@
+## 0.8.6
+
+ - **FEAT**: update dependencies.
+
 ## 0.8.5
 
  - **FEAT**: add existing libraries.

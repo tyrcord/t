@@ -1,3 +1,7 @@
+## 0.20.3
+
+ - **FEAT**: update dependencies.
+
 ## 0.20.2
 
  - **FEAT**: sampleEvent.
