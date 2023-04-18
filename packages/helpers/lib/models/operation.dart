@@ -188,7 +188,7 @@ class TSimpleOperation extends TModel {
 
   /// Creates a clone of the current operation.
   @override
-  TModel clone() {
+  TSimpleOperation clone() {
     return TSimpleOperation(
       operands: List<String>.from(operands),
       operator: operator,
