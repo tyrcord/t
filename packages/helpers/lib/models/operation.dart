@@ -127,13 +127,17 @@ class TSimpleOperation extends TModel {
 
   /// Evaluates the current operation and returns the result.
   TSimpleOperation evaluate() {
-    final result = evaluateExpression(toString());
+    if (isValid) {
+      final result = evaluateExpression(toString());
 
-    return TSimpleOperation(
-      result: (isDoubleInteger(result) ? result.toInt() : result).toString(),
-      operands: operands,
-      operator: operator,
-    );
+      return TSimpleOperation(
+        result: (isDoubleInteger(result) ? result.toInt() : result).toString(),
+        operands: operands,
+        operator: operator,
+      );
+    }
+
+    return this;
   }
 
   /// Clears the current operation.

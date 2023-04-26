@@ -64,6 +64,7 @@ void main() {
 
     test('invalid/non supported operator', () {
       expect(() => evaluateExpression('3+5^2'), throwsA(isA<Exception>()));
+      expect(() => evaluateExpression(''), throwsA(isA<Exception>()));
     });
   });
 

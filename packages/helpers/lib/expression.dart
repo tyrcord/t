@@ -20,6 +20,10 @@ import 'package:t_helpers/helpers.dart';
 double evaluateExpression(String expression) {
   int i = 0;
 
+  if (expression.isEmpty) {
+    throw Exception('Invalid expression');
+  }
+
   // A recursive function that parses the expression and
   // returns the result as a Decimal.
   Decimal parseExpression() {
