@@ -1,3 +1,7 @@
+## 0.0.7+2
+
+ - **FIX**: replaceLastOperand should work when there are no operands.
+
 ## 0.0.7+1
 
  - **FIX**: dependencies.
