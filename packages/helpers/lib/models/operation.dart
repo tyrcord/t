@@ -56,7 +56,11 @@ class TSimpleOperation extends TModel {
   /// Replaces the last operand of the current operation with the given operand.
   TSimpleOperation replaceLastOperand(String operand) {
     final updatedOperands = List<String>.from(operands);
-    updatedOperands.removeLast();
+
+    if (updatedOperands.isNotEmpty) {
+      updatedOperands.removeLast();
+    }
+
     updatedOperands.add(operand);
 
     return TSimpleOperation(

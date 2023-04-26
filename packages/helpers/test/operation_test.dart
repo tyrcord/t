@@ -514,6 +514,18 @@ void main() {
   });
 
   group('replaceLastOperand', () {
+    test('replaceLastOperand when operands is empty', () {
+      const operation = TSimpleOperation(
+        operands: [],
+        result: null,
+      );
+
+      final updatedOperation = operation.replaceLastOperand('5');
+
+      expect(updatedOperation.operands, equals(['5']));
+      expect(updatedOperation.result, equals(null));
+    });
+
     test('replaces the last operand in a valid operation', () {
       const operation = TSimpleOperation(
         operands: ['2', '3'],
