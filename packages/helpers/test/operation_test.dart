@@ -471,12 +471,16 @@ void main() {
       expect(result.result, equals('2'));
     });
 
-    test('throws an error if the operation is invalid', () {
+    test(' don\'t evaluate the operation when not valid', () {
       const operation = TSimpleOperation(
         operands: ['2', ''],
         operator: '+',
       );
-      expect(() => operation.evaluate(), throwsA(isA<RangeError>()));
+
+      final result = operation.evaluate();
+      expect(result.operands, equals(['2', '']));
+      expect(result.operator, equals('+'));
+      expect(result.result, equals(null));
     });
 
     test('throws an error if the result is not a number', () {
