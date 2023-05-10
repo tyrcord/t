@@ -5,7 +5,7 @@ class SettingsDocument extends TDocument {
   final String? theme;
   final int? year;
 
-  SettingsDocument({
+  const SettingsDocument({
     this.languageCode,
     this.theme,
     this.year,

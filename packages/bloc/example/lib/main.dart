@@ -1,21 +1,25 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'package:fastyle_dart/fastyle_dart.dart';
 import 'package:tbloc/tbloc.dart';
 import 'package:flutter/material.dart';
 import 'counter.bloc.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return FastApp(
+    return const FastApp(
       home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({super.key});
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -28,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
 
-    bloc.addEvent(CounterBlocEvent.init());
+    bloc.addEvent(const CounterBlocEvent.init());
   }
 
   @override
@@ -57,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 return buildContent();
               }
 
-              return FastThreeBounceIndicator();
+              return const FastThreeBounceIndicator();
             },
           ),
         ),
@@ -71,11 +75,11 @@ class _MyHomePageState extends State<MyHomePage> {
       children: <Widget>[
         buildActions(),
         kFastSizedBox16,
-        Text('You have pushed the button this many times:'),
+        const Text('You have pushed the button this many times:'),
         kFastSizedBox16,
-        CounterWidget(),
+        const CounterWidget(),
         kFastSizedBox16,
-        StatusWidget(),
+        const StatusWidget(),
       ],
     );
   }
@@ -87,24 +91,24 @@ class _MyHomePageState extends State<MyHomePage> {
         FastRaisedButton(
           text: 'INCREMENT',
           onTap: () {
-            bloc.addEvent(CounterBlocEvent.increment());
+            bloc.addEvent(const CounterBlocEvent.increment());
           },
         ),
         FastRaisedButton(
           text: 'DECREMENT',
           onTap: () {
-            bloc.addEvent(CounterBlocEvent.decrement());
+            bloc.addEvent(const CounterBlocEvent.decrement());
           },
         ),
         FastRaisedButton(
           text: 'RESET',
           onTap: () {
-            bloc.addEvent(CounterBlocEvent.reset());
+            bloc.addEvent(const CounterBlocEvent.reset());
           },
         ),
         FastRaisedButton(
           text: 'ERROR',
-          onTap: () => bloc.addEvent(CounterBlocEvent.error()),
+          onTap: () => bloc.addEvent(const CounterBlocEvent.error()),
         ),
       ],
     );
@@ -112,6 +116,8 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class StatusWidget extends StatelessWidget {
+  const StatusWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     final bloc = BlocProvider.of<CounterBloc>(context);
@@ -139,6 +145,8 @@ class StatusWidget extends StatelessWidget {
 }
 
 class CounterWidget extends StatelessWidget {
+  const CounterWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     final bloc = BlocProvider.of<CounterBloc>(context);
@@ -148,7 +156,7 @@ class CounterWidget extends StatelessWidget {
       builder: (BuildContext context, CounterBlocState state) {
         return Text(
           state.hasError ? state.error.toString() : '${state.counter}',
-          style: Theme.of(context).textTheme.headline4,
+          style: Theme.of(context).textTheme.headlineMedium,
         );
       },
     );

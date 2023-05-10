@@ -1,3 +1,5 @@
+// ignore_for_file: overridden_fields
+
 import 'package:meta/meta.dart';
 import 'package:tstore/tstore.dart';
 
@@ -21,6 +23,6 @@ class SettingsDocumentDataProvider extends TDocumentDataProvider {
       return SettingsDocument.fromJson(raw);
     }
 
-    return SettingsDocument();
+    return const SettingsDocument();
   }
 }

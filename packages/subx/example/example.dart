@@ -1,12 +1,14 @@
+// ignore_for_file: avoid_print
+
 import 'package:subx/subx.dart';
 
 void main() async {
   final subxList = SubxList();
-  final source = Stream.periodic(Duration(milliseconds: 500), (counter) {
+  final source = Stream.periodic(const Duration(milliseconds: 500), (counter) {
     return ++counter;
   });
 
-  final source2 = Stream.periodic(Duration(seconds: 1), (counter) {
+  final source2 = Stream.periodic(const Duration(seconds: 1), (counter) {
     return ++counter;
   });
 
@@ -21,7 +23,7 @@ void main() async {
   subxList.add(subscription);
   subxList.add(subscription2);
 
-  await Future.delayed(Duration(seconds: 2), () {
+  await Future.delayed(const Duration(seconds: 2), () {
     return subxList.cancelAll();
   });
 }

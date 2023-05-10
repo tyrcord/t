@@ -10,7 +10,7 @@ void main() {
 
     setUp(() {
       provider = SettingsDocumentDataProvider();
-      document = SettingsDocument(languageCode: 'en');
+      document = const SettingsDocument(languageCode: 'en');
     });
 
     group('#persistDocument()', () {
@@ -26,13 +26,13 @@ void main() {
         await provider.connect();
         await provider.persistDocument(document);
         await provider.persistDocument(
-          SettingsDocument(year: 2020, theme: 'dark'),
+          const SettingsDocument(year: 2020, theme: 'dark'),
         );
         final documentRetrieved = await provider.retrieveSettings();
 
         expect(
           documentRetrieved,
-          equals(SettingsDocument(year: 2020, theme: 'dark')),
+          equals(const SettingsDocument(year: 2020, theme: 'dark')),
         );
       });
     });
@@ -48,7 +48,7 @@ void main() {
         await provider.clearDocument();
         documentRetrieved = await provider.retrieveSettings();
 
-        expect(documentRetrieved, equals(SettingsDocument()));
+        expect(documentRetrieved, equals(const SettingsDocument()));
       });
     });
   });

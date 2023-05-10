@@ -3,7 +3,7 @@ import 'package:tbloc/tbloc.dart';
 
 class CounterBloc
     extends BidirectionalBloc<CounterBlocEvent, CounterBlocState> {
-  CounterBloc() : super(initialState: CounterBlocState());
+  CounterBloc() : super(initialState: const CounterBlocState());
 
   @override
   // ignore: code-metrics
@@ -15,8 +15,8 @@ class CounterBloc
       debugPrint('CounterBloc: init event received');
       isInitializing = true;
       yield currentState.copyWith(isInitializing: true);
-      await Future.delayed(Duration(seconds: 2));
-      addEvent(CounterBlocEvent.initialized());
+      await Future.delayed(const Duration(seconds: 2));
+      addEvent(const CounterBlocEvent.initialized());
     } else if (type == CounterBlocEventType.initialized) {
       debugPrint('CounterBloc: initialized event received');
       isInitialized = true;
@@ -44,7 +44,7 @@ class CounterBloc
 
   @override
   void handleInternalError(error) {
-    addEvent(CounterBlocEvent.errorRaised());
+    addEvent(const CounterBlocEvent.errorRaised());
   }
 }
 
@@ -88,13 +88,13 @@ class CounterBlocState extends BlocState {
   }
 
   @override
-  CounterBlocState merge(covariant CounterBlocState state) {
+  CounterBlocState merge(covariant CounterBlocState model) {
     return copyWith(
-      isInitializing: state.isInitializing,
-      isInitialized: state.isInitialized,
-      counter: state.counter,
-      isBusy: state.isBusy,
-      error: state.error,
+      isInitializing: model.isInitializing,
+      isInitialized: model.isInitialized,
+      counter: model.counter,
+      isBusy: model.isBusy,
+      error: model.error,
     );
   }
 
@@ -121,17 +121,21 @@ enum CounterBlocEventType {
 class CounterBlocEvent extends BlocEvent<CounterBlocEventType, dynamic> {
   const CounterBlocEvent({super.type});
 
-  CounterBlocEvent.init() : this(type: CounterBlocEventType.init);
+  const CounterBlocEvent.init() : this(type: CounterBlocEventType.init);
 
-  CounterBlocEvent.initialized() : this(type: CounterBlocEventType.initialized);
+  const CounterBlocEvent.initialized()
+      : this(type: CounterBlocEventType.initialized);
 
-  CounterBlocEvent.increment() : this(type: CounterBlocEventType.increment);
+  const CounterBlocEvent.increment()
+      : this(type: CounterBlocEventType.increment);
 
-  CounterBlocEvent.decrement() : this(type: CounterBlocEventType.decrement);
+  const CounterBlocEvent.decrement()
+      : this(type: CounterBlocEventType.decrement);
 
-  CounterBlocEvent.error() : this(type: CounterBlocEventType.error);
+  const CounterBlocEvent.error() : this(type: CounterBlocEventType.error);
 
-  CounterBlocEvent.reset() : this(type: CounterBlocEventType.reset);
+  const CounterBlocEvent.reset() : this(type: CounterBlocEventType.reset);
 
-  CounterBlocEvent.errorRaised() : this(type: CounterBlocEventType.errorRaised);
+  const CounterBlocEvent.errorRaised()
+      : this(type: CounterBlocEventType.errorRaised);
 }

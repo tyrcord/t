@@ -74,7 +74,7 @@ void main() {
             ),
           );
 
-          var state;
+          late PeopleBlocState state;
 
           await tester.runAsync(() async {
             state = await bloc.onData.skip(1).first;

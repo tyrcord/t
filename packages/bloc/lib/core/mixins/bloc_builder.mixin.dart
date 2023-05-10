@@ -4,7 +4,7 @@ import 'package:tbloc/tbloc.dart';
 
 /// A mixin that provides to the [BlocBuilder] the ability to wait
 /// for data before building.
-class BlocBuilderMixin {
+mixin BlocBuilderMixin {
   /// Indicates if the [BlocBuilder] should wait for data.
   /// If `true`, the [BlocBuilder] will wait for data before
   /// building the widget.

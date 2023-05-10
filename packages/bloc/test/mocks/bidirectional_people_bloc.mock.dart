@@ -23,8 +23,8 @@ class BidirectionalPeopleBloc
       yield currentState.copyWithPayload(event.payload!);
     } else if (event.type == PeopleBlocEventPayloadType.marry) {
       yield currentState.copyWith(isMarrying: true);
-      await Future.delayed(Duration(milliseconds: 300));
-      addEvent(PeopleBlocEvent.married());
+      await Future.delayed(const Duration(milliseconds: 300));
+      addEvent(const PeopleBlocEvent.married());
     } else if (event.type == PeopleBlocEventPayloadType.married) {
       yield currentState.copyWith(isSingle: false, isMarrying: false);
       addEvent(
@@ -50,7 +50,7 @@ class BidirectionalPeopleBloc
   // ignore: no-empty-block
   void handleInternalError(dynamic error) {
     if (error == 'Error Delayed') {
-      addEvent(PeopleBlocEvent.error());
+      addEvent(const PeopleBlocEvent.error());
     }
   }
 

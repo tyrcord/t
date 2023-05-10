@@ -32,7 +32,6 @@ abstract class TDataProvider {
   /// Returns the stream of changes.
   Stream<TStoreChanges> get onChanges => store.onChanges;
 
-  @mustCallSuper
   TDataProvider({required this.storeName});
 
   /// Initializes the data provider.

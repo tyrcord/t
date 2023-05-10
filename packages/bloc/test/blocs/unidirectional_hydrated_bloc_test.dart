@@ -9,7 +9,7 @@ void main() {
   group('UnidirectionalHydratedPeopleBloc', () {
     late UnidirectionalHydratedPeopleBloc bloc;
 
-    final defaultState = PeopleBlocState(
+    const defaultState = PeopleBlocState(
       age: 42,
       firstname: 'foo',
       lastname: 'bar',
@@ -26,6 +26,7 @@ void main() {
     group('#UnidirectionalHydratedPeopleBloc()', () {
       test('should return a UnidirectionalHydratedPeopleBloc object', () {
         expect(
+          // ignore: unnecessary_type_check
           UnidirectionalHydratedPeopleBloc(
             initialState: defaultState,
           ) is UnidirectionalHydratedPeopleBloc,
@@ -41,7 +42,7 @@ void main() {
         );
 
         await bloc.hydrate();
-        await bloc.put(PeopleBlocState(age: 24));
+        await bloc.put(const PeopleBlocState(age: 24));
 
         // wait for the state to be updated
         await Future.delayed(

@@ -7,14 +7,14 @@ void main() {
     late TDocumentChanges modelChanges2;
 
     setUp(() {
-      modelChanges = TDocumentChanges(
+      modelChanges = const TDocumentChanges(
         keyToDelete: ['age'],
         entryToUpdate: {
           'firstname': 'foo',
           'lastname': 'bar',
         },
       );
-      modelChanges2 = TDocumentChanges(
+      modelChanges2 = const TDocumentChanges(
         keyToDelete: ['firstname'],
         entryToUpdate: {'age': 42},
       );

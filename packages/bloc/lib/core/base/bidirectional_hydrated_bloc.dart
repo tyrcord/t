@@ -1,3 +1,5 @@
+// ignore_for_file: overridden_fields
+
 import 'package:meta/meta.dart';
 
 import 'package:tbloc/tbloc.dart';

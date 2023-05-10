@@ -5,7 +5,7 @@ class PersonEntity extends TEntity {
   final String? lastname;
   final int? age;
 
-  PersonEntity({
+  const PersonEntity({
     this.firstname,
     this.lastname,
     this.age,

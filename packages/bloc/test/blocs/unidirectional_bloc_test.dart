@@ -9,7 +9,7 @@ void main() {
   group('UnidirectionalBloc', () {
     late UnidirectionalPeopleBloc bloc;
 
-    final defaultState = PeopleBlocState(
+    const defaultState = PeopleBlocState(
       age: 42,
       firstname: 'foo',
       lastname: 'bar',
@@ -28,6 +28,7 @@ void main() {
     group('#UnidirectionalPeopleBloc()', () {
       test('should return a UnidirectionalPeopleBloc object', () {
         expect(
+            // ignore: unnecessary_type_check
             UnidirectionalPeopleBloc(initialState: defaultState)
                 is UnidirectionalPeopleBloc,
             equals(true));
@@ -54,6 +55,7 @@ void main() {
 
     group('#onData', () {
       test('should be an Stream', () {
+        // ignore: unnecessary_type_check
         expect(bloc.onData is Stream, equals(true));
       });
 
@@ -68,8 +70,8 @@ void main() {
           ]),
         );
 
-        bloc.put(PeopleBlocState(firstname: 'baz'));
-        bloc.put(PeopleBlocState(firstname: 'qux'));
+        bloc.put(const PeopleBlocState(firstname: 'baz'));
+        bloc.put(const PeopleBlocState(firstname: 'qux'));
       });
     });
 
@@ -88,7 +90,7 @@ void main() {
         'should return the latest state '
         'when a BLoC\'s state has been updated',
         () async {
-          bloc.put(PeopleBlocState(firstname: 'baz'));
+          bloc.put(const PeopleBlocState(firstname: 'baz'));
 
           final lastState = await bloc.onData
               .skipWhile((state) => state.firstname != 'baz')
@@ -110,7 +112,7 @@ void main() {
         );
 
         bloc.close();
-        bloc.put(PeopleBlocState(age: 12));
+        bloc.put(const PeopleBlocState(age: 12));
         expect(bloc.isClosed, equals(true));
       });
     });

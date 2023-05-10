@@ -7,8 +7,10 @@ void main() {
     late TStoreChanges storeChanges2;
 
     setUp(() {
-      storeChanges = TStoreChanges(type: TStoreChangeType.delete, key: 'age');
-      storeChanges2 = TStoreChanges(type: TStoreChangeType.delete, value: 42);
+      storeChanges =
+          const TStoreChanges(type: TStoreChangeType.delete, key: 'age');
+      storeChanges2 =
+          const TStoreChanges(type: TStoreChangeType.delete, value: 42);
     });
 
     group('#clone()', () {

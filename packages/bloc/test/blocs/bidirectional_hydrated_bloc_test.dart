@@ -10,7 +10,7 @@ void main() {
   group('BidirectionalHydratedPeopleBloc', () {
     late BidirectionalHydratedPeopleBloc bloc;
 
-    final defaultState = PeopleBlocState(
+    const defaultState = PeopleBlocState(
       age: 42,
       firstname: 'foo',
       lastname: 'bar',
@@ -27,6 +27,7 @@ void main() {
     group('#BidirectionalHydratedPeopleBloc()', () {
       test('should return a BidirectionalHydratedPeopleBloc object', () {
         expect(
+          // ignore: unnecessary_type_check
           BidirectionalHydratedPeopleBloc(
             initialState: defaultState,
           ) is BidirectionalHydratedPeopleBloc,
