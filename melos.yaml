@@ -2,3 +2,13 @@ name: t
 
 packages:
   - packages/**
+
+scripts:
+  test: 
+    exec: flutter test
+    packageFilters:
+      ignore:
+        - tbloc_example
+        - tmodel
+        - tsub
+    
