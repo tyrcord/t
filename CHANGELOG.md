@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-05-10
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`subx` - `v1.5.0`](#subx---v150)
+ - [`t_helpers` - `v0.0.8`](#t_helpers---v008)
+ - [`tbloc` - `v0.20.4`](#tbloc---v0204)
+ - [`tmodel` - `v0.5.3`](#tmodel---v053)
+ - [`tstore` - `v0.8.7`](#tstore---v087)
+ - [`tsub` - `v1.3.0`](#tsub---v130)
+
+---
+
+#### `subx` - `v1.5.0`
+
+ - **FEAT**: update to dart 3 & flutter 3.10.0.
+
+#### `t_helpers` - `v0.0.8`
+
+ - **FEAT**: update to dart 3 & flutter 3.10.0.
+
+#### `tbloc` - `v0.20.4`
+
+ - **FEAT**: update to dart 3 & flutter 3.10.0.
+
+#### `tmodel` - `v0.5.3`
+
+ - **FEAT**: update to dart 3 & flutter 3.10.0.
+
+#### `tstore` - `v0.8.7`
+
+ - **FEAT**: update to dart 3 & flutter 3.10.0.
+
+#### `tsub` - `v1.3.0`
+
+ - **FEAT**: update to dart 3 & flutter 3.10.0.
+
+
 ## 2023-04-26
 
 ### Changes

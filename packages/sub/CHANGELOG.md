@@ -1,3 +1,7 @@
+## 1.3.0
+
+ - **FEAT**: update to dart 3 & flutter 3.10.0.
+
 ## 1.2.0
 
  - **FEAT**: update dependencies.
