@@ -66,6 +66,7 @@ class TSimpleOperation extends TModel {
     updatedOperands.add(operand);
 
     return TSimpleOperation(
+      isLastOperandPercent: isLastOperandPercent,
       operands: updatedOperands,
       operator: operator,
       result: result,
@@ -134,6 +135,7 @@ class TSimpleOperation extends TModel {
 
       return TSimpleOperation(
         result: (isDoubleInteger(result) ? result.toInt() : result).toString(),
+        isLastOperandPercent: isLastOperandPercent,
         operands: operands,
         operator: operator,
       );
@@ -145,6 +147,7 @@ class TSimpleOperation extends TModel {
   /// Clears the current operation.
   TSimpleOperation clear() {
     return const TSimpleOperation(
+      isLastOperandPercent: false,
       operands: <String>[],
       operator: null,
       result: null,
@@ -175,6 +178,7 @@ class TSimpleOperation extends TModel {
     }
 
     return TSimpleOperation(
+      isLastOperandPercent: isLastOperandPercent,
       operands: updatedOperands,
       operator: operator,
       result: result,
@@ -188,11 +192,13 @@ class TSimpleOperation extends TModel {
     List<String>? operands,
     String? operator,
     String? result,
+    bool? isLastOperandPercent,
   }) {
     return TSimpleOperation(
       operands: operands ?? this.operands,
       operator: operator ?? this.operator,
       result: result ?? this.result,
+      isLastOperandPercent: isLastOperandPercent ?? this.isLastOperandPercent,
     );
   }
 
@@ -203,6 +209,7 @@ class TSimpleOperation extends TModel {
       operands: List<String>.from(operands),
       operator: operator,
       result: result,
+      isLastOperandPercent: isLastOperandPercent,
     );
   }
 
@@ -213,6 +220,7 @@ class TSimpleOperation extends TModel {
       operands: model.operands,
       operator: model.operator,
       result: model.result,
+      isLastOperandPercent: model.isLastOperandPercent,
     );
   }
 
@@ -316,5 +324,5 @@ class TSimpleOperation extends TModel {
   }
 
   @override
-  List<Object?> get props => [operands, operator, result];
+  List<Object?> get props => [operands, operator, result, isLastOperandPercent];
 }
