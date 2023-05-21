@@ -7,6 +7,7 @@ class TSimpleOperation extends TModel {
   final List<String> operands;
   final String? operator;
   final String? result;
+  final bool isLastOperandPercent;
 
   /// Constructs a new `TSimpleOperation` instance with the given operands,
   /// operator, and result.
@@ -14,6 +15,7 @@ class TSimpleOperation extends TModel {
     this.operands = const <String>[],
     this.operator,
     this.result,
+    this.isLastOperandPercent = false,
   });
 
   /// Checks if the current operation is valid.
@@ -217,7 +219,7 @@ class TSimpleOperation extends TModel {
   /// Returns a string representation of the current operation.
   @override
   String toString() {
-    late final String operandsString;
+    late String operandsString;
 
     if (operands.isEmpty) {
       return '';
@@ -225,6 +227,10 @@ class TSimpleOperation extends TModel {
 
     if (operands.length > 1) {
       operandsString = operands.join(operator ?? '');
+
+      if (isLastOperandPercent) {
+        operandsString += '%';
+      }
     } else {
       operandsString = operands[0] + (operator ?? '');
     }
@@ -234,7 +240,7 @@ class TSimpleOperation extends TModel {
 
   /// Returns a formatted string representation of the current operation.
   String format() {
-    late final String operandsString;
+    late String operandsString;
 
     if (operands.isEmpty) {
       return '';
@@ -242,6 +248,10 @@ class TSimpleOperation extends TModel {
 
     if (operands.length > 1) {
       operandsString = operands.map(_formatOperand).join(operator ?? '');
+
+      if (isLastOperandPercent) {
+        operandsString += '%';
+      }
     } else {
       operandsString = _formatOperand(operands[0]) + (operator ?? '');
     }

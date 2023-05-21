@@ -492,6 +492,19 @@ void main() {
       );
       expect(() => operation.evaluate(), throwsA(isA<Exception>()));
     });
+
+    test(
+        'should handle last operand as percentage if isLastOperandPercent is true',
+        () {
+      const operation = TSimpleOperation(
+        isLastOperandPercent: true,
+        operands: ['50', '75'],
+        operator: '+',
+      );
+
+      final result = operation.evaluate();
+      expect(result.result, equals('87.5'));
+    });
   });
 
   group('clear', () {
@@ -696,6 +709,20 @@ void main() {
       final result = operation.format();
       expect(result, equals(''));
     });
+
+    test(
+        'should handle last operand as percentage if isLastOperandPercent is true',
+        () {
+      const operation = TSimpleOperation(
+        isLastOperandPercent: true,
+        operands: ['50', '75'],
+        operator: '+',
+        result: '87.5',
+      );
+
+      final formatted = operation.format();
+      expect(formatted, '50+75%=87.5');
+    });
   });
 
   group('toString', () {
@@ -791,6 +818,20 @@ void main() {
       );
       final result = operation.toString();
       expect(result, equals(''));
+    });
+
+    test(
+        'should handle last operand as percentage if isLastOperandPercent is true',
+        () {
+      const operation = TSimpleOperation(
+        isLastOperandPercent: true,
+        operands: ['50', '75'],
+        operator: '+',
+        result: '87.5',
+      );
+
+      final formatted = operation.toString();
+      expect(formatted, '50+75%=87.5');
     });
   });
 
