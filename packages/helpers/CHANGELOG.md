@@ -1,3 +1,10 @@
+## 0.0.9
+
+ - **FEAT**: minor improvements.
+ - **FEAT**: add isLastOperandPercent to simple operation.
+ - **FEAT**: evaluateExpression handles percentage operation for '+' or '-' operators.
+ - **FEAT**: add isStringPercentage.
+
 ## 0.0.8
 
  - **FEAT**: update to dart 3 & flutter 3.10.0.

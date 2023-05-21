@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-05-21
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`t_helpers` - `v0.0.9`](#t_helpers---v009)
+
+---
+
+#### `t_helpers` - `v0.0.9`
+
+ - **FEAT**: minor improvements.
+ - **FEAT**: add isLastOperandPercent to simple operation.
+ - **FEAT**: evaluateExpression handles percentage operation for '+' or '-' operators.
+ - **FEAT**: add isStringPercentage.
+
+
 ## 2023-05-10
 
 ### Changes
