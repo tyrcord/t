@@ -20,6 +20,31 @@ bool isStringNumber(String str) {
   return doubleValue != null;
 }
 
+/// Check whether a string is a percentage.
+bool isStringPercentage(String str) {
+  if (str.isEmpty) {
+    return false;
+  }
+
+  if ('%'.allMatches(str).length > 1) {
+    return false;
+  }
+
+  final lastChar = str[str.length - 1];
+
+  if (lastChar != '%') {
+    return false;
+  }
+
+  var isNumber = isStringNumber(str.replaceAll('%', ''));
+
+  if (!isNumber) {
+    return false;
+  }
+
+  return true;
+}
+
 /// Formats a [num] value as a string with the specified [locale] and [pattern].
 ///
 /// The [locale] argument is optional and defaults to `'en_US'`, which is

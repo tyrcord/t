@@ -127,4 +127,21 @@ void main() {
       expect(isCharDigitOrDecimalPoint('.'), isTrue);
     });
   });
+
+  group('isStringPercentage', () {
+    test('returns true for strings ending with %', () {
+      expect(isStringPercentage('50%'), isTrue);
+      expect(isStringPercentage('0.5%'), isTrue);
+      expect(isStringPercentage('100%'), isTrue);
+      expect(isStringPercentage('50.0%'), isTrue);
+      expect(isStringPercentage('50 %'), isTrue);
+    });
+
+    test('returns false for strings not ending with %', () {
+      expect(isStringPercentage('50'), isFalse);
+      expect(isStringPercentage('0.5'), isFalse);
+      expect(isStringPercentage('100'), isFalse);
+      expect(isStringPercentage('50%%'), isFalse);
+    });
+  });
 }
