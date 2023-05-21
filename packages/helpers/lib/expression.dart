@@ -29,6 +29,7 @@ double evaluateExpression(String expression) {
   Decimal parseExpression() {
     List<Decimal> values = []; // A stack to store numeric values.
     List<String> operators = []; // A stack to store operators.
+    Decimal lastNonOperatorValue = Decimal.one;
 
     // Iterate through the expression.
     while (i < expression.length) {
@@ -43,12 +44,22 @@ double evaluateExpression(String expression) {
           int j = i;
 
           while (j < expression.length &&
-              isCharDigitOrDecimalPoint(expression[j])) {
+              isCharDigitOrDecimalPointOrPercentage(expression[j])) {
             j++;
           }
 
-          var dValue = Decimal.parse('-${expression.substring(i, j)}');
+          var substring = '-${expression.substring(i, j)}';
+          var dValue = Decimal.parse(substring.replaceAll('%', ''));
+
+          if (isStringPercentage(expression.substring(i, j))) {
+            // Handle percentage operation for '+' or '-' operators.
+            dValue = lastNonOperatorValue *
+                (dValue / Decimal.fromInt(100))
+                    .toDecimal(scaleOnInfinitePrecision: 32);
+          }
+
           values.add(dValue); // Add the parsed number to the values stack.
+          lastNonOperatorValue = dValue;
           i = j;
         } else {
           // If the current operator has lower or equal precedence than
@@ -81,13 +92,26 @@ double evaluateExpression(String expression) {
         // If the current character is a digit or a decimal point.
         int j = i;
 
-        while (
-            j < expression.length && isCharDigitOrDecimalPoint(expression[j])) {
+        while (j < expression.length &&
+            isCharDigitOrDecimalPointOrPercentage(expression[j])) {
           j++;
         }
 
-        var dValue = Decimal.parse(expression.substring(i, j));
+        var substring = expression.substring(i, j);
+        var dValue = Decimal.parse(substring.replaceAll('%', ''));
+
+        if (isStringPercentage(expression.substring(i, j)) &&
+            (operators.isEmpty ||
+                operators.last == '+' ||
+                operators.last == '-')) {
+          // Handle percentage operation for '+' or '-' operators.
+          dValue = lastNonOperatorValue *
+              (dValue / Decimal.fromInt(100))
+                  .toDecimal(scaleOnInfinitePrecision: 32);
+        }
+
         values.add(dValue); // Add the parsed number to the values stack.
+        lastNonOperatorValue = dValue;
         i = j;
       }
     }
@@ -262,4 +286,10 @@ bool isNegativeUnaryOperator(String expression, int index) {
   // If the previous character is not an operator, left parenthesis, or
   // space, the minus sign is not a unary operator.
   return false;
+}
+
+// Check whether a character in an expression is a digit, decimal point,
+// or percentage sign.
+bool isCharDigitOrDecimalPointOrPercentage(String s) {
+  return isCharDigitOrDecimalPoint(s) || s == '%';
 }

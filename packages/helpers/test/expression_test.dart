@@ -58,6 +58,20 @@ void main() {
       expect(evaluateExpression('(6+10/2)-3*2'), 5.0);
     });
 
+    test('evaluateExpression should handle percent sign', () {
+      expect(evaluateExpression('100 + 10%'), equals(110.00));
+      expect(evaluateExpression('100 + 10.5%'), equals(110.50));
+      expect(evaluateExpression('10% + 10%'), equals(0.11));
+      expect(evaluateExpression('50% + 10'), equals(10.5));
+
+      expect(evaluateExpression('100 - 10%'), equals(90.00));
+      expect(evaluateExpression('100 - 10.5%'), equals(89.50));
+      expect(evaluateExpression('50% - 10'), equals(-9.5));
+      expect(evaluateExpression('10% - 10%'), equals(0.09));
+
+      expect(evaluateExpression('100 - 25% + 50'), equals(125.00));
+    });
+
     test('division by zero', () {
       expect(() => evaluateExpression('15/0'), throwsA(isA<Exception>()));
     });
