@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`t_helpers` - `v0.0.9+1`](#t_helpers---v0091)
+
+---
+
+#### `t_helpers` - `v0.0.9+1`
+
+ - **FIX**: missing implement of isLastOperandPercent.
+
+
+## 2023-05-21
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`t_helpers` - `v0.0.9`](#t_helpers---v009)
 
 ---

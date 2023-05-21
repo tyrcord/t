@@ -1,3 +1,7 @@
+## 0.0.9+1
+
+ - **FIX**: missing implement of isLastOperandPercent.
+
 ## 0.0.9
 
  - **FEAT**: minor improvements.
