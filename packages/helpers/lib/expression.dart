@@ -51,7 +51,11 @@ double evaluateExpression(String expression) {
           var substring = '-${expression.substring(i, j)}';
           var dValue = Decimal.parse(substring.replaceAll('%', ''));
 
-          if (isStringPercentage(expression.substring(i, j))) {
+          if (isStringPercentage(expression.substring(i, j)) &&
+              (operators.isEmpty ||
+                  operators.last == '+' ||
+                  operators.last == '-')) {
+            // Handle percentage operation for '+' or '-' operators.
             // Handle percentage operation for '+' or '-' operators.
             dValue = lastNonOperatorValue *
                 (dValue / Decimal.fromInt(100))
