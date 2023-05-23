@@ -1,3 +1,7 @@
+## 0.20.4+1
+
+ - **FIX**: make sure building options works in any circumstances.
+
 ## 0.20.4
 
  - **FEAT**: update to dart 3 & flutter 3.10.0.

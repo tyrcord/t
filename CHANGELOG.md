@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-05-23
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`tbloc` - `v0.20.4+1`](#tbloc---v02041)
+
+---
+
+#### `tbloc` - `v0.20.4+1`
+
+ - **FIX**: make sure building options works in any circumstances.
+
+
 ## 2023-05-21
 
 ### Changes
