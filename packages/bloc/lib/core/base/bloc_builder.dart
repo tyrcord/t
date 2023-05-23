@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:tbloc/tbloc.dart';
@@ -38,6 +39,9 @@ class BlocBuilderWidget<S extends BlocState> extends StatefulWidget
   /// Indicates whether the widget should only be built when the [Bloc] is busy.
   final bool onlyWhenBusy;
 
+  /// A label that is used to identify the widget in the widget tree.
+  final String? debugLabel;
+
   const BlocBuilderWidget({
     super.key,
     required this.builder,
@@ -49,6 +53,7 @@ class BlocBuilderWidget<S extends BlocState> extends StatefulWidget
     this.waitForData = false,
     this.loadingBuilder,
     this.buildWhen,
+    this.debugLabel,
   });
 
   @override
@@ -69,8 +74,7 @@ class BlocBuilderWidgetState<S extends BlocState>
   void didUpdateWidget(BlocBuilderWidget<S> oldWidget) {
     super.didUpdateWidget(oldWidget);
 
-    if (oldWidget.bloc != widget.bloc ||
-        oldWidget.buildWhen != widget.buildWhen) {
+    if (oldWidget.bloc != widget.bloc) {
       _buildStream();
     }
   }
@@ -90,7 +94,10 @@ class BlocBuilderWidgetState<S extends BlocState>
           return loading;
         }
 
-        return widget.builder(context, snapshot.data!);
+        var data = snapshot.data;
+        data ??= widget.bloc.currentState;
+
+        return widget.builder(context, data);
       },
     );
   }
@@ -103,51 +110,52 @@ class BlocBuilderWidgetState<S extends BlocState>
     S? previousState;
     S? nextState;
 
-    _stream = widget.buildWhen == null
-        ? widget.bloc.onData.distinct((S previous, S next) {
-            // FIXME: Need investigation
-            // Woraround for not getting the previous state.
-            if (previousState == null) {
-              previousState = previous;
-              nextState = next;
-            } else {
-              previousState = nextState;
-              nextState = next;
-            }
+    _stream = widget.bloc.onData.distinct((S previous, S next) {
+      // FIXME: Need investigation
+      // Woraround for not getting the previous state.
+      if (previousState == null) {
+        previousState = previous;
+        nextState = next;
+      } else {
+        previousState = nextState;
+        nextState = next;
+      }
 
-            if (widget.onlyWhenInitializing) {
-              return !_hasBlocInitializationChanged(previousState!, nextState!);
-            }
+      if (widget.onlyWhenInitializing) {
+        _debugLog('only rebuild when initializing');
 
-            if (widget.onlyWhenBusy) {
-              return !_hasBlocBecomeBusy(previousState!, nextState!);
-            }
+        return !_hasBlocInitializationChanged(previousState!, nextState!);
+      }
 
-            return false;
-          })
-        : widget.bloc.onData.distinct((S previous, S next) {
-            // FIXME: Need investigation
-            // Woraround for not getting the previous state.
-            if (previousState == null) {
-              previousState = previous;
-              nextState = next;
-            } else {
-              previousState = nextState;
-              nextState = next;
-            }
+      if (widget.onlyWhenBusy) {
+        _debugLog('only rebuild when busy');
 
-            if (widget.forceBuildWhenInializating &&
-                _hasBlocInitializationChanged(previousState!, nextState!)) {
-              return false;
-            }
+        return !_hasBlocBecomeBusy(previousState!, nextState!);
+      }
 
-            if (widget.forceBuildWhenBusy &&
-                _hasBlocBecomeBusy(previousState!, nextState!)) {
-              return false;
-            }
+      if (widget.forceBuildWhenInializating &&
+          _hasBlocInitializationChanged(previousState!, nextState!)) {
+        _debugLog('force rebuild when initializing');
 
-            return !widget.buildWhen!(previousState!, nextState!);
-          });
+        return false;
+      }
+
+      if (widget.forceBuildWhenBusy &&
+          _hasBlocBecomeBusy(previousState!, nextState!)) {
+        _debugLog('force rebuild when busy');
+
+        return false;
+      }
+
+      if (widget.buildWhen != null) {
+        final shouldRebuild = !widget.buildWhen!(previousState!, nextState!);
+        _debugLog('buildWhen predicate returns: $shouldRebuild');
+
+        return shouldRebuild;
+      }
+
+      return false;
+    });
   }
 
   bool _hasBlocInitializationChanged(S previous, S next) {
@@ -157,5 +165,11 @@ class BlocBuilderWidgetState<S extends BlocState>
 
   bool _hasBlocBecomeBusy(S previous, S next) {
     return previous.isBusy != next.isBusy;
+  }
+
+  void _debugLog(String message) {
+    if (kDebugMode && widget.debugLabel != null) {
+      debugPrint('[${widget.debugLabel}] $message');
+    }
   }
 }
