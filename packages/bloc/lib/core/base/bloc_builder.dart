@@ -148,10 +148,13 @@ class BlocBuilderWidgetState<S extends BlocState>
       }
 
       if (widget.buildWhen != null) {
-        final shouldRebuild = !widget.buildWhen!(previousState!, nextState!);
-        _debugLog('buildWhen predicate returns: $shouldRebuild');
+        final shouldRebuild = widget.buildWhen!(previousState!, nextState!);
+        _debugLog(
+          'buildWhen returns: $shouldRebuild'
+          '${shouldRebuild ? ', rebuilding the widget...' : ''}',
+        );
 
-        return shouldRebuild;
+        return !shouldRebuild;
       }
 
       return false;
