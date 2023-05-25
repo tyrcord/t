@@ -1,3 +1,7 @@
+## 0.20.5
+
+ - **FEAT**: minor improvements.
+
 ## 0.20.4+1
 
  - **FIX**: make sure building options works in any circumstances.
