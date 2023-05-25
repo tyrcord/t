@@ -272,7 +272,10 @@ class TSimpleOperation extends TModel {
     final value = double.tryParse(operand);
 
     if (value != null) {
-      final formattedOperand = formatDecimal(value);
+      final formattedOperand = formatDecimal(
+        value: value,
+        maximumFractionDigits: 5,
+      );
 
       if (operand.endsWith('.')) {
         return '$formattedOperand.';

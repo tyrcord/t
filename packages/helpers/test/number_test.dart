@@ -51,22 +51,121 @@ void main() {
   });
 
   group('formatDecimal', () {
-    test('Formats a number with default locale and pattern', () {
-      expect(formatDecimal(1234567.890123), equals('1,234,567.890123'));
+    test('formats integer value with default options', () {
+      expect(formatDecimal(value: 1234), equals('1,234'));
     });
 
-    test('Formats a number with a custom locale', () {
+    test('formats decimal value with default options', () {
+      expect(formatDecimal(value: 1234.567), equals('1,234.57'));
+    });
+
+    test('formats decimal value with custom pattern', () {
       expect(
-        formatDecimal(1234567.890123, locale: 'de_DE'),
-        equals('1.234.567,890123'),
+        formatDecimal(
+          value: 1234.567,
+          pattern: "#,##0.000",
+          maximumFractionDigits: 3,
+        ),
+        equals('1,234.567'),
       );
     });
 
-    test('Formats a number with a custom pattern', () {
+    test('formats decimal value with custom locale', () {
       expect(
-        formatDecimal(1234567.890123, pattern: '#,###.##'),
-        equals('1,234,567.89'),
+        formatDecimal(value: 1234.567, locale: 'fr_FR'),
+        equals('1 234,57'),
       );
+
+      expect(
+        formatDecimal(value: 1234567.890123, locale: 'de_DE'),
+        equals('1.234.567,89'),
+      );
+    });
+
+    test('formats decimal value with custom minimum fraction digits', () {
+      expect(
+        formatDecimal(value: 1234.5, minimumFractionDigits: 2),
+        equals('1,234.50'),
+      );
+    });
+
+    test('formats decimal value with custom maximum fraction digits', () {
+      expect(
+        formatDecimal(value: 1234.56789, maximumFractionDigits: 4),
+        equals('1,234.5679'),
+      );
+    });
+
+    test('returns empty string when value is null', () {
+      expect(formatDecimal(value: null), equals(''));
+    });
+  });
+
+  group('formatPercentage', () {
+    test('formats percentage with default options', () {
+      expect(formatPercentage(value: 50), equals('50%'));
+    });
+
+    test('formats percentage with custom options', () {
+      expect(
+        formatPercentage(
+          value: 12.34,
+          locale: 'fr_FR',
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 4,
+        ),
+        equals('12,34%'),
+      );
+    });
+
+    test('returns empty string when value is null', () {
+      expect(formatPercentage(value: null), equals(''));
+    });
+  });
+
+  group('formatCurrency', () {
+    test('formats positive value with default parameters', () {
+      expect(formatCurrency(value: 1234.56), equals('\$1,234.56'));
+    });
+
+    test('formats negative value with default parameters', () {
+      expect(formatCurrency(value: -1234.56), equals('-\$1,234.56'));
+    });
+
+    test('formats zero value with default parameters', () {
+      expect(formatCurrency(value: 0), equals('\$0'));
+    });
+
+    test('formats value with custom locale', () {
+      expect(
+        formatCurrency(value: 1234.56, locale: 'de_DE'),
+        equals('1.234,56 \$'),
+      );
+    });
+
+    test('formats value with custom symbol', () {
+      expect(
+        formatCurrency(value: 1234.56, symbol: 'EUR'),
+        equals('€1,234.56'),
+      );
+    });
+
+    test('formats value with custom minimum fraction digits', () {
+      expect(
+        formatCurrency(value: 1234.5, minimumFractionDigits: 2),
+        equals('\$1,234.50'),
+      );
+    });
+
+    test('formats value with custom maximum fraction digits', () {
+      expect(
+        formatCurrency(value: 1234.5678, maximumFractionDigits: 3),
+        equals('\$1,234.568'),
+      );
+    });
+
+    test('returns empty string for null value', () {
+      expect(formatCurrency(value: null), equals(''));
     });
   });
 

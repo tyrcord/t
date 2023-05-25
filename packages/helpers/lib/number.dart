@@ -1,4 +1,7 @@
+import 'package:decimal/decimal.dart';
 import 'package:intl/intl.dart';
+
+final dHundred = Decimal.fromInt(100);
 
 /// Checks if the input [number] is a "double integer", i.e., a double value
 /// that represents an integer value.
@@ -20,7 +23,15 @@ bool isStringNumber(String str) {
   return doubleValue != null;
 }
 
-/// Check whether a string is a percentage.
+/// Returns true if the given [str] is a string representation of a percentage,
+/// false otherwise.
+///
+/// A string is considered a percentage if it:
+///   - is not empty
+///   - contains at most one '%' character
+///   - ends with a '%' character
+///   - the remaining characters, after removing the '%' character, represent
+///     a valid number.
 bool isStringPercentage(String str) {
   if (str.isEmpty) {
     return false;
@@ -43,26 +54,6 @@ bool isStringPercentage(String str) {
   }
 
   return true;
-}
-
-/// Formats a [num] value as a string with the specified [locale] and [pattern].
-///
-/// The [locale] argument is optional and defaults to `'en_US'`, which is
-/// the locale for the United States.
-///
-/// The [pattern] argument is optional and defaults to `'#,##0.######'`,
-/// which formats the number with commas for the thousands separator and
-/// a period for the decimal separator, and includes up to six decimal places.
-///
-/// Returns the formatted number as a [String].
-String formatDecimal(
-  num value, {
-  String locale = 'en_US',
-  String pattern = "#,##0.######",
-}) {
-  final formatter = NumberFormat(pattern, locale);
-
-  return formatter.format(value);
 }
 
 /// Returns `true` if [char] represents a digit, `false` otherwise.
@@ -101,4 +92,84 @@ bool isCharDigitOrDecimalPoint(String char) {
   final isDecimalPoint = char == '.';
 
   return isCharDigit(char) || isDecimalPoint;
+}
+
+/// Formats a [value] as a decimal string using the given [locale] and
+/// [pattern].
+/// [minimumFractionDigits] and [maximumFractionDigits] can be used to specify
+/// the minimum and maximum number of decimal places to display.
+String formatDecimal({
+  num? value,
+  String? locale = 'en_US',
+  String? pattern = "#,##0.##",
+  int? minimumFractionDigits = 0,
+  int? maximumFractionDigits = 2,
+}) {
+  if (value == null) {
+    return '';
+  }
+
+  final formatter = NumberFormat(pattern, locale);
+
+  if (maximumFractionDigits != null) {
+    formatter.maximumFractionDigits = maximumFractionDigits;
+  }
+
+  if (minimumFractionDigits != null) {
+    formatter.minimumFractionDigits = minimumFractionDigits;
+  }
+
+  return formatter.format(value);
+}
+
+/// Formats a [value] as a percentage string using the given [locale] and
+/// [pattern]. [minimumFractionDigits] and [maximumFractionDigits] can be used
+/// to specify the minimum and maximum number of decimal places to display.
+String formatPercentage({
+  num? value,
+  String? locale = 'en_US',
+  String? pattern = "#,##0.##",
+  int minimumFractionDigits = 0,
+  int? maximumFractionDigits = 2,
+}) {
+  if (value == null) {
+    return '';
+  }
+
+  final number = formatDecimal(
+    minimumFractionDigits: minimumFractionDigits,
+    maximumFractionDigits: maximumFractionDigits,
+    locale: locale,
+    value: value,
+  );
+
+  return '$number%';
+}
+
+/// Formats a [value] as a currency string using the given [locale], [pattern],
+/// and [symbol]. [minimumFractionDigits] and [maximumFractionDigits] can be
+/// used to specify the minimum and maximum number of decimal places to display.
+String formatCurrency({
+  num? value,
+  String? locale = 'en_US',
+  String? pattern = "#,##0.##",
+  String symbol = 'USD',
+  int? minimumFractionDigits = 0,
+  int? maximumFractionDigits = 2,
+}) {
+  if (value == null) {
+    return '';
+  }
+
+  final formatter = NumberFormat.simpleCurrency(locale: locale, name: symbol);
+
+  if (maximumFractionDigits != null) {
+    formatter.maximumFractionDigits = maximumFractionDigits;
+  }
+
+  if (minimumFractionDigits != null) {
+    formatter.minimumFractionDigits = minimumFractionDigits;
+  }
+
+  return formatter.format(value);
 }
