@@ -1,3 +1,7 @@
+## 0.0.10
+
+ - **FEAT**: add more formatting helpers.
+
 ## 0.0.9+1
 
  - **FIX**: missing implement of isLastOperandPercent.
