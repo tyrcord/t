@@ -58,8 +58,7 @@ double evaluateExpression(String expression) {
             // Handle percentage operation for '+' or '-' operators.
             // Handle percentage operation for '+' or '-' operators.
             dValue = lastNonOperatorValue *
-                (dValue / Decimal.fromInt(100))
-                    .toDecimal(scaleOnInfinitePrecision: 32);
+                (dValue / dHundred).toDecimal(scaleOnInfinitePrecision: 32);
           }
 
           values.add(dValue); // Add the parsed number to the values stack.
@@ -110,8 +109,7 @@ double evaluateExpression(String expression) {
                 operators.last == '-')) {
           // Handle percentage operation for '+' or '-' operators.
           dValue = lastNonOperatorValue *
-              (dValue / Decimal.fromInt(100))
-                  .toDecimal(scaleOnInfinitePrecision: 32);
+              (dValue / dHundred).toDecimal(scaleOnInfinitePrecision: 32);
         }
 
         values.add(dValue); // Add the parsed number to the values stack.
