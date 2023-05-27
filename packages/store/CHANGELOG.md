@@ -1,3 +1,7 @@
+## 0.8.8+1
+
+ - **FIX**: dependencies.
+
 ## 0.8.8
 
  - **FEAT**: add setUpTStoreTesting.

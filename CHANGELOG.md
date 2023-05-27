@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`tstore` - `v0.8.8+1`](#tstore---v0881)
+
+---
+
+#### `tstore` - `v0.8.8+1`
+
+ - **FIX**: dependencies.
+
+
+## 2023-05-27
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`tstore` - `v0.8.8`](#tstore---v088)
 
 ---
