@@ -139,8 +139,8 @@ String formatPercentage({
   final number = formatDecimal(
     minimumFractionDigits: minimumFractionDigits,
     maximumFractionDigits: maximumFractionDigits,
+    value: value * 100,
     locale: locale,
-    value: value,
   );
 
   return '$number%';

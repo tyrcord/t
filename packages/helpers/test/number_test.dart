@@ -103,13 +103,13 @@ void main() {
 
   group('formatPercentage', () {
     test('formats percentage with default options', () {
-      expect(formatPercentage(value: 50), equals('50%'));
+      expect(formatPercentage(value: 0.5), equals('50%'));
     });
 
     test('formats percentage with custom options', () {
       expect(
         formatPercentage(
-          value: 12.34,
+          value: 0.1234,
           locale: 'fr_FR',
           minimumFractionDigits: 2,
           maximumFractionDigits: 4,
