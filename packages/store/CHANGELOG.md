@@ -1,3 +1,7 @@
+## 0.8.8
+
+ - **FEAT**: add setUpTStoreTesting.
+
 ## 0.8.7
 
  - **FEAT**: update to dart 3 & flutter 3.10.0.

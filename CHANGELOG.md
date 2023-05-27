@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`tstore` - `v0.8.8`](#tstore---v088)
+
+---
+
+#### `tstore` - `v0.8.8`
+
+ - **FEAT**: add setUpTStoreTesting.
+
+
+## 2023-05-27
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`t_helpers` - `v0.0.11`](#t_helpers---v0011)
 
 ---
