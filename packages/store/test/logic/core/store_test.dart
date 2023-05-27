@@ -1,14 +1,10 @@
-import 'dart:io';
-
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hive/hive.dart';
 import 'package:tstore/tstore.dart';
 
 import '../../mocks/entities/person.entity.dart';
 
 void main() {
-  var path = Directory.current.path;
-  Hive.init(path);
+  setUpTStoreTesting();
 
   group('Store', () {
     late PersonEntity person;

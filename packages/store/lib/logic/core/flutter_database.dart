@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'package:tstore/tstore.dart';
@@ -16,10 +18,17 @@ class TFlutterDataBase extends TDataBaseCore {
   @override
   Future<bool> init() async {
     if (!isInitialized) {
-      await Hive.initFlutter();
+      if (!isTest) {
+        await Hive.initFlutter();
+      }
+
       isInitialized = true;
     }
 
     return isInitialized;
+  }
+
+  bool get isTest {
+    return Platform.environment.containsKey('FLUTTER_TEST');
   }
 }
