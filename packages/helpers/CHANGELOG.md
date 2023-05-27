@@ -1,3 +1,8 @@
+## 0.0.11
+
+ - **FIX**: formatPercentage.
+ - **FEAT**: minor improvements.
+
 ## 0.0.10
 
  - **FEAT**: add more formatting helpers.
