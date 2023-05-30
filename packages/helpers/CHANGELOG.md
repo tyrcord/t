@@ -1,3 +1,7 @@
+## 0.0.12
+
+ - **FEAT**: add decimal helpers.
+
 ## 0.0.11
 
  - **FIX**: formatPercentage.
