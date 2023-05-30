@@ -1,7 +1,4 @@
-import 'package:decimal/decimal.dart';
 import 'package:intl/intl.dart';
-
-final dHundred = Decimal.fromInt(100);
 
 /// Checks if the input [number] is a "double integer", i.e., a double value
 /// that represents an integer value.

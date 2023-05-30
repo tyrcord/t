@@ -5,3 +5,4 @@ export './platform.dart';
 export './number.dart';
 export './colors.dart';
 export './models/models.dart';
+export './decimal.dart';
