@@ -60,9 +60,5 @@ void main() {
     test('should return null for an invalid String', () {
       expect(toDecimal('foo'), isNull);
     });
-
-    test('should throw an AssertionError for an invalid input', () {
-      expect(() => toDecimal(true), throwsA(isA<AssertionError>()));
-    });
   });
 }

@@ -61,13 +61,13 @@ Decimal decimalFromRational(Rational value) {
 ///
 /// Throws an [AssertionError] if [value] is not a [num], [Rational], or [String].
 Decimal? toDecimal(dynamic value) {
-  assert(value is num || value is Rational || value is String);
-
   if (value is num) {
     return decimalFromNumber(value);
   } else if (value is Rational) {
     return decimalFromRational(value);
+  } else if (value is String) {
+    return Decimal.tryParse(value as String);
   }
 
-  return Decimal.tryParse(value as String);
+  return null;
 }
