@@ -1,4 +1,5 @@
 import 'package:intl/intl.dart';
+import 'package:t_helpers/helpers.dart';
 
 /// Checks if the input [number] is a "double integer", i.e., a double value
 /// that represents an integer value.
@@ -169,4 +170,14 @@ String formatCurrency({
   }
 
   return formatter.format(value);
+}
+
+double calculatePercentageDecrease(double originalValue, double newValue) {
+  final dOriginalValue = toDecimal(originalValue)!;
+  final dNewValue = toDecimal(newValue)!;
+
+  final dDecrease = dOriginalValue - dNewValue;
+  final percentageDecrease = decimalFromRational(dDecrease / dOriginalValue);
+
+  return percentageDecrease.toDouble();
 }
