@@ -1,3 +1,8 @@
+## 0.0.13
+
+ - **FIX**: remove assertion for toDecimal.
+ - **FEAT**: add calculatePercentageDecrease helper.
+
 ## 0.0.12
 
  - **FEAT**: add decimal helpers.

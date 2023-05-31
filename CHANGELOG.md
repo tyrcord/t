@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-05-31
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`t_helpers` - `v0.0.13`](#t_helpers---v0013)
+
+---
+
+#### `t_helpers` - `v0.0.13`
+
+ - **FIX**: remove assertion for toDecimal.
+ - **FEAT**: add calculatePercentageDecrease helper.
+
+
 ## 2023-05-30
 
 ### Changes
