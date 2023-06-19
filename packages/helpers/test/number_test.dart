@@ -57,6 +57,8 @@ void main() {
 
     test('formats decimal value with default options', () {
       expect(formatDecimal(value: 1234.567), equals('1,234.57'));
+      expect(formatDecimal(value: 1234.5), equals('1,234.50'));
+      expect(formatDecimal(value: 1234.00), equals('1,234'));
     });
 
     test('formats decimal value with custom pattern', () {
@@ -104,6 +106,9 @@ void main() {
   group('formatPercentage', () {
     test('formats percentage with default options', () {
       expect(formatPercentage(value: 0.5), equals('50%'));
+      expect(formatPercentage(value: 0.01), equals('1%'));
+      expect(formatPercentage(value: 0.011), equals('1.10%'));
+      expect(formatPercentage(value: 0.01256), equals('1.26%'));
     });
 
     test('formats percentage with custom options', () {
@@ -126,14 +131,20 @@ void main() {
   group('formatCurrency', () {
     test('formats positive value with default parameters', () {
       expect(formatCurrency(value: 1234.56), equals('\$1,234.56'));
+      expect(formatCurrency(value: 1), equals('\$1'));
+      expect(formatCurrency(value: 1.1), equals('\$1.10'));
     });
 
     test('formats negative value with default parameters', () {
       expect(formatCurrency(value: -1234.56), equals('-\$1,234.56'));
+      expect(formatCurrency(value: -1), equals('-\$1'));
+      expect(formatCurrency(value: -1.1), equals('-\$1.10'));
     });
 
     test('formats zero value with default parameters', () {
       expect(formatCurrency(value: 0), equals('\$0'));
+      expect(formatCurrency(value: 0.1), equals('\$0.10'));
+      expect(formatCurrency(value: 0.123), equals('\$0.12'));
     });
 
     test('formats value with custom locale', () {
@@ -155,12 +166,20 @@ void main() {
         formatCurrency(value: 1234.5, minimumFractionDigits: 2),
         equals('\$1,234.50'),
       );
+      expect(
+        formatCurrency(value: 1234.5, minimumFractionDigits: 1),
+        equals('\$1,234.5'),
+      );
     });
 
     test('formats value with custom maximum fraction digits', () {
       expect(
         formatCurrency(value: 1234.5678, maximumFractionDigits: 3),
         equals('\$1,234.568'),
+      );
+      expect(
+        formatCurrency(value: 1234.5678, maximumFractionDigits: 0),
+        equals('\$1,235'),
       );
     });
 

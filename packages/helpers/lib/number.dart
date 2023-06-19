@@ -100,22 +100,22 @@ String formatDecimal({
   num? value,
   String? locale = 'en_US',
   String? pattern = "#,##0.##",
-  int? minimumFractionDigits = 0,
-  int? maximumFractionDigits = 2,
+  int? minimumFractionDigits,
+  int? maximumFractionDigits,
 }) {
   if (value == null) {
     return '';
   }
 
+  final (minFractionDigits, maxFractionDigits) = getDefaultFractionDigits(
+    value,
+    minimumFractionDigits,
+    maximumFractionDigits,
+  );
+
   final formatter = NumberFormat(pattern, locale);
-
-  if (maximumFractionDigits != null) {
-    formatter.maximumFractionDigits = maximumFractionDigits;
-  }
-
-  if (minimumFractionDigits != null) {
-    formatter.minimumFractionDigits = minimumFractionDigits;
-  }
+  formatter.maximumFractionDigits = maxFractionDigits;
+  formatter.minimumFractionDigits = minFractionDigits;
 
   return formatter.format(value);
 }
@@ -127,8 +127,8 @@ String formatPercentage({
   num? value,
   String? locale = 'en_US',
   String? pattern = "#,##0.##",
-  int minimumFractionDigits = 0,
-  int? maximumFractionDigits = 2,
+  int? minimumFractionDigits,
+  int? maximumFractionDigits,
 }) {
   if (value == null) {
     return '';
@@ -152,22 +152,22 @@ String formatCurrency({
   String? locale = 'en_US',
   String? pattern = "#,##0.##",
   String symbol = 'USD',
-  int? minimumFractionDigits = 0,
-  int? maximumFractionDigits = 2,
+  int? minimumFractionDigits,
+  int? maximumFractionDigits,
 }) {
   if (value == null) {
     return '';
   }
 
+  final (minFractionDigits, maxFractionDigits) = getDefaultFractionDigits(
+    value,
+    minimumFractionDigits,
+    maximumFractionDigits,
+  );
+
   final formatter = NumberFormat.simpleCurrency(locale: locale, name: symbol);
-
-  if (maximumFractionDigits != null) {
-    formatter.maximumFractionDigits = maximumFractionDigits;
-  }
-
-  if (minimumFractionDigits != null) {
-    formatter.minimumFractionDigits = minimumFractionDigits;
-  }
+  formatter.maximumFractionDigits = maxFractionDigits;
+  formatter.minimumFractionDigits = minFractionDigits;
 
   return formatter.format(value);
 }
@@ -180,4 +180,31 @@ double calculatePercentageDecrease(double originalValue, double newValue) {
   final percentageDecrease = decimalFromRational(dDecrease / dOriginalValue);
 
   return percentageDecrease.toDouble();
+}
+
+(int minimumFractionDigits, int maximumFractionDigits) getDefaultFractionDigits(
+  num? value,
+  int? minimumFractionDigits,
+  int? maximumFractionDigits,
+) {
+  if (value is double) {
+    final isInt = isDoubleInteger(value);
+
+    if (isInt) {
+      minimumFractionDigits ??= 0;
+      maximumFractionDigits ??= 0;
+    } else {
+      minimumFractionDigits ??= 2;
+      maximumFractionDigits ??= 2;
+    }
+  } else {
+    minimumFractionDigits ??= 0;
+    maximumFractionDigits ??= 0;
+  }
+
+  if (maximumFractionDigits < minimumFractionDigits) {
+    minimumFractionDigits = maximumFractionDigits;
+  }
+
+  return (minimumFractionDigits, maximumFractionDigits);
 }

@@ -274,6 +274,7 @@ class TSimpleOperation extends TModel {
     if (value != null) {
       final formattedOperand = formatDecimal(
         value: value,
+        minimumFractionDigits: 0,
         maximumFractionDigits: 5,
       );
 
