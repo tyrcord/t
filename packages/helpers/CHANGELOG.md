@@ -1,3 +1,8 @@
+## 0.0.15
+
+ - **FEAT**: add transformTo2DArray helper.
+ - **FEAT**: better defaults min and max fraction digits.
+
 ## 0.0.14
 
  - **FEAT**: add date helpers.
