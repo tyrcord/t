@@ -1,3 +1,7 @@
+## 0.0.16
+
+ - **FEAT**: add toCamelCase and toTitleCase helpers.
+
 ## 0.0.15
 
  - **FEAT**: add transformTo2DArray helper.
