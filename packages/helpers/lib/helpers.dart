@@ -8,3 +8,4 @@ export './models/models.dart';
 export './decimal.dart';
 export './date.helper.dart';
 export './collection.dart';
+export './string.helper.dart';
