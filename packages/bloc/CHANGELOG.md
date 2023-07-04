@@ -1,3 +1,9 @@
+## 0.21.0
+
+> Note: This release has breaking changes.
+
+ - **BREAKING** **CHANGE**: add an uuid property to blocState.
+
 ## 0.20.5
 
  - **FEAT**: minor improvements.

@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-07-04
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - [`tbloc` - `v0.21.0`](#tbloc---v0210)
+
+Packages with other changes:
+
+ - There are no other changes in this release.
+
+---
+
+#### `tbloc` - `v0.21.0`
+
+ - **BREAKING** **CHANGE**: add an uuid property to blocState.
+
+
 ## 2023-06-27
 
 ### Changes
