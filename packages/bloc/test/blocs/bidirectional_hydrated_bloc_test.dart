@@ -10,7 +10,7 @@ void main() {
   group('BidirectionalHydratedPeopleBloc', () {
     late BidirectionalHydratedPeopleBloc bloc;
 
-    const defaultState = PeopleBlocState(
+    final defaultState = PeopleBlocState(
       age: 42,
       firstname: 'foo',
       lastname: 'bar',

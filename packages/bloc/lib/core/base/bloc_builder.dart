@@ -107,10 +107,11 @@ class BlocBuilderWidgetState<S extends BlocState>
   // If [buildWhen] is not null, the stream will be the [Bloc.onData] stream
   // filtered by the [buildWhen] function.
   void _buildStream() {
+    final bloc = widget.bloc;
     S? previousState;
     S? nextState;
 
-    _stream = widget.bloc.onData.distinct((S previous, S next) {
+    _stream = bloc.onData.distinct((S previous, S next) {
       // FIXME: Need investigation
       // Woraround for not getting the previous state.
       if (previousState == null) {
@@ -119,6 +120,18 @@ class BlocBuilderWidgetState<S extends BlocState>
       } else {
         previousState = nextState;
         nextState = next;
+      }
+
+      if (nextState != null &&
+          bloc is BidirectionalBloc<BlocEvent, S> &&
+          bloc.enableForceBuildEvents) {
+        final event = bloc.getEventForState(nextState!);
+
+        if (event != null && event.forceBuild) {
+          _debugLog('force rebuild when forceRender is true');
+
+          return false;
+        }
       }
 
       if (widget.onlyWhenInitializing) {

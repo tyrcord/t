@@ -1,4 +1,7 @@
 import 'package:tmodel/tmodel.dart';
+import 'package:uuid/uuid.dart';
+
+const _kUuid = Uuid();
 
 /// Base class for all states of a [TBloc].
 abstract class BlocState extends TModel {
@@ -17,7 +20,10 @@ abstract class BlocState extends TModel {
   /// Indicates whether the bloc has an error.
   bool get hasError => error != null;
 
-  const BlocState({
+  /// The unique identifier of the bloc state.
+  final String uuid = _kUuid.v4();
+
+  BlocState({
     this.isInitializing = false,
     this.isInitialized = false,
     this.isBusy = false,

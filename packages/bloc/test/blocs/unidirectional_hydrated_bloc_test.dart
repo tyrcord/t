@@ -9,7 +9,7 @@ void main() {
   group('UnidirectionalHydratedPeopleBloc', () {
     late UnidirectionalHydratedPeopleBloc bloc;
 
-    const defaultState = PeopleBlocState(
+    final defaultState = PeopleBlocState(
       age: 42,
       firstname: 'foo',
       lastname: 'bar',
@@ -42,7 +42,7 @@ void main() {
         );
 
         await bloc.hydrate();
-        await bloc.put(const PeopleBlocState(age: 24));
+        await bloc.put(PeopleBlocState(age: 24));
 
         // wait for the state to be updated
         await Future.delayed(

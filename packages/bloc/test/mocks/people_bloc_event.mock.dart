@@ -39,9 +39,12 @@ class PeopleBlocEvent
           payload: payload,
         );
 
-  const PeopleBlocEvent.updateInformation({PeopleBlocEventPayload? payload})
-      : super(
+  const PeopleBlocEvent.updateInformation({
+    PeopleBlocEventPayload? payload,
+    bool forceBuild = false,
+  }) : super(
           type: PeopleBlocEventPayloadType.updateInformation,
+          forceBuild: forceBuild,
           payload: payload,
         );
 

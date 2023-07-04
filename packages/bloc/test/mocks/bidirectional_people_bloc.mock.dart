@@ -13,6 +13,7 @@ class BidirectionalPeopleBloc
   }) : super(
           initialState: initialState,
           initialStateBuilder: initialStateBuilder,
+          enableForceBuildEvents: true,
         );
 
   @override
@@ -70,5 +71,9 @@ class BidirectionalPeopleBloc
     BlocEventCallback<PeopleBlocEvent> function,
   ) {
     return sampleEvent(function);
+  }
+
+  Map<PeopleBlocEvent, List<String>> getEventStateHistory() {
+    return eventStateHistory;
   }
 }

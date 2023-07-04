@@ -19,7 +19,7 @@ void main() {
   group('BlocBuilder', () {
     late BidirectionalPeopleBloc bloc;
 
-    const defaultState = PeopleBlocState(
+    final defaultState = PeopleBlocState(
       age: 42,
       firstname: 'foo',
       lastname: 'bar',
@@ -121,6 +121,26 @@ void main() {
           await tester.pumpAndSettle();
 
           textFinder = find.text('22');
+          expect(textFinder, findsOneWidget);
+
+          // Force rendering
+
+          bloc.addEvent(
+            PeopleBlocEvent.updateInformation(
+              payload: PeopleBlocEventPayload(age: 8),
+              forceBuild: true,
+            ),
+          );
+
+          await tester.runAsync(() async {
+            state = await bloc.onData.skip(1).first;
+          });
+
+          expect(state.age, equals(8));
+
+          await tester.pumpAndSettle();
+
+          textFinder = find.text('8');
           expect(textFinder, findsOneWidget);
         },
       );

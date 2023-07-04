@@ -36,6 +36,8 @@ abstract class BidirectionalHydratedBloc<E extends BlocEvent,
     required this.persitenceKey,
     super.initialStateBuilder,
     super.initialState,
+    super.eventStateHistorySize = 50,
+    super.enableForceBuildEvents = false,
   }) {
     subxList.add(onData.listen((S state) {
       Stream.fromFuture(store.persist(persitenceKey, state));

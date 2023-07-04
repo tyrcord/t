@@ -9,7 +9,7 @@ void main() {
   group('UnidirectionalBloc', () {
     late UnidirectionalPeopleBloc bloc;
 
-    const defaultState = PeopleBlocState(
+    final defaultState = PeopleBlocState(
       age: 42,
       firstname: 'foo',
       lastname: 'bar',
@@ -70,8 +70,8 @@ void main() {
           ]),
         );
 
-        bloc.put(const PeopleBlocState(firstname: 'baz'));
-        bloc.put(const PeopleBlocState(firstname: 'qux'));
+        bloc.put(PeopleBlocState(firstname: 'baz'));
+        bloc.put(PeopleBlocState(firstname: 'qux'));
       });
     });
 
@@ -90,7 +90,7 @@ void main() {
         'should return the latest state '
         'when a BLoC\'s state has been updated',
         () async {
-          bloc.put(const PeopleBlocState(firstname: 'baz'));
+          bloc.put(PeopleBlocState(firstname: 'baz'));
 
           final lastState = await bloc.onData
               .skipWhile((state) => state.firstname != 'baz')
@@ -112,7 +112,7 @@ void main() {
         );
 
         bloc.close();
-        bloc.put(const PeopleBlocState(age: 12));
+        bloc.put(PeopleBlocState(age: 12));
         expect(bloc.isClosed, equals(true));
       });
     });

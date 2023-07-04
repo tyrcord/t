@@ -12,7 +12,7 @@ class PeopleBlocState extends HydratedBlocState {
   final bool isSingle;
   final int? age;
 
-  const PeopleBlocState({
+  PeopleBlocState({
     super.hydrated = false,
     this.isSingle = true,
     dynamic exception,

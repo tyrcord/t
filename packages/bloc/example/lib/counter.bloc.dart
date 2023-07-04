@@ -3,7 +3,7 @@ import 'package:tbloc/tbloc.dart';
 
 class CounterBloc
     extends BidirectionalBloc<CounterBlocEvent, CounterBlocState> {
-  CounterBloc() : super(initialState: const CounterBlocState());
+  CounterBloc() : super(initialState: CounterBlocState());
 
   @override
   // ignore: code-metrics
@@ -51,7 +51,7 @@ class CounterBloc
 class CounterBlocState extends BlocState {
   final int counter;
 
-  const CounterBlocState({
+  CounterBlocState({
     super.isInitializing,
     super.isInitialized,
     super.isBusy,

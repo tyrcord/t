@@ -5,7 +5,7 @@ abstract class HydratedBlocState extends BlocState {
   /// Whether the bloc is hydrated.
   final bool hydrated;
 
-  const HydratedBlocState({
+  HydratedBlocState({
     this.hydrated = false,
     super.isInitializing,
     super.isInitialized,

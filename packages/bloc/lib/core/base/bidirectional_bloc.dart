@@ -28,6 +28,18 @@ abstract class BidirectionalBloc<E extends BlocEvent, S extends BlocState>
   @protected
   late StreamSubscription<S> eventSubscriptions;
 
+  /// The history map that stores the event-state history.
+  @protected
+  final Map<E, List<String>> eventStateHistory = {};
+
+  /// The maximum size of the history. Set it to null to disable the limit.
+  final int eventStateHistorySize;
+
+  /// Enable force build events, if you want to force the rendering of the
+  /// bloc builder.
+  /// Indicates if the event-state history should be saved.
+  final bool enableForceBuildEvents;
+
   /// Must be implemented when a class extends BidirectionalBloc.
   /// `mapEventToState` is called whenever an event is added and will convert
   /// that event into a new BloC state. It can yield zero, one or several states
@@ -61,7 +73,12 @@ abstract class BidirectionalBloc<E extends BlocEvent, S extends BlocState>
   // ignore: no-empty-block
   void _addEvent(BlocEvent event) {}
 
-  BidirectionalBloc({super.initialStateBuilder, super.initialState}) {
+  BidirectionalBloc({
+    super.initialStateBuilder,
+    super.initialState,
+    this.eventStateHistorySize = 50,
+    this.enableForceBuildEvents = false,
+  }) {
     _handleEvents();
   }
 
@@ -110,6 +127,7 @@ abstract class BidirectionalBloc<E extends BlocEvent, S extends BlocState>
       final innerSubscription = mapEventToState(event)
           .where((S state) => !isClosed)
           .listen((S nextState) {
+        updateEventStateHistory(event, nextState);
         blocState = nextState;
         streamController.add(nextState);
       });
@@ -134,6 +152,47 @@ abstract class BidirectionalBloc<E extends BlocEvent, S extends BlocState>
     }
 
     return Stream.value(currentState);
+  }
+
+  /// Updates the event-state history.
+  /// The event-state history is used to determine the event related to a
+  /// given state.
+  @protected
+  void updateEventStateHistory(E event, S nextState) {
+    if (enableForceBuildEvents) {
+      if (eventStateHistory.length > eventStateHistorySize) {
+        // Limit the event-state history map size
+        final oldestEvent = eventStateHistory.keys.first;
+        eventStateHistory.remove(oldestEvent);
+      }
+
+      if (eventStateHistorySize > 0) {
+        // Update the event-state history
+        final eventHistory = eventStateHistory[event] ?? [];
+        eventHistory.add(nextState.uuid);
+        eventStateHistory[event] = eventHistory;
+      }
+    }
+  }
+
+  /// Returns the event related to the given [state].
+  E? getEventForState(S state) {
+    if (eventStateHistory.isEmpty ||
+        eventStateHistorySize == 0 ||
+        !enableForceBuildEvents) {
+      return null;
+    }
+
+    for (final entry in eventStateHistory.entries) {
+      final event = entry.key;
+      final stateList = entry.value;
+
+      if (stateList.contains(state.uuid)) {
+        return event;
+      }
+    }
+
+    return null;
   }
 
   /// Handles internal errors.

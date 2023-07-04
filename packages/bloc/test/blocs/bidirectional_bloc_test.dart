@@ -12,7 +12,7 @@ void main() {
   group('BidirectionalBloc', () {
     late BidirectionalPeopleBloc bloc;
 
-    const defaultState = PeopleBlocState(
+    final defaultState = PeopleBlocState(
       age: 42,
       firstname: 'foo',
       lastname: 'bar',
@@ -71,7 +71,7 @@ void main() {
 
         expect(
           lastState ==
-              const PeopleBlocState(
+              PeopleBlocState(
                 age: 12,
                 firstname: 'foo',
                 lastname: 'qux',
@@ -97,6 +97,61 @@ void main() {
           bloc.addEvent(const PeopleBlocEvent.updateMultipleInformation());
         },
       );
+
+      test('should adds events to the history', () async {
+        final event = PeopleBlocEvent.updateInformation(
+          payload: PeopleBlocEventPayload(
+            age: 12,
+            lastname: 'qux',
+          ),
+        );
+
+        expect(bloc.getEventStateHistory(), isEmpty);
+
+        bloc.addEvent(event);
+
+        final nextState = await bloc.onData.skip(1).first;
+
+        expect(bloc.getEventStateHistory(), contains(event));
+        expect(bloc.getEventStateHistory()[event], contains(nextState.uuid));
+      });
+    });
+
+    group('#getEventForState', () {
+      test('should returns the event related to a state', () async {
+        final event = PeopleBlocEvent.updateInformation(
+          payload: PeopleBlocEventPayload(
+            age: 12,
+            lastname: 'qux',
+          ),
+        );
+
+        final expectedState = PeopleBlocState(
+          firstname: 'foo',
+          lastname: 'qux',
+          age: 12,
+        );
+
+        bloc.addEvent(event);
+
+        final lastState = await bloc.onData.skip(1).first;
+        final eventFound = bloc.getEventForState(lastState);
+
+        expect(eventFound == event, equals(true));
+        expect(lastState == expectedState, equals(true));
+      });
+
+      test('should returns null if the state is not found', () {
+        final state = PeopleBlocState(
+          firstname: 'foo',
+          lastname: 'qux',
+          age: 12,
+        );
+
+        final result = bloc.getEventForState(state);
+
+        expect(result, isNull);
+      });
     });
 
     group('#onData', () {
