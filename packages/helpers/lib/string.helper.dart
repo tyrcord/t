@@ -64,3 +64,25 @@ String toTitleCase(String? text) {
 
   return capitalizedWords.join(' ');
 }
+
+/// Converts a language code and an optional country code to an ISO 3166 code.
+///
+/// If a [countryCode] is provided, it is converted to uppercase and appended to
+/// the [languageCode] with an underscore separator. Otherwise, only the
+/// [languageCode] is returned.
+///
+/// Example:
+///
+/// ```dart
+/// toIos3166('en', countryCode: 'us'); // 'en_US'
+/// toIos3166('fr'); // 'fr'
+/// ```
+String toIos3166(String languageCode, {String? countryCode}) {
+  if (countryCode != null && countryCode.isNotEmpty) {
+    countryCode = countryCode.toUpperCase();
+
+    return '${languageCode}_$countryCode';
+  }
+
+  return languageCode;
+}
