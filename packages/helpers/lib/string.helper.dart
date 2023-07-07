@@ -74,10 +74,10 @@ String toTitleCase(String? text) {
 /// Example:
 ///
 /// ```dart
-/// toIos3166('en', countryCode: 'us'); // 'en_US'
-/// toIos3166('fr'); // 'fr'
+/// toIos3166Code('en', countryCode: 'us'); // 'en_US'
+/// toIos3166Code('fr'); // 'fr'
 /// ```
-String toIos3166(String languageCode, {String? countryCode}) {
+String toIos3166Code(String languageCode, {String? countryCode}) {
   if (countryCode != null && countryCode.isNotEmpty) {
     countryCode = countryCode.toUpperCase();
 
