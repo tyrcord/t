@@ -15,6 +15,28 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`t_helpers` - `v0.0.18`](#t_helpers---v0018)
+
+---
+
+#### `t_helpers` - `v0.0.18`
+
+ - **FIX**: make toIos3166Code stronger.
+ - **FEAT**: rename toIos3166 to toIos3166Code.
+
+
+## 2023-07-07
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`t_helpers` - `v0.0.17`](#t_helpers---v0017)
 
 ---

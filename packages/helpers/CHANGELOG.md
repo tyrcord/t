@@ -1,3 +1,8 @@
+## 0.0.18
+
+ - **FIX**: make toIos3166Code stronger.
+ - **FEAT**: rename toIos3166 to toIos3166Code.
+
 ## 0.0.17
 
  - **FEAT**: add toIos3166 helper.
