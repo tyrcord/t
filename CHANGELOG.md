@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-07-07
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`t_helpers` - `v0.0.17`](#t_helpers---v0017)
+
+---
+
+#### `t_helpers` - `v0.0.17`
+
+ - **FEAT**: add toIos3166 helper.
+
+
 ## 2023-07-04
 
 ### Changes

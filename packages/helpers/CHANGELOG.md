@@ -1,3 +1,7 @@
+## 0.0.17
+
+ - **FEAT**: add toIos3166 helper.
+
 ## 0.0.16
 
  - **FEAT**: add toCamelCase and toTitleCase helpers.
