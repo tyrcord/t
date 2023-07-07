@@ -94,28 +94,40 @@ void main() {
   });
 
   group('toIos3166', () {
+    test('returns null when languageCode is empty', () {
+      expect(toIos3166Code('', countryCode: 'us'), isNull);
+      expect(toIos3166Code('', countryCode: ''), isNull);
+      expect(toIos3166Code('', countryCode: null), isNull);
+    });
+
     test('should return language code if no country code is provided', () {
       expect(toIos3166Code('en'), equals('en'));
+      expect(toIos3166Code('en  '), equals('en'));
       expect(toIos3166Code('fr'), equals('fr'));
+      expect(toIos3166Code('  fr'), equals('fr'));
+      expect(toIos3166Code('  fr   '), equals('fr'));
     });
 
     test('should return language code and uppercase country code if provided',
         () {
       expect(toIos3166Code('en', countryCode: 'us'), equals('en_US'));
       expect(toIos3166Code('fr', countryCode: 'ca'), equals('fr_CA'));
+      expect(toIos3166Code('en', countryCode: null), equals('en'));
       expect(toIos3166Code('fr', countryCode: ''), equals('fr'));
+      expect(toIos3166Code('fr', countryCode: '  '), equals('fr'));
+      expect(toIos3166Code('fr', countryCode: ' ca '), equals('fr_CA'));
     });
 
     test(
-        'should return language code and uppercase country code if lowercase country code is provided',
-        () {
+        'should return language code and uppercase country code if lowercase '
+        'country code is provided', () {
       expect(toIos3166Code('en', countryCode: 'us'), equals('en_US'));
       expect(toIos3166Code('fr', countryCode: 'ca'), equals('fr_CA'));
     });
 
     test(
-        'should return language code and uppercase country code if mixed case country code is provided',
-        () {
+        'should return language code and uppercase country code if mixed case '
+        'country code is provided', () {
       expect(toIos3166Code('en', countryCode: 'Us'), equals('en_US'));
       expect(toIos3166Code('fr', countryCode: 'cA'), equals('fr_CA'));
     });

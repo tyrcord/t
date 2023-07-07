@@ -77,11 +77,21 @@ String toTitleCase(String? text) {
 /// toIos3166Code('en', countryCode: 'us'); // 'en_US'
 /// toIos3166Code('fr'); // 'fr'
 /// ```
-String toIos3166Code(String languageCode, {String? countryCode}) {
-  if (countryCode != null && countryCode.isNotEmpty) {
-    countryCode = countryCode.toUpperCase();
+String? toIos3166Code(String languageCode, {String? countryCode}) {
+  languageCode = languageCode.trim();
 
-    return '${languageCode}_$countryCode';
+  if (languageCode.isEmpty) {
+    return null;
+  }
+
+  if (countryCode != null) {
+    countryCode = countryCode.trim();
+
+    if (countryCode.isNotEmpty) {
+      countryCode = countryCode.toUpperCase();
+
+      return '${languageCode}_$countryCode';
+    }
   }
 
   return languageCode;
