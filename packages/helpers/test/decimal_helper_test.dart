@@ -1,7 +1,10 @@
-import 'package:flutter_test/flutter_test.dart';
-import 'package:t_helpers/helpers.dart';
+// Package imports:
 import 'package:decimal/decimal.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:rational/rational.dart';
+
+// Project imports:
+import 'package:t_helpers/helpers.dart';
 
 void main() {
   group('decimalFromDouble', () {

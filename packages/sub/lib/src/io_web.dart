@@ -1,3 +1,4 @@
+// Flutter imports:
 import 'package:flutter/foundation.dart';
 
 // Dummy Platform class for the web

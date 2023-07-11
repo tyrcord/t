@@ -1,3 +1,4 @@
+// Flutter imports:
 import 'package:flutter/widgets.dart';
 
 /// Lightens a given color by a certain amount using the HSL color model.

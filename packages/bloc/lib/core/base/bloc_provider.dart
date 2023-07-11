@@ -1,6 +1,11 @@
+// Flutter imports:
 import 'package:flutter/widgets.dart';
+
+// Package imports:
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
+
+// Project imports:
 import 'package:tbloc/tbloc.dart';
 
 mixin BlocProviderSingleChildWidget on SingleChildWidget {}

@@ -1,3 +1,4 @@
+// Package imports:
 import 'package:intl/intl.dart';
 
 /// Checks if the input [number] is a "double integer", i.e., a double value

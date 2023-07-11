@@ -1,8 +1,11 @@
-import 'package:flutter_test/flutter_test.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
 
-import 'package:tbloc/tbloc.dart';
+// Package imports:
+import 'package:flutter_test/flutter_test.dart';
 
+// Project imports:
+import 'package:tbloc/tbloc.dart';
 import '../mocks/bidirectional_people_bloc.mock.dart';
 import '../mocks/people_bloc_event.mock.dart';
 import '../mocks/people_bloc_state.mock.dart';

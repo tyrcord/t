@@ -1,7 +1,8 @@
+// Dart imports:
 import 'dart:developer';
 
+// Project imports:
 import 'package:tbloc/tbloc.dart';
-
 import 'people_bloc_event.mock.dart';
 import 'people_bloc_state.mock.dart';
 

@@ -1,5 +1,8 @@
-import 'package:t_helpers/helpers.dart';
+// Package imports:
 import 'package:tmodel/tmodel.dart';
+
+// Project imports:
+import 'package:t_helpers/helpers.dart';
 
 /// A class representing a simple arithmetic operation with two operands
 /// and one operator.

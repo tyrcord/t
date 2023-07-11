@@ -1,7 +1,8 @@
+// Package imports:
 import 'package:meta/meta.dart';
 
+// Project imports:
 import 'package:tbloc/tbloc.dart';
-
 import 'people_bloc_event.mock.dart';
 
 @immutable

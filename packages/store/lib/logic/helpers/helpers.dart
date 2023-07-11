@@ -1,7 +1,9 @@
+// Dart imports:
 import 'dart:io';
 
-import 'package:path/path.dart' as path;
+// Package imports:
 import 'package:hive/hive.dart';
+import 'package:path/path.dart' as path;
 
 void setUpTStoreTesting() {
   String tempPath = path.join(

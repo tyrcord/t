@@ -1,8 +1,10 @@
 // ignore_for_file: overridden_fields
 
+// Package imports:
 import 'package:meta/meta.dart';
-import 'package:tstore/tstore.dart';
 
+// Project imports:
+import 'package:tstore/tstore.dart';
 import '../entities/settings.entity.dart';
 
 class SettingsDocumentDataProvider extends TDocumentDataProvider {

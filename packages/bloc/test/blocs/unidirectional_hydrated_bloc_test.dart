@@ -1,7 +1,9 @@
 @Timeout(Duration(seconds: 5))
 
+// Package imports:
 import 'package:flutter_test/flutter_test.dart';
 
+// Project imports:
 import '../mocks/people_bloc_state.mock.dart';
 import '../mocks/unidirectional_hydrated_people_bloc.mock.dart';
 

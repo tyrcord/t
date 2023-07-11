@@ -1,6 +1,8 @@
+// Package imports:
 import 'package:flutter_test/flutter_test.dart';
-import 'package:tstore/tstore.dart';
 
+// Project imports:
+import 'package:tstore/tstore.dart';
 import '../../mocks/entities/person.entity.dart';
 
 void main() {

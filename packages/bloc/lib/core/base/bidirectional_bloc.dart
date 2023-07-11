@@ -1,11 +1,17 @@
+// Dart imports:
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:async/async.dart';
+// Flutter imports:
 import 'package:flutter/foundation.dart';
+
+// Package imports:
+import 'package:async/async.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:tbloc/tbloc.dart';
 import 'package:tuple/tuple.dart';
+
+// Project imports:
+import 'package:tbloc/tbloc.dart';
 
 /// Takes a Stream of BlocEvents as input and transforms them into a Stream of
 /// BlocStates as output.

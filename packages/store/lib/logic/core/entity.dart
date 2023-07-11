@@ -1,3 +1,4 @@
+// Package imports:
 import 'package:tmodel/tmodel.dart';
 
 /// Entity objects are classes that encapsulate the business model,

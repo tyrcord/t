@@ -1,3 +1,4 @@
+// Project imports:
 import 'package:tstore/tstore.dart';
 
 class PersonEntity extends TEntity {

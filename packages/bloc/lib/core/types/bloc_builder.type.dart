@@ -1,5 +1,7 @@
+// Flutter imports:
 import 'package:flutter/widgets.dart';
 
+// Project imports:
 import 'package:tbloc/tbloc.dart';
 
 /// A function that builds a widget based on the current [BlocState].

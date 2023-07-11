@@ -1,8 +1,13 @@
 // ignore_for_file: lines_longer_than_80_chars
 
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:fastyle_dart/fastyle_dart.dart';
 import 'package:tbloc/tbloc.dart';
-import 'package:flutter/material.dart';
+
+// Project imports:
 import 'counter.bloc.dart';
 
 void main() => runApp(const MyApp());

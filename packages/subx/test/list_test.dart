@@ -1,7 +1,11 @@
+// Dart imports:
 import 'dart:async';
 
+// Package imports:
 import 'package:flutter_test/flutter_test.dart';
 import 'package:rxdart/rxdart.dart';
+
+// Project imports:
 import 'package:subx/subx.dart';
 
 void main() {

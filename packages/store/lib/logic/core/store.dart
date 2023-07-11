@@ -1,7 +1,11 @@
+// Dart imports:
 import 'dart:async';
 
+// Package imports:
 import 'package:hive/hive.dart';
 import 'package:rxdart/rxdart.dart';
+
+// Project imports:
 import 'package:tstore/tstore.dart';
 
 class TStore {

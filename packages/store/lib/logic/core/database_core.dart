@@ -1,5 +1,7 @@
+// Package imports:
 import 'package:meta/meta.dart';
 
+// Project imports:
 import 'package:tstore/tstore.dart';
 
 /// The database is the object that manages store objects.

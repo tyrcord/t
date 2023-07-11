@@ -1,7 +1,10 @@
 @Timeout(Duration(seconds: 5))
-import 'package:flutter_test/flutter_test.dart';
-import 'package:tbloc/tbloc.dart';
 
+// Package imports:
+import 'package:flutter_test/flutter_test.dart';
+
+// Project imports:
+import 'package:tbloc/tbloc.dart';
 import '../mocks/bidirectional_people_async_bloc.mock.dart';
 import '../mocks/bidirectional_people_bloc.mock.dart';
 import '../mocks/bidirectional_people_bloc2.mock.dart';

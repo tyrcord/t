@@ -11,4 +11,6 @@ scripts:
         - tbloc_example
         - tmodel
         - tsub
-    
+  
+  sort_imports:
+    exec: flutter pub run import_sorter:main
