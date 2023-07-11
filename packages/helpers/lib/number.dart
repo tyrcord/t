@@ -1,5 +1,4 @@
 import 'package:intl/intl.dart';
-import 'package:t_helpers/helpers.dart';
 
 /// Checks if the input [number] is a "double integer", i.e., a double value
 /// that represents an integer value.
@@ -172,39 +171,53 @@ String formatCurrency({
   return formatter.format(value);
 }
 
-double calculatePercentageDecrease(double originalValue, double newValue) {
-  final dOriginalValue = toDecimal(originalValue)!;
-  final dNewValue = toDecimal(newValue)!;
-
-  final dDecrease = dOriginalValue - dNewValue;
-  final percentageDecrease = decimalFromRational(dDecrease / dOriginalValue);
-
-  return percentageDecrease.toDouble();
-}
-
+/// Retrieves the default minimum and maximum fraction digits based on
+/// the provided [value].
+///
+/// The [value] parameter is used to determine the default fraction digits.
+/// If [value] is of type [double], the method checks if it is an integer.
+/// If it is an integer, the default fraction digits are set to 0. Otherwise,
+/// the default fraction digits are set to 2. If [value] is not of type
+/// [double], the default fraction digits are set to 0.
+///
+/// The [minimumFractionDigits] and [maximumFractionDigits] parameters allow
+/// overriding the default values for minimum and maximum fraction digits,
+/// respectively. If these parameters are not provided, the default values
+/// determined based on the [value] type will be used.
+/// If [maximumFractionDigits] is less than [minimumFractionDigits], it
+/// will be adjusted to equal [minimumFractionDigits].
+///
+/// The method returns a tuple of two integers representing the default minimum
+/// and maximum fraction digits.
 (int minimumFractionDigits, int maximumFractionDigits) getDefaultFractionDigits(
   num? value,
   int? minimumFractionDigits,
   int? maximumFractionDigits,
 ) {
   if (value is double) {
+    // Check if the value is an integer
     final isInt = isDoubleInteger(value);
 
     if (isInt) {
+      // If the value is an integer, set the fraction digits to 0
       minimumFractionDigits ??= 0;
       maximumFractionDigits ??= 0;
     } else {
+      // If the value is not an integer, set the default fraction digits to 2
       minimumFractionDigits ??= 2;
       maximumFractionDigits ??= 2;
     }
   } else {
+    // If the value is not a double, set the fraction digits to 0
     minimumFractionDigits ??= 0;
     maximumFractionDigits ??= 0;
   }
 
+  // Ensure that maximumFractionDigits is not less than minimumFractionDigits
   if (maximumFractionDigits < minimumFractionDigits) {
     minimumFractionDigits = maximumFractionDigits;
   }
 
+  // Return the default fraction digits as a tuple
   return (minimumFractionDigits, maximumFractionDigits);
 }

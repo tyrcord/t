@@ -29,7 +29,8 @@ Decimal? decimalFromDouble(double value) => Decimal.tryParse(value.toString());
 
 /// Converts a [num] [value] to a [Decimal].
 ///
-/// If [value] is an [int], it is converted to a [Decimal] using [Decimal.fromInt].
+/// If [value] is an [int], it is converted to a [Decimal] using
+/// [Decimal.fromInt].
 /// Otherwise, [value] is converted to a [double] and then to a [Decimal].
 Decimal decimalFromNumber(num value) {
   if (value is int) {
@@ -51,22 +52,25 @@ Decimal decimalFromRational(Rational value) {
 ///
 /// If [value] is an [int], returns a [Decimal] with the same value as [value].
 ///
-/// If [value] is a [double], returns a [Decimal] with the same value as [value],
+/// If [value] is a [double], returns a [Decimal] with the same value
+/// as [value],
 /// or `null` if the conversion fails.
 ///
-/// If [value] is a [Rational], returns a [Decimal] with the same value as [value].
+/// If [value] is a [Rational], returns a [Decimal] with the same value
+/// as [value].
 ///
 /// If [value] is a [String], attempts to parse it as a [Decimal] and returns
 /// the result, or `null` if the parsing fails.
 ///
-/// Throws an [AssertionError] if [value] is not a [num], [Rational], or [String].
+/// Throws an [AssertionError] if [value] is not a [num], [Rational],
+/// or [String].
 Decimal? toDecimal(dynamic value) {
   if (value is num) {
     return decimalFromNumber(value);
   } else if (value is Rational) {
     return decimalFromRational(value);
   } else if (value is String) {
-    return Decimal.tryParse(value as String);
+    return Decimal.tryParse(value);
   }
 
   return null;
