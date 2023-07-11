@@ -1,3 +1,7 @@
+## 0.0.19
+
+ - **FEAT**: refactor helpers.
+
 ## 0.0.18
 
  - **FIX**: make toIos3166Code stronger.
