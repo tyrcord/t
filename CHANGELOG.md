@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-07-17
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`tstore` - `v0.8.9`](#tstore---v089)
+
+---
+
+#### `tstore` - `v0.8.9`
+
+ - **FEAT**: add persistAll method.
+
+
 ## 2023-07-11
 
 ### Changes

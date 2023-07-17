@@ -1,3 +1,7 @@
+## 0.8.9
+
+ - **FEAT**: add persistAll method.
+
 ## 0.8.8+1
 
  - **FIX**: dependencies.
