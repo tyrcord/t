@@ -93,6 +93,12 @@ class TStore {
     );
   }
 
+  Future<void> persistAll(Map<String, dynamic> map) async {
+    for (var element in map.entries) {
+      await persist(element.key, element.value);
+    }
+  }
+
   Future<void> persistEntity(String key, TEntity entity) async {
     return persist(key, entity.toJson());
   }
