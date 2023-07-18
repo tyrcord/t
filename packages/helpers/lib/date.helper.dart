@@ -18,11 +18,13 @@ Future<String> formatDateTime(
   String languageCode = 'en',
   String? countryCode,
   bool alwaysUse24HourFormat = false,
+  bool showTime = true,
 }) async {
   final dateFormatter = await retrieveDateFormatter(
     languageCode: languageCode,
     countryCode: countryCode,
     alwaysUse24HourFormat: alwaysUse24HourFormat,
+    showTime: showTime,
   );
 
   return dateFormatter.format(dateTime);
@@ -31,6 +33,7 @@ Future<String> formatDateTime(
 Future<DateFormat> retrieveDateFormatter({
   String languageCode = 'en',
   String? countryCode,
+  bool showTime = true,
   bool alwaysUse24HourFormat = false,
 }) async {
   var locale = languageCode;
@@ -54,10 +57,12 @@ Future<DateFormat> retrieveDateFormatter({
 
   var dateFormatter = DateFormat.yMd(locale);
 
-  if (alwaysUse24HourFormat) {
-    dateFormatter = dateFormatter.add_Hms();
-  } else {
-    dateFormatter = dateFormatter.add_jms();
+  if (showTime) {
+    if (alwaysUse24HourFormat) {
+      dateFormatter = dateFormatter.add_Hms();
+    } else {
+      dateFormatter = dateFormatter.add_jms();
+    }
   }
 
   return dateFormatter;

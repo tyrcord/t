@@ -41,6 +41,13 @@ void main() {
 
       expect(formattedDate, '1/1/2022 15:00:00');
     });
+
+    test('should format date without time when showTime is false', () async {
+      final dateTime = DateTime(2023, 7, 18, 10, 30);
+      final formatted = await formatDateTime(dateTime, showTime: false);
+
+      expect(formatted, '7/18/2023');
+    });
   });
 
   group('retrieveDateFormatter', () {
@@ -83,6 +90,25 @@ void main() {
       );
 
       expect(dateFormatter.pattern, equals('M/d/y h:mm:ss a'));
+    });
+
+    test('should format date without time when showTime is false', () async {
+      final formatter = await retrieveDateFormatter(showTime: false);
+
+      final dateTime = DateTime(2023, 7, 18, 10, 30);
+      final formatted = formatter.format(dateTime);
+
+      expect(formatted, '7/18/2023');
+    });
+
+    test('should format date with time when showTime is true', () async {
+      final formatter = await retrieveDateFormatter(showTime: true);
+
+      final dateTime = DateTime(2023, 7, 18, 10, 30);
+      final formatted = formatter.format(dateTime);
+
+      // Modify the expected formatted string based on the desired time format
+      expect(formatted, '7/18/2023 10:30:00 AM');
     });
   });
 }
