@@ -1,3 +1,7 @@
+## 0.0.21
+
+ - **FEAT**: add debugLog helper.
+
 ## 0.0.20
 
  - **FEAT**: allow to hide the time when formatting a date.
