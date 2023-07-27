@@ -10,3 +10,4 @@ export './date.helper.dart';
 export './collection.helper.dart';
 export './string.helper.dart';
 export './math.helper.dart';
+export './log.helper.dart';
