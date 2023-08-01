@@ -11,3 +11,4 @@ export './collection.helper.dart';
 export './string.helper.dart';
 export './math.helper.dart';
 export './log.helper.dart';
+export './function.helper.dart';
