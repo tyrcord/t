@@ -1,3 +1,7 @@
+## 0.8.10
+
+ - **FEAT**: minor improvements.
+
 ## 0.8.9
 
  - **FEAT**: add persistAll method.

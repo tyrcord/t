@@ -1,3 +1,7 @@
+## 0.21.1
+
+ - **FEAT**: minor improvements.
+
 ## 0.21.0
 
 > Note: This release has breaking changes.

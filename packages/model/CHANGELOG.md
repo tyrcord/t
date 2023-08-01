@@ -1,3 +1,7 @@
+## 0.5.4
+
+ - **FEAT**: minor improvements.
+
 ## 0.5.3
 
  - **FEAT**: update to dart 3 & flutter 3.10.0.

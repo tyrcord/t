@@ -15,6 +15,52 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`subx` - `v1.6.0`](#subx---v160)
+ - [`t_helpers` - `v0.0.23`](#t_helpers---v0023)
+ - [`tbloc` - `v0.21.1`](#tbloc---v0211)
+ - [`tmodel` - `v0.5.4`](#tmodel---v054)
+ - [`tstore` - `v0.8.10`](#tstore---v0810)
+ - [`tsub` - `v1.4.0`](#tsub---v140)
+
+---
+
+#### `subx` - `v1.6.0`
+
+ - **FEAT**: minor improvements.
+
+#### `t_helpers` - `v0.0.23`
+
+ - **FEAT**: minor improvements.
+
+#### `tbloc` - `v0.21.1`
+
+ - **FEAT**: minor improvements.
+
+#### `tmodel` - `v0.5.4`
+
+ - **FEAT**: minor improvements.
+
+#### `tstore` - `v0.8.10`
+
+ - **FEAT**: minor improvements.
+
+#### `tsub` - `v1.4.0`
+
+ - **FEAT**: minor improvements.
+
+
+## 2023-08-01
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`t_helpers` - `v0.0.22`](#t_helpers---v0022)
 
 ---
