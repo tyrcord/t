@@ -155,11 +155,23 @@ void main() {
         formatCurrency(value: 1234.56, locale: 'de_DE'),
         equals('1.234,56 \$'),
       );
+
+      expect(
+        formatCurrency(value: 1234.56, locale: 'de_de'),
+        equals('1.234,56 \$'),
+      );
     });
 
     test('formats value with custom symbol', () {
       expect(
         formatCurrency(value: 1234.56, symbol: 'EUR'),
+        equals('€1,234.56'),
+      );
+    });
+
+    test('formats value with lowercase custom symbol', () {
+      expect(
+        formatCurrency(value: 1234.56, symbol: 'eur'),
         equals('€1,234.56'),
       );
     });

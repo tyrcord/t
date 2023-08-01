@@ -165,6 +165,8 @@ String formatCurrency({
     maximumFractionDigits,
   );
 
+  symbol = symbol.toUpperCase();
+
   final formatter = NumberFormat.simpleCurrency(locale: locale, name: symbol)
     ..maximumFractionDigits = maxFractionDigits
     ..minimumFractionDigits = minFractionDigits;
