@@ -1,3 +1,7 @@
+## 0.0.23+1
+
+ - **FIX**: formatCurrency support lowercase symbols.
+
 ## 0.0.23
 
  - **FEAT**: minor improvements.

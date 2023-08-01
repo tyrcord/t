@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`t_helpers` - `v0.0.23+1`](#t_helpers---v00231)
+
+---
+
+#### `t_helpers` - `v0.0.23+1`
+
+ - **FIX**: formatCurrency support lowercase symbols.
+
+
+## 2023-08-01
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`subx` - `v1.6.0`](#subx---v160)
  - [`t_helpers` - `v0.0.23`](#t_helpers---v0023)
  - [`tbloc` - `v0.21.1`](#tbloc---v0211)
