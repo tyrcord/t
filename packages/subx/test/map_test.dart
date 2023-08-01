@@ -1,3 +1,5 @@
+//ignore_for_file: no-empty-block
+
 // Dart imports:
 import 'dart:async';
 
@@ -68,8 +70,9 @@ void main() {
 
       test('should allow chaining calls', () {
         expect(subxMap.length, equals(0));
-        subxMap.add('key', subscription);
-        subxMap.add('key2', subscription2);
+        subxMap
+          ..add('key', subscription)
+          ..add('key2', subscription2);
         expect(subxMap.length, equals(2));
       });
     });
@@ -99,8 +102,9 @@ void main() {
 
     group('#cancelAt()', () {
       test('should cancel a subscription with an index', () async {
-        subxMap.add('key', subscription);
-        subxMap.add('key2', subscription2);
+        subxMap
+          ..add('key', subscription)
+          ..add('key2', subscription2);
         expect(subxMap.length, equals(2));
 
         final unsubscribed = await subxMap.cancelForKey('key');
@@ -122,8 +126,9 @@ void main() {
 
     group('#cancelAll()', () {
       test('should cancel all subscriptions', () {
-        subxMap.add('key', subscription);
-        subxMap.add('key2', subscription2);
+        subxMap
+          ..add('key', subscription)
+          ..add('key2', subscription2);
         expect(subxMap.length, equals(2));
 
         subxMap.cancelAll();
@@ -134,8 +139,9 @@ void main() {
 
     group('#pauseAll()', () {
       test('should pause all subscriptions', () {
-        subxMap.add('key', subscription);
-        subxMap.add('key2', subscription2);
+        subxMap
+          ..add('key', subscription)
+          ..add('key2', subscription2);
         expect(subxMap.length, equals(2));
 
         subxMap.pauseAll();
@@ -147,8 +153,9 @@ void main() {
 
     group('#resumeAll()', () {
       test('should resume all subscriptions', () {
-        subxMap.add('key', subscription);
-        subxMap.add('key2', subscription2);
+        subxMap
+          ..add('key', subscription)
+          ..add('key2', subscription2);
         expect(subxMap.length, equals(2));
 
         subxMap.pauseAll();

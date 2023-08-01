@@ -73,14 +73,12 @@ class SubxMap {
   ///
   ///     subxMap.cancelAll();
   void cancelAll() async {
-    _subscriptionMap.forEach((
-      Object key,
-      StreamSubscription<dynamic> subscription,
-    ) {
-      subscription.cancel();
-    });
-
-    _subscriptionMap.clear();
+    _subscriptionMap
+      ..forEach(
+        (Object key, StreamSubscription<dynamic> subscription) =>
+            subscription.cancel(),
+      )
+      ..clear();
   }
 
   ///

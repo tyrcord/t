@@ -72,8 +72,9 @@ void main() {
           ]),
         );
 
-        bloc.put(PeopleBlocState(firstname: 'baz'));
-        bloc.put(PeopleBlocState(firstname: 'qux'));
+        bloc
+          ..put(PeopleBlocState(firstname: 'baz'))
+          ..put(PeopleBlocState(firstname: 'qux'));
       });
     });
 
@@ -113,8 +114,10 @@ void main() {
           neverEmits(12),
         );
 
-        bloc.close();
-        bloc.put(PeopleBlocState(age: 12));
+        bloc
+          ..close()
+          ..put(PeopleBlocState(age: 12));
+
         expect(bloc.isClosed, equals(true));
       });
     });

@@ -1,3 +1,5 @@
+//ignore_for_file: no-empty-block
+
 // Dart imports:
 import 'dart:async';
 
@@ -60,8 +62,9 @@ void main() {
 
     group('#cancelAt()', () {
       test('should cancel a subscription with an index', () async {
-        subxList.add(subscription);
-        subxList.add(subscription2);
+        subxList
+          ..add(subscription)
+          ..add(subscription2);
         expect(subxList.length, equals(2));
 
         final unsubscribed = await subxList.cancelAt(0);
@@ -83,8 +86,9 @@ void main() {
 
     group('#cancelAll()', () {
       test('should cancel all subscriptions', () {
-        subxList.add(subscription);
-        subxList.add(subscription2);
+        subxList
+          ..add(subscription)
+          ..add(subscription2);
         expect(subxList.length, equals(2));
 
         subxList.cancelAll();
@@ -95,8 +99,9 @@ void main() {
 
     group('#pauseAll()', () {
       test('should pause all subscriptions', () {
-        subxList.add(subscription);
-        subxList.add(subscription2);
+        subxList
+          ..add(subscription)
+          ..add(subscription2);
         expect(subxList.length, equals(2));
 
         subxList.pauseAll();
@@ -108,8 +113,9 @@ void main() {
 
     group('#resumeAll()', () {
       test('should resume all subscriptions', () {
-        subxList.add(subscription);
-        subxList.add(subscription2);
+        subxList
+          ..add(subscription)
+          ..add(subscription2);
         expect(subxList.length, equals(2));
 
         subxList.pauseAll();

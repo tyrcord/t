@@ -116,7 +116,7 @@ abstract class BidirectionalBloc<E extends BlocEvent, S extends BlocState>
     }
 
     return source.switchMap((BlocEvent event) {
-      for (var operation in cancelableOperations) {
+      for (final operation in cancelableOperations) {
         operation.cancel();
       }
 
@@ -136,21 +136,20 @@ abstract class BidirectionalBloc<E extends BlocEvent, S extends BlocState>
         updateEventStateHistory(event, nextState);
         blocState = nextState;
         streamController.add(nextState);
-      });
+      })
+        ..onDone(() => streamController.close())
+        ..onError((dynamic error, StackTrace stackTrace) {
+          if (!isClosed) {
+            handleInternalError(error);
+            final transformedError = transformError(error, stackTrace);
 
-      innerSubscription.onDone(() => streamController.close());
-      innerSubscription.onError((dynamic error, StackTrace stackTrace) {
-        if (!isClosed) {
-          handleInternalError(error);
-          var transformedError = transformError(error, stackTrace);
-
-          if (transformedError != null) {
-            errorController.sink.add(transformedError);
+            if (transformedError != null) {
+              errorController.sink.add(transformedError);
+            }
           }
-        }
 
-        streamController.close();
-      });
+          streamController.close();
+        });
 
       return streamController.stream.doOnDone(() {
         innerSubscription.cancel();
@@ -174,8 +173,9 @@ abstract class BidirectionalBloc<E extends BlocEvent, S extends BlocState>
 
       if (eventStateHistorySize > 0) {
         // Update the event-state history
-        final eventHistory = eventStateHistory[event] ?? [];
-        eventHistory.add(nextState.uuid);
+        final eventHistory = (eventStateHistory[event] ?? [])
+          ..add(nextState.uuid);
+
         eventStateHistory[event] = eventHistory;
       }
     }
@@ -293,7 +293,7 @@ abstract class BidirectionalBloc<E extends BlocEvent, S extends BlocState>
       return opreation;
     }
 
-    var cancellableOperation = CancelableOperation<T>.fromFuture(opreation);
+    final cancellableOperation = CancelableOperation<T>.fromFuture(opreation);
     cancelableOperations.add(cancellableOperation);
 
     return cancellableOperation.valueOrCancellation();

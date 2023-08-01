@@ -2,19 +2,15 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:tbloc/tbloc.dart';
 import 'bidirectional_people_bloc.mock.dart';
 import 'people_bloc_event.mock.dart';
 import 'people_bloc_state.mock.dart';
 
 class BidirectionalPeopleAsyncBloc extends BidirectionalPeopleBloc {
   BidirectionalPeopleAsyncBloc({
-    PeopleBlocState? initialState,
-    BlocStateBuilder<PeopleBlocState>? initialStateBuilder,
-  }) : super(
-          initialState: initialState,
-          initialStateBuilder: initialStateBuilder,
-        );
+    super.initialState,
+    super.initialStateBuilder,
+  });
 
   @protected
   @override

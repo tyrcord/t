@@ -94,7 +94,7 @@ class TStore {
   }
 
   Future<void> persistAll(Map<String, dynamic> map) async {
-    for (var element in map.entries) {
+    for (final element in map.entries) {
       await persist(element.key, element.value);
     }
   }

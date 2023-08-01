@@ -34,19 +34,16 @@ class PeopleBlocEvent
           error: 'error',
         );
 
-  const PeopleBlocEvent.married({PeopleBlocEventPayload? payload})
+  const PeopleBlocEvent.married({super.payload})
       : super(
           type: PeopleBlocEventPayloadType.married,
-          payload: payload,
         );
 
   const PeopleBlocEvent.updateInformation({
-    PeopleBlocEventPayload? payload,
-    bool forceBuild = false,
+    super.payload,
+    super.forceBuild,
   }) : super(
           type: PeopleBlocEventPayloadType.updateInformation,
-          forceBuild: forceBuild,
-          payload: payload,
         );
 
   const PeopleBlocEvent.marrySomeone()

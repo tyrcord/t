@@ -6,7 +6,7 @@ import 'package:hive/hive.dart';
 import 'package:path/path.dart' as path;
 
 void setUpTStoreTesting() {
-  String tempPath = path.join(
+  final String tempPath = path.join(
     Directory.current.path,
     '.dart_tool',
     'tmp',

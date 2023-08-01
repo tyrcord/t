@@ -207,7 +207,7 @@ abstract class Bloc<S extends BlocState> {
       subxList.cancelAll();
       subxMap.cancelAll();
 
-      for (var publisher in publishers) {
+      for (final publisher in publishers) {
         publisher.close();
       }
     }

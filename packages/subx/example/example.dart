@@ -20,8 +20,9 @@ void main() async {
     (data) => print('Subscription2: $data'),
   );
 
-  subxList.add(subscription);
-  subxList.add(subscription2);
+  subxList
+    ..add(subscription)
+    ..add(subscription2);
 
   await Future.delayed(const Duration(seconds: 2), () {
     return subxList.cancelAll();

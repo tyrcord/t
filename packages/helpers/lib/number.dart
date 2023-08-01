@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 /// that represents an integer value.
 /// Returns true if the input [number] is a double integer, false otherwise.
 bool isDoubleInteger(double number) {
-  double roundedValue = number.roundToDouble();
+  final double roundedValue = number.roundToDouble();
 
   return number == roundedValue;
 }
@@ -45,7 +45,7 @@ bool isStringPercentage(String str) {
     return false;
   }
 
-  var isNumber = isStringNumber(str.replaceAll('%', ''));
+  final isNumber = isStringNumber(str.replaceAll('%', ''));
 
   if (!isNumber) {
     return false;
@@ -113,9 +113,9 @@ String formatDecimal({
     maximumFractionDigits,
   );
 
-  final formatter = NumberFormat(pattern, locale);
-  formatter.maximumFractionDigits = maxFractionDigits;
-  formatter.minimumFractionDigits = minFractionDigits;
+  final formatter = NumberFormat(pattern, locale)
+    ..maximumFractionDigits = maxFractionDigits
+    ..minimumFractionDigits = minFractionDigits;
 
   return formatter.format(value);
 }
@@ -165,9 +165,9 @@ String formatCurrency({
     maximumFractionDigits,
   );
 
-  final formatter = NumberFormat.simpleCurrency(locale: locale, name: symbol);
-  formatter.maximumFractionDigits = maxFractionDigits;
-  formatter.minimumFractionDigits = minFractionDigits;
+  final formatter = NumberFormat.simpleCurrency(locale: locale, name: symbol)
+    ..maximumFractionDigits = maxFractionDigits
+    ..minimumFractionDigits = minFractionDigits;
 
   return formatter.format(value);
 }

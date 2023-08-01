@@ -11,7 +11,7 @@ class CounterBloc
   @override
   // ignore: code-metrics
   Stream<CounterBlocState> mapEventToState(CounterBlocEvent event) async* {
-    var counter = currentState.counter;
+    final counter = currentState.counter;
     final type = event.type;
 
     if (type == CounterBlocEventType.init) {
@@ -29,7 +29,7 @@ class CounterBloc
       yield currentState.copyWith(counter: counter + 1, isBusy: true);
     } else if (type == CounterBlocEventType.decrement) {
       debugPrint('CounterBloc: decrement event received');
-      var step = counter > 0 ? counter - 1 : 0;
+      final step = counter > 0 ? counter - 1 : 0;
       yield currentState.copyWith(
         isBusy: step > 0 ? true : false,
         counter: step,

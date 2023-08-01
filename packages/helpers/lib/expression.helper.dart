@@ -30,8 +30,8 @@ double evaluateExpression(String expression) {
   // A recursive function that parses the expression and
   // returns the result as a Decimal.
   Decimal parseExpression() {
-    List<Decimal> values = []; // A stack to store numeric values.
-    List<String> operators = []; // A stack to store operators.
+    final values = <Decimal>[]; // A stack to store numeric values.
+    final operators = <String>[]; // A stack to store operators.
     Decimal lastNonOperatorValue = Decimal.one;
 
     // Iterate through the expression.
@@ -51,7 +51,7 @@ double evaluateExpression(String expression) {
             j++;
           }
 
-          var substring = '-${expression.substring(i, j)}';
+          final substring = '-${expression.substring(i, j)}';
           var dValue = Decimal.parse(substring.replaceAll('%', ''));
 
           if (isStringPercentage(expression.substring(i, j)) &&
@@ -103,7 +103,7 @@ double evaluateExpression(String expression) {
           j++;
         }
 
-        var substring = expression.substring(i, j);
+        final substring = expression.substring(i, j);
         var dValue = Decimal.parse(substring.replaceAll('%', ''));
 
         if (isStringPercentage(expression.substring(i, j)) &&
@@ -195,27 +195,23 @@ TSimpleOperation? parseSimpleOperation(String expression) {
 /// list using the [add] method.
 void applyOperation(String operator, List<Decimal> values) {
   // Remove the top two values from the values stack.
-  Decimal b = values.removeLast();
-  Decimal a = values.removeLast();
+  final Decimal b = values.removeLast();
+  final Decimal a = values.removeLast();
   Decimal result;
 
   // Perform the operation based on the operator.
   switch (operator) {
     case '+':
       result = a + b;
-      break;
     case '-':
       result = a - b;
-      break;
     case '*':
     case '×':
       result = a * b;
-      break;
     case '/':
     case '÷':
       if (b == Decimal.zero) throw Exception('Division by zero');
       result = (a / b).toDecimal(scaleOnInfinitePrecision: 32);
-      break;
     default:
       throw Exception('Invalid operator: $operator');
   }
@@ -263,7 +259,7 @@ bool isNegativeUnaryOperator(String expression, int index) {
   }
 
   // Extract the character at the given index.
-  String operator = expression.substring(index, index + 1);
+  final String operator = expression.substring(index, index + 1);
 
   // If the character is not a minus sign,
   // it cannot be a negative unary operator.
@@ -280,7 +276,7 @@ bool isNegativeUnaryOperator(String expression, int index) {
   }
 
   // Extract the previous character in the expression.
-  String prevChar = expression.substring(index - 1, index);
+  final String prevChar = expression.substring(index - 1, index);
 
   // Check if the previous character is an operator, left parenthesis.
   // If it is any of these, then the minus sign is a unary operator.

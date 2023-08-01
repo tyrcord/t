@@ -11,11 +11,11 @@ abstract class TDocumentDataProvider extends TDataProvider {
     final newRaw = document.toJson();
     final changes = _findActualDocumentChanges(oldRaw, newRaw);
 
-    for (var entry in changes.entryToUpdate.entries) {
+    for (final entry in changes.entryToUpdate.entries) {
       await store.persist(entry.key, entry.value);
     }
 
-    for (var key in changes.keyToDelete) {
+    for (final key in changes.keyToDelete) {
       await store.delete(key);
     }
   }

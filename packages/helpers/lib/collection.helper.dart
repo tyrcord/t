@@ -14,13 +14,13 @@ List<List<T>> transformTo2DArray<T>(List<T> array, int columns) {
   }
 
   final rows = (array.length / columns).ceil();
-  List<List<T>> result = [];
+  final result = <List<T>>[];
 
   for (int i = 0; i < rows; i++) {
-    List<T> row = [];
+    final row = <T>[];
 
     for (int j = 0; j < columns; j++) {
-      int index = i * columns + j;
+      final int index = i * columns + j;
 
       if (index >= array.length) {
         break;

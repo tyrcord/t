@@ -56,7 +56,7 @@ void main() {
         await store.clear();
 
         await store.persist('1', person.toJson());
-        var json = await store.retrieveEntity('1');
+        final json = await store.retrieveEntity('1');
         expect(person, equals(PersonEntity.fromJson(json!)));
       });
 
@@ -66,7 +66,7 @@ void main() {
 
         await store.persist('1', person.toJson());
         await store.persist('1', person.copyWith(age: 100).toJson());
-        var json = await store.retrieveEntity('1');
+        final json = await store.retrieveEntity('1');
         expect(PersonEntity.fromJson(json!).age, equals(100));
       });
     });
@@ -77,7 +77,7 @@ void main() {
         await store.clear();
 
         await store.persistEntity('1', person);
-        var json = await store.retrieveEntity('1');
+        final json = await store.retrieveEntity('1');
         expect(person, equals(PersonEntity.fromJson(json!)));
       });
 
@@ -86,7 +86,7 @@ void main() {
         await store.clear();
         await store.persistEntity('1', person);
         await store.persistEntity('1', person.copyWith(age: 100));
-        var json = await store.retrieveEntity('1');
+        final json = await store.retrieveEntity('1');
         expect(PersonEntity.fromJson(json!).age, equals(100));
       });
     });
@@ -96,7 +96,7 @@ void main() {
         await store.connect();
         await store.clear();
         await store.persist('1', person.toJson());
-        var json = await store.retrieve('1') as Map<String, dynamic>;
+        final json = await store.retrieve('1') as Map<String, dynamic>;
         expect(person, equals(PersonEntity.fromJson(json)));
       });
     });
@@ -107,7 +107,7 @@ void main() {
         await store.clear();
 
         await store.persistEntity('1', person);
-        var json = await store.retrieveEntity('1');
+        final json = await store.retrieveEntity('1');
         expect(person, equals(PersonEntity.fromJson(json!)));
       });
     });
@@ -119,7 +119,7 @@ void main() {
 
         await store.persist('1', person.toJson());
         await store.delete('1');
-        var json = await store.retrieveEntity('1');
+        final json = await store.retrieveEntity('1');
 
         expect(json, equals(null));
       });
@@ -134,8 +134,8 @@ void main() {
         await store.persist('2', person.toJson());
         await store.clear();
 
-        var json = await store.retrieveEntity('1');
-        var json2 = await store.retrieveEntity('2');
+        final json = await store.retrieveEntity('1');
+        final json2 = await store.retrieveEntity('2');
 
         expect(json, equals(null));
         expect(json2, equals(null));
@@ -182,9 +182,9 @@ void main() {
           await store.clear();
 
           var candidates = await store.find((item) {
-            var personEntity = PersonEntity.fromJson(Map<String, dynamic>.from(
-              item as Map<dynamic, dynamic>,
-            ));
+            final personEntity = PersonEntity.fromJson(
+              Map<String, dynamic>.from(item as Map<dynamic, dynamic>),
+            );
 
             return personEntity.age == 42;
           });
@@ -195,7 +195,8 @@ void main() {
           await store.persist('2', person.copyWith(age: 10).toJson());
 
           candidates = await store.find((item) {
-            var personEntity = PersonEntity.fromJson(Map<String, dynamic>.from(
+            final personEntity =
+                PersonEntity.fromJson(Map<String, dynamic>.from(
               item as Map<dynamic, dynamic>,
             ));
 
@@ -225,7 +226,7 @@ void main() {
           await store.clear();
 
           var candidates = await store.findEntity((item) {
-            var personEntity = PersonEntity.fromJson(item);
+            final personEntity = PersonEntity.fromJson(item);
 
             return personEntity.age == 42;
           });
@@ -236,7 +237,7 @@ void main() {
           await store.persist('2', person.copyWith(age: 10).toJson());
 
           candidates = await store.findEntity((item) {
-            var personEntity = PersonEntity.fromJson(item);
+            final personEntity = PersonEntity.fromJson(item);
 
             return personEntity.age == 42;
           });

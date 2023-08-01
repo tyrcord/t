@@ -9,11 +9,9 @@ import 'people_bloc_state.mock.dart';
 class BidirectionalPeopleBloc
     extends BidirectionalBloc<PeopleBlocEvent, PeopleBlocState> {
   BidirectionalPeopleBloc({
-    PeopleBlocState? initialState,
-    BlocStateBuilder<PeopleBlocState>? initialStateBuilder,
+    super.initialState,
+    super.initialStateBuilder,
   }) : super(
-          initialState: initialState,
-          initialStateBuilder: initialStateBuilder,
           enableForceBuildEvents: true,
         );
 

@@ -221,7 +221,9 @@ void main() {
         'should not dispatch states in order '
         'when the method shouldProcessEventInOrder returns false',
         () async {
-          var bloc2 = BidirectionalPeopleAsyncBloc(initialState: defaultState);
+          final bloc2 = BidirectionalPeopleAsyncBloc(
+            initialState: defaultState,
+          );
 
           expect(
             bloc2.onData.skip(1).take(1),
@@ -249,9 +251,9 @@ void main() {
         'should not dispatch states when the state has not changed',
         () async {
           var count = 0;
-          listenCallback(state) => count++;
-          var listenCallbackAsync1 = expectAsync1(listenCallback, count: 1);
-          var event = PeopleBlocEvent.updateInformation(
+          int listenCallback(state) => count++;
+          final listenCallbackAsync1 = expectAsync1(listenCallback, count: 1);
+          final event = PeopleBlocEvent.updateInformation(
             payload: PeopleBlocEventPayload(
               age: 12,
               lastname: 'qux',
@@ -501,9 +503,7 @@ void main() {
       test(
         'should allow to override the default behavior of the close method',
         () async {
-          bloc = BidirectionalPeopleBloc2(initialState: defaultState);
-
-          bloc.close();
+          bloc = BidirectionalPeopleBloc2(initialState: defaultState)..close();
 
           // micro task async
           bloc.addEvent(
