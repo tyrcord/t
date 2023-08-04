@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-08-04
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`t_helpers` - `v0.0.24`](#t_helpers---v0024)
+
+---
+
+#### `t_helpers` - `v0.0.24`
+
+ - **FEAT**: add getRandomItem helper.
+
+
 ## 2023-08-01
 
 ### Changes

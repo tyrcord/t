@@ -1,3 +1,7 @@
+## 0.0.24
+
+ - **FEAT**: add getRandomItem helper.
+
 ## 0.0.23+1
 
  - **FIX**: formatCurrency support lowercase symbols.
