@@ -57,4 +57,15 @@ void main() {
           ]));
     });
   });
+
+  group('getRandomItem', () {
+    test('returns null for empty list', () {
+      expect(getRandomItem([]), isNull);
+    });
+
+    test('returns single item for list with one item', () {
+      final list = ['a'];
+      expect(getRandomItem(list), equals('a'));
+    });
+  });
 }

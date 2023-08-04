@@ -1,3 +1,5 @@
+import 'dart:math';
+
 /// Transforms a flat list into a 2D list with the given number of [columns].
 ///
 /// If the input [array] is empty, an empty 2D list is returned.
@@ -33,4 +35,15 @@ List<List<T>> transformTo2DArray<T>(List<T> array, int columns) {
   }
 
   return result;
+}
+
+T? getRandomItem<T>(List<T> list) {
+  if (list.isEmpty) {
+    return null;
+  }
+
+  final random = Random();
+  final randomIndex = random.nextInt(list.length);
+
+  return list[randomIndex];
 }
