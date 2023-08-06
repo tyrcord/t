@@ -1,3 +1,7 @@
+## 0.0.25
+
+ - **FEAT**: add isValidUrl.
+
 ## 0.0.24
 
  - **FEAT**: add getRandomItem helper.
