@@ -12,3 +12,4 @@ export './string.helper.dart';
 export './math.helper.dart';
 export './log.helper.dart';
 export './function.helper.dart';
+export './http.helper.dart';
