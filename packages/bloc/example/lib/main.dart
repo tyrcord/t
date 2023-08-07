@@ -4,7 +4,7 @@
 import 'package:flutter/material.dart';
 
 // Package imports:
-import 'package:fastyle_dart/fastyle_dart.dart';
+import 'package:fastyle_core/fastyle_core.dart';
 import 'package:tbloc/tbloc.dart';
 
 // Project imports:
@@ -17,8 +17,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const FastApp(
-      home: MyHomePage(),
+    return FastApp(
+      homeBuilder: (_) => const MyHomePage(),
     );
   }
 }
