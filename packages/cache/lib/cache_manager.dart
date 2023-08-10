@@ -31,6 +31,9 @@ class TCacheManager<T> {
   /// A label to be used for debugging purposes.
   final String? debugLabel;
 
+  /// Determines if the manager should log messages.
+  final bool silent;
+
   /// Creates a new instance of [TCacheManager].
   ///
   /// - [cleaningInterval]: The interval at which the cache should be cleaned.
@@ -41,6 +44,7 @@ class TCacheManager<T> {
   TCacheManager({
     Duration? cleaningInterval,
     int? maxSize,
+    this.silent = false,
     this.debugLabel,
   })  : _cleaningInterval = cleaningInterval ?? const Duration(minutes: 1),
         _maxSize = maxSize ?? 100;
@@ -54,7 +58,11 @@ class TCacheManager<T> {
   /// - [value]: The item to be cached.
   /// - [ttl]: The time-to-live duration for the item. Defaults to 10 minutes.
   void put(String key, T value, {Duration ttl = const Duration(minutes: 10)}) {
-    debugLog('Putting item with key: $key', debugLabel: debugLabel);
+    debugLog(
+      'Putting item with key: $key',
+      debugLabel: debugLabel,
+      silent: silent,
+    );
 
     if (_currentSize == _maxSize) {
       _evictLRU();
@@ -69,16 +77,28 @@ class TCacheManager<T> {
   ///
   /// Returns the item if present and not expired, otherwise returns `null`.
   T? get(String key) {
-    debugLog('Getting item with key: $key', debugLabel: debugLabel);
+    debugLog(
+      'Getting item with key: $key',
+      debugLabel: debugLabel,
+      silent: silent,
+    );
 
     final item = _cache[key];
 
     if (item == null || item.isExpired) {
       if (item != null) {
-        debugLog('Item with key: $key is expired', debugLabel: debugLabel);
+        debugLog(
+          'Item with key: $key is expired',
+          debugLabel: debugLabel,
+          silent: silent,
+        );
         delete(key); // Delete item if expired
       } else {
-        debugLog('Item with key: $key not found', debugLabel: debugLabel);
+        debugLog(
+          'Item with key: $key not found',
+          debugLabel: debugLabel,
+          silent: silent,
+        );
       }
 
       return null;
@@ -86,10 +106,15 @@ class TCacheManager<T> {
 
     item.updateAccessTime(); // Update the last accessed time
 
-    debugLog('Item with key: $key found', debugLabel: debugLabel);
+    debugLog(
+      'Item with key: $key found',
+      debugLabel: debugLabel,
+      silent: silent,
+    );
     debugLog(
       'Item with key: $key has value: ${item.value}',
       debugLabel: debugLabel,
+      silent: silent,
     );
 
     return item.value;
@@ -97,7 +122,11 @@ class TCacheManager<T> {
 
   /// Deletes an item from the cache using its key.
   void delete(String key) {
-    debugLog('Deleting item with key: $key', debugLabel: debugLabel);
+    debugLog(
+      'Deleting item with key: $key',
+      debugLabel: debugLabel,
+      silent: silent,
+    );
     _cache.remove(key);
 
     if (_currentSize > 0) {
@@ -108,13 +137,14 @@ class TCacheManager<T> {
 
   /// Deletes all expired items from the cache.
   void deleteExpired() {
-    debugLog('Deleting expired items', debugLabel: debugLabel);
+    debugLog('Deleting expired items', debugLabel: debugLabel, silent: silent);
     _cache.removeWhere((key, item) => item.isExpired);
 
     if (kDebugMode) {
       debugLog(
         'Deleted ${_cache.length - _currentSize} expired items',
         debugLabel: debugLabel,
+        silent: silent,
       );
     }
 
@@ -125,7 +155,7 @@ class TCacheManager<T> {
   /// Starts the periodic cleaning of the cache.
   void _startCleaningIfNeeded() {
     if (_currentSize == 1) {
-      debugLog('Starting cleaning', debugLabel: debugLabel);
+      debugLog('Starting cleaning', debugLabel: debugLabel, silent: silent);
       _cleaningTimer?.cancel();
 
       _cleaningTimer = Timer.periodic(_cleaningInterval, (timer) {
@@ -137,7 +167,7 @@ class TCacheManager<T> {
   /// Stop cleaning if last item is deleted
   void _stopCleaningIfNeeded() {
     if (_currentSize == 0) {
-      debugLog('Stopping cleaning', debugLabel: debugLabel);
+      debugLog('Stopping cleaning', debugLabel: debugLabel, silent: silent);
 
       _cleaningTimer?.cancel();
     }
@@ -156,7 +186,11 @@ class TCacheManager<T> {
     }
 
     if (lruKey != null) {
-      debugLog('Evicting LRU item with key: $lruKey', debugLabel: debugLabel);
+      debugLog(
+        'Evicting LRU item with key: $lruKey',
+        debugLabel: debugLabel,
+        silent: silent,
+      );
       _cache.remove(lruKey);
     }
   }
