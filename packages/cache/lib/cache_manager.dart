@@ -2,6 +2,7 @@
 import 'dart:async';
 
 // Package imports:
+import 'package:flutter/foundation.dart';
 import 'package:t_helpers/helpers.dart';
 
 // Project imports:
@@ -61,10 +62,7 @@ class TCacheManager<T> {
 
     _cache[key] = TCacheItem(value, ttl);
     _currentSize++;
-
-    if (_currentSize == 1) {
-      _startCleaning(); // Start cleaning if first item is added
-    }
+    _startCleaningIfNeeded(); // Start cleaning if first item is added
   }
 
   /// Retrieves an item from the cache using its key.
@@ -77,6 +75,7 @@ class TCacheManager<T> {
 
     if (item == null || item.isExpired) {
       if (item != null) {
+        debugLog('Item with key: $key is expired', debugLabel: debugLabel);
         delete(key); // Delete item if expired
       } else {
         debugLog('Item with key: $key not found', debugLabel: debugLabel);
@@ -103,10 +102,7 @@ class TCacheManager<T> {
 
     if (_currentSize > 0) {
       _currentSize--;
-
-      if (_currentSize == 0) {
-        _cleaningTimer?.cancel(); // Stop cleaning if last item is deleted
-      }
+      _stopCleaningIfNeeded();
     }
   }
 
@@ -115,20 +111,36 @@ class TCacheManager<T> {
     debugLog('Deleting expired items', debugLabel: debugLabel);
     _cache.removeWhere((key, item) => item.isExpired);
 
-    _currentSize = _cache.length;
-
-    if (_currentSize == 0) {
-      _cleaningTimer?.cancel(); // Stop cleaning if last item is deleted
+    if (kDebugMode) {
+      debugLog(
+        'Deleted ${_cache.length - _currentSize} expired items',
+        debugLabel: debugLabel,
+      );
     }
+
+    _currentSize = _cache.length;
+    _stopCleaningIfNeeded();
   }
 
   /// Starts the periodic cleaning of the cache.
-  void _startCleaning() {
-    _cleaningTimer?.cancel();
+  void _startCleaningIfNeeded() {
+    if (_currentSize == 1) {
+      debugLog('Starting cleaning', debugLabel: debugLabel);
+      _cleaningTimer?.cancel();
 
-    _cleaningTimer = Timer.periodic(_cleaningInterval, (timer) {
-      deleteExpired();
-    });
+      _cleaningTimer = Timer.periodic(_cleaningInterval, (timer) {
+        deleteExpired();
+      });
+    }
+  }
+
+  /// Stop cleaning if last item is deleted
+  void _stopCleaningIfNeeded() {
+    if (_currentSize == 0) {
+      debugLog('Stopping cleaning', debugLabel: debugLabel);
+
+      _cleaningTimer?.cancel();
+    }
   }
 
   /// Evicts the least recently used item from the cache.
@@ -144,6 +156,7 @@ class TCacheManager<T> {
     }
 
     if (lruKey != null) {
+      debugLog('Evicting LRU item with key: $lruKey', debugLabel: debugLabel);
       _cache.remove(lruKey);
     }
   }
