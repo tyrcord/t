@@ -1,3 +1,7 @@
+## 0.0.4
+
+ - **FEAT**: add a silent option.
+
 ## 0.0.3+2
 
  - **REFACTOR**: better logs.

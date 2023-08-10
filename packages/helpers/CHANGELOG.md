@@ -1,3 +1,7 @@
+## 0.0.26
+
+ - **FEAT**: add a silent option.
+
 ## 0.0.25
 
  - **FEAT**: add isValidUrl.
