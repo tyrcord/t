@@ -1,3 +1,7 @@
+## 0.0.3+1
+
+ - **FIX**: avoid to clean when there is nothing to clean.
+
 ## 0.0.3
 
  - **FEAT**: add debugLabel to CacheManager.
