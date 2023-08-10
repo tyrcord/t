@@ -36,9 +36,11 @@ void main() {
     test('put and delete', () {
       cacheManager
         ..put('key1', 'value1')
+        ..put('key2', 'value2')
         ..delete('key1');
 
       expect(cacheManager.get('key1'), isNull);
+      expect(cacheManager.get('key2'), equals('value2'));
     });
 
     test('put and evict LRU', () {
@@ -65,6 +67,20 @@ void main() {
       expect(cacheManager.get('key'), isNull);
       expect(cacheManager.get('key2'), isNull);
       expect(cacheManager.get('key3'), isNull);
+    });
+
+    test('evict LRU', () {
+      cacheManager
+        ..put('key1', 'value1')
+        ..put('key2', 'value2')
+        ..get('key1')
+        ..put('key3', 'value3')
+        ..put('key4', 'value4');
+
+      expect(cacheManager.get('key1'), equals('value1'));
+      expect(cacheManager.get('key2'), isNull);
+      expect(cacheManager.get('key3'), equals('value3'));
+      expect(cacheManager.get('key4'), equals('value4'));
     });
   });
 }

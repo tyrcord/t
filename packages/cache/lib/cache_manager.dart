@@ -42,9 +42,7 @@ class TCacheManager<T> {
     int? maxSize,
     this.debugLabel,
   })  : _cleaningInterval = cleaningInterval ?? const Duration(minutes: 1),
-        _maxSize = maxSize ?? 100 {
-    _startCleaning();
-  }
+        _maxSize = maxSize ?? 100;
 
   /// Disposes the cache manager, canceling any ongoing cleaning operations.
   void dispose() => _cleaningTimer?.cancel();
@@ -63,6 +61,10 @@ class TCacheManager<T> {
 
     _cache[key] = TCacheItem(value, ttl);
     _currentSize++;
+
+    if (_currentSize == 1) {
+      _startCleaning(); // Start cleaning if first item is added
+    }
   }
 
   /// Retrieves an item from the cache using its key.
@@ -74,11 +76,10 @@ class TCacheManager<T> {
     final item = _cache[key];
 
     if (item == null || item.isExpired) {
-      debugLog('Item with key: $key not found', debugLabel: debugLabel);
-      _cache.remove(key);
-
-      if (_currentSize > 0) {
-        _currentSize--;
+      if (item != null) {
+        delete(key); // Delete item if expired
+      } else {
+        debugLog('Item with key: $key not found', debugLabel: debugLabel);
       }
 
       return null;
@@ -102,6 +103,10 @@ class TCacheManager<T> {
 
     if (_currentSize > 0) {
       _currentSize--;
+
+      if (_currentSize == 0) {
+        _cleaningTimer?.cancel(); // Stop cleaning if last item is deleted
+      }
     }
   }
 
@@ -109,6 +114,12 @@ class TCacheManager<T> {
   void deleteExpired() {
     debugLog('Deleting expired items', debugLabel: debugLabel);
     _cache.removeWhere((key, item) => item.isExpired);
+
+    _currentSize = _cache.length;
+
+    if (_currentSize == 0) {
+      _cleaningTimer?.cancel(); // Stop cleaning if last item is deleted
+    }
   }
 
   /// Starts the periodic cleaning of the cache.
