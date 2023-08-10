@@ -1,3 +1,4 @@
+// Dart imports:
 import 'dart:math';
 
 /// Transforms a flat list into a 2D list with the given number of [columns].

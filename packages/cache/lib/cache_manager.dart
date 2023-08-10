@@ -1,6 +1,11 @@
+// Dart imports:
 import 'dart:async';
-import 'package:t_cache/t_cache.dart';
+
+// Package imports:
 import 'package:t_helpers/helpers.dart';
+
+// Project imports:
+import 'package:t_cache/t_cache.dart';
 
 /// A cache manager for managing cached items of type [T].
 ///
