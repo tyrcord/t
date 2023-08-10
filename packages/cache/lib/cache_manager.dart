@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:t_cache/t_cache.dart';
+import 'package:t_helpers/helpers.dart';
 
 /// A cache manager for managing cached items of type [T].
 ///
@@ -21,16 +22,22 @@ class TCacheManager<T> {
   /// Current number of items in the cache.
   int _currentSize = 0;
 
+  /// A label to be used for debugging purposes.
+  final String? debugLabel;
+
   /// Creates a new instance of [TCacheManager].
   ///
   /// - [cleaningInterval]: The interval at which the cache should be cleaned.
   ///   Defaults to 1 minute.
-  /// - [maxSize]: The maximum number of items the cache can hold. Defaults to 100.
+  /// - [maxSize]: The maximum number of items the cache can hold.
+  /// Defaults to 100.
+  /// - [debugLabel]: A label to be used for debugging purposes.
   TCacheManager({
     Duration? cleaningInterval,
-    int maxSize = 100,
+    int? maxSize,
+    this.debugLabel,
   })  : _cleaningInterval = cleaningInterval ?? const Duration(minutes: 1),
-        _maxSize = maxSize {
+        _maxSize = maxSize ?? 100 {
     _startCleaning();
   }
 
@@ -43,6 +50,8 @@ class TCacheManager<T> {
   /// - [value]: The item to be cached.
   /// - [ttl]: The time-to-live duration for the item. Defaults to 10 minutes.
   void put(String key, T value, {Duration ttl = const Duration(minutes: 10)}) {
+    debugLog('Putting item with key: $key', debugLabel: debugLabel);
+
     if (_currentSize == _maxSize) {
       _evictLRU();
     }
@@ -55,10 +64,14 @@ class TCacheManager<T> {
   ///
   /// Returns the item if present and not expired, otherwise returns `null`.
   T? get(String key) {
+    debugLog('Getting item with key: $key', debugLabel: debugLabel);
+
     final item = _cache[key];
 
     if (item == null || item.isExpired) {
+      debugLog('Item with key: $key not found', debugLabel: debugLabel);
       _cache.remove(key);
+
       if (_currentSize > 0) {
         _currentSize--;
       }
@@ -68,12 +81,20 @@ class TCacheManager<T> {
 
     item.updateAccessTime(); // Update the last accessed time
 
+    debugLog('Item with key: $key found', debugLabel: debugLabel);
+    debugLog(
+      'Item with key: $key has value: ${item.value}',
+      debugLabel: debugLabel,
+    );
+
     return item.value;
   }
 
   /// Deletes an item from the cache using its key.
   void delete(String key) {
+    debugLog('Deleting item with key: $key', debugLabel: debugLabel);
     _cache.remove(key);
+
     if (_currentSize > 0) {
       _currentSize--;
     }
@@ -81,6 +102,7 @@ class TCacheManager<T> {
 
   /// Deletes all expired items from the cache.
   void deleteExpired() {
+    debugLog('Deleting expired items', debugLabel: debugLabel);
     _cache.removeWhere((key, item) => item.isExpired);
   }
 
@@ -95,8 +117,8 @@ class TCacheManager<T> {
 
   /// Evicts the least recently used item from the cache.
   void _evictLRU() {
-    String? lruKey;
     DateTime oldestTime = DateTime.now();
+    String? lruKey;
 
     for (final entry in _cache.entries) {
       if (entry.value.lastAccessTime.isBefore(oldestTime)) {
