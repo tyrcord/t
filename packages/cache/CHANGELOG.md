@@ -1,3 +1,7 @@
+## 0.0.3
+
+ - **FEAT**: add debugLabel to CacheManager.
+
 ## 0.0.2
 
  - **FEAT**: add cache package.
