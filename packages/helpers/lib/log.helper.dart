@@ -14,9 +14,14 @@ import 'package:flutter/foundation.dart';
 /// debugLog('Hello, world!', debugLabel: 'Greeting', value: 42);
 /// // Output: "[Greeting]: Hello, world! => 42"
 /// ```
-void debugLog(String message, {String? debugLabel, dynamic value}) {
+void debugLog(
+  String message, {
+  String? debugLabel,
+  dynamic value,
+  bool silent = false,
+}) {
   // Check if the app is running in debug mode
-  if (kDebugMode) {
+  if (kDebugMode && !silent) {
     // Append the debug label to the message if provided
     if (debugLabel != null) {
       message = '[$debugLabel]: $message';
