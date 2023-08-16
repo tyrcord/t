@@ -15,7 +15,7 @@ void main() {
     });
 
     test('should convert PascalCase to camelCase', () {
-      expect(toCamelCase('HelloWorld'), 'helloworld');
+      expect(toCamelCase('HelloWorld'), 'helloWorld');
     });
 
     test('should convert snake_case to camelCase', () {

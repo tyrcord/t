@@ -12,6 +12,7 @@
 ///   toCamelCase('hello_world') => 'helloWorld'
 ///   toCamelCase('hello-world') => 'helloWorld'
 ///   toCamelCase('hello world') => 'helloWorld'
+///   toCamelCase('HelloWorld') => 'helloWorld'
 ///
 /// Returns the converted string in camel case format.
 String toCamelCase(String? input) {
@@ -19,7 +20,8 @@ String toCamelCase(String? input) {
     return '';
   }
 
-  final words = input.trim().split(RegExp(r'[_\s-]+'));
+// Split the string at spaces, underscores, hyphens, or camelCase boundaries.
+  final words = input.trim().split(RegExp(r'[_\s-]+|(?<=[a-z])(?=[A-Z])'));
 
   var result = words[0].toLowerCase();
 
