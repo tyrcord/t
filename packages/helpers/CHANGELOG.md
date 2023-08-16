@@ -1,3 +1,7 @@
+## 0.0.26+1
+
+ - **FIX**: support PascalCase to camelCase.
+
 ## 0.0.26
 
  - **FEAT**: add a silent option.
