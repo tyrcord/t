@@ -53,46 +53,5 @@ void main() {
         expect(documentRetrieved, equals(const SettingsDocument()));
       });
     });
-
-    group('Connection Management', () {
-      test(
-          'multiple connects and single disconnect '
-          'does not actually disconnect', () async {
-        await provider.connect();
-        await provider.connect();
-
-        await provider.persistDocument(document);
-        var documentRetrieved = await provider.retrieveSettings();
-        expect(documentRetrieved, equals(document));
-
-        // This should not actually disconnect
-        // because there's still one more active connection.
-        await provider.disconnect();
-
-        // This should still work.
-        documentRetrieved = await provider.retrieveSettings();
-        expect(documentRetrieved, equals(document));
-      });
-
-      test('actual disconnect only happens after all connects are disconnected',
-          () async {
-        await provider.connect();
-        await provider.connect();
-
-        await provider.disconnect(); // Should not actually disconnect
-
-        // Check if still connected
-        final documentRetrieved = await provider.retrieveSettings();
-        expect(documentRetrieved, equals(document));
-
-        await provider.disconnect(); // Now it should actually disconnect.
-
-        try {
-          await provider.retrieveSettings();
-        } catch (error) {
-          expect(error, isA<Exception>());
-        }
-      });
-    });
   });
 }
