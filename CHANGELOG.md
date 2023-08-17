@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-08-17
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`subx` - `v1.7.0`](#subx---v170)
+ - [`t_cache` - `v0.0.5`](#t_cache---v005)
+ - [`t_helpers` - `v0.0.27`](#t_helpers---v0027)
+ - [`tbloc` - `v0.21.3`](#tbloc---v0213)
+ - [`tmodel` - `v0.5.5`](#tmodel---v055)
+ - [`tstore` - `v0.8.11`](#tstore---v0811)
+ - [`tsub` - `v1.5.0`](#tsub---v150)
+
+---
+
+#### `subx` - `v1.7.0`
+
+ - **FEAT**: update dependencies.
+
+#### `t_cache` - `v0.0.5`
+
+ - **FEAT**: update dependencies.
+
+#### `t_helpers` - `v0.0.27`
+
+ - **FEAT**: update dependencies.
+
+#### `tbloc` - `v0.21.3`
+
+ - **FEAT**: update dependencies.
+
+#### `tmodel` - `v0.5.5`
+
+ - **FEAT**: update dependencies.
+
+#### `tstore` - `v0.8.11`
+
+ - **FEAT**: add a reference count system when connecting/disconnecting.
+
+#### `tsub` - `v1.5.0`
+
+ - **FEAT**: update dependencies.
+
+
 ## 2023-08-16
 
 ### Changes

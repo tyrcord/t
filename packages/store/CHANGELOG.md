@@ -1,3 +1,7 @@
+## 0.8.11
+
+ - **FEAT**: add a reference count system when connecting/disconnecting.
+
 ## 0.8.10
 
  - **FEAT**: minor improvements.
