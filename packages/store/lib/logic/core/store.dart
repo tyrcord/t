@@ -140,7 +140,13 @@ class TStore {
         .toList();
   }
 
-  Future<Map<String, V>> toMap<V>() async => _box!.toMap().cast<String, V>();
+  Future<Map<String, V>> toMap<V>() async {
+    if (_box != null) {
+      return _box!.toMap().cast<String, V>();
+    }
+
+    throw Exception('The store is not connected');
+  }
 
   Stream<BoxEvent>? watch({String? key}) => _box!.watch(key: key);
 

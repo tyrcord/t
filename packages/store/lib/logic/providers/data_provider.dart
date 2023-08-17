@@ -12,6 +12,9 @@ abstract class TDataProvider {
   /// Indicates if the data provider is connected to the store.
   bool _isConnected = false;
 
+  /// Keeps track of the number of connections.
+  int _connectionCount = 0;
+
   /// The store is the object that manages the data persistence.
   TStore? _store;
 
@@ -45,13 +48,20 @@ abstract class TDataProvider {
       _isConnecting = false;
     }
 
+    _connectionCount++;
+
     return _isConnected;
   }
 
   /// Closes the data provider.
   Future<bool> disconnect() async {
-    if (_isConnected) {
-      _isConnected = await store.disconnect();
+    if (_isConnected && _connectionCount > 0) {
+      _connectionCount--;
+
+      // Only disconnect when connection count reaches zero
+      if (_connectionCount == 0) {
+        _isConnected = await store.disconnect();
+      }
     }
 
     return _isConnected;
