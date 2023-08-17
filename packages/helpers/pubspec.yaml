@@ -4,13 +4,13 @@ version: 0.0.26+1
 repository: https://github.com/tyrcord/t/tree/main/packages/helpers
 
 environment:
-  sdk: '>=3.0.0 <4.0.0'
+  sdk: ">=3.0.0 <4.0.0"
   flutter: ">=3.10.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  decimal: ^2.3.2
+  decimal: ^2.3.3
   tsub: ^1.4.0
   tmodel: ^0.5.4
   intl: ^0.18.0
