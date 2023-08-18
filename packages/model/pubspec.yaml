@@ -1,5 +1,5 @@
 name: tmodel
-version: 0.5.5
+version: 0.5.6
 description: A dart library that helps you to manage model (blueprint) objects.
 homepage: https://github.com/tyrcord/t/tree/main/packages/tmodel
 issue_tracker: https://github.com/tyrcord/t/tree/main/packages/issues

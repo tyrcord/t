@@ -1,3 +1,7 @@
+## 0.5.6
+
+ - **FEAT**: add assignValue to Tmodel.
+
 ## 0.5.5
 
  - **FEAT**: update dependencies.
