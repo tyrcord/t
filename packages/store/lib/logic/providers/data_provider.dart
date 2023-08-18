@@ -41,7 +41,7 @@ abstract class TDataProvider {
     if (!_isConnecting && !_isConnected) {
       _isConnecting = true;
       _store = await database.getStore(storeName);
-      _isConnected = await store.connect();
+      _isConnected = await database.connect(storeName, this);
       _isConnecting = false;
     }
 
@@ -51,7 +51,7 @@ abstract class TDataProvider {
   /// Closes the data provider.
   Future<bool> disconnect() async {
     if (_isConnected) {
-      _isConnected = await store.disconnect();
+      _isConnected = await database.disconnect(storeName, this);
     }
 
     return _isConnected;

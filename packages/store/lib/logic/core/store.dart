@@ -9,80 +9,94 @@ import 'package:rxdart/rxdart.dart';
 import 'package:tstore/tstore.dart';
 
 class TStore {
-  static Future<bool>? _disconnectingFuture;
-  static Future<bool>? _connectingFuture;
-  static Future<Box>? _boxFuture;
-
   final _changesController = PublishSubject<TStoreChanges>();
-  final String key;
+  final String storeName;
+
+  Future<bool>? _disconnectingFuture;
+  Future<bool>? _connectingFuture;
   Box<dynamic>? _box;
+
+  bool get isConnected => _box != null;
+  bool get isConnecting => _connectingFuture != null;
 
   Stream<TStoreChanges> get onChanges => _changesController.stream;
 
-  int get count => _box!.length;
+  int get count {
+    if (_box != null) {
+      return _box!.length;
+    }
 
-  TStore(this.key);
+    return 0;
+  }
+
+  TStore(this.storeName);
 
   Future<bool> connect() async {
-    if (_box == null && _boxFuture == null) {
+    if (_disconnectingFuture != null) {
+      await _disconnectingFuture;
+    }
+
+    if (_box == null && _connectingFuture == null) {
       final completer = Completer<bool>();
       _connectingFuture = completer.future;
 
-      if (_disconnectingFuture != null) {
-        await _disconnectingFuture;
-      }
-
-      try {
-        _boxFuture = Hive.openBox(key);
-        _box = await _boxFuture;
-        completer.complete(true);
-      } catch (error) {
-        completer.complete(false);
-      } finally {
-        _boxFuture = null;
-      }
+      Future.microtask(() async {
+        try {
+          _box = await Hive.openBox(storeName);
+          _connectingFuture = null;
+          completer.complete(true);
+        } catch (error) {
+          _box = null;
+          _connectingFuture = null;
+          completer.complete(false);
+        }
+      });
     }
 
     return _connectingFuture!;
   }
 
   Future<bool> disconnect() async {
-    if (_disconnectingFuture == null) {
+    if (_connectingFuture != null) {
+      await _connectingFuture;
+    }
+
+    if (_box != null && _disconnectingFuture == null) {
       final completer = Completer<bool>();
       _disconnectingFuture = completer.future;
 
-      if (_connectingFuture != null) {
-        await _connectingFuture;
-      }
-
-      try {
-        if (_boxFuture != null) {
-          await _boxFuture;
-        }
-
-        if (_box != null) {
+      Future.microtask(() async {
+        try {
           await _box!.close();
+          _box = null;
+          _disconnectingFuture = null;
+          completer.complete(true);
+        } catch (error) {
+          _box = null;
+          _disconnectingFuture = null;
+          completer.complete(false);
         }
-
-        completer.complete(true);
-      } catch (error) {
-        completer.complete(false);
-      } finally {
-        _boxFuture = null;
-        _box = null;
-      }
+      });
     }
 
     return _disconnectingFuture!;
   }
 
-  Future<dynamic> retrieve(String key) async => _box!.get(key);
+  Future<dynamic> retrieve(String key) async {
+    assert(_box != null, 'the store is not connected');
+
+    return _box!.get(key);
+  }
 
   Future<Map<String, dynamic>?> retrieveEntity(String key) async {
+    assert(_box != null, 'the store is not connected');
+
     return _box!.get(key) as Map<String, dynamic>?;
   }
 
   Future<void> persist(String key, dynamic value) async {
+    assert(_box != null, 'the store is not connected');
+
     final update = _box!.containsKey(key);
     await _box!.put(key, value);
 
@@ -104,12 +118,16 @@ class TStore {
   }
 
   Future<void> delete(String key) async {
+    assert(_box != null, 'the store is not connected');
+
     await _box!.delete(key);
 
     _notifyChangesListeners(TStoreChangeType.delete, key: key);
   }
 
   Future<void> clear() async {
+    assert(_box != null, 'the store is not connected');
+
     await _box!.deleteAll(_box!.keys);
 
     _notifyChangesListeners(TStoreChangeType.deleteAll);
@@ -122,6 +140,8 @@ class TStore {
   }
 
   Future<List<dynamic>> find(bool Function(dynamic) finder) async {
+    assert(_box != null, 'the store is not connected');
+
     final list = _box!.values.where(finder);
 
     return list.toList();
@@ -130,6 +150,8 @@ class TStore {
   Future<List<Map<String, dynamic>>> findEntity(
     bool Function(Map<String, dynamic>) finder,
   ) async {
+    assert(_box != null, 'the store is not connected');
+
     final values = _box!.values;
 
     return values
@@ -140,7 +162,11 @@ class TStore {
         .toList();
   }
 
-  Future<Map<String, V>> toMap<V>() async => _box!.toMap().cast<String, V>();
+  Future<Map<String, V>> toMap<V>() async {
+    assert(_box != null, 'the store is not connected');
+
+    return _box!.toMap().cast<String, V>();
+  }
 
   Stream<BoxEvent>? watch({String? key}) => _box!.watch(key: key);
 
