@@ -1,3 +1,9 @@
+## 0.8.12
+
+ - **FIX**: regression.
+ - **FEAT**: add a reference count system when connecting/disconnecting to a store.
+ - **FEAT**: add a reference count system when connecting/disconnecting".
+
 ## 0.8.11
 
  - **FEAT**: add a reference count system when connecting/disconnecting.

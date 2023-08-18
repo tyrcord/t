@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-08-18
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`tstore` - `v0.8.12`](#tstore---v0812)
+
+---
+
+#### `tstore` - `v0.8.12`
+
+ - **FIX**: regression.
+ - **FEAT**: add a reference count system when connecting/disconnecting to a store.
+ - **FEAT**: add a reference count system when connecting/disconnecting".
+
+
 ## 2023-08-17
 
 ### Changes
