@@ -32,4 +32,14 @@ abstract class TModel extends Equatable {
   ///
   ///     var myModel2 = myModel1.clone();
   TModel clone();
+
+  T assignValue<T>(T? value, T? defaultValue, {bool loose = true}) {
+    if (loose) {
+      if (value is String && value.isEmpty) {
+        return null as T;
+      }
+    }
+
+    return value ?? defaultValue!;
+  }
 }
