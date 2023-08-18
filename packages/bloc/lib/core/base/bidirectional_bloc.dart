@@ -140,7 +140,7 @@ abstract class BidirectionalBloc<E extends BlocEvent, S extends BlocState>
         ..onDone(() => streamController.close())
         ..onError((dynamic error, StackTrace stackTrace) {
           if (!isClosed) {
-            handleInternalError(error);
+            handleInternalError(error, stackTrace);
             final transformedError = transformError(error, stackTrace);
 
             if (transformedError != null) {
@@ -203,7 +203,7 @@ abstract class BidirectionalBloc<E extends BlocEvent, S extends BlocState>
 
   /// Handles internal errors.
   @protected
-  void handleInternalError(dynamic error) {
+  void handleInternalError(dynamic error, StackTrace stackTrace) {
     if (kDebugMode && !errorController.hasListener) {
       log('[$runtimeType]: Internal Bloc error not handled', error: error);
     }

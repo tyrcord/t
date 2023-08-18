@@ -48,7 +48,7 @@ class BidirectionalPeopleBloc
 
   @override
   // ignore: no-empty-block
-  void handleInternalError(dynamic error) {
+  void handleInternalError(dynamic error, StackTrace stackTrace) {
     if (error == 'Error Delayed') {
       addEvent(const PeopleBlocEvent.error());
     }
