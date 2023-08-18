@@ -1,3 +1,7 @@
+## 0.8.13
+
+ - **FEAT**: add deleteAll.
+
 ## 0.8.12
 
  - **FIX**: regression.

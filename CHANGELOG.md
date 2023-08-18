@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`tstore` - `v0.8.13`](#tstore---v0813)
+
+---
+
+#### `tstore` - `v0.8.13`
+
+ - **FEAT**: add deleteAll.
+
+
+## 2023-08-18
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`tstore` - `v0.8.12`](#tstore---v0812)
 
 ---
