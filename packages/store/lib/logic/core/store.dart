@@ -133,6 +133,14 @@ class TStore {
     _notifyChangesListeners(TStoreChangeType.delete, key: key);
   }
 
+  Future<void> deleteAll(Iterable<String> keys) async {
+    assert(_box != null, 'the store is not connected');
+
+    await _box!.deleteAll(keys);
+
+    _notifyChangesListeners(TStoreChangeType.delete, keys: keys);
+  }
+
   Future<void> clear() async {
     assert(_box != null, 'the store is not connected');
 
@@ -182,11 +190,21 @@ class TStore {
     TStoreChangeType type, {
     String? key,
     dynamic value,
+    Iterable<String>? keys,
   }) {
-    _changesController.add(TStoreChanges(
-      type: type,
-      key: key,
-      value: value,
-    ));
+    if (keys != null) {
+      for (final key in keys) {
+        _changesController.add(TStoreChanges(
+          type: type,
+          key: key,
+        ));
+      }
+    } else {
+      _changesController.add(TStoreChanges(
+        type: type,
+        key: key,
+        value: value,
+      ));
+    }
   }
 }
