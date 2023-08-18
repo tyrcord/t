@@ -46,7 +46,7 @@ class CounterBloc
   }
 
   @override
-  void handleInternalError(error) {
+  void handleInternalError(error, stackTrace) {
     addEvent(const CounterBlocEvent.errorRaised());
   }
 }
