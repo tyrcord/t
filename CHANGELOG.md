@@ -15,6 +15,46 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`t_helpers` - `v0.0.28`](#t_helpers---v0028)
+ - [`tmodel` - `v0.5.7`](#tmodel---v057)
+ - [`tstore` - `v0.8.14`](#tstore---v0814)
+ - [`t_cache` - `v0.0.5+2`](#t_cache---v0052)
+ - [`tbloc` - `v0.21.3+2`](#tbloc---v02132)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `t_cache` - `v0.0.5+2`
+ - `tbloc` - `v0.21.3+2`
+
+---
+
+#### `t_helpers` - `v0.0.28`
+
+ - **FEAT**: added value helpers.
+
+#### `tmodel` - `v0.5.7`
+
+ - **FEAT**: added value helpers.
+
+#### `tstore` - `v0.8.14`
+
+ - **FEAT**: added value helpers.
+
+
+## 2023-08-18
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`t_helpers` - `v0.0.27+1`](#t_helpers---v00271)
  - [`tmodel` - `v0.5.6`](#tmodel---v056)
  - [`t_cache` - `v0.0.5+1`](#t_cache---v0051)

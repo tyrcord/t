@@ -1,3 +1,7 @@
+## 0.5.7
+
+ - **FEAT**: added value helpers.
+
 ## 0.5.6
 
  - **FEAT**: add assignValue to Tmodel.
