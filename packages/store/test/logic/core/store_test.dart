@@ -37,6 +37,9 @@ void main() {
       test('should etablish a connection to the DB', () async {
         final isConnectionEtablished = await store.connect();
         expect(isConnectionEtablished, equals(true));
+
+        final isConnectionEtablished2 = await store.connect();
+        expect(isConnectionEtablished2, equals(true));
       });
     });
 
@@ -45,8 +48,11 @@ void main() {
         final isConnectionEtablished = await store.connect();
         expect(isConnectionEtablished, equals(true));
 
-        final isDisconnected = await store.connect();
+        final isDisconnected = await store.disconnect();
         expect(isDisconnected, equals(true));
+
+        final isDisconnected2 = await store.disconnect();
+        expect(isDisconnected2, equals(true));
       });
     });
 

@@ -53,7 +53,11 @@ class TStore {
       });
     }
 
-    return _connectingFuture!;
+    if (_connectingFuture != null) {
+      return _connectingFuture!;
+    }
+
+    return _box != null ? true : false;
   }
 
   Future<bool> disconnect() async {
@@ -79,7 +83,11 @@ class TStore {
       });
     }
 
-    return _disconnectingFuture!;
+    if (_disconnectingFuture != null) {
+      return _disconnectingFuture!;
+    }
+
+    return _box == null ? true : false;
   }
 
   Future<dynamic> retrieve(String key) async {
