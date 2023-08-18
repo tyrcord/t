@@ -13,3 +13,4 @@ export './math.helper.dart';
 export './log.helper.dart';
 export './function.helper.dart';
 export './http.helper.dart';
+export './value.helper.dart';

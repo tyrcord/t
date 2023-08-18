@@ -13,13 +13,7 @@ class PersonEntity extends TEntity {
   });
 
   @override
-  PersonEntity clone() {
-    return PersonEntity(
-      firstname: firstname,
-      lastname: lastname,
-      age: age,
-    );
-  }
+  PersonEntity clone() => copyWith();
 
   factory PersonEntity.fromJson(Map<String, dynamic> json) {
     return PersonEntity(
@@ -36,9 +30,9 @@ class PersonEntity extends TEntity {
     int? age,
   }) {
     return PersonEntity(
-      firstname: firstname ?? this.firstname,
-      lastname: lastname ?? this.lastname,
-      age: age ?? this.age,
+      firstname: assignValue(firstname ?? this.firstname),
+      lastname: assignValue(lastname ?? this.lastname),
+      age: assignValue(age ?? this.age),
     );
   }
 

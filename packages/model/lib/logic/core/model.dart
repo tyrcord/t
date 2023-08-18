@@ -1,5 +1,6 @@
 // Package imports:
 import 'package:equatable/equatable.dart';
+import 'package:t_helpers/helpers.dart';
 
 ///
 /// Abstract class that enforces certain properties on an TModel object.
@@ -33,13 +34,7 @@ abstract class TModel extends Equatable {
   ///     var myModel2 = myModel1.clone();
   TModel clone();
 
-  T assignValue<T>(T? value, T? defaultValue, {bool loose = true}) {
-    if (loose) {
-      if (value is String && value.isEmpty) {
-        return null as T;
-      }
-    }
-
-    return value ?? defaultValue!;
+  T? assignValue<T>(T? value, {T? defaultValue, bool loose = true}) {
+    return getValue(value, defaultValue: defaultValue, loose: loose);
   }
 }
