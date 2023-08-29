@@ -1,3 +1,7 @@
+## 0.0.28+1
+
+ - **FIX**: avoid to parse an empty string.
+
 ## 0.0.28
 
  - **FEAT**: added value helpers.

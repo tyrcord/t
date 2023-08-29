@@ -1,3 +1,7 @@
+## 0.8.14+1
+
+ - Update a dependency to the latest release.
+
 ## 0.8.14
 
  - **FEAT**: added value helpers.
