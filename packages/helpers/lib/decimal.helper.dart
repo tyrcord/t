@@ -71,7 +71,9 @@ Decimal? toDecimal(dynamic value) {
   } else if (value is Rational) {
     return decimalFromRational(value);
   } else if (value is String) {
-    return Decimal.tryParse(value);
+    if (value.isNotEmpty) {
+      return Decimal.tryParse(value);
+    }
   }
 
   return null;
