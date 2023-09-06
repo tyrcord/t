@@ -1,3 +1,7 @@
+## 0.21.4
+
+ - **FEAT**: update dependencies.
+
 ## 0.21.3+3
 
  - **FIX**: example.

@@ -1,3 +1,7 @@
+## 0.0.29
+
+ - **FEAT**: update dependencies.
+
 ## 0.0.28+1
 
  - **FIX**: avoid to parse an empty string.
