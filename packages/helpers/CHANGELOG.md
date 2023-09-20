@@ -1,3 +1,7 @@
+## 0.0.29+1
+
+ - **FIX**: remove unused param.
+
 ## 0.0.29
 
  - **FEAT**: update dependencies.
