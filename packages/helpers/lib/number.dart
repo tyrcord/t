@@ -138,19 +138,19 @@ String formatPercentage({
     minimumFractionDigits: minimumFractionDigits,
     maximumFractionDigits: maximumFractionDigits,
     value: value * 100,
+    pattern: pattern,
     locale: locale,
   );
 
   return '$number%';
 }
 
-/// Formats a [value] as a currency string using the given [locale], [pattern],
-/// and [symbol]. [minimumFractionDigits] and [maximumFractionDigits] can be
-/// used to specify the minimum and maximum number of decimal places to display.
+/// Formats a [value] as a currency string using the given [locale]and [symbol].
+/// [minimumFractionDigits] and [maximumFractionDigits] can be used to specify
+/// the minimum and maximum number of decimal places to display.
 String formatCurrency({
   num? value,
   String? locale = 'en_US',
-  String? pattern = "#,##0.##",
   String symbol = 'USD',
   int? minimumFractionDigits,
   int? maximumFractionDigits,
