@@ -10,11 +10,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  # Public
   decimal: ^2.3.3
-  tsub: ^1.6.0
-  tmodel: ^0.5.8+1
   intl: ^0.18.0
   rational: ^2.2.2
+
+  # T
+  tsub: ^1.6.0
+  tmodel: ^0.5.8+1
 
 dev_dependencies:
   flutter_test:

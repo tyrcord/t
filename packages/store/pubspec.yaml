@@ -11,14 +11,18 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  # Public
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   rxdart: ^0.27.7
   meta: ^1.9.1
   equatable: ^2.0.5
+  path: ^1.8.3
+
+  # T
   tmodel: ^0.5.8+1
   tsub: ^1.6.0
-  path: ^1.8.3
 
 dev_dependencies:
   flutter_test:

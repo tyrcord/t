@@ -9,6 +9,10 @@ environment:
   flutter: ">=3.13.0"
 
 dependencies:
+  flutter:
+    sdk: flutter
+
+  # Public
   equatable: ^2.0.5
 
   # T
