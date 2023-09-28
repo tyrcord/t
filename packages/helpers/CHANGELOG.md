@@ -1,3 +1,7 @@
+## 0.0.31
+
+ - **FEAT**: add retry helper.
+
 ## 0.0.30
 
  - **FEAT**: update dependencies.
