@@ -10,7 +10,7 @@ void noop() {}
 ///
 /// [task]: The function to retry if it throws an exception.
 /// [maxAttempts]: The maximum number of attempts before throwing an
-///                exception. Default is 2.
+///                exception. Default is 3.
 /// [validate]: A function that checks if the returned value from [task]
 ///             is valid. If this function returns `false`, the result is
 ///             considered invalid and the task is retried.
@@ -25,7 +25,7 @@ void noop() {}
 /// Throws an [Exception] if [task] fails after [maxAttempts].
 Future<T> retry<T>({
   required Future<T> Function() task,
-  int maxAttempts = 2,
+  int maxAttempts = 3,
   bool Function(T result)? validate,
   Duration initialDelay = const Duration(seconds: 1),
   Duration? maxDelay,
