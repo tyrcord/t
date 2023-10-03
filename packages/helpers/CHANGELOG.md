@@ -1,3 +1,7 @@
+## 0.0.32
+
+ - **FEAT**: change default maxAttempts.
+
 ## 0.0.31
 
  - **FEAT**: add retry helper.
