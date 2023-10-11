@@ -1,4 +1,4 @@
-# TCache
+# tCache
 
 Efficiently store and retrieve data with TTL, LRU eviction.
 
