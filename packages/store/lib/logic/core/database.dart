@@ -36,4 +36,8 @@ class TDataBase extends TDataBaseCore {
 
     return isInitialized;
   }
+
+  Future<bool> storeExists(String storeName) async {
+    return Hive.boxExists(storeName);
+  }
 }

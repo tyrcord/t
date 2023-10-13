@@ -101,4 +101,6 @@ abstract class TDataBaseCore {
   /// Initializes the database.
   @protected
   Future<bool> init();
+
+  Future<bool> storeExists(String storeName);
 }
