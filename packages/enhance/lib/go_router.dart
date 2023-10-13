@@ -10,12 +10,16 @@ extension GoRouterExtension on GoRouter {
   }
 
   // Get the last route match
-  RouteMatch _getLastRouteMatch() {
+  RouteMatch? _getLastRouteMatch() {
+    if (routerDelegate.currentConfiguration.isEmpty) {
+      return null;
+    }
+
     return routerDelegate.currentConfiguration.last;
   }
 
   // Determine the list of route matches
-  RouteMatchList _getRouteMatchList(RouteMatch lastMatch) {
+  RouteMatchList _getRouteMatchList(RouteMatch? lastMatch) {
     if (lastMatch is ImperativeRouteMatch) {
       return lastMatch.matches;
     }
