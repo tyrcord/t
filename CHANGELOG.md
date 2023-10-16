@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-10-16
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`tenhance` - `v0.0.2+1`](#tenhance---v0021)
+ - [`tstore` - `v0.8.17`](#tstore---v0817)
+
+---
+
+#### `tenhance` - `v0.0.2+1`
+
+ - **FIX**: minor improvements.
+
+#### `tstore` - `v0.8.17`
+
+ - **FEAT**: add storeExists method.
+
+
 ## 2023-10-11
 
 ### Changes
