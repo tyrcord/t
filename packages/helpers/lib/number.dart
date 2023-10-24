@@ -4,7 +4,11 @@ import 'package:intl/intl.dart';
 /// Checks if the input [number] is a "double integer", i.e., a double value
 /// that represents an integer value.
 /// Returns true if the input [number] is a double integer, false otherwise.
-bool isDoubleInteger(double number) {
+bool isDoubleInteger(double number) => isNumberInteger(number);
+
+/// Checks if the input [number] is an integer.
+/// Returns true if the input [number] is an integer, false otherwise.
+bool isNumberInteger(num number) {
   final double roundedValue = number.roundToDouble();
 
   return number == roundedValue;
@@ -223,4 +227,27 @@ String formatCurrency({
 
   // Return the default fraction digits as a tuple
   return (minimumFractionDigits, maximumFractionDigits);
+}
+
+/// This function is responsible for formatting a double value into a string
+/// that's suitable for clipboard copy operations. It handles scenarios where
+/// the value is either an integer or a non-integer and ensures appropriate
+/// decimal placement in the string representation.
+///
+/// [value] (double?) is the number intended for formatting. If the value is
+/// null, a default string '0' is returned to represent a zero value.
+///
+/// Returns a [String] that represents the formatted value of the input number.
+/// If the number is an integer, no decimals are included. Otherwise, the
+/// number is formatted to have two decimal places.
+String formatNumberForClipboard(num? value) {
+  // Check if the provided value is null. If it is, default to '0'.
+  if (value == null) return '0';
+
+  // Determine if the value is a non-decimal number. If it is, format it
+  // without any decimal places. Otherwise, ensure that it has two decimal
+  // places to standardize the look of the output.
+  return isNumberInteger(value)
+      ? value.toStringAsFixed(0)
+      : value.toStringAsFixed(2);
 }
