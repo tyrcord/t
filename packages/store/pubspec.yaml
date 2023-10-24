@@ -1,6 +1,6 @@
 name: tstore
 description: A dart library that helps you to manage and store entity objects.
-version: 0.8.17+1
+version: 0.8.18
 repository: https://github.com/tyrcord/t/tree/main/packages/tstore
 issue_tracker: https://github.com/tyrcord/t/tree/main/packages/tstore/issues
 
@@ -21,8 +21,8 @@ dependencies:
   path: ^1.8.3
 
   # T
-  tmodel: ^0.5.9+3
-  tsub: ^1.6.0
+  tmodel: ^0.5.10
+  tsub: ^1.7.0
 
 dev_dependencies:
   flutter_test:

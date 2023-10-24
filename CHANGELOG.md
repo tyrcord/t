@@ -15,6 +15,62 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`subx` - `v1.10.0`](#subx---v1100)
+ - [`t_cache` - `v0.0.8`](#t_cache---v008)
+ - [`t_helpers` - `v0.0.34`](#t_helpers---v0034)
+ - [`tbloc` - `v0.21.6`](#tbloc---v0216)
+ - [`tenhance` - `v0.0.3`](#tenhance---v003)
+ - [`tmodel` - `v0.5.10`](#tmodel---v0510)
+ - [`tstore` - `v0.8.18`](#tstore---v0818)
+ - [`tsub` - `v1.7.0`](#tsub---v170)
+
+---
+
+#### `subx` - `v1.10.0`
+
+ - **FEAT**: update dependencies.
+
+#### `t_cache` - `v0.0.8`
+
+ - **FEAT**: update dependencies.
+
+#### `t_helpers` - `v0.0.34`
+
+ - **FEAT**: update dependencies.
+
+#### `tbloc` - `v0.21.6`
+
+ - **FEAT**: update dependencies.
+
+#### `tenhance` - `v0.0.3`
+
+ - **FEAT**: update dependencies.
+
+#### `tmodel` - `v0.5.10`
+
+ - **FEAT**: update dependencies.
+
+#### `tstore` - `v0.8.18`
+
+ - **FEAT**: update dependencies.
+
+#### `tsub` - `v1.7.0`
+
+ - **FEAT**: update dependencies.
+
+
+## 2023-10-24
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`t_helpers` - `v0.0.33`](#t_helpers---v0033)
  - [`t_cache` - `v0.0.7+3`](#t_cache---v0073)
  - [`tmodel` - `v0.5.9+3`](#tmodel---v0593)
