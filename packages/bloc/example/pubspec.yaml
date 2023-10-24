@@ -10,7 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.6
-  tbloc: ^0.21.5+2
+  tbloc: ^0.21.5+3
   fastyle_core: ^0.0.23
 
 dev_dependencies:

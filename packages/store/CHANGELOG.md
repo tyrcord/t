@@ -1,3 +1,7 @@
+## 0.8.17+1
+
+ - Update a dependency to the latest release.
+
 ## 0.8.17
 
  - **FEAT**: add storeExists method.

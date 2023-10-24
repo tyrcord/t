@@ -1,3 +1,7 @@
+## 0.0.33
+
+ - **FEAT**: add formatNumberForClipboard helper.
+
 ## 0.0.32
 
  - **FEAT**: change default maxAttempts.
