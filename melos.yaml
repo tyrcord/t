@@ -15,6 +15,7 @@ scripts:
         - tbloc_example
         - tmodel
         - tsub
+        - tenhance
   update:analysis_options:
     exec: $PWD/scripts/update_analysis_options.sh
   sort_imports:

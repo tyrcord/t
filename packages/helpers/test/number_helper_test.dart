@@ -277,26 +277,4 @@ void main() {
       expect(isStringPercentage('50%%'), isFalse);
     });
   });
-
-  group('formatNumberForClipboard', () {
-    test('should return "0" if the value is null', () {
-      final result = formatNumberForClipboard(null);
-      expect(result, '0');
-    });
-
-    test('should return integer value without decimal points', () {
-      final result = formatNumberForClipboard(10.0);
-      expect(result, '10');
-    });
-
-    test('should format non-integer double with two decimal places', () {
-      final result = formatNumberForClipboard(10.123);
-      expect(result, '10.12'); // it should round the value
-    });
-
-    test('should return negative value formatted appropriately', () {
-      final result = formatNumberForClipboard(-15.457);
-      expect(result, '-15.46'); // it should handle and round negative values
-    });
-  });
 }
