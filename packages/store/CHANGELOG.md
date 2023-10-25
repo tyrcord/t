@@ -1,3 +1,7 @@
+## 0.8.19
+
+ - **FEAT**: document have a default version.
+
 ## 0.8.18
 
  - **FEAT**: update dependencies.

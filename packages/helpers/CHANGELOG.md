@@ -1,3 +1,7 @@
+## 0.0.35
+
+ - **FEAT**: add formatPercentageForClipboard and improvements.
+
 ## 0.0.34
 
  - **FEAT**: update dependencies.
