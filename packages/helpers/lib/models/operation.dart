@@ -84,30 +84,26 @@ class TSimpleOperation extends TModel {
     // Get the index of the last element in the updated operands list
     final int lastIndex = updatedOperands.length - 1;
 
+    // If the last operand is '0' and the character to be appended is also '0',
+    // return the current object without any changes
+    if (lastOperand == '0' && char == '0') return this;
+
     // Prevent adding a new operator or operand if the current operand
     // has no digit
-    if (lastOperand == '-' && isOperator(char)) {
-      return this;
-    }
+    if (lastOperand == '-' && isOperator(char)) return this;
 
     // If the last operand is not empty and the new character is an operator
     if (isOperator(char) && operands.length < 2) {
-      if (lastOperand.isNotEmpty || hasOperator) {
-        return _updateOperator(char);
-      }
+      if (lastOperand.isNotEmpty || hasOperator) return _updateOperator(char);
     } else if (isOperator(char) && operands.length == 2) {
       return this;
     }
 
     // If the new character is a '.', handle it
-    if (char == '.') {
-      return _updateDecimal(updatedOperands);
-    }
+    if (char == '.') return _updateDecimal(updatedOperands);
 
     // Prevent multiple negative signs in an operand
-    if (char == '-' && lastOperand.startsWith('-')) {
-      return this;
-    }
+    if (char == '-' && lastOperand.startsWith('-')) return this;
 
     // If the current operation has an operator and only one operand,
     // add the new character to the operands list
@@ -116,9 +112,7 @@ class TSimpleOperation extends TModel {
     } else if (lastOperand.isEmpty) {
       // If the new character is an operator that is not '-',
       // return the current object
-      if (isOperator(char) && char != '-') {
-        return this;
-      }
+      if (isOperator(char) && char != '-') return this;
 
       // Otherwise, add the new character to the operands list
       updatedOperands.add(char);

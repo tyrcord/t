@@ -429,6 +429,19 @@ void main() {
       expect(updatedOperation.operands, ['1']);
       expect(updatedOperation.operator, '*');
     });
+
+    test('should not allow zeros to be added when the operand is already 0',
+        () {
+      var operation = const TSimpleOperation(operands: ['0']);
+      var updatedOperation = operation.append('0');
+
+      expect(updatedOperation.operands, ['0']);
+
+      operation = const TSimpleOperation(operands: ['0.0']);
+      updatedOperation = operation.append('0');
+
+      expect(updatedOperation.operands, ['0.00']);
+    });
   });
 
   group('evaluate', () {
