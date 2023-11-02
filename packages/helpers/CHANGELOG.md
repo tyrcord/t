@@ -1,3 +1,7 @@
+## 0.0.36
+
+ - **FEAT**: add removeDiacriticsAndLowercase helper.
+
 ## 0.0.35+1
 
  - **FIX**: should not allow zeros to be added when the operand is already 0.

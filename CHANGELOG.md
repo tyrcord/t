@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-11-02
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`t_helpers` - `v0.0.36`](#t_helpers---v0036)
+ - [`t_cache` - `v0.0.8+3`](#t_cache---v0083)
+ - [`tmodel` - `v0.5.10+3`](#tmodel---v05103)
+ - [`tbloc` - `v0.21.6+3`](#tbloc---v02163)
+ - [`tstore` - `v0.8.19+2`](#tstore---v08192)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `t_cache` - `v0.0.8+3`
+ - `tmodel` - `v0.5.10+3`
+ - `tbloc` - `v0.21.6+3`
+ - `tstore` - `v0.8.19+2`
+
+---
+
+#### `t_helpers` - `v0.0.36`
+
+ - **FEAT**: add removeDiacriticsAndLowercase helper.
+
+
 ## 2023-10-26
 
 ### Changes
