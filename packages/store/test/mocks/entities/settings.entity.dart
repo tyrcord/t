@@ -57,6 +57,7 @@ class SettingsDocument extends TDocument {
   @override
   Map<String, dynamic> toJson() {
     return {
+      ...super.toJson(),
       'languageCode': languageCode,
       'theme': theme,
       'year': year,
