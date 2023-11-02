@@ -135,4 +135,18 @@ void main() {
       expect(toIos3166Code('fr', countryCode: 'cA'), equals('fr_CA'));
     });
   });
+
+  group('removeDiacriticsAndLowercase', () {
+    test(
+        'removeDiacriticsAndLowercase should remove diacritics '
+        'and convert to lowercase', () {
+      expect(removeDiacriticsAndLowercase("ÁbČDè"), "abcde");
+      expect(removeDiacriticsAndLowercase("HELLO"), "hello");
+      expect(removeDiacriticsAndLowercase("ÇÖlË"), "cole");
+      expect(removeDiacriticsAndLowercase("áÉíÓú"), "aeiou");
+      expect(removeDiacriticsAndLowercase(""), "");
+      expect(removeDiacriticsAndLowercase("No Diacritics Here"),
+          "no diacritics here");
+    });
+  });
 }

@@ -15,6 +15,7 @@ dependencies:
   decimal: ^2.3.3
   intl: ^0.18.0
   rational: ^2.2.2
+  diacritic: ^0.1.4
 
   # T
   tsub: ^1.7.0

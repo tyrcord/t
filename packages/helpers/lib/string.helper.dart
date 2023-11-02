@@ -1,3 +1,5 @@
+import 'package:diacritic/diacritic.dart';
+
 /// Converts a string [input] to camel case format.
 ///
 /// If the [input] is null or empty, an empty string is returned.
@@ -97,4 +99,22 @@ String? toIos3166Code(String languageCode, {String? countryCode}) {
   }
 
   return languageCode;
+}
+
+/// Removes diacritics (accents) from the given [text] and then converts
+/// it to lowercase.
+///
+/// For instance:
+///
+/// ```dart
+/// var input = "ÁbČDè";
+/// var output = removeDiacriticsAndLowercase(input);
+/// print(output);  // Outputs "abcde"
+/// ```
+///
+/// [text]: The text to be processed.
+///
+/// Returns a new string without diacritics and in lowercase.
+String removeDiacriticsAndLowercase(String text) {
+  return removeDiacritics(text.toLowerCase());
 }
