@@ -73,8 +73,8 @@ class PeopleBlocState extends HydratedBlocState {
       ];
 
   @override
-  PeopleBlocState clone() => this;
+  PeopleBlocState clone() => copyWith();
 
   @override
-  PeopleBlocState merge(covariant PeopleBlocState state) => this;
+  PeopleBlocState merge(covariant PeopleBlocState state) => clone();
 }

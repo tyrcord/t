@@ -13,13 +13,7 @@ class SettingsDocument extends TDocument {
   });
 
   @override
-  SettingsDocument clone() {
-    return SettingsDocument(
-      languageCode: languageCode,
-      theme: theme,
-      year: year,
-    );
-  }
+  SettingsDocument clone() => copyWith();
 
   factory SettingsDocument.fromJson(Map<String, dynamic> json) {
     return SettingsDocument(

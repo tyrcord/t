@@ -25,13 +25,7 @@ class TStoreChanges extends TModel {
 
   /// Clone this object.
   @override
-  TStoreChanges clone() {
-    return TStoreChanges(
-      value: value,
-      type: type,
-      key: key,
-    );
-  }
+  TStoreChanges clone() => copyWith();
 
   /// Copy this object with the given parameters.
   @override

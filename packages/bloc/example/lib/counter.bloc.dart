@@ -80,15 +80,7 @@ class CounterBlocState extends BlocState {
   }
 
   @override
-  CounterBlocState clone() {
-    return CounterBlocState(
-      isInitializing: isInitializing,
-      isInitialized: isInitialized,
-      counter: counter,
-      isBusy: isBusy,
-      error: error,
-    );
-  }
+  CounterBlocState clone() => copyWith();
 
   @override
   CounterBlocState merge(covariant CounterBlocState model) {

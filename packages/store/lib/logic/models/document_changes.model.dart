@@ -18,12 +18,7 @@ class TDocumentChanges extends TModel {
 
   /// Clone this object.
   @override
-  TDocumentChanges clone() {
-    return TDocumentChanges(
-      entryToUpdate: entryToUpdate,
-      keyToDelete: keyToDelete,
-    );
-  }
+  TDocumentChanges clone() => copyWith();
 
   /// Copy this object with the given parameters.
   @override
