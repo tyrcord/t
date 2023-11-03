@@ -1,3 +1,7 @@
+## 0.5.11
+
+ - **FEAT**: add copyWithDefaults.
+
 ## 0.5.10+3
 
  - Update a dependency to the latest release.

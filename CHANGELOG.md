@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-11-03
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`tbloc` - `v0.21.7`](#tbloc---v0217)
+ - [`tmodel` - `v0.5.11`](#tmodel---v0511)
+ - [`tstore` - `v0.8.20`](#tstore---v0820)
+ - [`t_helpers` - `v0.0.36+1`](#t_helpers---v00361)
+ - [`t_cache` - `v0.0.8+4`](#t_cache---v0084)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `t_helpers` - `v0.0.36+1`
+ - `t_cache` - `v0.0.8+4`
+
+---
+
+#### `tbloc` - `v0.21.7`
+
+ - **FEAT**: minor improvements.
+
+#### `tmodel` - `v0.5.11`
+
+ - **FEAT**: add copyWithDefaults.
+
+#### `tstore` - `v0.8.20`
+
+ - **FEAT**: minor improvements.
+
+
 ## 2023-11-02
 
 ### Changes
