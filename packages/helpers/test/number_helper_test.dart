@@ -178,6 +178,10 @@ void main() {
 
     test('formats value with custom minimum fraction digits', () {
       expect(
+        formatCurrency(value: 1234.5678, minimumFractionDigits: 3),
+        equals('\$1,234.568'),
+      );
+      expect(
         formatCurrency(value: 1234.5, minimumFractionDigits: 2),
         equals('\$1,234.50'),
       );

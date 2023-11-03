@@ -194,7 +194,7 @@ String formatCurrency({
     } else {
       // If the value is not an integer, set the default fraction digits to 2
       minimumFractionDigits ??= 2;
-      maximumFractionDigits ??= 2;
+      maximumFractionDigits ??= minimumFractionDigits;
     }
   } else {
     // If the value is not a double, set the fraction digits to 0
