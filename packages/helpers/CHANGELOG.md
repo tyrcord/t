@@ -1,3 +1,7 @@
+## 0.0.36+2
+
+ - **FIX**: use right minimumFractionDigits when no max is specified.
+
 ## 0.0.36+1
 
  - Update a dependency to the latest release.
