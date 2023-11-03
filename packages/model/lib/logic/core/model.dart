@@ -37,4 +37,6 @@ abstract class TModel extends Equatable {
   T? assignValue<T>(T? value, {T? defaultValue, bool loose = true}) {
     return getValue(value, defaultValue: defaultValue, loose: loose);
   }
+
+  TModel copyWithDefaults() => clone();
 }
