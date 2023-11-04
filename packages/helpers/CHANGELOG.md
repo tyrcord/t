@@ -1,3 +1,7 @@
+## 0.0.37
+
+ - **FEAT**: add taskTimeout param to the retry function.
+
 ## 0.0.36+2
 
  - **FIX**: use right minimumFractionDigits when no max is specified.
