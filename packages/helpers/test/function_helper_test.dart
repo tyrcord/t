@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:t_helpers/helpers.dart';
 
@@ -114,6 +116,26 @@ void main() {
         );
       } finally {
         stopwatch.stop();
+      }
+    });
+
+    test('retry function should time out if task exceeds taskTimeout',
+        () async {
+      Future<String> longRunningTask() async {
+        await Future.delayed(const Duration(seconds: 5));
+
+        return 'Completed';
+      }
+
+      try {
+        final result = await retry<String>(
+          task: longRunningTask,
+          maxAttempts: 3,
+          taskTimeout: const Duration(seconds: 2),
+        );
+        fail('Expected to throw TimeoutException but got result: $result');
+      } on TimeoutException catch (e) {
+        expect(e.toString(), contains('Task timed out after 2 seconds.'));
       }
     });
   });
