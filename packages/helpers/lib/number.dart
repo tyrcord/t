@@ -97,8 +97,26 @@ String formatDecimal({
 }) {
   if (value == null) return '';
 
+  final formatter = getDecimalNumberFormat(
+    minimumFractionDigits: minimumFractionDigits,
+    maximumFractionDigits: maximumFractionDigits,
+    pattern: pattern,
+    locale: locale,
+    value: value,
+  );
+
+  return formatter.format(value);
+}
+
+NumberFormat getDecimalNumberFormat({
+  num? value,
+  String? locale = 'en_US',
+  String? pattern = "#,##0.##",
+  int? minimumFractionDigits,
+  int? maximumFractionDigits,
+}) {
   final (minFractionDigits, maxFractionDigits) = getDefaultFractionDigits(
-    value,
+    value ?? 0,
     minimumFractionDigits,
     maximumFractionDigits,
   );
@@ -107,7 +125,7 @@ String formatDecimal({
     ..maximumFractionDigits = maxFractionDigits
     ..minimumFractionDigits = minFractionDigits;
 
-  return formatter.format(value);
+  return formatter;
 }
 
 /// Formats a [value] as a percentage string using the given [locale] and
