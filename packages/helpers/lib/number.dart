@@ -108,6 +108,17 @@ String formatDecimal({
   return formatter.format(value);
 }
 
+/// Returns a [NumberFormat] for decimal numbers that uses the [locale],
+/// [pattern], and specific fraction digits defined by the user.
+///
+/// - [value]: The number to format, used to determine default fraction digits
+///   if they are not specified.
+/// - [locale]: The locale to use for formatting. Defaults to 'en_US'.
+/// - [pattern]: The pattern to use for formatting. Defaults to "#,##0.##".
+/// - [minimumFractionDigits]: The minimum number of digits after the decimal
+///   to display. If not specified, a default is calculated based on [value].
+/// - [maximumFractionDigits]: The maximum number of digits after the decimal
+///   to display. If not specified, a default is calculated based on [value].
 NumberFormat getDecimalNumberFormat({
   num? value,
   String? locale = 'en_US',
@@ -174,6 +185,18 @@ String formatCurrency({
   return formatter.format(value);
 }
 
+/// Returns a [NumberFormat] for currency that uses the [locale],
+/// [symbol], and specific fraction digits defined by the user.
+///
+/// - [value]: The number to format, used to determine default fraction digits
+///   if they are not specified.
+/// - [locale]: The locale to use for formatting. Defaults to 'en_US'.
+/// - [symbol]: The currency symbol to use in formatting. Defaults to 'USD',
+///   and is converted to uppercase.
+/// - [minimumFractionDigits]: The minimum number of digits after the decimal
+///   to display. If not specified, a default is calculated based on [value].
+/// - [maximumFractionDigits]: The maximum number of digits after the decimal
+///   to display. If not specified, a default is calculated based on [value].
 NumberFormat getCurrencyNumberFormat({
   num? value,
   String? locale = 'en_US',
