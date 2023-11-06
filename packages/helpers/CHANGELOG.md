@@ -1,3 +1,8 @@
+## 0.0.38
+
+ - **FEAT**: added getCurrencyNumberFormat.
+ - **FEAT**: added getDecimalNumberFormat.
+
 ## 0.0.37
 
  - **FEAT**: add taskTimeout param to the retry function.
