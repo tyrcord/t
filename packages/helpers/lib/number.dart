@@ -163,8 +163,26 @@ String formatCurrency({
 }) {
   if (value == null) return '';
 
+  final formatter = getCurrencyNumberFormat(
+    minimumFractionDigits: minimumFractionDigits,
+    maximumFractionDigits: maximumFractionDigits,
+    symbol: symbol,
+    locale: locale,
+    value: value,
+  );
+
+  return formatter.format(value);
+}
+
+NumberFormat getCurrencyNumberFormat({
+  num? value,
+  String? locale = 'en_US',
+  String symbol = 'USD',
+  int? minimumFractionDigits,
+  int? maximumFractionDigits,
+}) {
   final (minFractionDigits, maxFractionDigits) = getDefaultFractionDigits(
-    value,
+    value ?? 0,
     minimumFractionDigits,
     maximumFractionDigits,
   );
@@ -175,7 +193,7 @@ String formatCurrency({
     ..maximumFractionDigits = maxFractionDigits
     ..minimumFractionDigits = minFractionDigits;
 
-  return formatter.format(value);
+  return formatter;
 }
 
 /// Retrieves the default minimum and maximum fraction digits based on
