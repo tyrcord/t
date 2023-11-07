@@ -149,4 +149,42 @@ void main() {
           "no diacritics here");
     });
   });
+
+  group('getLastChar tests', () {
+    test('Should return the last character of a string', () {
+      expect(getLastChar('hello'), 'o');
+    });
+
+    test(
+        'Should return the last character of a string with trailing spaces '
+        'when trim is true', () {
+      expect(getLastChar('hello '), 'o');
+    });
+
+    test(
+        'Should return the last character of a string with leading spaces '
+        'when trim is true', () {
+      expect(getLastChar(' hello'), 'o');
+    });
+
+    test('Should return a space as the last character when trim is false', () {
+      expect(getLastChar('hello ', trim: false), ' ');
+    });
+
+    test('Should throw ArgumentError when string is empty', () {
+      expect(() => getLastChar(''), throwsArgumentError);
+    });
+
+    test(
+        'Should throw ArgumentError when string is only whitespace and '
+        'trim is true', () {
+      expect(() => getLastChar('  '), throwsArgumentError);
+    });
+
+    test(
+        'Should not throw ArgumentError when string is only whitespace and '
+        'trim is false', () {
+      expect(getLastChar('  ', trim: false), ' ');
+    });
+  });
 }

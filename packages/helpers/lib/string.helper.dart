@@ -118,3 +118,28 @@ String? toIos3166Code(String languageCode, {String? countryCode}) {
 String removeDiacriticsAndLowercase(String text) {
   return removeDiacritics(text.toLowerCase());
 }
+
+/// Returns the last character of a given string after trimming it if
+/// specified.
+///
+/// If [trim] is set to `true`, the string will be trimmed to remove
+/// whitespace from the ends before extracting the last character.
+///
+/// Throws an [ArgumentError] if the input string is empty (or becomes
+/// empty after trimming).
+///
+/// - Parameters:
+///   - [value]: The input string.
+///   - [trim]: A boolean flag that decides if the string should be
+///     trimmed. Defaults to `true`.
+///
+/// - Returns: The last character of the input string.
+String getLastChar(String value, {bool trim = true}) {
+  if (trim) value = value.trim();
+
+  if (value.isEmpty) throw ArgumentError('Value cannot be empty');
+
+  final character = value.substring(value.length - 1);
+
+  return character;
+}
