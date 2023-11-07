@@ -15,3 +15,4 @@ export './function.helper.dart';
 export './http.helper.dart';
 export './value.helper.dart';
 export './clipboard.helper.dart';
+export 'superscript.helper.dart';
