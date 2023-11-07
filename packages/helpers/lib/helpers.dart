@@ -16,3 +16,4 @@ export './http.helper.dart';
 export './value.helper.dart';
 export './clipboard.helper.dart';
 export 'superscript.helper.dart';
+export 'financial_instrument.helper.dart';
