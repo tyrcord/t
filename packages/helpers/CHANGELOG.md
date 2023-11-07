@@ -1,3 +1,9 @@
+## 0.0.39
+
+ - **FEAT**: add formatCurrencyPair helper.
+ - **FEAT**: added superscriptLastCharacter helper.
+ - **FEAT**: added getLastChar helper.
+
 ## 0.0.38
 
  - **FEAT**: added getCurrencyNumberFormat.

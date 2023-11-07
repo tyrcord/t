@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-11-07
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`t_helpers` - `v0.0.39`](#t_helpers---v0039)
+ - [`t_cache` - `v0.0.8+8`](#t_cache---v0088)
+ - [`tmodel` - `v0.5.11+4`](#tmodel---v05114)
+ - [`tbloc` - `v0.21.7+4`](#tbloc---v02174)
+ - [`tstore` - `v0.8.20+4`](#tstore---v08204)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `t_cache` - `v0.0.8+8`
+ - `tmodel` - `v0.5.11+4`
+ - `tbloc` - `v0.21.7+4`
+ - `tstore` - `v0.8.20+4`
+
+---
+
+#### `t_helpers` - `v0.0.39`
+
+ - **FEAT**: add formatCurrencyPair helper.
+ - **FEAT**: added superscriptLastCharacter helper.
+ - **FEAT**: added getLastChar helper.
+
+
 ## 2023-11-06
 
 ### Changes
