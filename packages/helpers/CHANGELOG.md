@@ -1,3 +1,7 @@
+## 0.0.39+1
+
+ - **REFACTOR**: date helpers.
+
 ## 0.0.39
 
  - **FEAT**: add formatCurrencyPair helper.
