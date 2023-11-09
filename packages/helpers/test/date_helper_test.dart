@@ -36,7 +36,7 @@ void main() {
       final dateTime = DateTime(2022, 1, 1, 15, 0, 0);
       final formattedDate = await formatDateTime(
         dateTime,
-        alwaysUse24HourFormat: true,
+        use24HourFormat: true,
       );
 
       expect(formattedDate, '1/1/2022 15:00:00');
@@ -72,10 +72,10 @@ void main() {
 
     test(
       'retrieveDateFormatter should return a DateFormat object with '
-      '24-hour format when alwaysUse24HourFormat is true',
+      '24-hour format when use24HourFormat is true',
       () async {
         final dateFormatter = await retrieveDateFormatter(
-          alwaysUse24HourFormat: true,
+          use24HourFormat: true,
         );
 
         expect(dateFormatter.pattern, equals('M/d/y HH:mm:ss'));
@@ -84,9 +84,9 @@ void main() {
 
     test(
         'retrieveDateFormatter should return a DateFormat object with '
-        '12-hour format when alwaysUse24HourFormat is false', () async {
+        '12-hour format when use24HourFormat is false', () async {
       final dateFormatter = await retrieveDateFormatter(
-        alwaysUse24HourFormat: false,
+        use24HourFormat: false,
       );
 
       expect(dateFormatter.pattern, equals('M/d/y h:mm:ss a'));
@@ -109,6 +109,77 @@ void main() {
 
       // Modify the expected formatted string based on the desired time format
       expect(formatted, '7/18/2023 10:30:00 AM');
+    });
+  });
+
+  group('formatTimestampInMilliseconds Tests', () {
+    // For example, Mon Aug 01 2022 18:40:00 UTC
+    const int fixedTimestamp = 1659379200000;
+
+    test('Should format fixed timestamp correctly with default parameters',
+        () async {
+      // Act
+      final result = await formatTimestampInMilliseconds(
+        timestamp: fixedTimestamp,
+      );
+
+      // Assert
+      expect(result, equals('8/1/2022 8:40:00 PM'));
+    });
+
+    test('Should handle 24-hour format based on boolean flag', () async {
+      // Act
+      final result = await formatTimestampInMilliseconds(
+        timestamp: fixedTimestamp,
+        use24HourFormat: true,
+      );
+
+      // Assert
+      expect(result, equals('8/1/2022 20:40:00'));
+    });
+
+    test('Should respect the language code parameter', () async {
+      // Act
+      final resultSpanish = await formatTimestampInMilliseconds(
+        timestamp: fixedTimestamp,
+        languageCode: 'es',
+      );
+
+      // Assert
+      expect(resultSpanish, equals('1/8/2022 20:40:00'));
+    });
+
+    test('Should correctly handle UTC setting', () async {
+      // Act
+      final resultUTC = await formatTimestampInMilliseconds(
+        timestamp: fixedTimestamp,
+        isUtc: true,
+      );
+
+      // Assert
+      expect(resultUTC, equals('8/1/2022 6:40:00 PM'));
+    });
+
+    test('Should return correct format when showTime is toggled', () async {
+      // Act
+      final resultWithoutTime = await formatTimestampInMilliseconds(
+        timestamp: fixedTimestamp,
+        showTime: false,
+      );
+
+      // Assert
+      expect(resultWithoutTime, equals('8/1/2022'));
+    });
+
+    test('Should gracefully handle invalid timestamp input', () async {
+      // Arrange
+      const invalidTimestamp = -1; // Invalid timestamp
+
+      // Act & Assert
+      expect(
+        () async => formatTimestampInMilliseconds(timestamp: invalidTimestamp),
+        throwsA(isA<ArgumentError>()),
+      );
     });
   });
 }
