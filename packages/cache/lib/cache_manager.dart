@@ -141,8 +141,10 @@ class TCacheManager<T> {
     _cache.removeWhere((key, item) => item.isExpired);
 
     if (kDebugMode) {
+      final removedItem = _cache.length - _currentSize;
+
       debugLog(
-        'Deleted ${_cache.length - _currentSize} expired items',
+        'Deleted ${removedItem.abs()} expired items',
         debugLabel: debugLabel,
         silent: silent,
       );
