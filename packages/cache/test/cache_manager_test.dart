@@ -82,5 +82,41 @@ void main() {
       expect(cacheManager.get('key3'), equals('value3'));
       expect(cacheManager.get('key4'), equals('value4'));
     });
+
+    test('update cleaning interval', () async {
+      // Setting up a cache manager with a specific cleaning interval
+      cacheManager = TCacheManager<String>(
+          cleaningInterval: const Duration(seconds: 2), maxSize: 3)
+        ..put('key1', 'value1', ttl: const Duration(seconds: 1))
+        ..put('key2', 'value2', ttl: const Duration(seconds: 1));
+
+      // Wait for the original cleaning interval to pass
+      await Future.delayed(const Duration(seconds: 3));
+
+      // Items should be evicted by now due to the original cleaning interval
+      expect(cacheManager.get('key1'), isNull);
+      expect(cacheManager.get('key2'), isNull);
+
+      // Updating the cleaning interval to a longer duration
+      cacheManager
+        ..updateCleaningInterval(const Duration(seconds: 5))
+        ..put('key3', 'value3', ttl: const Duration(seconds: 4))
+        ..put('key4', 'value4', ttl: const Duration(seconds: 4));
+
+      // Wait for less than the updated cleaning interval
+      await Future.delayed(const Duration(seconds: 3));
+
+      // The items should still be present, as the cleaning interval
+      // is longer now
+      expect(cacheManager.get('key3'), equals('value3'));
+      expect(cacheManager.get('key4'), equals('value4'));
+
+      // Wait for the updated cleaning interval to pass
+      await Future.delayed(const Duration(seconds: 3));
+
+      // Items should be evicted by now due to the updated cleaning interval
+      expect(cacheManager.get('key3'), isNull);
+      expect(cacheManager.get('key4'), isNull);
+    });
   });
 }

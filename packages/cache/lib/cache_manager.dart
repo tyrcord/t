@@ -17,7 +17,7 @@ class TCacheManager<T> {
   final Map<String, TCacheItem<T>> _cache = {};
 
   /// The interval at which the cache should be cleaned.
-  final Duration _cleaningInterval;
+  Duration _cleaningInterval;
 
   /// Timer for periodic cache cleaning.
   Timer? _cleaningTimer;
@@ -154,10 +154,32 @@ class TCacheManager<T> {
     _stopCleaningIfNeeded();
   }
 
+  /// Updates the cleaning interval for the cache.
+  ///
+  /// - [newInterval]: The new interval to set for cleaning the cache.
+  void updateCleaningInterval(Duration newInterval) {
+    _stopCleaningIfNeeded();
+
+    debugLog(
+      'Updating cleaning interval to: ${newInterval.inSeconds} seconds',
+      debugLabel: debugLabel,
+      silent: silent,
+    );
+
+    _cleaningInterval = newInterval;
+
+    _startCleaningIfNeeded();
+  }
+
   /// Starts the periodic cleaning of the cache.
   void _startCleaningIfNeeded() {
     if (_currentSize == 1) {
-      debugLog('Starting cleaning', debugLabel: debugLabel, silent: silent);
+      debugLog(
+        'Starting cleaning with interval',
+        value: '${_cleaningInterval.inSeconds} seconds',
+        debugLabel: debugLabel,
+        silent: silent,
+      );
       _cleaningTimer?.cancel();
 
       _cleaningTimer = Timer.periodic(_cleaningInterval, (timer) {
