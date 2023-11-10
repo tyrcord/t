@@ -1,3 +1,8 @@
+## 0.0.9
+
+ - **FIX**: log.
+ - **FEAT**: add updateCleaningInterval.
+
 ## 0.0.8+9
 
  - Update a dependency to the latest release.
