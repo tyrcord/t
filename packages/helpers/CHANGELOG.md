@@ -1,3 +1,7 @@
+## 0.0.40
+
+ - **FEAT**: add revertSuperscripts helper.
+
 ## 0.0.39+1
 
  - **REFACTOR**: date helpers.
