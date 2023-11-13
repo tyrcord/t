@@ -38,6 +38,44 @@ const kSuperscripts = {
   'z': 'ᶻ',
 };
 
+const kSuperscriptsReverse = {
+  '⁰': '0',
+  '¹': '1',
+  '²': '2',
+  '³': '3',
+  '⁴': '4',
+  '⁵': '5',
+  '⁶': '6',
+  '⁷': '7',
+  '⁸': '8',
+  '⁹': '9',
+  'ᵃ': 'a',
+  'ᵇ': 'b',
+  'ᶜ': 'c',
+  'ᵈ': 'd',
+  'ᵉ': 'e',
+  'ᶠ': 'f',
+  'ᵍ': 'g',
+  'ʰ': 'h',
+  'ⁱ': 'i',
+  'ʲ': 'j',
+  'ᵏ': 'k',
+  'ˡ': 'l',
+  'ᵐ': 'm',
+  'ⁿ': 'n',
+  'ᵒ': 'o',
+  'ᵖ': 'p',
+  'ʳ': 'r',
+  'ˢ': 's',
+  'ᵗ': 't',
+  'ᵘ': 'u',
+  'ᵛ': 'v',
+  'ʷ': 'w',
+  'ˣ': 'x',
+  'ʸ': 'y',
+  'ᶻ': 'z',
+};
+
 /// Checks if the given [character] is a superscript character.
 ///
 /// Utilizes a predefined map of superscript characters, `kSuperscripts`,
@@ -84,4 +122,28 @@ String superscriptLastCharacter(String value) {
   }
 
   return value.substring(0, value.length - 1) + superscript;
+}
+
+/// Reverts superscript characters in the given [value] to their normal
+/// equivalents.
+///
+/// - Parameters:
+///   - [value]: The string to process.
+///
+/// - Returns: A new string with all superscript characters reverted to normal.
+///
+/// - Example:
+///   ```
+///   final result = revertSuperscripts('x²y³');
+///   print(result); // Outputs: x2y3
+///   ```
+String revertSuperscripts(String value) {
+  final StringBuffer buffer = StringBuffer();
+
+  for (int i = 0; i < value.length; i++) {
+    final String char = value[i];
+    buffer.write(kSuperscriptsReverse[char] ?? char);
+  }
+
+  return buffer.toString();
 }

@@ -41,4 +41,30 @@ void main() {
       );
     });
   });
+
+  group('revertSuperscripts', () {
+    test('should revert superscript numbers', () {
+      expect(revertSuperscripts('x²y³z⁴'), equals('x2y3z4'));
+    });
+
+    test('should revert superscript letters', () {
+      expect(revertSuperscripts('aᵃbᵇcᶜ'), equals('aabbcc'));
+    });
+
+    test('should return the same string if no superscripts are present', () {
+      expect(revertSuperscripts('Hello World'), equals('Hello World'));
+    });
+
+    test('should handle empty string', () {
+      expect(revertSuperscripts(''), equals(''));
+    });
+
+    test('should handle string with only superscripts', () {
+      expect(revertSuperscripts('⁰¹²³⁴⁵⁶⁷⁸⁹'), equals('0123456789'));
+    });
+
+    test('should handle string with no superscript equivalent', () {
+      expect(revertSuperscripts('∆ΣΠ'), equals('∆ΣΠ'));
+    });
+  });
 }
