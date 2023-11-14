@@ -56,8 +56,8 @@ class TCacheManager<T> {
   ///
   /// - [key]: The key to store the item against.
   /// - [value]: The item to be cached.
-  /// - [ttl]: The time-to-live duration for the item. Defaults to 10 minutes.
-  void put(String key, T value, {Duration ttl = const Duration(minutes: 10)}) {
+  /// - [ttl]: The time-to-live duration for the item. Defaults to 1 minutes.
+  void put(String key, T value, {Duration ttl = const Duration(minutes: 1)}) {
     debugLog(
       'Putting item with key: $key',
       debugLabel: debugLabel,
@@ -158,17 +158,25 @@ class TCacheManager<T> {
   ///
   /// - [newInterval]: The new interval to set for cleaning the cache.
   void updateCleaningInterval(Duration newInterval) {
-    _stopCleaningIfNeeded();
-
     debugLog(
       'Updating cleaning interval to: ${newInterval.inSeconds} seconds',
       debugLabel: debugLabel,
       silent: silent,
     );
 
+    clear();
     _cleaningInterval = newInterval;
-
     _startCleaningIfNeeded();
+  }
+
+  /// Clears the cache.
+  /// Cancels any ongoing cleaning operations.
+  /// Resets the current size to 0.
+  /// Resets the cache to an empty state.
+  void clear() {
+    _stopCleaningIfNeeded();
+    _currentSize = 0;
+    _cache.clear();
   }
 
   /// Starts the periodic cleaning of the cache.

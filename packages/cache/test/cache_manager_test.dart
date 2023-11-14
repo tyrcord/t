@@ -118,5 +118,58 @@ void main() {
       expect(cacheManager.get('key3'), isNull);
       expect(cacheManager.get('key4'), isNull);
     });
+
+    test('reset cache on cleaning interval update', () async {
+      // Initialize a cache manager with a short cleaning interval and a
+      //small max size
+      final cacheManager = TCacheManager<String>(
+        cleaningInterval: const Duration(seconds: 2),
+        maxSize: 3,
+      )
+        ..put('key1', 'value1')
+        ..put('key2', 'value2');
+
+      // Verify initial cache items are present
+      expect(cacheManager.get('key1'), equals('value1'));
+      expect(cacheManager.get('key2'), equals('value2'));
+
+      // Update the cleaning interval
+      cacheManager.updateCleaningInterval(const Duration(seconds: 5));
+
+      // Check if the cache has been reset by verifying the absence of
+      // previous items
+      expect(cacheManager.get('key1'), isNull);
+      expect(cacheManager.get('key2'), isNull);
+
+      // Optionally, you can add new items to the cache and verify they are
+      // stored correctly
+      cacheManager
+        ..put('key3', 'value3')
+        ..put('key4', 'value4');
+
+      expect(cacheManager.get('key3'), equals('value3'));
+      expect(cacheManager.get('key4'), equals('value4'));
+    });
+
+    test('clear method removes all items and stops cleaning', () async {
+      // Initialize a cache manager with a short cleaning interval
+      final cacheManager = TCacheManager<String>(
+        cleaningInterval: const Duration(seconds: 2),
+        maxSize: 3,
+      )
+        ..put('key1', 'value1')
+        ..put('key2', 'value2');
+
+      // Confirm that items are in the cache
+      expect(cacheManager.get('key1'), equals('value1'));
+      expect(cacheManager.get('key2'), equals('value2'));
+
+      // Clear the cache
+      cacheManager.clear();
+
+      // Check that the cache is empty
+      expect(cacheManager.get('key1'), isNull);
+      expect(cacheManager.get('key2'), isNull);
+    });
   });
 }
