@@ -5,7 +5,7 @@ void main() {
   group('formatCurrencyPair', () {
     test('should concatenate without delimiter', () {
       expect(
-        formatCurrencyPair(baseCurrency: 'USD', quoteCurrency: 'EUR'),
+        formatCurrencyPair(base: 'USD', counter: 'EUR'),
         equals('USDEUR'),
       );
     });
@@ -13,8 +13,8 @@ void main() {
     test('should concatenate with delimiter', () {
       expect(
         formatCurrencyPair(
-          baseCurrency: 'USD',
-          quoteCurrency: 'EUR',
+          base: 'USD',
+          counter: 'EUR',
           delimiter: '/',
         ),
         equals('USD/EUR'),
@@ -24,8 +24,8 @@ void main() {
     test('should handle empty delimiter as no delimiter', () {
       expect(
         formatCurrencyPair(
-          baseCurrency: 'USD',
-          quoteCurrency: 'EUR',
+          base: 'USD',
+          counter: 'EUR',
           delimiter: '',
         ),
         equals('USDEUR'),
@@ -35,8 +35,8 @@ void main() {
     test('should handle null delimiter as no delimiter', () {
       expect(
         formatCurrencyPair(
-          baseCurrency: 'USD',
-          quoteCurrency: 'EUR',
+          base: 'USD',
+          counter: 'EUR',
           delimiter: null,
         ),
         equals('USDEUR'),
@@ -45,7 +45,7 @@ void main() {
 
     test('should work with lower case currency codes', () {
       expect(
-        formatCurrencyPair(baseCurrency: 'usd', quoteCurrency: 'eur'),
+        formatCurrencyPair(base: 'usd', counter: 'eur'),
         equals('USDEUR'),
       );
     });
