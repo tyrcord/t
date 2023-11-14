@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`t_cache` - `v0.0.10`](#t_cache---v0010)
+
+---
+
+#### `t_cache` - `v0.0.10`
+
+ - **FEAT**: added clear method.
+
+
+## 2023-11-14
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`t_helpers` - `v0.0.40+1`](#t_helpers---v00401)
  - [`t_cache` - `v0.0.9+2`](#t_cache---v0092)
  - [`tmodel` - `v0.5.11+7`](#tmodel---v05117)
