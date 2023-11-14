@@ -1,3 +1,7 @@
+## 0.0.40+1
+
+ - **REFACTOR**: formatCurrencyPair helper.
+
 ## 0.0.40
 
  - **FEAT**: add revertSuperscripts helper.

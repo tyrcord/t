@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-11-14
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`t_helpers` - `v0.0.40+1`](#t_helpers---v00401)
+ - [`t_cache` - `v0.0.9+2`](#t_cache---v0092)
+ - [`tmodel` - `v0.5.11+7`](#tmodel---v05117)
+ - [`tbloc` - `v0.21.7+7`](#tbloc---v02177)
+ - [`tstore` - `v0.8.20+7`](#tstore---v08207)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `t_cache` - `v0.0.9+2`
+ - `tmodel` - `v0.5.11+7`
+ - `tbloc` - `v0.21.7+7`
+ - `tstore` - `v0.8.20+7`
+
+---
+
+#### `t_helpers` - `v0.0.40+1`
+
+ - **REFACTOR**: formatCurrencyPair helper.
+
+
 ## 2023-11-13
 
 ### Changes
