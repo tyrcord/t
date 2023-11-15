@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-11-15
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`t_helpers` - `v0.0.41`](#t_helpers---v0041)
+ - [`t_cache` - `v0.0.10+1`](#t_cache---v00101)
+ - [`tmodel` - `v0.5.11+8`](#tmodel---v05118)
+ - [`tbloc` - `v0.21.7+8`](#tbloc---v02178)
+ - [`tstore` - `v0.8.20+8`](#tstore---v08208)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `t_cache` - `v0.0.10+1`
+ - `tmodel` - `v0.5.11+8`
+ - `tbloc` - `v0.21.7+8`
+ - `tstore` - `v0.8.20+8`
+
+---
+
+#### `t_helpers` - `v0.0.41`
+
+ - **FEAT**: added optional maxFractionDigits param to formatNumberForClipboard.
+
+
 ## 2023-11-14
 
 ### Changes

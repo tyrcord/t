@@ -1,3 +1,7 @@
+## 0.0.41
+
+ - **FEAT**: added optional maxFractionDigits param to formatNumberForClipboard.
+
 ## 0.0.40+1
 
  - **REFACTOR**: formatCurrencyPair helper.
