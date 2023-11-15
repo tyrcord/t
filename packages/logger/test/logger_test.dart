@@ -3,12 +3,12 @@ import 'package:tlogger/logger.dart';
 
 void main() {
   group('Logger Tests', () {
-    late Logger logger;
+    late TLogger logger;
     late StringBuffer logOutput;
 
     setUp(() {
       logOutput = StringBuffer();
-      logger = Logger(
+      logger = TLogger(
         'TestLogger',
         outputFunction: logOutput.writeln, // Capture output in the StringBuffer
       );
@@ -46,7 +46,7 @@ void main() {
     });
 
     test('Custom label and color are applied', () {
-      Logger(
+      TLogger(
         'Custom',
         labelColor: "\x1B[34m", // Blue
         outputFunction: logOutput.writeln,

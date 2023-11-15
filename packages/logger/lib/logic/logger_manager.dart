@@ -2,14 +2,14 @@ import 'package:tlogger/logger.dart';
 
 class TLoggerManager {
   static final TLoggerManager _instance = TLoggerManager._internal();
-  final Map<String, Logger> _loggers = {};
+  final Map<String, TLogger> _loggers = {};
 
   factory TLoggerManager() => _instance;
 
   TLoggerManager._internal();
 
-  Logger getLogger(String label, {LogLevel level = LogLevel.debug}) {
-    return _loggers.putIfAbsent(label, () => Logger(label, level: level));
+  TLogger getLogger(String label, {LogLevel level = LogLevel.debug}) {
+    return _loggers.putIfAbsent(label, () => TLogger(label, level: level));
   }
 
   void setLogLevel(String label, LogLevel level) {

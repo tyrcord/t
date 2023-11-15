@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:tlogger/logger.dart';
 
-class Logger {
+class TLogger {
   late final Function(String) outputFunction;
   final String label;
 
@@ -9,7 +9,7 @@ class Logger {
   bool isEnabled; // New property to control the logger state
   LogLevel level;
 
-  Logger(
+  TLogger(
     this.label, {
     this.level = LogLevel.debug,
     this.isEnabled = true,
