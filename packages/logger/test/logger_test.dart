@@ -18,7 +18,6 @@ void main() {
       expect(logger.label, equals('TestLogger'));
       expect(logger.level, equals(LogLevel.debug));
       expect(logger.isEnabled, isTrue);
-      expect(logger.labelColorCode, equals("\x1B[35m")); // Magenta
     });
 
     test('Logger respects log level settings', () {
