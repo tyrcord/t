@@ -1,3 +1,7 @@
+## 0.5.11+9
+
+ - **FIX**: typo.
+
 ## 0.5.11+8
 
  - Update a dependency to the latest release.

@@ -1,6 +1,6 @@
 name: t_helpers
 description: A collection of helper functions to simplify common programming tasks in Dart.
-version: 0.0.41
+version: 0.0.41+1
 repository: https://github.com/tyrcord/t/tree/main/packages/helpers
 
 environment:
@@ -19,7 +19,7 @@ dependencies:
 
   # T
   tsub: ^1.7.0
-  tmodel: ^0.5.11+8
+  tmodel: ^0.5.11+9
 
 dev_dependencies:
   flutter_test:
