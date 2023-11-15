@@ -27,6 +27,21 @@ void main() {
       final result = formatNumberForClipboard(-15.457);
       expect(result, '-15.46'); // it should handle and round negative values
     });
+
+    test('Correctly formats non-integer with 1 decimal place', () {
+      expect(formatNumberForClipboard(123.456, maxFractionDigits: 1),
+          equals('123.5'));
+    });
+
+    test('Correctly formats non-integer with 3 decimal places', () {
+      expect(formatNumberForClipboard(123.4567, maxFractionDigits: 3),
+          equals('123.457'));
+    });
+
+    test('Correctly formats integer regardless of maxFractionDigits', () {
+      expect(
+          formatNumberForClipboard(123, maxFractionDigits: 3), equals('123'));
+    });
   });
 
   group('formatPercentageForClipboard', () {

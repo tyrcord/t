@@ -1,17 +1,21 @@
 import 'package:t_helpers/helpers.dart';
 
-/// This function is responsible for formatting a number value into a string
-/// that's suitable for clipboard copy operations. It handles scenarios where
-/// the value is either an integer or a non-integer and ensures appropriate
-/// decimal placement in the string representation.
+/// Formats a number for clipboard copying. Handles integers and floats,
+/// returning a string with appropriate decimal precision.
 ///
-/// [value] (num?) is the number intended for formatting. If the value is
-/// null, a default string '0' is returned to represent a zero value.
+/// [value] is the number to format. Accepts a nullable `num`. If null,
+/// returns '0' to signify zero. This ensures output validity.
 ///
-/// Returns a [String] that represents the formatted value of the input number.
-/// If the number is an integer, no decimals are included. Otherwise, the
-/// number is formatted to have two decimal places.
-String formatNumberForClipboard(num? value) {
+/// Outputs a [String]. Integers are formatted without decimals. Non-integers
+/// are formatted with a fixed decimal count, defaulting to two places. This
+/// can be adjusted using [maxFractionDigits].
+///
+/// [maxFractionDigits] is an optional parameter for non-integer numbers. It
+/// sets the maximum decimal places, defaulting to 2. It's ignored for integers.
+///
+/// Returns: String of the formatted number. Integer numbers have no decimals.
+/// Non-integers include up to [maxFractionDigits] decimals for consistency.
+String formatNumberForClipboard(num? value, {int maxFractionDigits = 2}) {
   // Check if the provided value is null. If it is, default to '0'.
   if (value == null) return '0';
 
@@ -20,7 +24,7 @@ String formatNumberForClipboard(num? value) {
   // places to standardize the look of the output.
   return isNumberInteger(value)
       ? value.toStringAsFixed(0)
-      : value.toStringAsFixed(2);
+      : value.toStringAsFixed(maxFractionDigits);
 }
 
 /// Formats a numeric value into a percentage string suitable for clipboard
