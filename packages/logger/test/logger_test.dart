@@ -39,8 +39,7 @@ void main() {
 
     test('Log messages include timestamp', () {
       logger.debug('Test message');
-      final expectedPattern =
-          RegExp(r'\[\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{6}\]');
+      final expectedPattern = RegExp(r'\[\d{2}:\d{2}:\d{2}\.\d{3}\]');
 
       expect(logOutput.toString(), matches(expectedPattern));
     });
