@@ -1,12 +1,16 @@
+import 'dart:developer' show log;
 import 'package:flutter/foundation.dart';
 import 'package:tlogger/logger.dart';
+import 'package:intl/intl.dart';
 
 class TLogger {
   late final Function(String) outputFunction;
+  final formatter = DateFormat('HH:mm:ss.SSS');
   final String label;
 
-  String labelColorCode; // Color code for the label
-  bool isEnabled; // New property to control the logger state
+  String labelTimeColorCode;
+  String labelColorCode;
+  bool isEnabled;
   LogLevel level;
 
   TLogger(
@@ -14,9 +18,11 @@ class TLogger {
     this.level = LogLevel.debug,
     this.isEnabled = true,
     String labelColor = "\x1B[35m", // Magenta
+    String labelTimeColor = "\x1B[34m", // Blue
     Function(String)? outputFunction,
-  }) : labelColorCode = labelColor {
-    this.outputFunction = outputFunction ?? debugPrint;
+  })  : labelColorCode = labelColor,
+        labelTimeColorCode = labelTimeColor {
+    this.outputFunction = outputFunction ?? log;
   }
 
   void debug(String message) => _printLog(message, LogLevel.debug);
@@ -28,13 +34,13 @@ class TLogger {
     String colorCode;
     switch (messageLevel) {
       case LogLevel.debug:
-        colorCode = "\x1B[32m"; // Green
+        colorCode = "\x1B[36m"; // Cyan
       case LogLevel.warning:
         colorCode = "\x1B[33m"; // Yellow
       case LogLevel.error:
         colorCode = "\x1B[31m"; // Red
       case LogLevel.info:
-        colorCode = "\x1B[34m"; // Blue
+        colorCode = "\x1B[32m"; // Green
       default:
         colorCode = "\x1B[0m"; // Default
     }
@@ -45,13 +51,15 @@ class TLogger {
   void _printLog(String message, LogLevel messageLevel) {
     if (!isEnabled || !kDebugMode || messageLevel.index < level.index) return;
 
-    final timestamp = DateTime.now().toIso8601String();
+    final formattedTime = formatter.format(DateTime.now());
+    final coloredTimestamp = "$labelTimeColorCode[$formattedTime]\x1B[0m";
     final coloredMessage = _colorize(message, messageLevel);
-    final coloredLabel = "$labelColorCode$label\x1B[0m";
+    final coloredLabel = "$labelColorCode[$label]\x1B[0m";
     final levelString = messageLevel.name.toUpperCase();
-    final coloredLevel = _colorize(levelString, messageLevel);
+    final coloredLevel = _colorize('[$levelString]', messageLevel);
 
     outputFunction(
-        '[$timestamp][$coloredLabel][$coloredLevel] $coloredMessage');
+      '$coloredTimestamp $coloredLabel $coloredLevel $coloredMessage',
+    );
   }
 }

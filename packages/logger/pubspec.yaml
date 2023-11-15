@@ -12,6 +12,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # Public
+  intl: ^0.18.0
+
   # T
   t_helpers: ^0.0.41+1
 
