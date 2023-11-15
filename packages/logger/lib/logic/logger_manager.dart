@@ -15,25 +15,19 @@ class TLoggerManager {
   void setLogLevel(String label, LogLevel level) {
     final logger = _loggers[label];
 
-    if (logger != null) {
-      logger.level = level;
-    }
+    if (logger != null) logger.level = level;
   }
 
   void enableLogger(String label) {
     final logger = _loggers[label];
 
-    if (logger != null) {
-      logger.isEnabled = true;
-    }
+    if (logger != null) logger.isEnabled = true;
   }
 
   void disableLogger(String label) {
     final logger = _loggers[label];
 
-    if (logger != null) {
-      logger.isEnabled = false;
-    }
+    if (logger != null) logger.isEnabled = false;
   }
 
   void enableLoggers(List<String> labels) {
@@ -54,7 +48,6 @@ class TLoggerManager {
 
   void clearLoggers() {
     disableAllLoggers();
-
     _loggers.clear();
   }
 }

@@ -1,15 +1,18 @@
 import 'dart:developer' show log;
+
 import 'package:flutter/foundation.dart';
+import 'package:tenhance/tenhance.dart';
 import 'package:tlogger/logger.dart';
 import 'package:intl/intl.dart';
 
 class TLogger {
+  static final _formatter = DateFormat('HH:mm:ss.SSS');
+
   late final Function(String) outputFunction;
-  final formatter = DateFormat('HH:mm:ss.SSS');
+  final String labelTimeColorCode;
+  final String labelColorCode;
   final String label;
 
-  String labelTimeColorCode;
-  String labelColorCode;
   bool isEnabled;
   LogLevel level;
 
@@ -49,9 +52,9 @@ class TLogger {
   }
 
   void _printLog(String message, LogLevel messageLevel) {
-    if (!isEnabled || !kDebugMode || messageLevel.index < level.index) return;
+    if (!isEnabled || !kDebugMode || messageLevel < level) return;
 
-    final formattedTime = formatter.format(DateTime.now());
+    final formattedTime = _formatter.format(DateTime.now());
     final coloredTimestamp = "$labelTimeColorCode[$formattedTime]\x1B[0m";
     final coloredMessage = _colorize(message, messageLevel);
     final coloredLabel = "$labelColorCode[$label]\x1B[0m";
