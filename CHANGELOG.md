@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`tlogger` - `v0.0.2`](#tlogger---v002)
+
+---
+
+#### `tlogger` - `v0.0.2`
+
+ - **FEAT**: minor improvements.
+
+
+## 2023-11-15
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`tlogger` - `v0.0.1`](#tlogger---v001)
  - [`tmodel` - `v0.5.11+9`](#tmodel---v05119)
  - [`t_helpers` - `v0.0.41+1`](#t_helpers---v00411)
