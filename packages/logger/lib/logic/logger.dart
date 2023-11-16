@@ -42,8 +42,13 @@ class TLogger {
   void info(String message) => _printLog(message, LogLevel.info);
 
   /// Applies color based on log level.
-  String _colorize(String message, LogLevel messageLevel) {
-    final colorCode = _getColorCode(messageLevel);
+  String _colorize(
+    String message, {
+    LogLevel? messageLevel,
+    String? colorCode,
+  }) {
+    assert(messageLevel != null || colorCode != null);
+    colorCode ??= _getColorCode(messageLevel!);
 
     return "$colorCode$message\x1B[0m"; // Reset to default at the end
   }
@@ -69,11 +74,19 @@ class TLogger {
     if (!isEnabled || !kDebugMode || messageLevel < level) return;
 
     final formattedTime = _timeFormatter.format(DateTime.now());
-    final coloredTimestamp = "$_labelTimeColorCode[$formattedTime]\x1B[0m";
-    final coloredMessage = _colorize(message, messageLevel);
-    final coloredLabel = "$_labelColorCode[$label]\x1B[0m";
+    final coloredMessage = _colorize(message, messageLevel: messageLevel);
+    final coloredLabel = _colorize('[$label]', colorCode: _labelColorCode);
     final levelString = messageLevel.name.toUpperCase();
-    final coloredLevel = _colorize('[$levelString]', messageLevel);
+
+    final coloredTimestamp = _colorize(
+      '[$formattedTime]',
+      colorCode: _labelTimeColorCode,
+    );
+
+    final coloredLevel = _colorize(
+      '[$levelString]',
+      messageLevel: messageLevel,
+    );
 
     _outputFunction(
       '$coloredTimestamp $coloredLabel $coloredLevel $coloredMessage',
