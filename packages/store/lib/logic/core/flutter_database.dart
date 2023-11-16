@@ -35,6 +35,7 @@ class TFlutterDataBase extends TDataBaseCore {
     return Platform.environment.containsKey('FLUTTER_TEST');
   }
 
+  @override
   Future<bool> storeExists(String storeName) async {
     return Hive.boxExists(storeName);
   }
