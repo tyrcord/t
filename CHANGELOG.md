@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-11-16
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`tlogger` - `v0.0.3`](#tlogger---v003)
+
+---
+
+#### `tlogger` - `v0.0.3`
+
+ - **FEAT**: minor improvements.
+ - **FEAT**: minor improvements.
+ - **FEAT**: minor improvements.
+
+
 ## 2023-11-15
 
 ### Changes
