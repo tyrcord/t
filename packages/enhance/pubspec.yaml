@@ -1,6 +1,6 @@
 name: tenhance
 description: A dart library provide a bunch of extenstion.
-version: 0.0.3
+version: 0.0.4
 repository: https://github.com/tyrcord/t/tree/main/packages/enhance
 issue_tracker: https://github.com/tyrcord/t/tree/main/packages/enhance/issues
 

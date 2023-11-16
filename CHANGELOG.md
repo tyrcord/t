@@ -15,6 +15,67 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`subx` - `v1.11.0`](#subx---v1110)
+ - [`t_cache` - `v0.0.11`](#t_cache---v0011)
+ - [`t_helpers` - `v0.0.42`](#t_helpers---v0042)
+ - [`tbloc` - `v0.21.8`](#tbloc---v0218)
+ - [`tenhance` - `v0.0.4`](#tenhance---v004)
+ - [`tlogger` - `v0.0.4`](#tlogger---v004)
+ - [`tmodel` - `v0.5.12`](#tmodel---v0512)
+ - [`tstore` - `v0.8.21`](#tstore---v0821)
+ - [`tsub` - `v1.8.0`](#tsub---v180)
+
+---
+
+#### `subx` - `v1.11.0`
+
+ - **FEAT**: update dependencies.
+
+#### `t_cache` - `v0.0.11`
+
+ - **FEAT**: update dependencies.
+
+#### `t_helpers` - `v0.0.42`
+
+ - **FEAT**: update dependencies.
+
+#### `tbloc` - `v0.21.8`
+
+ - **FEAT**: update dependencies.
+
+#### `tenhance` - `v0.0.4`
+
+ - **FEAT**: update dependencies.
+
+#### `tlogger` - `v0.0.4`
+
+ - **FEAT**: update dependencies.
+
+#### `tmodel` - `v0.5.12`
+
+ - **FEAT**: update dependencies.
+
+#### `tstore` - `v0.8.21`
+
+ - **FEAT**: update dependencies.
+
+#### `tsub` - `v1.8.0`
+
+ - **FEAT**: update dependencies.
+
+
+## 2023-11-16
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`tlogger` - `v0.0.3`](#tlogger---v003)
 
 ---
