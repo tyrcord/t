@@ -41,10 +41,15 @@ String formatNumberForClipboard(num? value, {int maxFractionDigits = 2}) {
 /// print(percentage); // Output: '45%'
 /// ```
 ///
-/// - Parameter [value]: The numeric value to be formatted. Can be `null`.
+/// [value] is the number to format. Accepts a nullable `num`. If null,
+/// returns '0' to signify zero. This ensures output validity.
+///
+/// [maxFractionDigits] is an optional parameter for non-integer numbers. It
+/// sets the maximum decimal places, defaulting to 2. It's ignored for integers.
+///
 /// - Returns: A [String] representing the formatted percentage. If the value is
 /// null, a default string '0%' is returned to represent a zero value.
-String formatPercentageForClipboard(num? value) {
+String formatPercentageForClipboard(num? value, {int maxFractionDigits = 2}) {
   final rate = (value ?? 0) * 100;
   final formattedRate = formatNumberForClipboard(rate);
 
