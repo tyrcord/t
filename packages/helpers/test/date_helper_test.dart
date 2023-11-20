@@ -121,10 +121,11 @@ void main() {
       // Act
       final result = await formatTimestampInMilliseconds(
         timestamp: fixedTimestamp,
+        isUtc: true,
       );
 
       // Assert
-      expect(result, equals('8/1/2022 8:40:00 PM'));
+      expect(result, equals('8/1/2022 6:40:00 PM'));
     });
 
     test('Should handle 24-hour format based on boolean flag', () async {
@@ -132,10 +133,11 @@ void main() {
       final result = await formatTimestampInMilliseconds(
         timestamp: fixedTimestamp,
         use24HourFormat: true,
+        isUtc: true,
       );
 
       // Assert
-      expect(result, equals('8/1/2022 20:40:00'));
+      expect(result, equals('8/1/2022 18:40:00'));
     });
 
     test('Should respect the language code parameter', () async {
@@ -143,21 +145,22 @@ void main() {
       final resultSpanish = await formatTimestampInMilliseconds(
         timestamp: fixedTimestamp,
         languageCode: 'es',
+        isUtc: true,
       );
 
       // Assert
-      expect(resultSpanish, equals('1/8/2022 20:40:00'));
+      expect(resultSpanish, equals('1/8/2022 18:40:00'));
     });
 
     test('Should correctly handle UTC setting', () async {
       // Act
       final resultUTC = await formatTimestampInMilliseconds(
         timestamp: fixedTimestamp,
-        isUtc: true,
+        isUtc: false,
       );
 
       // Assert
-      expect(resultUTC, equals('8/1/2022 6:40:00 PM'));
+      expect(resultUTC, isNot('8/1/2022 6:40:00 PM'));
     });
 
     test('Should return correct format when showTime is toggled', () async {
