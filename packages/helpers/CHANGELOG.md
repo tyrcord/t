@@ -1,3 +1,9 @@
+## 0.0.44
+
+ - **FIX**: tests.
+ - **FIX**: tests.
+ - **FEAT**: add maxFractionDigits param to formatPercentageForClipboard.
+
 ## 0.0.43
 
  - **FEAT**: add maxFractionDigits param to formatPercentageForClipboard.
