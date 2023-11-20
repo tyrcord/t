@@ -1,3 +1,7 @@
+## 0.0.43
+
+ - **FEAT**: add maxFractionDigits param to formatPercentageForClipboard.
+
 ## 0.0.42
 
  - **FEAT**: update dependencies.
