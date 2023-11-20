@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:fastyle_core/fastyle_core.dart';
 import 'package:tbloc/tbloc.dart';
+import 'package:go_router/go_router.dart';
 
 // Project imports:
 import 'counter.bloc.dart';
@@ -18,7 +19,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FastApp(
-      homeBuilder: (_) => const MyHomePage(),
+      routesForMediaType: (mediaType) {
+        return [
+          GoRoute(
+            builder: (context, state) => const MyHomePage(),
+            path: '/',
+          ),
+        ];
+      },
     );
   }
 }
