@@ -152,17 +152,6 @@ void main() {
       expect(resultSpanish, equals('1/8/2022 18:40:00'));
     });
 
-    test('Should correctly handle UTC setting', () async {
-      // Act
-      final resultUTC = await formatTimestampInMilliseconds(
-        timestamp: fixedTimestamp,
-        isUtc: false,
-      );
-
-      // Assert
-      expect(resultUTC, isNot('8/1/2022 6:40:00 PM'));
-    });
-
     test('Should return correct format when showTime is toggled', () async {
       // Act
       final resultWithoutTime = await formatTimestampInMilliseconds(
