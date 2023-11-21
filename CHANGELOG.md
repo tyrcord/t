@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-11-21
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`t_helpers` - `v0.0.45`](#t_helpers---v0045)
+ - [`tlogger` - `v0.0.4+3`](#tlogger---v0043)
+ - [`t_cache` - `v0.0.11+3`](#t_cache---v00113)
+ - [`tmodel` - `v0.5.12+3`](#tmodel---v05123)
+ - [`tstore` - `v0.8.21+3`](#tstore---v08213)
+ - [`tbloc` - `v0.21.8+3`](#tbloc---v02183)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `tlogger` - `v0.0.4+3`
+ - `t_cache` - `v0.0.11+3`
+ - `tmodel` - `v0.5.12+3`
+ - `tstore` - `v0.8.21+3`
+ - `tbloc` - `v0.21.8+3`
+
+---
+
+#### `t_helpers` - `v0.0.45`
+
+ - **FEAT**: add getCurrencySymbol helper.
+
+
 ## 2023-11-20
 
 ### Changes

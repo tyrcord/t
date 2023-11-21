@@ -1,3 +1,7 @@
+## 0.0.45
+
+ - **FEAT**: add getCurrencySymbol helper.
+
 ## 0.0.44
 
  - **FIX**: tests.
