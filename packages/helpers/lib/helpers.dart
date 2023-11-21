@@ -17,3 +17,4 @@ export './value.helper.dart';
 export './clipboard.helper.dart';
 export 'superscript.helper.dart';
 export 'financial_instrument.helper.dart';
+export 'currency.helper.dart';
