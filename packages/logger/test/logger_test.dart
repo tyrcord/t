@@ -5,6 +5,7 @@ void main() {
   group('Logger Tests', () {
     late TLogger logger;
     late StringBuffer logOutput;
+    late TLoggerJournal loggerJournal;
 
     setUp(() {
       logOutput = StringBuffer();
@@ -12,7 +13,10 @@ void main() {
         'TestLogger',
         outputFunction: logOutput.writeln, // Capture output in the StringBuffer
       );
+      loggerJournal = TLoggerJournal(maxSize: 10);
     });
+
+    tearDown(() => loggerJournal.clearLogs());
 
     test('Logger initializes with default values', () {
       expect(logger.label, equals('TestLogger'));
@@ -56,6 +60,37 @@ void main() {
     test('should colorize message based on log level', () {
       logger.warning('Warning message');
       expect(logOutput.toString(), contains('\x1B[33m'));
+    });
+
+    test(
+        'Logs are recorded in the journal regardless of level or enabled state',
+        () {
+      logger
+        ..level = LogLevel.warning
+        ..debug('This should not be printed but should be recorded')
+        // Disable the logger and record another log
+        ..isEnabled = false
+        ..error('This should not be printed but should be recorded');
+
+      TLogger(
+        'Custom',
+        labelColor: "\x1B[34m", // Blue
+        outputFunction: logOutput.writeln,
+      ).debug('Another message from another logger');
+
+      // Check if logs are recorded in the journal
+      final logs = loggerJournal.logs;
+
+      expect(
+        logs,
+        contains(
+          contains('This should not be printed but should be recorded'),
+        ),
+      );
+
+      expect(logs, contains(contains('Another message from another logger')));
+
+      expect(logs.length, equals(3));
     });
   });
 }

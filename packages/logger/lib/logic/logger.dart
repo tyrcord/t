@@ -71,8 +71,6 @@ class TLogger {
 
   /// Prints the log message if the conditions are met.
   void _printLog(String message, LogLevel messageLevel) {
-    if (!isEnabled || !kDebugMode || messageLevel < level) return;
-
     final formattedTime = _timeFormatter.format(DateTime.now());
     final coloredMessage = _colorize(message, messageLevel: messageLevel);
     final coloredLabel = _colorize('[$label]', colorCode: _labelColorCode);
@@ -88,8 +86,14 @@ class TLogger {
       messageLevel: messageLevel,
     );
 
-    _outputFunction(
-      '$coloredTimestamp $coloredLabel $coloredLevel $coloredMessage',
-    );
+    final logEntry =
+        '$coloredTimestamp $coloredLabel $coloredLevel $coloredMessage';
+
+    // Record log in TLoggerJournal
+    TLoggerJournal().recordLog(logEntry);
+
+    if (!isEnabled || !kDebugMode || messageLevel < level) return;
+
+    _outputFunction(logEntry);
   }
 }
