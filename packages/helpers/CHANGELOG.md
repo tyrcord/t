@@ -1,3 +1,8 @@
+## 0.0.46
+
+ - **FIX**: toDecimal don't return null when giving it a Decimal.
+ - **FEAT**: added toDecimalOrDefault.
+
 ## 0.0.45
 
  - **FEAT**: add getCurrencySymbol helper.

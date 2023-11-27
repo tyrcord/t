@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-11-27
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`t_helpers` - `v0.0.46`](#t_helpers---v0046)
+ - [`tlogger` - `v0.0.5+1`](#tlogger---v0051)
+ - [`t_cache` - `v0.0.11+4`](#t_cache---v00114)
+ - [`tmodel` - `v0.5.12+4`](#tmodel---v05124)
+ - [`tbloc` - `v0.21.8+4`](#tbloc---v02184)
+ - [`tstore` - `v0.8.21+4`](#tstore---v08214)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `tlogger` - `v0.0.5+1`
+ - `t_cache` - `v0.0.11+4`
+ - `tmodel` - `v0.5.12+4`
+ - `tbloc` - `v0.21.8+4`
+ - `tstore` - `v0.8.21+4`
+
+---
+
+#### `t_helpers` - `v0.0.46`
+
+ - **FIX**: toDecimal don't return null when giving it a Decimal.
+ - **FEAT**: added toDecimalOrDefault.
+
+
 ## 2023-11-23
 
 ### Changes
