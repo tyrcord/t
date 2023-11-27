@@ -14,9 +14,9 @@ void main() {
 
     setUp(() {
       store = TStore('persons');
-      person = const PersonEntity(
-        firstname: 'foo',
-        lastname: 'bar',
+      person = PersonEntity(
+        firstName: 'foo',
+        lastName: 'bar',
         age: 42,
       );
     });

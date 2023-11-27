@@ -6,48 +6,48 @@ void main() {
   group('PersonEntity', () {
     test('fromJson and toJson', () {
       final personJson = {
-        'firstname': 'John',
-        'lastname': 'Doe',
+        'firstName': 'John',
+        'lastName': 'Doe',
         'age': 30,
       };
 
       final person = PersonEntity.fromJson(personJson);
 
-      expect(person.firstname, 'John');
-      expect(person.lastname, 'Doe');
+      expect(person.firstName, 'John');
+      expect(person.lastName, 'Doe');
       expect(person.age, 30);
 
       expect(person.toJson(), personJson);
     });
 
     test('copyWith', () {
-      const person = PersonEntity(firstname: 'John', lastname: 'Doe', age: 30);
-      final copiedPerson = person.copyWith(firstname: 'Jane');
+      final person = PersonEntity(firstName: 'John', lastName: 'Doe', age: 30);
+      final copiedPerson = person.copyWith(firstName: 'Jane');
 
-      expect(copiedPerson.firstname, 'Jane');
-      expect(copiedPerson.lastname, 'Doe');
+      expect(copiedPerson.firstName, 'Jane');
+      expect(copiedPerson.lastName, 'Doe');
       expect(copiedPerson.age, 30);
 
-      final copiedPerson2 = person.copyWith(firstname: '');
+      final copiedPerson2 = person.copyWith(firstName: '');
 
-      expect(copiedPerson2.firstname, null);
-      expect(copiedPerson2.lastname, 'Doe');
+      expect(copiedPerson2.firstName, null);
+      expect(copiedPerson2.lastName, 'Doe');
       expect(copiedPerson2.age, 30);
 
-      final copiedPerson3 = person.copyWith(lastname: '');
+      final copiedPerson3 = person.copyWith(lastName: '');
 
-      expect(copiedPerson3.firstname, 'John');
-      expect(copiedPerson3.lastname, null);
+      expect(copiedPerson3.firstName, 'John');
+      expect(copiedPerson3.lastName, null);
       expect(copiedPerson3.age, 30);
     });
 
     test('merge', () {
-      const person = PersonEntity(firstname: 'John', lastname: 'Doe', age: 30);
-      const otherPerson = PersonEntity(firstname: 'Jane');
+      final person = PersonEntity(firstName: 'John', lastName: 'Doe', age: 30);
+      final otherPerson = PersonEntity(firstName: 'Jane');
       final mergedPerson = person.merge(otherPerson);
 
-      expect(mergedPerson.firstname, 'Jane');
-      expect(mergedPerson.lastname, 'Doe');
+      expect(mergedPerson.firstName, 'Jane');
+      expect(mergedPerson.lastName, 'Doe');
       expect(mergedPerson.age, 30);
     });
   });
