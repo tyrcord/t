@@ -66,7 +66,9 @@ Decimal decimalFromRational(Rational value) {
 /// Throws an [AssertionError] if [value] is not a [num], [Rational],
 /// or [String].
 Decimal? toDecimal(dynamic value) {
-  if (value is num) {
+  if (value is Decimal) {
+    return value;
+  } else if (value is num) {
     return decimalFromNumber(value);
   } else if (value is Rational) {
     return decimalFromRational(value);

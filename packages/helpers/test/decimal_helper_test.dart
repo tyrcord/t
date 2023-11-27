@@ -63,5 +63,9 @@ void main() {
     test('should return null for an invalid String', () {
       expect(toDecimal('foo'), isNull);
     });
+
+    test('should return a Decimal for aDecimal', () {
+      expect(toDecimal(Decimal.fromInt(42)), equals(Decimal.fromInt(42)));
+    });
   });
 }
