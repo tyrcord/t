@@ -80,3 +80,5 @@ Decimal? toDecimal(dynamic value) {
 
   return null;
 }
+
+Decimal toDecimalOrDefault(dynamic value) => toDecimal(value) ?? dZero;

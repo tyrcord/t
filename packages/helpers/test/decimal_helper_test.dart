@@ -37,8 +37,10 @@ void main() {
 
   group('decimalFromRational', () {
     test('should return a Decimal for a Rational', () {
-      expect(decimalFromRational(Rational.fromInt(1, 3)),
-          equals(Decimal.parse('0.33333333333333333333333333333333')));
+      expect(
+        decimalFromRational(Rational.fromInt(1, 3)),
+        equals(Decimal.parse('0.33333333333333333333333333333333')),
+      );
     });
   });
 
@@ -52,8 +54,10 @@ void main() {
     });
 
     test('should return a Decimal for a Rational', () {
-      expect(toDecimal(Rational.fromInt(1, 3)),
-          equals(Decimal.parse('0.33333333333333333333333333333333')));
+      expect(
+        toDecimal(Rational.fromInt(1, 3)),
+        equals(Decimal.parse('0.33333333333333333333333333333333')),
+      );
     });
 
     test('should return a Decimal for a String', () {
@@ -66,6 +70,16 @@ void main() {
 
     test('should return a Decimal for aDecimal', () {
       expect(toDecimal(Decimal.fromInt(42)), equals(Decimal.fromInt(42)));
+    });
+  });
+
+  group('toDecimalOrDefault', () {
+    test('should return a Decimal for a valid value', () {
+      expect(toDecimalOrDefault(42), equals(Decimal.fromInt(42)));
+    });
+
+    test('should return a default Decimal for an invalid value', () {
+      expect(toDecimalOrDefault('foo'), equals(dZero));
     });
   });
 }
