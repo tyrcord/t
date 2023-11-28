@@ -68,5 +68,14 @@ void main() {
         }
       });
     });
+
+    test('should remove a logger with a given label', () {
+      final manager = TLoggerManager();
+      final logger = manager.getLogger('testLogger');
+      manager.removeLogger('testLogger');
+
+      expect(manager.getLogger('testLogger'), isNot(equals(logger)));
+      expect(logger.isEnabled, isFalse);
+    });
   });
 }

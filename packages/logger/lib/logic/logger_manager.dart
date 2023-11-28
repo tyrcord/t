@@ -54,6 +54,12 @@ class TLoggerManager {
     _loggers.clear();
   }
 
+  /// Removes a logger with the given label.
+  void removeLogger(String label) {
+    disableLogger(label);
+    _loggers.remove(label);
+  }
+
   /// Helper method to enable or disable a specific logger.
   void _setLoggerEnabled(String label, bool isEnabled) {
     final logger = _loggers[label];
