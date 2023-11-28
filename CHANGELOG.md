@@ -15,6 +15,27 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`tlogger` - `v0.0.6`](#tlogger---v006)
+
+---
+
+#### `tlogger` - `v0.0.6`
+
+ - **FEAT**: add removeLogger.
+
+
+## 2023-11-28
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`tlogger` - `v0.0.5+2`](#tlogger---v0052)
 
 ---

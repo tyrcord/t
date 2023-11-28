@@ -1,3 +1,7 @@
+## 0.0.6
+
+ - **FEAT**: add removeLogger.
+
 ## 0.0.5+2
 
  - **FIX**: avoid to use Date Format not initialized locales.
