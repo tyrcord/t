@@ -1,13 +1,10 @@
 import 'dart:developer' as developer;
 import 'package:flutter/foundation.dart';
-import 'package:intl/intl.dart';
 import 'package:tenhance/tenhance.dart';
 import 'package:tlogger/logger.dart';
 
 /// Custom logger class for application logging.
 class TLogger {
-  static final _timeFormatter = DateFormat('HH:mm:ss.SSS');
-
   late final Function(String) _outputFunction;
   final String _labelTimeColorCode;
   final String _labelColorCode;
@@ -41,6 +38,14 @@ class TLogger {
   void error(String message) => _printLog(message, LogLevel.error);
   void info(String message) => _printLog(message, LogLevel.info);
 
+  String padZero(int number) {
+    return number.toString().padLeft(2, '0');
+  }
+
+  String padZeroMilliseconds(int number) {
+    return number.toString().padLeft(3, '0');
+  }
+
   /// Applies color based on log level.
   String _colorize(
     String message, {
@@ -69,12 +74,19 @@ class TLogger {
     }
   }
 
+  String _getTime() {
+    final DateTime now = DateTime.now();
+
+    return "${padZero(now.hour)}:${padZero(now.minute)}:${padZero(now.second)}."
+        "${padZeroMilliseconds(now.millisecond)}";
+  }
+
   /// Prints the log message if the conditions are met.
   void _printLog(String message, LogLevel messageLevel) {
-    final formattedTime = _timeFormatter.format(DateTime.now());
     final coloredMessage = _colorize(message, messageLevel: messageLevel);
     final coloredLabel = _colorize('[$label]', colorCode: _labelColorCode);
     final levelString = messageLevel.name.toUpperCase();
+    final formattedTime = _getTime();
 
     final coloredTimestamp = _colorize(
       '[$formattedTime]',
