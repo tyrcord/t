@@ -1,3 +1,7 @@
+## 0.0.5+2
+
+ - **FIX**: avoid to use Date Format not initialized locales.
+
 ## 0.0.5+1
 
  - Update a dependency to the latest release.

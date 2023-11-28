@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-11-28
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`tlogger` - `v0.0.5+2`](#tlogger---v0052)
+
+---
+
+#### `tlogger` - `v0.0.5+2`
+
+ - **FIX**: avoid to use Date Format not initialized locales.
+
+
 ## 2023-11-27
 
 ### Changes
