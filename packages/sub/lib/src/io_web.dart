@@ -10,6 +10,8 @@ class Platform {
   static bool get isWindows => !kIsWeb;
   static bool get isLinux => !kIsWeb;
   static bool get isFuchsia => !kIsWeb;
+
+  static Map<String, String> get environment => {};
 }
 
 class Directory {

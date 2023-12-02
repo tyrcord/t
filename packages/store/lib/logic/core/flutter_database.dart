@@ -1,8 +1,9 @@
 // Dart imports:
-import 'dart:io';
+import 'package:tsub/tsub.dart' if (dart.library.io) 'dart:io';
 
 // Package imports:
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:t_helpers/helpers.dart';
 
 // Project imports:
 import 'package:tstore/tstore.dart';
@@ -32,6 +33,8 @@ class TFlutterDataBase extends TDataBaseCore {
   }
 
   bool get isTest {
+    if (isWeb) return false;
+
     return Platform.environment.containsKey('FLUTTER_TEST');
   }
 

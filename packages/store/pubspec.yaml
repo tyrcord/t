@@ -23,6 +23,7 @@ dependencies:
   # T
   tmodel: ^0.5.12+4
   tsub: ^1.8.0
+  t_helpers: ^0.0.46
 
 dev_dependencies:
   flutter_test:
