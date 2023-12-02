@@ -1,3 +1,7 @@
+## 0.8.22
+
+ - **FEAT**: better web support.
+
 ## 0.8.21+4
 
  - Update a dependency to the latest release.
