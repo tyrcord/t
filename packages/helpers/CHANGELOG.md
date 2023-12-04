@@ -1,3 +1,7 @@
+## 0.0.47
+
+ - **FEAT**: add toPascalCase.
+
 ## 0.0.46+1
 
  - Update a dependency to the latest release.
