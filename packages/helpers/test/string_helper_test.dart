@@ -187,4 +187,61 @@ void main() {
       expect(getLastChar('  ', trim: false), ' ');
     });
   });
+
+  group('toPascalCase', () {
+    test('Converts hello_world to HelloWorld', () {
+      expect(toPascalCase('hello_world'), 'HelloWorld');
+    });
+
+    test('Converts hello-world to HelloWorld', () {
+      expect(toPascalCase('hello-world'), 'HelloWorld');
+    });
+
+    test('Converts hello world to HelloWorld', () {
+      expect(toPascalCase('hello world'), 'HelloWorld');
+    });
+
+    test('Handles empty string', () {
+      expect(toPascalCase(''), '');
+    });
+
+    test('Handles null input', () {
+      expect(toPascalCase(null), '');
+    });
+
+    test('Converts a to A', () {
+      expect(toPascalCase('a'), 'A');
+    });
+
+    test('Converts a_b_c to ABC', () {
+      expect(toPascalCase('a_b_c'), 'ABC');
+    });
+
+    test('Handles string with multiple spaces', () {
+      expect(toPascalCase('hello   world'), 'HelloWorld');
+    });
+
+    test('Handles all uppercase string', () {
+      expect(toPascalCase('HELLO WORLD'), 'HelloWorld');
+    });
+
+    test('Handles string starting with numbers', () {
+      expect(toPascalCase('123hello world'), '123helloWorld');
+    });
+
+    test('Handles string with special characters', () {
+      expect(toPascalCase('helloWorld!'), 'HelloWorld!');
+    });
+
+    test('Converts complex mixed case string', () {
+      expect(
+        toPascalCase('this_is-a Complex_stringExample'),
+        'ThisIsAComplexStringExample',
+      );
+    });
+
+    test('Handles non-English characters', () {
+      expect(toPascalCase('élève brillant'), 'ÉlèveBrillant');
+    });
+  });
 }

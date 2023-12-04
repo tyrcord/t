@@ -18,11 +18,9 @@ import 'package:diacritic/diacritic.dart';
 ///
 /// Returns the converted string in camel case format.
 String toCamelCase(String? input) {
-  if (input == null || input.isEmpty) {
-    return '';
-  }
+  if (input == null || input.isEmpty) return '';
 
-// Split the string at spaces, underscores, hyphens, or camelCase boundaries.
+  // Split the string at spaces, underscores, hyphens, or camelCase boundaries.
   final words = input.trim().split(RegExp(r'[_\s-]+|(?<=[a-z])(?=[A-Z])'));
 
   var result = words[0].toLowerCase();
@@ -34,10 +32,10 @@ String toCamelCase(String? input) {
   return result;
 }
 
-/// Converts a string [text] to title case format.
+/// Converts a string [input] to title case format.
 ///
-/// If the [text] is null or empty, an empty string is returned.
-/// The function trims leading and trailing whitespace from the [text]
+/// If the [input] is null or empty, an empty string is returned.
+/// The function trims leading and trailing whitespace from the [input]
 /// and splits it into an array of words using whitespace as the delimiter.
 /// It then capitalizes the first letter of each word and converts the
 /// remaining characters in each word to lowercase. Consecutive spaces
@@ -48,12 +46,10 @@ String toCamelCase(String? input) {
 ///   toTitleCase('the quick brown fox') => 'The Quick Brown Fox'
 ///
 /// Returns the converted string in title case format.
-String toTitleCase(String? text) {
-  if (text == null || text.isEmpty) {
-    return '';
-  }
+String toTitleCase(String? input) {
+  if (input == null || input.isEmpty) return '';
 
-  final words = text.trim().split(RegExp(r'\s+'));
+  final words = input.trim().split(RegExp(r'\s+'));
 
   final capitalizedWords = words.map((word) {
     if (word.isEmpty) {
@@ -67,6 +63,37 @@ String toTitleCase(String? text) {
   });
 
   return capitalizedWords.join(' ');
+}
+
+/// Converts a string [input] to pascal case format.
+///
+/// If the [input] is null or empty, an empty string is returned.
+/// The function trims leading and trailing whitespace from the [input]
+/// and splits it into an array of words using underscores, spaces, and hyphens
+/// as delimiters. Each word (including the first word) is capitalized
+/// and appended to the result string. The remaining characters in each word
+/// are converted to lowercase.
+///
+/// Example:
+///   toPascalCase('hello_world') => 'HelloWorld'
+///   toPascalCase('hello-world') => 'HelloWorld'
+///   toPascalCase('hello world') => 'HelloWorld'
+///   toPascalCase('HelloWorld') => 'HelloWorld'
+///
+/// Returns the converted string in pascal case format.
+String toPascalCase(String? input) {
+  if (input == null || input.isEmpty) return '';
+
+  // Split the string at spaces, underscores, hyphens, or camelCase boundaries.
+  final words = input.trim().split(RegExp(r'[_\s-]+|(?<=[a-z])(?=[A-Z])'));
+
+  var result = '';
+
+  for (final word in words) {
+    result += word[0].toUpperCase() + word.substring(1).toLowerCase();
+  }
+
+  return result;
 }
 
 /// Converts a language code and an optional country code to an ISO 3166 code.
