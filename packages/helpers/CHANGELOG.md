@@ -1,3 +1,7 @@
+## 0.0.48
+
+ - **FEAT**: add areGoRoutesDifferent helper.
+
 ## 0.0.47
 
  - **FEAT**: add toPascalCase.

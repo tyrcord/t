@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-12-08
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`t_helpers` - `v0.0.48`](#t_helpers---v0048)
+ - [`tlogger` - `v0.0.6+3`](#tlogger---v0063)
+ - [`t_cache` - `v0.0.11+7`](#t_cache---v00117)
+ - [`tmodel` - `v0.5.12+7`](#tmodel---v05127)
+ - [`tstore` - `v0.8.22+2`](#tstore---v08222)
+ - [`tbloc` - `v0.21.8+7`](#tbloc---v02187)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `tlogger` - `v0.0.6+3`
+ - `t_cache` - `v0.0.11+7`
+ - `tmodel` - `v0.5.12+7`
+ - `tstore` - `v0.8.22+2`
+ - `tbloc` - `v0.21.8+7`
+
+---
+
+#### `t_helpers` - `v0.0.48`
+
+ - **FEAT**: add areGoRoutesDifferent helper.
+
+
 ## 2023-12-04
 
 ### Changes
