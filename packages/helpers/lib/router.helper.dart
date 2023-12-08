@@ -1,17 +1,14 @@
 import 'package:go_router/go_router.dart';
 
-/// Compares two lists of [GoRoute] to determine if they are different.
-///
-/// The comparison is based on the length of the route lists and the properties
-/// of the individual routes, specifically the 'path' and 'name'.
+/// Compares two lists of [RouteBase] to determine if they are different.
 ///
 /// Args:
-///   routes1 (List<GoRoute>): The first list of GoRoute objects.
-///   routes2 (List<GoRoute>): The second list of GoRoute objects.
+///   routes1 (List<RouteBase>): The first list of RouteBase objects.
+///   routes2 (List<RouteBase>): The second list of RouteBase objects.
 ///
 /// Returns:
 ///   bool: True if the routes are different, False otherwise.
-bool areGoRoutesDifferent(List<GoRoute> routes1, List<GoRoute> routes2) {
+bool areRouteBasesDifferent(List<RouteBase> routes1, List<RouteBase> routes2) {
   // Check if the lengths of the route lists are different
   if (routes1.length != routes2.length) {
     return true;
@@ -19,7 +16,7 @@ bool areGoRoutesDifferent(List<GoRoute> routes1, List<GoRoute> routes2) {
 
   // Compare corresponding routes from both lists
   for (int index = 0; index < routes1.length; index++) {
-    if (!_areGoRoutesEqual(routes1[index], routes2[index])) {
+    if (!_areRouteBasesEqual(routes1[index], routes2[index])) {
       return true;
     }
   }
@@ -27,18 +24,22 @@ bool areGoRoutesDifferent(List<GoRoute> routes1, List<GoRoute> routes2) {
   return false;
 }
 
-/// Compares two [GoRoute] objects to determine if they are equal.
-///
-/// Equality is based on the 'path' and 'name' properties of the routes.
-///
-/// Args:
-///   route1 (GoRoute): The first GoRoute object.
-///   route2 (GoRoute): The second GoRoute object.
-///
-/// Returns:
-///   bool: True if the routes are equal, False otherwise.
-bool _areGoRoutesEqual(GoRoute route1, GoRoute route2) {
-  return route1.path == route2.path &&
-      route1.name == route2.name &&
-      route1.builder == route2.builder;
+/// Compares two [RouteBase] objects to determine if they are equal.
+bool _areRouteBasesEqual(RouteBase route1, RouteBase route2) {
+  if (route1 is GoRoute && route2 is GoRoute) {
+    return route1.path == route2.path &&
+        route1.name == route2.name &&
+        route1.builder == route2.builder &&
+        route1.redirect == route2.redirect &&
+        route1.pageBuilder == route2.pageBuilder &&
+        route1.parentNavigatorKey == route2.parentNavigatorKey;
+  } else if (route1 is ShellRoute && route2 is ShellRoute) {
+    return route1.builder == route2.builder &&
+        route1.parentNavigatorKey == route2.parentNavigatorKey &&
+        route1.pageBuilder == route2.pageBuilder &&
+        route1.navigatorKey == route2.navigatorKey &&
+        areRouteBasesDifferent(route1.routes, route2.routes);
+  }
+
+  return route1.runtimeType == route2.runtimeType;
 }
