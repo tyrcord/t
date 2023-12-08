@@ -1,3 +1,7 @@
+## 0.0.48+1
+
+ - **FIX**: areRouteBasesDifferent.
+
 ## 0.0.48
 
  - **FEAT**: add areGoRoutesDifferent helper.

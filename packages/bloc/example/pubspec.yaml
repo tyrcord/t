@@ -14,7 +14,7 @@ dependencies:
   go_router: ^12.1.1
 
   # T
-  tbloc: ^0.21.8+7
+  tbloc: ^0.21.8+8
 
   # Fastyle
   fastyle_core: ^0.0.36+1
