@@ -20,16 +20,20 @@ import 'package:diacritic/diacritic.dart';
 String toCamelCase(String? input) {
   if (input == null || input.isEmpty) return '';
 
-  // Split the string at spaces, underscores, hyphens, or camelCase boundaries.
   final words = input.trim().split(RegExp(r'[_\s-]+|(?<=[a-z])(?=[A-Z])'));
-
-  var result = words[0].toLowerCase();
+  final buffer = StringBuffer()..write(words[0].toLowerCase());
 
   for (var i = 1; i < words.length; i++) {
-    result += words[i][0].toUpperCase() + words[i].substring(1).toLowerCase();
+    if (words[i].length > 1) {
+      buffer
+        ..write(words[i][0].toUpperCase())
+        ..write(words[i].substring(1).toLowerCase());
+    } else {
+      buffer.write(words[i].toUpperCase());
+    }
   }
 
-  return result;
+  return buffer.toString();
 }
 
 /// Converts a string [input] to title case format.
@@ -51,15 +55,11 @@ String toTitleCase(String? input) {
 
   final words = input.trim().split(RegExp(r'\s+'));
 
-  final capitalizedWords = words.map((word) {
-    if (word.isEmpty) {
-      return word; // Skip empty words (consecutive spaces)
-    }
-
-    final firstLetter = word.substring(0, 1).toUpperCase();
+  final capitalizedWords = words.where((word) => word.isNotEmpty).map((word) {
+    final firstLetter = word[0].toUpperCase();
     final restOfWord = word.substring(1).toLowerCase();
 
-    return '$firstLetter$restOfWord';
+    return firstLetter + restOfWord;
   });
 
   return capitalizedWords.join(' ');

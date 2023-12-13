@@ -14,9 +14,7 @@ double calculatePercentageDecrease(double originalValue, double newValue) {
   final dOriginalValue = toDecimal(originalValue)!;
   final dNewValue = toDecimal(newValue)!;
 
-  if (dOriginalValue == dZero) {
-    return 0.0;
-  }
+  if (dOriginalValue == dZero) return 0.0;
 
   // Calculate the decrease and percentage decrease
   final dDecrease = dOriginalValue - dNewValue;

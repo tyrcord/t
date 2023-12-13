@@ -34,11 +34,9 @@ Decimal? decimalFromDouble(double value) => Decimal.tryParse(value.toString());
 /// [Decimal.fromInt].
 /// Otherwise, [value] is converted to a [double] and then to a [Decimal].
 Decimal decimalFromNumber(num value) {
-  if (value is int) {
-    return Decimal.fromInt(value);
-  }
+  if (value is int) return Decimal.fromInt(value);
 
-  return decimalFromDouble(value as double)!;
+  return decimalFromDouble(value.toDouble())!;
 }
 
 /// Converts a [Rational] [value] to a [Decimal].
