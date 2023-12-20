@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-12-20
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`t_helpers` - `v0.0.48+2`](#t_helpers---v00482)
+ - [`t_cache` - `v0.0.11+9`](#t_cache---v00119)
+ - [`tlogger` - `v0.0.6+5`](#tlogger---v0065)
+ - [`tmodel` - `v0.5.12+9`](#tmodel---v05129)
+ - [`tstore` - `v0.8.22+4`](#tstore---v08224)
+ - [`tbloc` - `v0.21.8+9`](#tbloc---v02189)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `t_cache` - `v0.0.11+9`
+ - `tlogger` - `v0.0.6+5`
+ - `tmodel` - `v0.5.12+9`
+ - `tstore` - `v0.8.22+4`
+ - `tbloc` - `v0.21.8+9`
+
+---
+
+#### `t_helpers` - `v0.0.48+2`
+
+ - **PERF**: minor improvements.
+
+
 ## 2023-12-08
 
 ### Changes

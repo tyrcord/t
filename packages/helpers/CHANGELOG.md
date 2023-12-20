@@ -1,3 +1,7 @@
+## 0.0.48+2
+
+ - **PERF**: minor improvements.
+
 ## 0.0.48+1
 
  - **FIX**: areRouteBasesDifferent.
