@@ -37,6 +37,11 @@ class TLogger {
   void warning(String message) => _printLog(message, LogLevel.warning);
   void error(String message) => _printLog(message, LogLevel.error);
   void info(String message) => _printLog(message, LogLevel.info);
+  void error(String message, [StackTrace? stackTrace]) {
+    _printLog(message, LogLevel.error);
+
+    if (stackTrace != null) _printStackTrace(stackTrace);
+  }
 
   String padZero(int number) {
     return number.toString().padLeft(2, '0');
@@ -44,6 +49,18 @@ class TLogger {
 
   String padZeroMilliseconds(int number) {
     return number.toString().padLeft(3, '0');
+  }
+
+  void _printStackTrace(StackTrace stackTrace) {
+    final formattedStackTrace = _formatStackTrace(stackTrace);
+    _printLog(formattedStackTrace, LogLevel.error);
+  }
+
+  String _formatStackTrace(StackTrace stackTrace) {
+    final lines = stackTrace.toString().split('\n');
+    final formattedLines = lines.map((line) => line.trim());
+
+    return formattedLines.join('\n');
   }
 
   /// Applies color based on log level.
