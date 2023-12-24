@@ -33,10 +33,17 @@ class TLogger {
     _outputFunction = outputFunction ?? developer.log;
   }
 
-  void debug(String message) => _printLog(message, LogLevel.debug);
   void warning(String message) => _printLog(message, LogLevel.warning);
-  void error(String message) => _printLog(message, LogLevel.error);
-  void info(String message) => _printLog(message, LogLevel.info);
+  void debug(String message) => _printLog(message, LogLevel.debug);
+
+  void info(String message, [dynamic value]) {
+    if (value != null) {
+      _printLog('$message => $value', LogLevel.info);
+    } else {
+      _printLog(message, LogLevel.info);
+    }
+  }
+
   void error(String message, [StackTrace? stackTrace]) {
     _printLog(message, LogLevel.error);
 
