@@ -98,13 +98,16 @@ class TLogger {
       messageLevel: messageLevel,
     );
 
-    final logEntry =
-        '$coloredTimestamp $coloredLabel $coloredLevel $coloredMessage';
+    final logEntryWithoutColors =
+        '[$formattedTime] [$label] [$levelString] $message';
 
     // Record log in TLoggerJournal
-    TLoggerJournal().recordLog(logEntry);
+    TLoggerJournal().recordLog(logEntryWithoutColors);
 
     if (!isEnabled || !kDebugMode || messageLevel < level) return;
+
+    final logEntry =
+        '$coloredTimestamp $coloredLabel $coloredLevel $coloredMessage';
 
     _outputFunction(logEntry);
   }
