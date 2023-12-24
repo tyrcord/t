@@ -1,5 +1,5 @@
 name: tlogger
-version: 0.0.6+5
+version: 0.0.7
 description: A dart library that helps you to logs your app.
 homepage: https://github.com/tyrcord/t/tree/main/packages/logger
 issue_tracker: https://github.com/tyrcord/t/tree/main/packages/issues

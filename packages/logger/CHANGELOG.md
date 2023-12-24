@@ -1,3 +1,10 @@
+## 0.0.7
+
+ - **FIX**: avoid to display color characters in the journal.
+ - **FEAT**: info can display a value.
+ - **FEAT**: allow to print the stackTrace.
+ - **FEAT**: change default journal size to 256.
+
 ## 0.0.6+5
 
  - Update a dependency to the latest release.

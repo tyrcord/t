@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-12-24
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`tlogger` - `v0.0.7`](#tlogger---v007)
+
+---
+
+#### `tlogger` - `v0.0.7`
+
+ - **FIX**: avoid to display color characters in the journal.
+ - **FEAT**: info can display a value.
+ - **FEAT**: allow to print the stackTrace.
+ - **FEAT**: change default journal size to 256.
+
+
 ## 2023-12-20
 
 ### Changes
