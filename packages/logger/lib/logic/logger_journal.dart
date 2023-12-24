@@ -6,7 +6,7 @@ class TLoggerJournal {
   /// Returns all log entries.
   List<String> get logs => List.unmodifiable(_logEntries);
 
-  factory TLoggerJournal({int maxSize = 1000}) {
+  factory TLoggerJournal({int maxSize = 256}) {
     _instance._maxSize = maxSize;
 
     return _instance;
