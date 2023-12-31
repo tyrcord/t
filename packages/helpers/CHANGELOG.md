@@ -1,3 +1,7 @@
+## 0.0.49
+
+ - **FEAT**: add toSafeDouble to Decimal package.
+
 ## 0.0.48+2
 
  - **PERF**: minor improvements.

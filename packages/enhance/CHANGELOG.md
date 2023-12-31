@@ -1,3 +1,7 @@
+## 0.0.5
+
+ - **FEAT**: add toSafeDouble to Decimal package.
+
 ## 0.0.4
 
  - **FEAT**: update dependencies.
