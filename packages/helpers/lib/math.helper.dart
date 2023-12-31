@@ -1,5 +1,6 @@
 // Project imports:
 import 'package:t_helpers/helpers.dart';
+import 'package:tenhance/decimal.dart';
 
 /// Calculates the percentage decrease between an [originalValue]
 /// and a [newValue].
@@ -21,5 +22,5 @@ double calculatePercentageDecrease(double originalValue, double newValue) {
   final percentageDecrease = decimalFromRational(dDecrease / dOriginalValue);
 
   // Convert the percentage decrease to a double and return it
-  return percentageDecrease.toDouble();
+  return percentageDecrease.toSafeDouble();
 }

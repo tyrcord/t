@@ -21,6 +21,7 @@ dependencies:
   # T
   tsub: ^1.9.0
   tmodel: ^0.5.12+9
+  tenhance: ^0.0.4
 
 dev_dependencies:
   flutter_test:
