@@ -1,3 +1,7 @@
+## 0.0.5+1
+
+ - **FIX**: missing import.
+
 ## 0.0.5
 
  - **FEAT**: add toSafeDouble to Decimal package.
