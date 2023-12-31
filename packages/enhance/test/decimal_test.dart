@@ -38,4 +38,18 @@ void main() {
       expect(dResult.toDouble().isNaN, isTrue);
     });
   });
+
+  group('RationalExtension Tests', () {
+    test('toSafeDouble returns correct double value', () {
+      // Arrange
+      final rationalValue = dOne / dThree;
+      const expectedDouble = 0.3333333333333333;
+
+      // Act
+      final double result = rationalValue.toSafeDouble();
+
+      // Assert
+      expect(result, equals(expectedDouble));
+    });
+  });
 }

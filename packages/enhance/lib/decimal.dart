@@ -1,4 +1,6 @@
 import 'package:decimal/decimal.dart';
+import 'package:rational/rational.dart';
+import 'package:t_helpers/helpers.dart';
 
 extension DecimalExtension on Decimal {
   double toSafeDouble() {
@@ -12,5 +14,11 @@ extension DecimalExtension on Decimal {
     }
 
     return doubleValue;
+  }
+}
+
+extension RationExtension on Rational {
+  double toSafeDouble() {
+    return decimalFromRational(this).toSafeDouble();
   }
 }
