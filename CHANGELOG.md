@@ -15,6 +15,44 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`tenhance` - `v0.0.6`](#tenhance---v006)
+ - [`tlogger` - `v0.0.7+3`](#tlogger---v0073)
+ - [`t_helpers` - `v0.0.49+2`](#t_helpers---v00492)
+ - [`t_cache` - `v0.0.11+12`](#t_cache---v001112)
+ - [`tmodel` - `v0.5.12+12`](#tmodel---v051212)
+ - [`tstore` - `v0.8.22+7`](#tstore---v08227)
+ - [`tbloc` - `v0.21.8+12`](#tbloc---v021812)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `tlogger` - `v0.0.7+3`
+ - `t_helpers` - `v0.0.49+2`
+ - `t_cache` - `v0.0.11+12`
+ - `tmodel` - `v0.5.12+12`
+ - `tstore` - `v0.8.22+7`
+ - `tbloc` - `v0.21.8+12`
+
+---
+
+#### `tenhance` - `v0.0.6`
+
+ - **FEAT**: add toSafeDouble to Rational.
+
+
+## 2023-12-31
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`tenhance` - `v0.0.5+1`](#tenhance---v0051)
  - [`tlogger` - `v0.0.7+2`](#tlogger---v0072)
  - [`t_helpers` - `v0.0.49+1`](#t_helpers---v00491)

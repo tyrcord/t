@@ -1,3 +1,7 @@
+## 0.0.6
+
+ - **FEAT**: add toSafeDouble to Rational.
+
 ## 0.0.5+1
 
  - **FIX**: missing import.
