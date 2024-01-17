@@ -43,7 +43,7 @@ jobs:
       - name: Check for pubspec file changes
         id: git-check
         run: |
-          git diff --exit-code -- 'pubspec.yaml' || echo "changes=1" >> $GITHUB_ENV
+          git diff --exit-code -- '**/pubspec.yaml' || echo "changes=1" >> $GITHUB_ENV
 
       # Configure Git
       - name: Configure Git
@@ -56,6 +56,6 @@ jobs:
       - name: Commit and push Dart files
         if: env.changes == '1'
         run: |
-          git add -u pubspec.yaml
+          git add -u **/pubspec.yaml
           git commit -m "Update dependencies"
           git push
