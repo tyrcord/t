@@ -35,6 +35,7 @@ jobs:
       - name: Update pubspec files
         run: melos run --no-select update:pubspec
 
+      # Install packages dependencies
       - name: Install packages dependencies
         run: melos bs
 

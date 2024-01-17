@@ -39,7 +39,7 @@ jobs:
 
       # Sort imports
       - name: Sort imports
-        run: melos run --no-select sort_imports
+        run: melos run --no-select sort:imports
 
       # Check for any changes in Dart files
       - name: Check for Dart file changes
