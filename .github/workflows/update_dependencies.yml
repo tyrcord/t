@@ -27,9 +27,16 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v4
 
-      # Run the shell script
-      - name: Run update script
-        run: ./scripts/update_dependencies.sh
+      # Install Melos
+      - name: Install and set Melos version
+        uses: bluefireteam/melos-action@v3
+
+      # Update pubspec files
+      - name: Update pubspec files
+        run: melos run --no-select update:pubspec
+
+      - name: Install packages dependencies
+        run: melos bs
 
       # Check for any changes
       - name: Check for pubspec file changes

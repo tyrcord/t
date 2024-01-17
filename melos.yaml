@@ -16,7 +16,10 @@ scripts:
         - tmodel
         - tsub
         - tenhance
+
+  sort:imports:
+    exec: flutter pub run import_sorter:main
+  update:pubspec:
+    exec: python3 $PWD/scripts/update_pubspec.py
   update:analysis_options:
     exec: $PWD/scripts/update_analysis_options.sh
-  sort_imports:
-    exec: flutter pub run import_sorter:main
