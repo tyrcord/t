@@ -1,0 +1,53 @@
+name: Update Dependencies
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [update_dependencies]
+
+env:
+  changes: 0
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Set up Flutter environment
+      - name: Install and set Flutter version
+        uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+
+      # Precache Flutter
+      - name: Precache Flutter
+        run: flutter precache --ios
+
+      # Checkout the repository
+      - name: Checkout the code
+        uses: actions/checkout@v4
+
+      # Run the shell script
+      - name: Run update script
+        run: ./scripts/update_dependencies.sh
+
+      # Check for any changes
+      - name: Check for pubspec file changes
+        id: git-check
+        run: |
+          git diff --exit-code -- 'pubspec.yaml' || echo "changes=1" >> $GITHUB_ENV
+
+      # Configure Git
+      - name: Configure Git
+        if: env.changes == '1'
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "actions@github.com"
+
+      # Commit and push changes
+      - name: Commit and push Dart files
+        if: env.changes == '1'
+        run: |
+          git add -u pubspec.yaml
+          git commit -m "Update dependencies"
+          git push

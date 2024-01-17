@@ -1,0 +1,63 @@
+name: Sort Imports
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [sort_imports]
+  schedule:
+    - cron: "0 0 * * *"
+
+env:
+  changes: 0
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Set up Flutter environment
+      - name: Install and set Flutter version
+        uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+
+      # Precache Flutter
+      - name: Precache Flutter
+        run: flutter precache --ios
+
+      # Checkout the repository
+      - name: Checkout the code
+        uses: actions/checkout@v4
+
+      # Install Melos
+      - name: Install and set Melos version
+        uses: bluefireteam/melos-action@v3
+
+      # Install dependencies
+      - name: Install dependencies
+        run: flutter pub get
+
+      # Sort imports
+      - name: Sort imports
+        run: melos run --no-select sort_imports
+
+      # Check for any changes in Dart files
+      - name: Check for Dart file changes
+        id: git-check
+        run: |
+          git diff --exit-code -- '*.dart' || echo "changes=1" >> $GITHUB_ENV
+
+      # Configure Git
+      - name: Configure Git
+        if: env.changes == '1'
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "actions@github.com"
+
+      # Commit and push changes
+      - name: Commit and push Dart files
+        if: env.changes == '1'
+        run: |
+          git add *.dart
+          git commit -m "chore: sorted imports"
+          git push

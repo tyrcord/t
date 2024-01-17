@@ -1,10 +1,10 @@
-name: Flutter
+name: Test
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
@@ -12,15 +12,15 @@ jobs:
 
     steps:
       - name: Checkout the code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install and set Flutter version
         uses: subosito/flutter-action@v2
         with:
-          channel: 'stable'
-      
+          channel: "stable"
+
       - run: flutter --version
-      
+
       - name: Install and set Melos version
         uses: bluefireteam/melos-action@v3
 
