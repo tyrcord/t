@@ -57,7 +57,6 @@ jobs:
           mkdir -p scripts
 
           # Copy the script files
-          cp codex/scripts/flutter/library/update_dependencies.sh scripts/update_dependencies.sh
           cp codex/scripts/flutter/library/update_pubspec.py scripts/update_pubspec.py
           cp codex/scripts/flutter/shared/check_dependencies.py scripts/check_dependencies.py
 
@@ -72,6 +71,7 @@ jobs:
         run: |
           # Check if old workflow file exists and delete it
           rm -f .github/workflows/update_dependency.yml
+          rm -f scripts/update_dependencies.sh
 
       # Commit and Push Changes
       - name: Commit and Push Changes
@@ -98,12 +98,12 @@ jobs:
           add_if_exists data/dependencies.json
 
           # Add the copied scripts file to git
-          add_if_exists scripts/update_dependencies.sh
           add_if_exists scripts/check_dependencies.py
           add_if_exists scripts/update_pubspec.py
 
           # Add the deleted files to git
           remove_with_handling .github/workflows/update_dependency.yml
+          remove_with_handling scripts/update_dependencies.sh
 
           # Check if there are any changes to commit
           if git diff --staged --quiet; then
