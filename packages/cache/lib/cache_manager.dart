@@ -1,9 +1,6 @@
 // Dart imports:
 import 'dart:async';
 
-// Flutter imports:
-import 'package:flutter/foundation.dart';
-
 // Package imports:
 import 'package:tlogger/logger.dart';
 
@@ -115,11 +112,8 @@ class TCacheManager<T> {
     _logger.debug('Deleting expired items');
     _cache.removeWhere((key, item) => item.isExpired);
 
-    if (kDebugMode) {
-      final removedItem = _cache.length - _currentSize;
-
-      _logger.debug('Deleted ${removedItem.abs()} expired items');
-    }
+    final removedItem = (_cache.length - _currentSize).abs();
+    _logger.debug('Deleted $removedItem expired items');
 
     _currentSize = _cache.length;
     _stopCleaningIfNeeded();
