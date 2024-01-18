@@ -36,6 +36,12 @@ jobs:
       - name: Run tests
         run: melos run --no-select test
 
+      # Configure Git
+      - name: Configure Git
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "actions@github.com"
+
       # Set package versions
       - name: Set package versions
         run: melos version --yes
