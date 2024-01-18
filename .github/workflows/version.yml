@@ -1,9 +1,9 @@
-name: Publish Flutter Packages
+name: Tag new package versions
 
 on:
   workflow_dispatch:
   repository_dispatch:
-    types: [new_version]
+    types: [new_package_version]
 
 jobs:
   build:
@@ -20,17 +20,21 @@ jobs:
         with:
           channel: "stable"
 
+      # Install Melos
+      - name: Install and set Melos version
+        uses: bluefireteam/melos-action@v3
+
       # Install dependencies
       - name: Install dependencies
         run: flutter pub get
 
       # Code analysis
-      - name: Analyze
-        run: melos run analyze
+      - name: Analyze project source
+        run: melos run --no-select analyze
 
       # Run tests
-      - name: Test
-        run: melos run test
+      - name: Run tests
+        run: melos run --no-select test
 
       # Set package versions
       - name: Set package versions
