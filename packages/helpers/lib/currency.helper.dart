@@ -1,3 +1,4 @@
+// Package imports:
 import 'package:intl/intl.dart';
 
 String getCurrencySymbol({String? localeCode, String? currencyCode = 'USD'}) {

@@ -1,3 +1,4 @@
+// Package imports:
 import 'package:diacritic/diacritic.dart';
 
 /// Converts a string [input] to camel case format.

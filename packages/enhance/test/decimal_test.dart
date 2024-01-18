@@ -1,7 +1,10 @@
-import 'package:t_helpers/helpers.dart';
-import 'package:tenhance/decimal.dart';
-import 'package:flutter_test/flutter_test.dart';
+// Package imports:
 import 'package:decimal/decimal.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:t_helpers/helpers.dart';
+
+// Project imports:
+import 'package:tenhance/decimal.dart';
 
 void main() {
   group('Decimal toSafeDouble Tests', () {

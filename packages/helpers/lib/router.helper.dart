@@ -1,3 +1,4 @@
+// Package imports:
 import 'package:go_router/go_router.dart';
 
 /// Compares two lists of [RouteBase] to determine if they are different.

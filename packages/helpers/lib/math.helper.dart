@@ -1,6 +1,8 @@
+// Package imports:
+import 'package:tenhance/decimal.dart';
+
 // Project imports:
 import 'package:t_helpers/helpers.dart';
-import 'package:tenhance/decimal.dart';
 
 /// Calculates the percentage decrease between an [originalValue]
 /// and a [newValue].

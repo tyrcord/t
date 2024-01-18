@@ -1,3 +1,4 @@
+// Project imports:
 import 'package:t_helpers/helpers.dart';
 
 /// Formats a number for clipboard copying. Handles integers and floats,

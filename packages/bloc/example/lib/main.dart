@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:fastyle_core/fastyle_core.dart';
-import 'package:tbloc/tbloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:tbloc/tbloc.dart';
 
 // Project imports:
 import 'counter.bloc.dart';

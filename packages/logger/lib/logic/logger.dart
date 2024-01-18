@@ -1,6 +1,13 @@
+// Dart imports:
 import 'dart:developer' as developer;
+
+// Flutter imports:
 import 'package:flutter/foundation.dart';
+
+// Package imports:
 import 'package:tenhance/tenhance.dart';
+
+// Project imports:
 import 'package:tlogger/logger.dart';
 
 /// Custom logger class for application logging.

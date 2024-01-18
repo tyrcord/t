@@ -1,8 +1,10 @@
 // Dart imports:
 import 'dart:convert';
 
-// Project imports:
+// Package imports:
 import 'package:meta/meta.dart';
+
+// Project imports:
 import 'package:tstore/tstore.dart';
 
 /// A document is a collection of key-value pairs.
