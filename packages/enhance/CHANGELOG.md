@@ -1,3 +1,14 @@
+## 0.0.8
+
+ - **FIX**: missing import.
+ - **FIX**: minor improvements.
+ - **FEAT**: update dependencies.
+ - **FEAT**: add toSafeDouble to Rational.
+ - **FEAT**: add toSafeDouble to Decimal package.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: add tenhance package.
+
 ## 0.0.7
 
  - **FEAT**: update dependencies.

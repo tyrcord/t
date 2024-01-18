@@ -1,3 +1,20 @@
+## 0.0.8
+
+ - **FIX**: avoid to display color characters in the journal.
+ - **FIX**: avoid to use Date Format not initialized locales.
+ - **FIX**: typo.
+ - **FEAT**: info can display a value.
+ - **FEAT**: allow to print the stackTrace.
+ - **FEAT**: change default journal size to 256.
+ - **FEAT**: add removeLogger.
+ - **FEAT**: added logger journal.
+ - **FEAT**: update dependencies.
+ - **FEAT**: minor improvements.
+ - **FEAT**: minor improvements.
+ - **FEAT**: minor improvements.
+ - **FEAT**: minor improvements.
+ - **FEAT**: add tLogger package.
+
 ## 0.0.7+4
 
  - Update a dependency to the latest release.

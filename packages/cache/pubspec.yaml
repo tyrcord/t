@@ -1,8 +1,8 @@
 dependencies:
   flutter:
     sdk: flutter
-  t_helpers: ^0.0.50
-  tlogger: ^0.0.7+4
+  t_helpers: ^0.0.51
+  tlogger: ^0.0.8
 description: Efficiently store and retrieve data with TTL, LRU eviction.
 dev_dependencies:
   flutter_lints: ^3.0.1
@@ -14,4 +14,4 @@ environment:
   sdk: ">=3.2.0 <4.0.0"
 name: t_cache
 repository: https://github.com/tyrcord/t/tree/main/packages/cache
-version: 0.0.11+13
+version: 0.0.12
