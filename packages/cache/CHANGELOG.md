@@ -1,3 +1,7 @@
+## 0.0.14
+
+ - **FEAT**: minor improvements.
+
 ## 0.0.12
 
  - **REFACTOR**: better logs.
