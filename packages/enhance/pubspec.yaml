@@ -1,25 +1,20 @@
-name: tenhance
-description: A dart library provide a bunch of extenstion.
-version: 0.0.7
-repository: https://github.com/tyrcord/t/tree/main/packages/enhance
-issue_tracker: https://github.com/tyrcord/t/tree/main/packages/enhance/issues
-
-environment:
-  sdk: ">=3.2.0 <4.0.0"
-  flutter: ">=3.16.0"
-
 dependencies:
+  decimal: ^2.3.3
   flutter:
     sdk: flutter
-
-  # Public
-  go_router: ^13.0.0
-  decimal: ^2.3.3
-  t_helpers: ^0.0.50
+  go_router: ^13.0.1
   rational: ^2.2.2
-
+  t_helpers: ^0.0.50
+description: A dart library provide a bunch of extenstion.
 dev_dependencies:
+  flutter_lints: ^3.0.1
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.1
   import_sorter: ^4.6.0
+environment:
+  flutter: '>=3.16.0'
+  sdk: '>=3.2.0 <4.0.0'
+issue_tracker: https://github.com/tyrcord/t/tree/main/packages/enhance/issues
+name: tenhance
+repository: https://github.com/tyrcord/t/tree/main/packages/enhance
+version: 0.0.7

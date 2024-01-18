@@ -1,26 +1,19 @@
-name: tlogger
-version: 0.0.7+4
-description: A dart library that helps you to logs your app.
-homepage: https://github.com/tyrcord/t/tree/main/packages/logger
-issue_tracker: https://github.com/tyrcord/t/tree/main/packages/issues
-
-environment:
-  sdk: ">=3.2.0 <4.0.0"
-  flutter: ">=3.16.0"
-
 dependencies:
   flutter:
     sdk: flutter
-
-  # Public
   intl: ^0.18.1
-
-  # T
   t_helpers: ^0.0.50
   tenhance: ^0.0.7
-
+description: A dart library that helps you to logs your app.
 dev_dependencies:
+  flutter_lints: ^3.0.1
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.1
   import_sorter: ^4.6.0
+environment:
+  flutter: '>=3.16.0'
+  sdk: '>=3.2.0 <4.0.0'
+homepage: https://github.com/tyrcord/t/tree/main/packages/logger
+issue_tracker: https://github.com/tyrcord/t/tree/main/packages/issues
+name: tlogger
+version: 0.0.7+4

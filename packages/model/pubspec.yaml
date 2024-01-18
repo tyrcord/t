@@ -1,25 +1,18 @@
-name: tmodel
-version: 0.5.12+13
-description: A dart library that helps you to manage model (blueprint) objects.
-homepage: https://github.com/tyrcord/t/tree/main/packages/model
-issue_tracker: https://github.com/tyrcord/t/tree/main/packages/issues
-
-environment:
-  sdk: ">=3.2.0 <4.0.0"
-  flutter: ">=3.16.0"
-
 dependencies:
+  equatable: ^2.0.5
   flutter:
     sdk: flutter
-
-  # Public
-  equatable: ^2.0.5
-
-  # T
   t_helpers: ^0.0.50
-
+description: A dart library that helps you to manage model (blueprint) objects.
 dev_dependencies:
+  flutter_lints: ^3.0.1
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.1
   import_sorter: ^4.6.0
+environment:
+  flutter: '>=3.16.0'
+  sdk: '>=3.2.0 <4.0.0'
+homepage: https://github.com/tyrcord/t/tree/main/packages/model
+issue_tracker: https://github.com/tyrcord/t/tree/main/packages/issues
+name: tmodel
+version: 0.5.12+13

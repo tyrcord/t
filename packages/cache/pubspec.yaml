@@ -1,21 +1,16 @@
-name: t_cache
-description: Efficiently store and retrieve data with TTL, LRU eviction.
-version: 0.0.11+13
-repository: https://github.com/tyrcord/t/tree/main/packages/cache
-
-environment:
-  sdk: ">=3.2.0 <4.0.0"
-  flutter: ">=3.16.0"
-
 dependencies:
   flutter:
     sdk: flutter
-
-  # T
   t_helpers: ^0.0.50
-
+description: Efficiently store and retrieve data with TTL, LRU eviction.
 dev_dependencies:
+  flutter_lints: ^3.0.1
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.1
   import_sorter: ^4.6.0
+environment:
+  flutter: '>=3.16.0'
+  sdk: '>=3.2.0 <4.0.0'
+name: t_cache
+repository: https://github.com/tyrcord/t/tree/main/packages/cache
+version: 0.0.11+13
