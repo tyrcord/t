@@ -33,7 +33,9 @@ jobs:
 
       # Update pubspec files
       - name: Update pubspec files
-        run: melos run --no-select update:pubspec
+        run: |
+          export DEPENDENCY_DATA=$(<./data/dependencies.json) && \
+          melos run --no-select update:pubspec
 
       # Install packages dependencies
       - name: Install packages dependencies
@@ -53,7 +55,7 @@ jobs:
           git config user.email "actions@github.com"
 
       # Commit and push changes
-      - name: Commit and push Dart files
+      - name: Commit and push Changes
         if: env.changes == '1'
         run: |
           git add -u **/pubspec.yaml

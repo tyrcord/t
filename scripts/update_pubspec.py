@@ -1,6 +1,7 @@
 import requests
 import yaml
 import json
+import os
 
 
 def fetch_latest_version(package_name):
@@ -12,9 +13,7 @@ def fetch_latest_version(package_name):
     return latest_version
 
 
-def update_dependencies(pubspec_path, dependency_file):
-    with open(dependency_file, 'r') as file:
-        dependency_data = json.load(file)
+def update_dependencies(pubspec_path, dependency_data):
     packages_latest = dependency_data['packages_latest']
     specified_versions = dependency_data['specified_versions']
 
@@ -39,8 +38,10 @@ def update_dependencies(pubspec_path, dependency_file):
 # This is the path to the pubspec.yaml file
 pubspec_path = './pubspec.yaml'
 
-# Path to the JSON file with dependencies
-dependency_file = './data/dependencies.json'
+# This is the dependency data passed in from the GitHub Action
+dependency_data_env_var = 'DEPENDENCY_DATA'
+dependency_data_raw = os.environ.get(dependency_data_env_var)
+dependency_data = json.loads(dependency_data_raw)
 
 # Call the function to update the dependencies
-update_dependencies(pubspec_path, dependency_file)
+update_dependencies(pubspec_path, dependency_data)
