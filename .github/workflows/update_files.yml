@@ -1,4 +1,4 @@
-name: Update Files
+name: Update CodeX shared files
 
 on:
   workflow_dispatch:
@@ -10,9 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout the repository
       - name: Checkout Repo
         uses: actions/checkout@v4
         with:
+          # This is required to allow another workflow to be triggered
           token: ${{ secrets.WORKFLOW_TOKEN }}
 
       # Configure Git
@@ -37,9 +39,10 @@ jobs:
 
           # Copy the Actions files
           cp codex/actions/flutter/library/sort_imports.yml .github/workflows/sort_imports.yml
+          cp codex/actions/flutter/library/tests.yml .github/workflows/tests.yml
           cp codex/actions/flutter/library/update_dependencies.yml .github/workflows/update_dependencies.yml
           cp codex/actions/flutter/library/update_files.yml .github/workflows/update_files.yml
-          cp codex/actions/flutter/library/tests.yml .github/workflows/tests.yml
+          cp codex/actions/flutter/library/version.yml .github/workflows/version.yml
 
       # Copy the Data files
       - name: Copy Data files
@@ -90,9 +93,10 @@ jobs:
 
           # Add the copied actions files to git
           add_if_exists .github/workflows/sort_imports.yml
+          add_if_exists .github/workflows/tests.yml
           add_if_exists .github/workflows/update_dependencies.yml
           add_if_exists .github/workflows/update_files.yml
-          add_if_exists .github/workflows/tests.yml
+          add_if_exists .github/workflows/version.yml
 
           # Add the copied data file to git
           add_if_exists data/dependencies.json
@@ -110,7 +114,7 @@ jobs:
             echo "No changes to commit"
           else
             # Commit the changes
-            git commit -m "Update files from codex repository"
+            git commit -m "chore: updated files from codex repository"
 
             # Push the changes back to the origin
             git push
