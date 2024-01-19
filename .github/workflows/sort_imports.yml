@@ -15,19 +15,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout the repository
+      - name: Checkout the code
+        uses: actions/checkout@v4
+
       # Set up Flutter environment
       - name: Install and set Flutter version
         uses: subosito/flutter-action@v2
         with:
           channel: "stable"
-
-      # Precache Flutter
-      - name: Precache Flutter
-        run: flutter precache --ios
-
-      # Checkout the repository
-      - name: Checkout the code
-        uses: actions/checkout@v4
+          cache: true
 
       # Install Melos
       - name: Install and set Melos version
@@ -41,8 +38,8 @@ jobs:
       - name: Sort imports
         run: melos run --no-select sort:imports
 
-      # Check for any changes in Dart files
-      - name: Check for Dart file changes
+      # Check for any changes
+      - name: Check for any changes
         id: git-check
         run: |
           git diff --exit-code -- '*.dart' || echo "changes=1" >> $GITHUB_ENV
@@ -55,9 +52,9 @@ jobs:
           git config user.email "actions@github.com"
 
       # Commit and push changes
-      - name: Commit and push Dart files
+      - name: Commit and push changes
         if: env.changes == '1'
         run: |
-          git add *.dart
+          git add -u *.dart
           git commit -m "chore: sorted imports"
           git push

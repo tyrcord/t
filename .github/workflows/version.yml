@@ -1,4 +1,4 @@
-name: Tag new package versions
+name: Deploy new versions
 
 on:
   workflow_dispatch:
@@ -13,12 +13,16 @@ jobs:
       # Checkout the repository
       - name: Checkout the code
         uses: actions/checkout@v4
+        with:
+          # This is required to allow another workflow to be triggered
+          token: ${{ secrets.WORKFLOW_TOKEN }}
 
       # Set up Flutter environment
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
           channel: "stable"
+          cache: true
 
       # Install Melos
       - name: Install and set Melos version
@@ -27,6 +31,10 @@ jobs:
       # Install dependencies
       - name: Install dependencies
         run: flutter pub get
+
+      # melos bootstrap
+      - name: Bootstrap
+        run: melos bootstrap
 
       # Code analysis
       - name: Analyze project source
@@ -46,5 +54,6 @@ jobs:
       - name: Set package versions
         run: melos version --yes
 
+      # Push tags
       - name: Push tags
         run: git push --follow-tags
