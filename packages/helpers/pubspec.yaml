@@ -1,5 +1,4 @@
 dependencies:
-  decimal: ^2.3.3
   diacritic: ^0.1.5
   flutter:
     sdk: flutter
@@ -9,7 +8,8 @@ dependencies:
   tenhance: ^0.0.8
   tmodel: ^0.5.13
   tsub: ^1.10.0
-description: A collection of helper functions to simplify common programming tasks
+description:
+  A collection of helper functions to simplify common programming tasks
   in Dart.
 dev_dependencies:
   flutter_lints: ^3.0.1
@@ -17,8 +17,8 @@ dev_dependencies:
     sdk: flutter
   import_sorter: ^4.6.0
 environment:
-  flutter: '>=3.16.0'
-  sdk: '>=3.2.0 <4.0.0'
+  flutter: ">=3.16.0"
+  sdk: ">=3.2.0 <4.0.0"
 name: t_helpers
 repository: https://github.com/tyrcord/t/tree/main/packages/helpers
 version: 0.0.51

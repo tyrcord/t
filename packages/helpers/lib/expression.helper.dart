@@ -1,6 +1,3 @@
-// Package imports:
-import 'package:decimal/decimal.dart';
-
 // Project imports:
 import 'package:t_helpers/helpers.dart';
 
@@ -29,10 +26,10 @@ double evaluateExpression(String expression) {
 
   // A recursive function that parses the expression and
   // returns the result as a Decimal.
-  Decimal parseExpression() {
-    final values = <Decimal>[]; // A stack to store numeric values.
+  double parseExpression() {
+    final values = <double>[]; // A stack to store numeric values.
     final operators = <String>[]; // A stack to store operators.
-    Decimal lastNonOperatorValue = Decimal.one;
+    double lastNonOperatorValue = 1.0;
 
     // Iterate through the expression.
     while (i < expression.length) {
@@ -52,7 +49,7 @@ double evaluateExpression(String expression) {
           }
 
           final substring = '-${expression.substring(i, j)}';
-          var dValue = Decimal.parse(substring.replaceAll('%', ''));
+          var dValue = double.parse(substring.replaceAll('%', ''));
 
           if (isStringPercentage(expression.substring(i, j)) &&
               (operators.isEmpty ||
@@ -60,8 +57,7 @@ double evaluateExpression(String expression) {
                   operators.last == '-')) {
             // Handle percentage operation for '+' or '-' operators.
             // Handle percentage operation for '+' or '-' operators.
-            dValue = lastNonOperatorValue *
-                (dValue / dHundred).toDecimal(scaleOnInfinitePrecision: 32);
+            dValue = lastNonOperatorValue * (dValue / 100);
           }
 
           values.add(dValue); // Add the parsed number to the values stack.
@@ -104,15 +100,14 @@ double evaluateExpression(String expression) {
         }
 
         final substring = expression.substring(i, j);
-        var dValue = Decimal.parse(substring.replaceAll('%', ''));
+        var dValue = double.parse(substring.replaceAll('%', ''));
 
         if (isStringPercentage(expression.substring(i, j)) &&
             (operators.isEmpty ||
                 operators.last == '+' ||
                 operators.last == '-')) {
           // Handle percentage operation for '+' or '-' operators.
-          dValue = lastNonOperatorValue *
-              (dValue / dHundred).toDecimal(scaleOnInfinitePrecision: 32);
+          dValue = lastNonOperatorValue * (dValue / 100);
         }
 
         values.add(dValue); // Add the parsed number to the values stack.
@@ -193,11 +188,11 @@ TSimpleOperation? parseSimpleOperation(String expression) {
 /// If the second value is zero, the function throws an exception.
 /// Finally, the function adds the result of the operation back to the [values]
 /// list using the [add] method.
-void applyOperation(String operator, List<Decimal> values) {
+void applyOperation(String operator, List<double> values) {
   // Remove the top two values from the values stack.
-  final Decimal b = values.removeLast();
-  final Decimal a = values.removeLast();
-  Decimal result;
+  final double b = values.removeLast();
+  final double a = values.removeLast();
+  double result;
 
   // Perform the operation based on the operator.
   switch (operator) {
@@ -210,8 +205,8 @@ void applyOperation(String operator, List<Decimal> values) {
       result = a * b;
     case '/':
     case '÷':
-      if (b == Decimal.zero) throw Exception('Division by zero');
-      result = (a / b).toDecimal(scaleOnInfinitePrecision: 32);
+      if (b == 0) throw Exception('Division by zero');
+      result = a / b;
     default:
       throw Exception('Invalid operator: $operator');
   }

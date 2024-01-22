@@ -1,5 +1,4 @@
 // Package imports:
-import 'package:decimal/decimal.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 // Project imports:
@@ -17,7 +16,7 @@ void main() {
 
     test('subtraction', () {
       expect(evaluateExpression('10-3'), 7.0);
-      expect(evaluateExpression('10.45-3.76'), 6.69);
+      expect(evaluateExpression('10.45-3.76'), closeTo(6.69, 0.01));
       expect(evaluateExpression('-9-9'), -18);
       expect(evaluateExpression('-9-9.5'), -18.5);
     });
@@ -64,7 +63,7 @@ void main() {
     test('evaluateExpression should handle percent sign', () {
       expect(evaluateExpression('100 + 10%'), equals(110.00));
       expect(evaluateExpression('100 + 10.5%'), equals(110.50));
-      expect(evaluateExpression('10% + 10%'), equals(0.11));
+      expect(evaluateExpression('10% + 10%'), closeTo(0.11, 0.01));
       expect(evaluateExpression('50% + 10'), equals(10.5));
 
       expect(evaluateExpression('100 - 10%'), equals(90.00));
@@ -241,48 +240,48 @@ void main() {
   // Test cases for applyOperation function
   group('applyOperation', () {
     test('Applies addition correctly', () {
-      final values = [Decimal.parse('1.23'), Decimal.parse('4.56')];
+      final values = [double.parse('1.23'), double.parse('4.56')];
       applyOperation('+', values);
-      expect(values, equals([Decimal.parse('5.79')]));
+      expect(values[0], closeTo(5.79, 0.01));
     });
 
     test('Applies subtraction correctly', () {
-      final values = [Decimal.parse('7.89'), Decimal.parse('4.56')];
+      final values = [double.parse('7.89'), double.parse('4.56')];
       applyOperation('-', values);
-      expect(values, equals([Decimal.parse('3.33')]));
+      expect(values, equals([double.parse('3.33')]));
     });
 
     test('Applies multiplication correctly', () {
-      final values = [Decimal.parse('1.23'), Decimal.parse('4.56')];
+      final values = [double.parse('1.23'), double.parse('4.56')];
       applyOperation('*', values);
-      expect(values, equals([Decimal.parse('5.6088')]));
+      expect(values, equals([double.parse('5.6088')]));
     });
 
     test('Applies division correctly', () {
-      final values = [Decimal.parse('7.89'), Decimal.parse('2.0')];
+      final values = [double.parse('7.89'), double.parse('2.0')];
       applyOperation('/', values);
-      expect(values, equals([Decimal.parse('3.945')]));
+      expect(values, equals([double.parse('3.945')]));
     });
 
     test('Applies multiplication with "×" correctly', () {
-      final values = [Decimal.parse('1.23'), Decimal.parse('4.56')];
+      final values = [double.parse('1.23'), double.parse('4.56')];
       applyOperation('×', values);
-      expect(values, equals([Decimal.parse('5.6088')]));
+      expect(values, equals([double.parse('5.6088')]));
     });
 
     test('Applies division with "÷" correctly', () {
-      final values = [Decimal.parse('7.89'), Decimal.parse('2.0')];
+      final values = [double.parse('7.89'), double.parse('2.0')];
       applyOperation('÷', values);
-      expect(values, equals([Decimal.parse('3.945')]));
+      expect(values, equals([double.parse('3.945')]));
     });
 
     test('Throws exception for division by zero', () {
-      final values = [Decimal.parse('7.89'), Decimal.zero];
+      final values = [double.parse('7.89'), 0.0];
       expect(() => applyOperation('/', values), throwsException);
     });
 
     test('Throws exception for invalid operator', () {
-      final values = [Decimal.parse('1.23'), Decimal.parse('4.56')];
+      final values = [double.parse('1.23'), double.parse('4.56')];
       expect(() => applyOperation('%', values), throwsException);
     });
   });
