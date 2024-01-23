@@ -4,6 +4,7 @@ import 'dart:async';
 // Package imports:
 import 'package:hive/hive.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:t_helpers/helpers.dart';
 
 // Project imports:
 import 'package:tstore/tstore.dart';
@@ -38,22 +39,18 @@ class TStore {
       final completer = Completer<bool>();
       _connectingFuture = completer.future;
 
-      Future.microtask(() async {
-        try {
-          _box = await Hive.openBox(storeName);
-          _connectingFuture = null;
-          completer.complete(true);
-        } catch (error) {
-          _box = null;
-          _connectingFuture = null;
-          completer.complete(false);
-        }
-      });
+      try {
+        _box = await retry(task: () => Hive.openBox(storeName));
+        _connectingFuture = null;
+        completer.complete(true);
+      } catch (error) {
+        _box = null;
+        _connectingFuture = null;
+        completer.complete(false);
+      }
     }
 
-    if (_connectingFuture != null) {
-      return _connectingFuture!;
-    }
+    if (_connectingFuture != null) return _connectingFuture!;
 
     return _box != null ? true : false;
   }
@@ -67,18 +64,16 @@ class TStore {
       final completer = Completer<bool>();
       _disconnectingFuture = completer.future;
 
-      Future.microtask(() async {
-        try {
-          await _box!.close();
-          _box = null;
-          _disconnectingFuture = null;
-          completer.complete(true);
-        } catch (error) {
-          _box = null;
-          _disconnectingFuture = null;
-          completer.complete(false);
-        }
-      });
+      try {
+        await _box!.close();
+        _box = null;
+        _disconnectingFuture = null;
+        completer.complete(true);
+      } catch (error) {
+        _box = null;
+        _disconnectingFuture = null;
+        completer.complete(false);
+      }
     }
 
     if (_disconnectingFuture != null) {
@@ -151,6 +146,12 @@ class TStore {
     final map = await toMap<V>();
 
     return map.values.toList();
+  }
+
+  Future<List<String>> listKeys() async {
+    final map = await toMap();
+
+    return map.keys.toList();
   }
 
   Future<List<dynamic>> find(bool Function(dynamic) finder) async {

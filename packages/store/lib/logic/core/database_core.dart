@@ -6,6 +6,8 @@ import 'package:tstore/tstore.dart';
 
 /// The database is the object that manages store objects.
 abstract class TDataBaseCore {
+  static const activeStoresRegistryName = "tActiveStoresRegistry";
+
   /// The stores.
   @protected
   final Map<String, TStore> stores = {};
@@ -36,12 +38,37 @@ abstract class TDataBaseCore {
     return false;
   }
 
+  @protected
+  Future<void> updateActiveStoresRegistry(String storeName) async {
+    final storesRegistry = await getStore(activeStoresRegistryName);
+    await connect(activeStoresRegistryName, this);
+    await storesRegistry.persist(storeName, true);
+  }
+
+  Future<List<String>> listActiveStores() async {
+    final storesRegistry = await getStore(activeStoresRegistryName);
+    await connect(activeStoresRegistryName, this);
+
+    return storesRegistry.listKeys();
+  }
+
+  Future<void> clearActiveStores() async {
+    final activeStoreKeys = await listActiveStores();
+
+    for (final key in activeStoreKeys) {
+      final store = await getStore(key);
+      await store.connect();
+      await store.clear();
+    }
+  }
+
   /// Returns the store.
   Future<TStore> getStore(String storeName) async {
     await init();
 
     if (!stores.containsKey(storeName)) {
       stores.putIfAbsent(storeName, () => TStore(storeName));
+      await updateActiveStoresRegistry(storeName);
     }
 
     return stores[storeName]!;
@@ -66,7 +93,7 @@ abstract class TDataBaseCore {
     if (isInitialized) {
       final store = await getStore(storeName);
 
-      if (store.isConnected) {
+      if (store.isConnected && registers.containsKey(storeName)) {
         registers[storeName]!.remove(register);
 
         if (registers[storeName]!.isEmpty) {
@@ -84,7 +111,7 @@ abstract class TDataBaseCore {
     if (isInitialized) {
       final store = await getStore(storeName);
 
-      if (store.isConnected) {
+      if (store.isConnected && registers.containsKey(storeName)) {
         registers[storeName]!.clear();
 
         return store.disconnect();

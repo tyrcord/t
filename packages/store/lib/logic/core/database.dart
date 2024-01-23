@@ -19,16 +19,18 @@ class TDataBase extends TDataBaseCore {
 
   TDataBase._();
 
+  String? get _path {
+    if (!kIsWeb) return Directory.current.path;
+
+    return null;
+  }
+
   /// Initializes the database.
   @override
   @protected
   Future<bool> init() async {
     if (!isInitialized) {
-      String? path;
-
-      if (!kIsWeb) path = Directory.current.path;
-
-      Hive.init(path);
+      Hive.init(_path);
       isInitialized = true;
     }
 
@@ -37,6 +39,6 @@ class TDataBase extends TDataBaseCore {
 
   @override
   Future<bool> storeExists(String storeName) async {
-    return Hive.boxExists(storeName);
+    return Hive.boxExists(storeName, path: _path);
   }
 }

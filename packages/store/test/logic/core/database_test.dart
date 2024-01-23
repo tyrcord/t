@@ -9,6 +9,8 @@ void main() {
     late TDataBase db;
     final registerObject = Object();
     const sampleStoreName = 'sampleStore';
+    const sampleStoreName1 = 'sampleStore1';
+    const sampleStoreName2 = 'sampleStore2';
 
     setUp(() {
       db = TDataBase();
@@ -16,6 +18,8 @@ void main() {
 
     tearDown(() async {
       await db.disconnectAll(sampleStoreName);
+      await db.disconnectAll(sampleStoreName1);
+      await db.disconnectAll(sampleStoreName2);
     });
 
     group('#constructor()', () {
@@ -32,21 +36,21 @@ void main() {
 
     group('#getStore()', () {
       test('should returns a TStore object', () async {
-        final store = await db.getStore('test');
+        final store = await db.getStore(sampleStoreName);
         expect(store, isA<TStore>());
       });
 
       test('should returns the same TStore object for the same store name',
           () async {
-        final store1 = await db.getStore('test');
-        final store2 = await db.getStore('test');
+        final store1 = await db.getStore(sampleStoreName);
+        final store2 = await db.getStore(sampleStoreName);
         expect(store1, equals(store2));
       });
 
       test('should creates a new TStore object for a different store name',
           () async {
-        final store1 = await db.getStore('test1');
-        final store2 = await db.getStore('test2');
+        final store1 = await db.getStore(sampleStoreName1);
+        final store2 = await db.getStore(sampleStoreName2);
         expect(store1, isNot(equals(store2)));
       });
     });
@@ -93,6 +97,52 @@ void main() {
 
         expect(isDisconnected, true);
         expect(db.isStoreConnected(sampleStoreName), false);
+      });
+    });
+
+    group('#updateActiveStoresRegistry()', () {
+      test('should register new store in the active stores registry', () async {
+        // This should internally call updateActiveStoresRegistry
+        await db.getStore(sampleStoreName);
+
+        final activeStores = await db.listActiveStores();
+        expect(activeStores.contains(sampleStoreName), true);
+      });
+
+      test('should not create duplicate entries for the same store', () async {
+        await db.getStore(sampleStoreName);
+        // Call again to simulate duplicate registration
+        await db.getStore(sampleStoreName);
+        final activeStores = await db.listActiveStores();
+        expect(activeStores.where((name) => name == sampleStoreName).length, 1);
+      });
+    });
+
+    group('#clearActiveStoresRegistry()', () {
+      test('should clear all stores and the registry', () async {
+        final store1 = await db.getStore(sampleStoreName1);
+        final store2 = await db.getStore(sampleStoreName2);
+
+        await store1.connect();
+        await store2.connect();
+
+        await store1.persist('1', {'name': 'John'});
+        await store2.persist('1', {'name': 'John'});
+        await store1.persist('2', {'name': 'John'});
+
+        var list1 = await store1.listKeys();
+        var list2 = await store2.listKeys();
+
+        expect(list1.length, 2);
+        expect(list2.length, 1);
+
+        await db.clearActiveStores();
+
+        list1 = await store1.listKeys();
+        list2 = await store2.listKeys();
+
+        expect(list1.length, 0);
+        expect(list2.length, 0);
       });
     });
   });

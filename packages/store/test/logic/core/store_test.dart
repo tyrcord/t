@@ -224,6 +224,22 @@ void main() {
       );
     });
 
+    group('#listKeys()', () {
+      test('should list all keys of persisted entries', () async {
+        await store.connect();
+        await store.clear();
+
+        await store.persist('1', person.toJson());
+        await store.persist('2', person.toJson());
+
+        final keys = await store.listKeys();
+
+        expect(keys.length, equals(2));
+        expect(keys.contains('1'), isTrue);
+        expect(keys.contains('2'), isTrue);
+      });
+    });
+
     group('#findEntity()', () {
       test(
         'should find some entities according to the finder function',
