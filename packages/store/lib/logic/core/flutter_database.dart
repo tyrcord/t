@@ -22,9 +22,7 @@ class TFlutterDataBase extends TDataBaseCore {
   @override
   Future<bool> init() async {
     if (!isInitialized) {
-      if (!isTest) {
-        await Hive.initFlutter();
-      }
+      if (!isTest) await Hive.initFlutter();
 
       isInitialized = true;
     }

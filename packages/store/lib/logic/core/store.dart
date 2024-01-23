@@ -22,9 +22,7 @@ class TStore {
   Stream<TStoreChanges> get onChanges => _changesController.stream;
 
   int get count {
-    if (_box != null) {
-      return _box!.length;
-    }
+    if (_box != null) return _box!.length;
 
     return 0;
   }

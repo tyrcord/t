@@ -26,9 +26,7 @@ class TDataBase extends TDataBaseCore {
     if (!isInitialized) {
       String? path;
 
-      if (!kIsWeb) {
-        path = Directory.current.path;
-      }
+      if (!kIsWeb) path = Directory.current.path;
 
       Hive.init(path);
       isInitialized = true;

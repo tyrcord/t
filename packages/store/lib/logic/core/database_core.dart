@@ -56,9 +56,7 @@ abstract class TDataBaseCore {
       registers[storeName]!.add(register);
     }
 
-    if (!store.isConnected) {
-      return store.connect();
-    }
+    if (!store.isConnected) return store.connect();
 
     return store.isConnected;
   }
