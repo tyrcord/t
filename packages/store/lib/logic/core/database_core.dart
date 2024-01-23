@@ -56,9 +56,11 @@ abstract class TDataBaseCore {
     final activeStoreKeys = await listActiveStores();
 
     for (final key in activeStoreKeys) {
-      final store = await getStore(key);
-      await store.connect();
-      await store.clear();
+      if (key != activeStoresRegistryName) {
+        final store = await getStore(key);
+        await store.connect();
+        await store.clear();
+      }
     }
   }
 
