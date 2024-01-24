@@ -4,6 +4,9 @@ import 'package:tlogger/logger.dart';
 /// Manages instances of TLogger for different labels.
 class TLoggerManager {
   static final TLoggerManager _instance = TLoggerManager._internal();
+
+  static TLoggerManager get instance => _instance;
+
   final Map<String, TLogger> _loggers = {};
 
   /// Factory constructor to provide a singleton instance.
