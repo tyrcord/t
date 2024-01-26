@@ -16,7 +16,7 @@ void main() {
         'TestLogger',
         outputFunction: logOutput.writeln, // Capture output in the StringBuffer
       );
-      loggerJournal = TLoggerJournal(maxSize: 10);
+      loggerJournal = TLoggerJournal();
     });
 
     tearDown(() => loggerJournal.clearLogs());
@@ -67,7 +67,7 @@ void main() {
 
     test(
         'Logs are recorded in the journal regardless of level or enabled state',
-        () {
+        () async {
       logger
         ..level = LogLevel.warning
         ..debug('This should not be printed but should be recorded')
@@ -82,18 +82,15 @@ void main() {
       ).debug('Another message from another logger');
 
       // Check if logs are recorded in the journal
-      final logs = loggerJournal.logs;
+      final logs = await loggerJournal.getLogFile();
+      final logContents = await logs.readAsString();
 
       expect(
-        logs,
-        contains(
-          contains('This should not be printed but should be recorded'),
-        ),
+        logContents,
+        contains('This should not be printed but should be recorded'),
       );
 
-      expect(logs, contains(contains('Another message from another logger')));
-
-      expect(logs.length, equals(3));
+      expect(logContents, contains('Another message from another logger'));
     });
   });
 }
