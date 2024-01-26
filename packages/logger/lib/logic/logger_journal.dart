@@ -4,7 +4,7 @@ import 'dart:async';
 import 'package:t_helpers/helpers.dart';
 
 class TLoggerJournal {
-  static const int defaultMaxSize = 1024 * 1024 * 10; // 10 MB
+  static const int defaultMaxSize = 1024 * 64; // 64 KB
   static const String defaultLogFileName = 'logs.txt';
   // Number of logs to write in one batch
   static const int batchSize = 256;
