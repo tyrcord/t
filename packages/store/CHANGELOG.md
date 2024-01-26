@@ -1,3 +1,8 @@
+## 0.8.24
+
+ - **FIX**: avoid to clear the activeStoresRegistry store when clearing the stores.
+ - **FEAT**: add listActiveStores and clearActiveStores.
+
 ## 0.8.23
 
  - **FIX**: regression.

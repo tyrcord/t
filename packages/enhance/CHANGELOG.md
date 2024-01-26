@@ -1,3 +1,7 @@
+## 0.0.8+1
+
+ - **REFACTOR**: move away from decimal.
+
 ## 0.0.8
 
  - **FIX**: missing import.

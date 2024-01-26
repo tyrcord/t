@@ -3,6 +3,55 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-01-26
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`t_helpers` - `v0.0.51+1`](#t_helpers---v00511)
+ - [`tenhance` - `v0.0.8+1`](#tenhance---v0081)
+ - [`tlogger` - `v0.0.9`](#tlogger---v009)
+ - [`tstore` - `v0.8.24`](#tstore---v0824)
+ - [`t_cache` - `v0.0.14+1`](#t_cache---v00141)
+ - [`tmodel` - `v0.5.13+1`](#tmodel---v05131)
+ - [`tbloc` - `v0.22.0+1`](#tbloc---v02201)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `t_cache` - `v0.0.14+1`
+ - `tmodel` - `v0.5.13+1`
+ - `tbloc` - `v0.22.0+1`
+
+---
+
+#### `t_helpers` - `v0.0.51+1`
+
+ - **REFACTOR**: move away from decimal.
+
+#### `tenhance` - `v0.0.8+1`
+
+ - **REFACTOR**: move away from decimal.
+
+#### `tlogger` - `v0.0.9`
+
+ - **FEAT**: TLoggerJournal save logs into a file instead of keeping log in memory.
+ - **FEAT**: make TLoggerManager instance public.
+
+#### `tstore` - `v0.8.24`
+
+ - **FIX**: avoid to clear the activeStoresRegistry store when clearing the stores.
+ - **FEAT**: add listActiveStores and clearActiveStores.
+
+
 ## 2024-01-18
 
 ### Changes

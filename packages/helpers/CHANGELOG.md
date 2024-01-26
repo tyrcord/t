@@ -1,3 +1,7 @@
+## 0.0.51+1
+
+ - **REFACTOR**: move away from decimal.
+
 ## 0.0.51
 
  - **REFACTOR**: formatCurrencyPair helper.

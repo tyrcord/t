@@ -1,3 +1,8 @@
+## 0.0.9
+
+ - **FEAT**: TLoggerJournal save logs into a file instead of keeping log in memory.
+ - **FEAT**: make TLoggerManager instance public.
+
 ## 0.0.8
 
  - **FIX**: avoid to display color characters in the journal.
