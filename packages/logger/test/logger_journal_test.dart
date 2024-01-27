@@ -1,11 +1,14 @@
 // Package imports:
 // ignore_for_file: avoid_slow_async_io
 
+// Dart imports:
+import 'dart:io';
+
+// Package imports:
 import 'package:flutter_test/flutter_test.dart';
 
 // Project imports:
 import 'package:tlogger/logger.dart';
-import 'dart:io';
 
 void main() {
   group('TLoggerJournal Tests', () {
