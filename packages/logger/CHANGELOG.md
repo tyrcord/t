@@ -1,3 +1,7 @@
+## 0.0.10
+
+ - **FEAT**: set the default size of the journal logs to 64KB.
+
 ## 0.0.9
 
  - **FEAT**: TLoggerJournal save logs into a file instead of keeping log in memory.
