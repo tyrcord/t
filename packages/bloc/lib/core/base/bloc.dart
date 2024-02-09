@@ -23,6 +23,10 @@ abstract class Bloc<S extends BlocState> {
   @protected
   final BlocStateBuilder<S>? initialStateBuilder;
 
+  @protected
+  // StreamController for analytics events
+  final analyticsEventController = BehaviorSubject<BlocAnalyticsEvent>();
+
   /// The list of publishers.
   @protected
   final List<PublishSubject> publishers = [];
@@ -80,6 +84,10 @@ abstract class Bloc<S extends BlocState> {
 
   /// Called whenever the BloC's state is updated.
   Stream<BlocError> get onError => errorController.stream;
+
+  // Expose the stream for external listeners
+  Stream<BlocAnalyticsEvent> get onAnalyticsEvents =>
+      analyticsEventController.stream;
 
   Bloc({
     this.initialState,
@@ -204,6 +212,7 @@ abstract class Bloc<S extends BlocState> {
       closed = true;
       stateController.close();
       errorController.close();
+      analyticsEventController.close();
       subxList.cancelAll();
       subxMap.cancelAll();
 
