@@ -21,4 +21,4 @@ environment:
 homepage: https://github.com/tyrcord/t/tree/main/packages/tbloc
 issue_tracker: https://github.com/tyrcord/t/tree/main/packages/tbloc/issues
 name: tbloc
-version: 0.22.0+1
+version: 0.22.1

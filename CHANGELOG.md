@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-02-09
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`tbloc` - `v0.22.1`](#tbloc---v0221)
+
+---
+
+#### `tbloc` - `v0.22.1`
+
+ - **FEAT**: add onAnalyticsEvents on blocs.
+
+
 ## 2024-01-31
 
 ### Changes

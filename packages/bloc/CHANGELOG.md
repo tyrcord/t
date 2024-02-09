@@ -1,3 +1,7 @@
+## 0.22.1
+
+ - **FEAT**: add onAnalyticsEvents on blocs.
+
 ## 0.22.0+1
 
  - Update a dependency to the latest release.
