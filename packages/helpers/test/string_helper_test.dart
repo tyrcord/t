@@ -244,4 +244,30 @@ void main() {
       expect(toPascalCase('élève brillant'), 'ÉlèveBrillant');
     });
   });
+
+  group('toSnakeCase', () {
+    test('converts simple words', () {
+      expect(toSnakeCase('helloWorld'), equals('hello_world'));
+    });
+
+    test('handles acronyms correctly', () {
+      expect(toSnakeCase('JSONData'), equals('json_data'));
+    });
+
+    test('works with single word', () {
+      expect(toSnakeCase('Dart'), equals('dart'));
+    });
+
+    test('leaves existing underscores', () {
+      expect(toSnakeCase('already_snake_case'), equals('already_snake_case'));
+    });
+
+    test('handles empty string', () {
+      expect(toSnakeCase(''), equals(''));
+    });
+
+    test('works with consecutive uppercase letters', () {
+      expect(toSnakeCase('APITest'), equals('api_test'));
+    });
+  });
 }

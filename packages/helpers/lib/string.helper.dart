@@ -171,3 +171,26 @@ String getLastChar(String value, {bool trim = true}) {
 
   return character;
 }
+
+/// Converts [input] string to snake_case.
+///
+/// This function takes a string and converts it to snake_case format,
+/// where each uppercase letter (except the first character if it's uppercase)
+/// is replaced by an underscore followed by the same letter in lowercase.
+///
+/// Example:
+/// ```
+/// final String result = toSnakeCase("CamelCaseInput");
+/// print(result); // Outputs: camel_case_input
+/// ```
+///
+String toSnakeCase(String input) {
+  // Use RegExp to find matches where a lowercase letter is followed by
+  // an uppercase letter or a sequence of uppercase letters followed by
+  // a lowercase letter
+  final RegExp exp = RegExp(r'(?<=[a-z])[A-Z]|(?<=[A-Z])[A-Z](?=[a-z])');
+
+  // Replace the matches found by the RegExp with an underscore followed by
+  // the matched letter
+  return input.replaceAllMapped(exp, (Match m) => '_${m[0]}').toLowerCase();
+}
