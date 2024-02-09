@@ -1,10 +1,10 @@
-class BlocAnalyticsEvent {
-  final String eventType;
+class BlocAnalyticsEvent<T> {
   final Map<String, dynamic>? parameters;
   final DateTime timestamp;
+  final T type;
 
-  BlocAnalyticsEvent(
-    this.eventType,
+  BlocAnalyticsEvent({
+    required this.type,
     this.parameters,
-  ) : timestamp = DateTime.now();
+  }) : timestamp = DateTime.now();
 }
