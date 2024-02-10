@@ -1,3 +1,7 @@
+## 0.0.52
+
+ - **FEAT**: add toSnakeCase helper.
+
 ## 0.0.51+1
 
  - **REFACTOR**: move away from decimal.

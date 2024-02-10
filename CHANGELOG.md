@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-02-10
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`t_helpers` - `v0.0.52`](#t_helpers---v0052)
+ - [`tbloc` - `v0.22.1+1`](#tbloc---v02211)
+ - [`tlogger` - `v0.0.10+1`](#tlogger---v00101)
+ - [`t_cache` - `v0.0.14+3`](#t_cache---v00143)
+ - [`tmodel` - `v0.5.13+2`](#tmodel---v05132)
+ - [`tenhance` - `v0.0.8+2`](#tenhance---v0082)
+ - [`tstore` - `v0.8.24+1`](#tstore---v08241)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `tlogger` - `v0.0.10+1`
+ - `t_cache` - `v0.0.14+3`
+ - `tmodel` - `v0.5.13+2`
+ - `tenhance` - `v0.0.8+2`
+ - `tstore` - `v0.8.24+1`
+
+---
+
+#### `t_helpers` - `v0.0.52`
+
+ - **FEAT**: add toSnakeCase helper.
+
+#### `tbloc` - `v0.22.1+1`
+
+ - **REFACTOR**: BlocAnalyticsEvent.
+
+
 ## 2024-02-09
 
 ### Changes

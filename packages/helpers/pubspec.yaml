@@ -5,8 +5,8 @@ dependencies:
   go_router: ^13.0.1
   intl: ^0.18.1
   rational: ^2.2.2
-  tenhance: ^0.0.8+1
-  tmodel: ^0.5.13+1
+  tenhance: ^0.0.8+2
+  tmodel: ^0.5.13+2
   tsub: ^1.10.0
 description:
   A collection of helper functions to simplify common programming tasks
@@ -21,4 +21,4 @@ environment:
   sdk: ">=3.2.0 <4.0.0"
 name: t_helpers
 repository: https://github.com/tyrcord/t/tree/main/packages/helpers
-version: 0.0.51+1
+version: 0.0.52

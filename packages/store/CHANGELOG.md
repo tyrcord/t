@@ -1,3 +1,7 @@
+## 0.8.24+1
+
+ - Update a dependency to the latest release.
+
 ## 0.8.24
 
  - **FIX**: avoid to clear the activeStoresRegistry store when clearing the stores.

@@ -1,3 +1,7 @@
+## 0.22.1+1
+
+ - **REFACTOR**: BlocAnalyticsEvent.
+
 ## 0.22.1
 
  - **FEAT**: add onAnalyticsEvents on blocs.
