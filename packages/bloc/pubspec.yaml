@@ -8,7 +8,7 @@ dependencies:
   subx: ^1.12.0
   tmodel: ^0.5.13+2
   tuple: ^2.0.2
-  uuid: ^4.2.1
+  uuid: ^4.2.2
 description: A dart library that helps you to implement the BLoC pattern.
 dev_dependencies:
   flutter_lints: ^3.0.1
