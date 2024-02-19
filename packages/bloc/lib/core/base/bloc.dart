@@ -96,6 +96,14 @@ abstract class Bloc<S extends BlocState> {
     setState(getInitialState());
   }
 
+  void resetBloc() {
+    setState(getInitialState());
+    isInitialized = false;
+    isInitializing = false;
+    subxList.cancelAll();
+    subxMap.cancelAll();
+  }
+
   /// Tries to retreive the initial BloC's state.
   @protected
   S getInitialState() {
