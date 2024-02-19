@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-02-19
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`t_cache` - `v0.0.15`](#t_cache---v0015)
+ - [`t_helpers` - `v0.0.53`](#t_helpers---v0053)
+ - [`tbloc` - `v0.22.2`](#tbloc---v0222)
+ - [`tenhance` - `v0.0.9`](#tenhance---v009)
+ - [`tlogger` - `v0.0.10+2`](#tlogger---v00102)
+ - [`tmodel` - `v0.5.13+3`](#tmodel---v05133)
+ - [`tstore` - `v0.8.24+2`](#tstore---v08242)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `tlogger` - `v0.0.10+2`
+ - `tmodel` - `v0.5.13+3`
+ - `tstore` - `v0.8.24+2`
+
+---
+
+#### `t_cache` - `v0.0.15`
+
+ - **FEAT**: updated dependencies.
+
+#### `t_helpers` - `v0.0.53`
+
+ - **FEAT**: updated dependencies.
+
+#### `tbloc` - `v0.22.2`
+
+ - **FEAT**: allow to reset a bloc.
+ - **FEAT**: updated dependencies.
+
+#### `tenhance` - `v0.0.9`
+
+ - **FEAT**: updated dependencies.
+
+
 ## 2024-02-10
 
 ### Changes

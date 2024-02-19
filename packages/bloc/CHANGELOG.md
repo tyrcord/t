@@ -1,3 +1,8 @@
+## 0.22.2
+
+ - **FEAT**: allow to reset a bloc.
+ - **FEAT**: updated dependencies.
+
 ## 0.22.1+1
 
  - **REFACTOR**: BlocAnalyticsEvent.
