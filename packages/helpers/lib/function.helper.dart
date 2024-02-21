@@ -3,6 +3,7 @@
 // Dart imports:
 import 'dart:async';
 import 'dart:math';
+import 'dart:ui';
 
 /// A no-operation function that does nothing.
 void noop() {}
@@ -76,4 +77,51 @@ Future<T> retry<T>({
   }
 
   throw Exception('Failed after $maxAttempts attempts.');
+}
+
+class Debouncer {
+  final int milliseconds;
+  VoidCallback? action;
+  Timer? _timer;
+
+  Debouncer({required this.milliseconds});
+
+  void run(VoidCallback action) {
+    _timer?.cancel();
+    _timer = Timer(Duration(milliseconds: milliseconds), action);
+  }
+}
+
+Function debounce(Function func, Duration delay) {
+  Timer? timer;
+
+  return () {
+    timer?.cancel();
+    timer = Timer(delay, () => func());
+  };
+}
+
+class Throttler {
+  final int milliseconds;
+  Timer? timer;
+
+  Throttler({required this.milliseconds});
+
+  void run(VoidCallback action) {
+    if (timer == null || !timer!.isActive) {
+      timer = Timer(Duration(milliseconds: milliseconds), () {
+        action();
+      });
+    }
+  }
+}
+
+Function throttle(Function func, Duration delay) {
+  Timer? timer;
+
+  return () {
+    if (timer == null || !timer!.isActive) {
+      timer = Timer(delay, () => func());
+    }
+  };
 }
