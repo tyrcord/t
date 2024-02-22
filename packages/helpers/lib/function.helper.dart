@@ -81,15 +81,16 @@ Future<T> retry<T>({
 
 class Debouncer {
   final int milliseconds;
-  VoidCallback? action;
   Timer? _timer;
 
-  Debouncer({required this.milliseconds});
+  Debouncer({this.milliseconds = 300});
 
   void run(VoidCallback action) {
     _timer?.cancel();
     _timer = Timer(Duration(milliseconds: milliseconds), action);
   }
+
+  void dispose() => _timer?.cancel();
 }
 
 Function debounce(Function func, Duration delay) {
@@ -103,17 +104,19 @@ Function debounce(Function func, Duration delay) {
 
 class Throttler {
   final int milliseconds;
-  Timer? timer;
+  Timer? _timer;
 
-  Throttler({required this.milliseconds});
+  Throttler({this.milliseconds = 300});
 
   void run(VoidCallback action) {
-    if (timer == null || !timer!.isActive) {
-      timer = Timer(Duration(milliseconds: milliseconds), () {
+    if (_timer == null || !_timer!.isActive) {
+      _timer = Timer(Duration(milliseconds: milliseconds), () {
         action();
       });
     }
   }
+
+  void dispose() => _timer?.cancel();
 }
 
 Function throttle(Function func, Duration delay) {
