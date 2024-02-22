@@ -127,6 +127,8 @@ Future<String> formatTimestampInMilliseconds({
 }
 
 Map<String, int> convertMonthsToYearsAndMonths(int months) {
+  if (months < 0) return {'years': 0, 'months': 0};
+
   final int years = months ~/ 12; // Years
   final int remainingMonths = (months % 12).round(); // Remaining months
 
