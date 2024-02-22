@@ -174,4 +174,34 @@ void main() {
       );
     });
   });
+
+  group('convertMonthsToYearsAndMonths', () {
+    test('converts 0 months to 0 years and 0 months', () {
+      expect(convertMonthsToYearsAndMonths(0), {'years': 0, 'months': 0});
+    });
+
+    test('converts 12 months to 1 year and 0 months', () {
+      expect(convertMonthsToYearsAndMonths(12), {'years': 1, 'months': 0});
+    });
+
+    test('converts 24 months to 2 years and 0 months', () {
+      expect(convertMonthsToYearsAndMonths(24), {'years': 2, 'months': 0});
+    });
+
+    test('converts 1 month to 0 years and 1 month', () {
+      expect(convertMonthsToYearsAndMonths(1), {'years': 0, 'months': 1});
+    });
+
+    test('converts 10 months to 0 years and 10 months', () {
+      expect(convertMonthsToYearsAndMonths(10), {'years': 0, 'months': 10});
+    });
+
+    test('converts 13 months to 1 year and 1 month', () {
+      expect(convertMonthsToYearsAndMonths(13), {'years': 1, 'months': 1});
+    });
+
+    test('converts 27 months to 2 years and 3 months', () {
+      expect(convertMonthsToYearsAndMonths(27), {'years': 2, 'months': 3});
+    });
+  });
 }

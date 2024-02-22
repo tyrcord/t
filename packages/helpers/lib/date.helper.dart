@@ -125,3 +125,10 @@ Future<String> formatTimestampInMilliseconds({
     showTime: showTime,
   );
 }
+
+Map<String, int> convertMonthsToYearsAndMonths(int months) {
+  final int years = months ~/ 12; // Years
+  final int remainingMonths = (months % 12).round(); // Remaining months
+
+  return {'years': years, 'months': remainingMonths};
+}
