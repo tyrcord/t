@@ -32,4 +32,43 @@ void main() {
       expect(calculatePercentageDecrease(5, 15), equals(-2));
     });
   });
+
+  group('rangeAroundN', () {
+    test('Standard case', () {
+      expect(rangeAroundN(5, 3), equals([2, 3, 4, 5, 6, 7, 8]));
+    });
+
+    test('n at the edge of 0', () {
+      expect(rangeAroundN(1, 3), equals([1, 2, 3, 4]));
+    });
+
+    test('n less than x, start should be 1', () {
+      expect(rangeAroundN(2, 3), equals([1, 2, 3, 4, 5]));
+    });
+
+    test('Zero range around n', () {
+      expect(rangeAroundN(5, 0), equals([5]));
+    });
+
+    test('n is 0, should start from 1', () {
+      expect(rangeAroundN(0, 3), equals([1, 2, 3]));
+    });
+
+    test('Negative n, treated as 0, should start from 1', () {
+      expect(rangeAroundN(-2, 3), equals([1]));
+    });
+
+    test('Large range', () {
+      expect(rangeAroundN(10, 10), equals(List.generate(20, (i) => i + 1)));
+    });
+
+    test('with loose true', () {
+      expect(rangeAroundN(5.0, 2, loose: true), [3, 4, 5.0, 6, 7]);
+      expect(rangeAroundN(5.5, 3, loose: true), [2, 3, 4, 5.5, 6, 7, 8]);
+      expect(
+        rangeAroundN(5.5, 3, loose: false),
+        [2.5, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5],
+      );
+    });
+  });
 }
