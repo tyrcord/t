@@ -71,4 +71,49 @@ void main() {
       );
     });
   });
+
+  group('nearlyEqual Function Tests', () {
+    // Group for exactly equal numbers
+    group('Exactly Equal Numbers', () {
+      test('Should return true for exactly equal numbers', () {
+        expect(nearlyEqual(1.0, 1.0), isTrue);
+      });
+    });
+
+    // Group for numbers within the epsilon range
+    group('Numbers Within Epsilon Range', () {
+      test('Should return true for numbers within epsilon range', () {
+        expect(nearlyEqual(1.0, 1.0 + kEpsilon / 2), isTrue);
+        expect(nearlyEqual(1.0, 1.0 - kEpsilon / 2), isTrue);
+      });
+    });
+
+    // Group for numbers outside the epsilon range
+    group('Numbers Outside Epsilon Range', () {
+      test('Should return false for numbers outside epsilon range', () {
+        expect(nearlyEqual(1.0, 1.0 + kEpsilon * 2), isFalse);
+        expect(nearlyEqual(1.0, 1.0 - kEpsilon * 2), isFalse);
+      });
+    });
+
+    // Group for negative numbers
+    group('Negative Numbers', () {
+      test('Should correctly handle negative numbers', () {
+        expect(nearlyEqual(-1.0, -1.0), isTrue);
+        expect(nearlyEqual(-1.0, -1.0 + kEpsilon / 2), isTrue);
+        expect(nearlyEqual(-1.0, -1.0 - kEpsilon / 2), isTrue);
+        expect(nearlyEqual(-1.0, -1.0 + kEpsilon * 2), isFalse);
+      });
+    });
+
+    // Group for edge cases
+    group('Edge Cases', () {
+      test('Should handle edge cases correctly', () {
+        expect(nearlyEqual(0.0, kEpsilon / 2), isTrue);
+        expect(nearlyEqual(0.0, kEpsilon * 2), isFalse);
+        expect(nearlyEqual(1e9, 1e9 + kEpsilon), isTrue);
+        expect(nearlyEqual(1e9, 1e9 + kEpsilon * 100), isTrue);
+      });
+    });
+  });
 }

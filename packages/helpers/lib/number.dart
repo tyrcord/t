@@ -1,5 +1,6 @@
 // Package imports:
 import 'package:intl/intl.dart';
+import 'package:t_helpers/helpers.dart';
 
 /// Checks if the input [number] is a "double integer", i.e., a double value
 /// that represents an integer value.
@@ -11,7 +12,7 @@ bool isDoubleInteger(double number) => isNumberInteger(number);
 bool isNumberInteger(num number) {
   final double roundedValue = number.roundToDouble();
 
-  return number == roundedValue;
+  return nearlyEqual(number, roundedValue);
 }
 
 /// Returns `true` if [str] represents a valid number, `false` otherwise.

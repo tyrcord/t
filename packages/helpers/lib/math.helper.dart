@@ -40,3 +40,13 @@ List<num> rangeAroundN(double n, int x, {bool loose = false}) {
 
   return result;
 }
+
+const double kEpsilon = 1e-10;
+
+bool nearlyEqual(
+  num a,
+  num b, {
+  double epsilon = kEpsilon,
+}) {
+  return (a - b).abs() < epsilon;
+}
