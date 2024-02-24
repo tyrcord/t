@@ -1,5 +1,7 @@
 // Package imports:
 import 'package:intl/intl.dart';
+
+// Project imports:
 import 'package:t_helpers/helpers.dart';
 
 /// Checks if the input [number] is a "double integer", i.e., a double value
