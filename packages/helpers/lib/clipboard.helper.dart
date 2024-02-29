@@ -23,7 +23,12 @@ String formatNumberForClipboard(num? value, {int maxFractionDigits = 2}) {
   // Determine if the value is a non-decimal number. If it is, format it
   // without any decimal places. Otherwise, ensure that it has two decimal
   // places to standardize the look of the output.
-  return isNumberInteger(value)
+  final isInteger = isNumberInteger(
+    value,
+    epsilonExponent: maxFractionDigits,
+  );
+
+  return isInteger
       ? value.toStringAsFixed(0)
       : value.toStringAsFixed(maxFractionDigits);
 }

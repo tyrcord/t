@@ -7,14 +7,16 @@ import 'package:t_helpers/helpers.dart';
 /// Checks if the input [number] is a "double integer", i.e., a double value
 /// that represents an integer value.
 /// Returns true if the input [number] is a double integer, false otherwise.
-bool isDoubleInteger(double number) => isNumberInteger(number);
+bool isDoubleInteger(double number, {int? epsilonExponent}) {
+  return isNumberInteger(number, epsilonExponent: epsilonExponent);
+}
 
 /// Checks if the input [number] is an integer.
 /// Returns true if the input [number] is an integer, false otherwise.
-bool isNumberInteger(num number) {
+bool isNumberInteger(num number, {int? epsilonExponent}) {
   final double roundedValue = number.roundToDouble();
 
-  return nearlyEqual(number, roundedValue);
+  return nearlyEqual(number, roundedValue, epsilonExponent: epsilonExponent);
 }
 
 /// Returns `true` if [str] represents a valid number, `false` otherwise.
@@ -247,7 +249,10 @@ NumberFormat getCurrencyNumberFormat({
 ) {
   if (value is double) {
     // Check if the value is an integer
-    final isInt = isDoubleInteger(value);
+    final isInt = isDoubleInteger(
+      value,
+      epsilonExponent: maximumFractionDigits ?? minimumFractionDigits,
+    );
 
     if (isInt) {
       // If the value is an integer, set the fraction digits to 0
@@ -271,4 +276,8 @@ NumberFormat getCurrencyNumberFormat({
 
   // Return the default fraction digits as a tuple
   return (minimumFractionDigits, maximumFractionDigits);
+}
+
+double scientificNotationValue(int exponent) {
+  return double.parse('1e$exponent');
 }

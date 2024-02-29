@@ -36,6 +36,18 @@ void main() {
       const double b = 100000000.123;
       expect(isDoubleInteger(b), false);
     });
+
+    test('Test case 6: Input is a double integer with epsilon exponent', () {
+      const double c1 = 99999.99999999769;
+      const double c2 = 10.0;
+      const double c3 = 10.5;
+
+      expect(isDoubleInteger(c1, epsilonExponent: 10), false);
+      expect(isDoubleInteger(c1, epsilonExponent: 6), true);
+      expect(isDoubleInteger(c2, epsilonExponent: 6), true);
+      expect(isDoubleInteger(c3, epsilonExponent: 1), false);
+      expect(isDoubleInteger(c3, epsilonExponent: 0), true);
+    });
   });
 
   group('isStringNumber', () {

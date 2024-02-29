@@ -1,3 +1,7 @@
+import 'package:t_helpers/helpers.dart';
+
+const double kEpsilon = 1e-10;
+
 /// Calculates the percentage decrease between an [originalValue]
 /// and a [newValue].
 ///
@@ -41,12 +45,10 @@ List<num> rangeAroundN(double n, int x, {bool loose = false}) {
   return result;
 }
 
-const double kEpsilon = 1e-10;
+bool nearlyEqual(num a, num b, {int? epsilonExponent}) {
+  final epsilon = epsilonExponent != null
+      ? scientificNotationValue(-epsilonExponent)
+      : kEpsilon;
 
-bool nearlyEqual(
-  num a,
-  num b, {
-  double epsilon = kEpsilon,
-}) {
   return (a - b).abs() < epsilon;
 }
