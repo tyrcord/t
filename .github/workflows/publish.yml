@@ -1,24 +1,14 @@
 name: Publish Packages
 
 on:
-  workflow_dispatch:
-  # FIXME: Uncomment when ready to publish
-  # push:
-  #   tags:
-  #     - "subx-v[0-9]+.[0-9]+.[0-9]+*"
-  #     - "t_cache-v[0-9]+.[0-9]+.[0-9]+*"
-  #     - "t_helpers-v[0-9]+.[0-9]+.[0-9]+*"
-  #     - "tbloc-v[0-9]+.[0-9]+.[0-9]+*"
-  #     - "tbloc_example-v[0-9]+.[0-9]+.[0-9]+*"
-  #     - "tenhance-v[0-9]+.[0-9]+.[0-9]+*"
-  #     - "tlogger-v[0-9]+.[0-9]+.[0-9]+*"
-  #     - "tmodel-v[0-9]+.[0-9]+.[0-9]+*"
-  #     - "tstore-v[0-9]+.[0-9]+.[0-9]+*"
-  #     - "tsub-v[0-9]+.[0-9]+.[0-9]+*"
+  push:
+    tags:
+      - "^release-\\d{4}-\\d{2}-\\d{2}$"
 
 jobs:
   publish:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     permissions:
       id-token: write # Required for authentication using OIDC
 
@@ -58,10 +48,6 @@ jobs:
           echo "PUB_TOKEN=${PUB_TOKEN}" >> $GITHUB_ENV
           export PUB_TOKEN
           flutter pub token add https://pub.dev --env-var PUB_TOKEN
-
-      # Publish dry run
-      - name: Publish - dry run
-        run: melos publish --dry-run -y
 
       # Publishing...
       - name: Publish to pub.dev
