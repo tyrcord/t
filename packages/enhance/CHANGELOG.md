@@ -1,3 +1,16 @@
+## 0.0.10
+
+ - **REFACTOR**: move away from decimal.
+ - **FIX**: missing import.
+ - **FIX**: minor improvements.
+ - **FEAT**: updated dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: add toSafeDouble to Rational.
+ - **FEAT**: add toSafeDouble to Decimal package.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: add tenhance package.
+
 ## 0.0.9
 
  - **FEAT**: updated dependencies.

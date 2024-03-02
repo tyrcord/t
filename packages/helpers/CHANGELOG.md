@@ -1,3 +1,90 @@
+## 0.0.54
+
+ - **REFACTOR**: move away from decimal.
+ - **REFACTOR**: formatCurrencyPair helper.
+ - **REFACTOR**: date helpers.
+ - **PERF**: minor improvements.
+ - **FIX**: minor fixes.
+ - **FIX**: areRouteBasesDifferent.
+ - **FIX**: toDecimal don't return null when giving it a Decimal.
+ - **FIX**: tests.
+ - **FIX**: tests.
+ - **FIX**: support PascalCase to camelCase.
+ - **FIX**: use right minimumFractionDigits when no max is specified.
+ - **FIX**: should not allow zeros to be added when the operand is already 0.
+ - **FIX**: remove unused param.
+ - **FIX**: avoid to parse an empty string.
+ - **FIX**: math issue.
+ - **FIX**: formatCurrency support lowercase symbols.
+ - **FIX**: make toIos3166Code stronger.
+ - **FIX**: remove assertion for toDecimal.
+ - **FIX**: formatPercentage.
+ - **FIX**: missing implement of isLastOperandPercent.
+ - **FIX**: minor fixes.
+ - **FIX**: replaceLastOperand should work when there are no operands.
+ - **FIX**: dependencies.
+ - **FIX**: bunch of fixes.
+ - **FEAT**: add removeDiacriticsAndLowercase helper.
+ - **FEAT**: add taskTimeout param to the retry function.
+ - **FEAT**: add toSafeDouble to Decimal package.
+ - **FEAT**: updated dependencies.
+ - **FEAT**: add getCurrencySymbol helper.
+ - **FEAT**: add formatPercentageForClipboard and improvements.
+ - **FEAT**: update dependencies.
+ - **FEAT**: add formatNumberForClipboard helper.
+ - **FEAT**: change default maxAttempts.
+ - **FEAT**: add retry helper.
+ - **FEAT**: update dependencies.
+ - **FEAT**: add toSnakeCase helper.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: added value helpers.
+ - **FEAT**: add areGoRoutesDifferent helper.
+ - **FEAT**: update dependencies.
+ - **FEAT**: add maxFractionDigits param to formatPercentageForClipboard.
+ - **FEAT**: add a silent option.
+ - **FEAT**: add isValidUrl.
+ - **FEAT**: add getRandomItem helper.
+ - **FEAT**: update dependencies.
+ - **FEAT**: minor improvements.
+ - **FEAT**: add noop helper.
+ - **FEAT**: add debugLog helper.
+ - **FEAT**: allow to hide the time when formatting a date.
+ - **FEAT**: refactor helpers.
+ - **FEAT**: added optional maxFractionDigits param to formatNumberForClipboard.
+ - **FEAT**: rename toIos3166 to toIos3166Code.
+ - **FEAT**: add toIos3166 helper.
+ - **FEAT**: add toCamelCase and toTitleCase helpers.
+ - **FEAT**: add existing libraries.
+ - **FEAT**: better defaults min and max fraction digits.
+ - **FEAT**: add date helpers.
+ - **FEAT**: add toPascalCase.
+ - **FEAT**: add calculatePercentageDecrease helper.
+ - **FEAT**: add decimal helpers.
+ - **FEAT**: add revertSuperscripts helper.
+ - **FEAT**: minor improvements.
+ - **FEAT**: add more formatting helpers.
+ - **FEAT**: added toDecimalOrDefault.
+ - **FEAT**: minor improvements.
+ - **FEAT**: add isLastOperandPercent to simple operation.
+ - **FEAT**: evaluateExpression handles percentage operation for '+' or '-' operators.
+ - **FEAT**: add isStringPercentage.
+ - **FEAT**: update to dart 3 & flutter 3.10.0.
+ - **FEAT**: add formatCurrencyPair helper.
+ - **FEAT**: added superscriptLastCharacter helper.
+ - **FEAT**: added getLastChar helper.
+ - **FEAT**: update dependencies.
+ - **FEAT**: minor improvements.
+ - **FEAT**: improvments.
+ - **FEAT**: added getCurrencyNumberFormat.
+ - **FEAT**: add TSimpleOperation model.
+ - **FEAT**: added getDecimalNumberFormat.
+ - **FEAT**: parseSimpleOperation support more cases.
+ - **FEAT**: add colors helpers.
+ - **FEAT**: add parseSimpleOperation.
+ - **FEAT**: add isDoubleInteger helper.
+ - **FEAT**: add transformTo2DArray helper.
+
 ## 0.0.53
 
  - **FEAT**: updated dependencies.

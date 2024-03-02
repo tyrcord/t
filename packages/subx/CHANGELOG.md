@@ -1,3 +1,17 @@
+## 1.13.0
+
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: minor improvements.
+ - **FEAT**: update to dart 3 & flutter 3.10.0.
+ - **FEAT**: update dependencies.
+ - **FEAT**: minor improvements.
+ - **FEAT**: add existing libraries.
+ - **FEAT**: add subx package.
+
 ## 1.12.0
 
  - **FEAT**: update dependencies.

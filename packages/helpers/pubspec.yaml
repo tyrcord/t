@@ -5,9 +5,9 @@ dependencies:
   go_router: ^13.2.0
   intl: ^0.18.1
   rational: ^2.2.2
-  tenhance: ^0.0.9
-  tmodel: ^0.5.13+3
-  tsub: ^1.10.0
+  tenhance: ^0.0.10
+  tmodel: ^0.5.14
+  tsub: ^1.11.0
 description: A collection of helper functions to simplify common programming tasks
   in Dart.
 dev_dependencies:
@@ -20,4 +20,4 @@ environment:
   sdk: '>=3.2.0 <4.0.0'
 name: t_helpers
 repository: https://github.com/tyrcord/t/tree/main/packages/helpers
-version: 0.0.53
+version: 0.0.54
