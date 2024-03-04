@@ -11,6 +11,7 @@ jobs:
     timeout-minutes: 15
     permissions:
       id-token: write # Required for authentication using OIDC
+    environment: "pub.dev"
 
     steps:
       # Checkout the code
