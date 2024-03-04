@@ -15,6 +15,34 @@ Packages with breaking changes:
 
 Packages with other changes:
 
+ - [`subx` - `v1.13.2`](#subx---v1132)
+ - [`tbloc` - `v0.23.0+2`](#tbloc---v02302)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `tbloc` - `v0.23.0+2`
+
+---
+
+#### `subx` - `v1.13.2`
+
+ - Bump "subx" to `1.13.2`.
+
+
+## 2024-03-04
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
  - [`subx` - `v1.13.1`](#subx---v1131)
  - [`tbloc` - `v0.23.0+1`](#tbloc---v02301)
 

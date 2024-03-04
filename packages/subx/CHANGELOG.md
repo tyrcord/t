@@ -1,3 +1,7 @@
+## 1.13.2
+
+ - Bump "subx" to `1.13.2`.
+
 ## 1.13.1
 
  - minor improvements

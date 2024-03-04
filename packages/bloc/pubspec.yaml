@@ -5,7 +5,7 @@ dependencies:
   meta: ^1.10.0
   provider: ^6.1.1
   rxdart: ^0.27.7
-  subx: ^1.13.1
+  subx: ^1.13.2
   tmodel: ^0.5.14
   tuple: ^2.0.2
   uuid: ^4.2.2
@@ -21,4 +21,4 @@ environment:
 homepage: https://github.com/tyrcord/t/tree/main/packages/tbloc
 issue_tracker: https://github.com/tyrcord/t/tree/main/packages/tbloc/issues
 name: tbloc
-version: 0.23.0+1
+version: 0.23.0+2
