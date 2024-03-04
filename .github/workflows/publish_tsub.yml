@@ -1,12 +1,12 @@
-name: Publish SubX Package
+name: Publish tSub Package
 
 on:
   push:
     tags:
-      - "subx-v[0-9]+.[0-9]+.[0-9]+*"
+      - "tsub-v[0-9]+.[0-9]+.[0-9]+*"
 
 jobs:
   call-publish-workflow:
     uses: ./.github/workflows/publish_package.yml
     with:
-      packageName: "subx"
+      packageName: "tsub"
