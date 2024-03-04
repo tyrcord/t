@@ -65,7 +65,7 @@ void main() {
       logger.recordLog('Final log to reach batch size');
 
       await Future.delayed(
-        TLoggerJournal.batchInterval + const Duration(seconds: 1),
+        TLoggerJournal.batchInterval + const Duration(seconds: 2),
       );
 
       logFile = File(logFilePath);
