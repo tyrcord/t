@@ -7,9 +7,9 @@ dependencies:
   meta: ^1.10.0
   path: ^1.8.3
   rxdart: ^0.27.7
-  t_helpers: ^0.0.54
-  tmodel: ^0.5.14
-  tsub: ^1.11.0
+  t_helpers: ^0.0.53
+  tmodel: ^0.5.13+3
+  tsub: ^1.10.0
 description: A dart library that helps you to manage and store entity objects.
 dev_dependencies:
   flutter_lints: ^3.0.1

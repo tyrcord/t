@@ -1,8 +1,8 @@
 dependencies:
   flutter:
     sdk: flutter
-  t_helpers: ^0.0.54
-  tlogger: ^0.0.11
+  t_helpers: ^0.0.53
+  tlogger: ^0.0.10+2
 description: Efficiently store and retrieve data with TTL, LRU eviction.
 dev_dependencies:
   flutter_lints: ^3.0.1

@@ -6,7 +6,7 @@ dependencies:
   provider: ^6.1.1
   rxdart: ^0.27.7
   subx: ^1.13.2
-  tmodel: ^0.5.14
+  tmodel: ^0.5.13+3
   tuple: ^2.0.2
   uuid: ^4.2.2
 description: A dart library that helps you to implement the BLoC pattern.
