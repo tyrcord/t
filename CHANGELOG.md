@@ -3,6 +3,268 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-03-06
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - [`tbloc` - `v0.24.0`](#tbloc---v0240)
+
+Packages with other changes:
+
+ - [`subx` - `v1.14.0`](#subx---v1140)
+ - [`t_cache` - `v0.0.17`](#t_cache---v0017)
+ - [`t_helpers` - `v0.0.55`](#t_helpers---v0055)
+ - [`tenhance` - `v0.0.11`](#tenhance---v0011)
+ - [`tlogger` - `v0.0.12`](#tlogger---v0012)
+ - [`tmodel` - `v0.5.15`](#tmodel---v0515)
+ - [`tstore` - `v0.8.26`](#tstore---v0826)
+ - [`tsub` - `v1.12.0`](#tsub---v1120)
+
+---
+
+#### `tbloc` - `v0.24.0`
+
+ - **REFACTOR**: BlocAnalyticsEvent.
+ - **FIX**: example.
+ - **FIX**: make sure building options works in any circumstances.
+ - **FIX**: dependencies.
+ - **FEAT**: allow to reset a bloc.
+ - **FEAT**: updated dependencies.
+ - **FEAT**: add onAnalyticsEvents on blocs.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: minor improvements.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: minor improvements.
+ - **FEAT**: minor improvements.
+ - **FEAT**: update to dart 3 & flutter 3.10.0.
+ - **FEAT**: update dependencies.
+ - **FEAT**: sampleEvent.
+ - **FEAT**: minor improvements.
+ - **FEAT**: add existing libraries.
+ - **BREAKING** **CHANGE**: add an uuid property to blocState.
+
+#### `subx` - `v1.14.0`
+
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: minor improvements.
+ - **FEAT**: update to dart 3 & flutter 3.10.0.
+ - **FEAT**: update dependencies.
+ - **FEAT**: minor improvements.
+ - **FEAT**: add existing libraries.
+ - **FEAT**: add subx package.
+
+#### `t_cache` - `v0.0.17`
+
+ - **REFACTOR**: better logs.
+ - **FIX**: log.
+ - **FIX**: avoid to clean when there is nothing to clean.
+ - **FEAT**: updated dependencies.
+ - **FEAT**: minor improvements.
+ - **FEAT**: use tlogger for logging messages.
+ - **FEAT**: update dependencies.
+ - **FEAT**: added clear method.
+ - **FEAT**: add updateCleaningInterval.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: add a silent option.
+ - **FEAT**: add debugLabel to CacheManager.
+ - **FEAT**: add cache package.
+
+#### `t_helpers` - `v0.0.55`
+
+ - **REFACTOR**: move away from decimal.
+ - **REFACTOR**: formatCurrencyPair helper.
+ - **REFACTOR**: date helpers.
+ - **PERF**: minor improvements.
+ - **FIX**: minor fixes.
+ - **FIX**: areRouteBasesDifferent.
+ - **FIX**: math issue.
+ - **FIX**: toDecimal don't return null when giving it a Decimal.
+ - **FIX**: tests.
+ - **FIX**: tests.
+ - **FIX**: use right minimumFractionDigits when no max is specified.
+ - **FIX**: should not allow zeros to be added when the operand is already 0.
+ - **FIX**: remove unused param.
+ - **FIX**: avoid to parse an empty string.
+ - **FIX**: support PascalCase to camelCase.
+ - **FIX**: formatCurrency support lowercase symbols.
+ - **FIX**: make toIos3166Code stronger.
+ - **FIX**: remove assertion for toDecimal.
+ - **FIX**: formatPercentage.
+ - **FIX**: missing implement of isLastOperandPercent.
+ - **FIX**: minor fixes.
+ - **FIX**: replaceLastOperand should work when there are no operands.
+ - **FIX**: dependencies.
+ - **FIX**: bunch of fixes.
+ - **FEAT**: add taskTimeout param to the retry function.
+ - **FEAT**: add formatCurrencyPair helper.
+ - **FEAT**: added superscriptLastCharacter helper.
+ - **FEAT**: added getLastChar helper.
+ - **FEAT**: added getCurrencyNumberFormat.
+ - **FEAT**: added getDecimalNumberFormat.
+ - **FEAT**: add epsilonExponent param to nearlyEqual.
+ - **FEAT**: added rangeAroundN helper.
+ - **FEAT**: add removeDiacriticsAndLowercase helper.
+ - **FEAT**: add convertMonthsToYearsAndMonths helper.
+ - **FEAT**: add formatPercentageForClipboard and improvements.
+ - **FEAT**: update dependencies.
+ - **FEAT**: add formatNumberForClipboard helper.
+ - **FEAT**: change default maxAttempts.
+ - **FEAT**: add retry helper.
+ - **FEAT**: update dependencies.
+ - **FEAT**: add areGoRoutesDifferent helper.
+ - **FEAT**: update dependencies.
+ - **FEAT**: add toPascalCase.
+ - **FEAT**: added value helpers.
+ - **FEAT**: added toDecimalOrDefault.
+ - **FEAT**: update dependencies.
+ - **FEAT**: add debounce and throttle helpers.
+ - **FEAT**: add a silent option.
+ - **FEAT**: add isValidUrl.
+ - **FEAT**: add getRandomItem helper.
+ - **FEAT**: updated dependencies.
+ - **FEAT**: minor improvements.
+ - **FEAT**: add noop helper.
+ - **FEAT**: add debugLog helper.
+ - **FEAT**: allow to hide the time when formatting a date.
+ - **FEAT**: refactor helpers.
+ - **FEAT**: add getCurrencySymbol helper.
+ - **FEAT**: rename toIos3166 to toIos3166Code.
+ - **FEAT**: add existing libraries.
+ - **FEAT**: add toCamelCase and toTitleCase helpers.
+ - **FEAT**: add transformTo2DArray helper.
+ - **FEAT**: better defaults min and max fraction digits.
+ - **FEAT**: add date helpers.
+ - **FEAT**: add toSnakeCase helper.
+ - **FEAT**: add calculatePercentageDecrease helper.
+ - **FEAT**: add decimal helpers.
+ - **FEAT**: added nearlyEqual helper.
+ - **FEAT**: minor improvements.
+ - **FEAT**: add more formatting helpers.
+ - **FEAT**: add maxFractionDigits param to formatPercentageForClipboard.
+ - **FEAT**: minor improvements.
+ - **FEAT**: add isLastOperandPercent to simple operation.
+ - **FEAT**: evaluateExpression handles percentage operation for '+' or '-' operators.
+ - **FEAT**: add isStringPercentage.
+ - **FEAT**: update to dart 3 & flutter 3.10.0.
+ - **FEAT**: update dependencies.
+ - **FEAT**: added optional maxFractionDigits param to formatNumberForClipboard.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: minor improvements.
+ - **FEAT**: improvments.
+ - **FEAT**: add revertSuperscripts helper.
+ - **FEAT**: add TSimpleOperation model.
+ - **FEAT**: add toSafeDouble to Decimal package.
+ - **FEAT**: parseSimpleOperation support more cases.
+ - **FEAT**: add colors helpers.
+ - **FEAT**: add parseSimpleOperation.
+ - **FEAT**: add isDoubleInteger helper.
+ - **FEAT**: add toIos3166 helper.
+
+#### `tenhance` - `v0.0.11`
+
+ - **REFACTOR**: move away from decimal.
+ - **FIX**: missing import.
+ - **FIX**: minor improvements.
+ - **FEAT**: updated dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: add toSafeDouble to Rational.
+ - **FEAT**: add toSafeDouble to Decimal package.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: add tenhance package.
+
+#### `tlogger` - `v0.0.12`
+
+ - **FIX**: avoid to display color characters in the journal.
+ - **FIX**: avoid to use Date Format not initialized locales.
+ - **FIX**: typo.
+ - **FEAT**: set the default size of the journal logs to 64KB.
+ - **FEAT**: TLoggerJournal save logs into a file instead of keeping log in memory.
+ - **FEAT**: make TLoggerManager instance public.
+ - **FEAT**: info can display a value.
+ - **FEAT**: allow to print the stackTrace.
+ - **FEAT**: change default journal size to 256.
+ - **FEAT**: add removeLogger.
+ - **FEAT**: added logger journal.
+ - **FEAT**: update dependencies.
+ - **FEAT**: minor improvements.
+ - **FEAT**: minor improvements.
+ - **FEAT**: minor improvements.
+ - **FEAT**: minor improvements.
+ - **FEAT**: add tLogger package.
+
+#### `tmodel` - `v0.5.15`
+
+ - **FIX**: typo.
+ - **FEAT**: update dependencies.
+ - **FEAT**: add copyWithDefaults.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: added value helpers.
+ - **FEAT**: add assignValue to Tmodel.
+ - **FEAT**: update dependencies.
+ - **FEAT**: minor improvements.
+ - **FEAT**: update to dart 3 & flutter 3.10.0.
+ - **FEAT**: update dependencies.
+ - **FEAT**: add existing libraries.
+
+#### `tstore` - `v0.8.26`
+
+ - **FIX**: avoid to clear the activeStoresRegistry store when clearing the stores.
+ - **FIX**: regression.
+ - **FIX**: dependencies.
+ - **FEAT**: add listActiveStores and clearActiveStores.
+ - **FEAT**: better web support.
+ - **FEAT**: update dependencies.
+ - **FEAT**: minor improvements.
+ - **FEAT**: document have a default version.
+ - **FEAT**: update dependencies.
+ - **FEAT**: add storeExists method.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: added value helpers.
+ - **FEAT**: add deleteAll.
+ - **FEAT**: add a reference count system when connecting/disconnecting to a store.
+ - **FEAT**: add a reference count system when connecting/disconnecting".
+ - **FEAT**: add a reference count system when connecting/disconnecting.
+ - **FEAT**: minor improvements.
+ - **FEAT**: add persistAll method.
+ - **FEAT**: add setUpTStoreTesting.
+ - **FEAT**: update to dart 3 & flutter 3.10.0.
+ - **FEAT**: update dependencies.
+ - **FEAT**: add existing libraries.
+
+#### `tsub` - `v1.12.0`
+
+ - **FEAT**: better web support.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: minor improvements.
+ - **FEAT**: update to dart 3 & flutter 3.10.0.
+ - **FEAT**: update dependencies.
+ - **FEAT**: add existing libraries.
+
+
 ## 2024-03-04
 
 ### Changes

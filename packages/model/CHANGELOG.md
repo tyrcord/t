@@ -1,3 +1,19 @@
+## 0.5.15
+
+ - **FIX**: typo.
+ - **FEAT**: update dependencies.
+ - **FEAT**: add copyWithDefaults.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: added value helpers.
+ - **FEAT**: add assignValue to Tmodel.
+ - **FEAT**: update dependencies.
+ - **FEAT**: minor improvements.
+ - **FEAT**: update to dart 3 & flutter 3.10.0.
+ - **FEAT**: update dependencies.
+ - **FEAT**: add existing libraries.
+
 ## 0.5.14
 
  - **FIX**: typo.

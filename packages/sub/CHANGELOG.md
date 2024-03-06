@@ -1,3 +1,15 @@
+## 1.12.0
+
+ - **FEAT**: better web support.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: minor improvements.
+ - **FEAT**: update to dart 3 & flutter 3.10.0.
+ - **FEAT**: update dependencies.
+ - **FEAT**: add existing libraries.
+
 ## 1.11.0
 
  - **FEAT**: better web support.
