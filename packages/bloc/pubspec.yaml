@@ -3,21 +3,21 @@ dependencies:
   flutter:
     sdk: flutter
   meta: ^1.10.0
-  provider: ^6.1.1
+  provider: ^6.1.2
   rxdart: ^0.27.7
   subx: ^1.14.0
   tmodel: ^0.5.15
   tuple: ^2.0.2
-  uuid: ^4.2.2
+  uuid: ^4.4.0
 description: A dart library that helps you to implement the BLoC pattern.
 dev_dependencies:
-  flutter_lints: ^3.0.1
+  flutter_lints: ^4.0.0
   flutter_test:
     sdk: flutter
   import_sorter: ^4.6.0
 environment:
-  flutter: '>=3.16.0'
-  sdk: '>=3.2.0 <4.0.0'
+  flutter: ">=3.16.0"
+  sdk: ">=3.2.0 <4.0.0"
 homepage: https://github.com/tyrcord/t/tree/main/packages/tbloc
 issue_tracker: https://github.com/tyrcord/t/tree/main/packages/tbloc/issues
 name: tbloc

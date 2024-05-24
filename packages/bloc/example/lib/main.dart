@@ -4,8 +4,6 @@
 import 'package:flutter/material.dart';
 
 // Package imports:
-import 'package:fastyle_core/fastyle_core.dart';
-import 'package:go_router/go_router.dart';
 import 'package:tbloc/tbloc.dart';
 
 // Project imports:
@@ -18,16 +16,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FastApp(
-      routesForMediaType: (mediaType) {
-        return [
-          GoRoute(
-            builder: (context, state) => const MyHomePage(),
-            path: '/',
-          ),
-        ];
-      },
-    );
+    return const MaterialApp(home: MyHomePage(), title: 'tBloc Demo');
   }
 }
 
@@ -51,10 +40,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   // ignore: long-method
   Widget build(BuildContext context) {
-    return FastSectionPage(
-      showAppBar: false,
-      titleText: 'tBloc Demo',
-      child: BlocProvider(
+    return Scaffold(
+      body: BlocProvider(
         bloc: bloc,
         child: Center(
           child: BlocBuilderWidget<CounterBlocState>(
@@ -74,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 return buildContent();
               }
 
-              return const FastThreeBounceIndicator();
+              return const SizedBox.shrink();
             },
           ),
         ),
@@ -87,11 +74,11 @@ class _MyHomePageState extends State<MyHomePage> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         buildActions(),
-        kFastSizedBox16,
+        const Spacer(),
         const Text('You have pushed the button this many times:'),
-        kFastSizedBox16,
+        const Spacer(),
         const CounterWidget(),
-        kFastSizedBox16,
+        const Spacer(),
         const StatusWidget(),
       ],
     );
@@ -101,27 +88,27 @@ class _MyHomePageState extends State<MyHomePage> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        FastRaisedButton(
-          text: 'INCREMENT',
-          onTap: () {
+        ElevatedButton(
+          child: const Text('INCREMENT'),
+          onPressed: () {
             bloc.addEvent(const CounterBlocEvent.increment());
           },
         ),
-        FastRaisedButton(
-          text: 'DECREMENT',
-          onTap: () {
+        ElevatedButton(
+          child: const Text('DECREMENT'),
+          onPressed: () {
             bloc.addEvent(const CounterBlocEvent.decrement());
           },
         ),
-        FastRaisedButton(
-          text: 'RESET',
-          onTap: () {
+        ElevatedButton(
+          child: const Text('RESET'),
+          onPressed: () {
             bloc.addEvent(const CounterBlocEvent.reset());
           },
         ),
-        FastRaisedButton(
-          text: 'ERROR',
-          onTap: () => bloc.addEvent(const CounterBlocEvent.error()),
+        ElevatedButton(
+          child: const Text('ERROR'),
+          onPressed: () => bloc.addEvent(const CounterBlocEvent.error()),
         ),
       ],
     );
