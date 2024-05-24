@@ -1,3 +1,7 @@
+## 1.13.0
+
+ - **FEAT**: update dependencies.
+
 ## 1.12.0
 
  - **FEAT**: better web support.

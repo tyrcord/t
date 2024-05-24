@@ -1,3 +1,7 @@
+## 0.0.56
+
+ - **FEAT**: update dependencies.
+
 ## 0.0.55
 
  - **REFACTOR**: move away from decimal.

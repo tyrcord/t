@@ -1,3 +1,7 @@
+## 0.5.16
+
+ - **FEAT**: update dependencies.
+
 ## 0.5.15
 
  - **FIX**: typo.

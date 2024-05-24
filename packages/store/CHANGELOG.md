@@ -1,3 +1,7 @@
+## 0.8.27
+
+ - **FEAT**: update dependencies.
+
 ## 0.8.26
 
  - **FIX**: avoid to clear the activeStoresRegistry store when clearing the stores.

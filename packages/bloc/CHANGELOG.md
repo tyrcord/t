@@ -1,3 +1,7 @@
+## 0.24.1
+
+ - **FEAT**: update dependencies.
+
 ## 0.24.0
 
 > Note: This release has breaking changes.
