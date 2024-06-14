@@ -18,4 +18,4 @@ environment:
 homepage: https://github.com/tyrcord/t/tree/main/packages/subx
 issue_tracker: https://github.com/tyrcord/t/tree/main/packages/subx/issues
 name: subx
-version: 1.16.0
+version: 1.17.0
