@@ -2,8 +2,8 @@ dependencies:
   async: ^2.11.0
   flutter:
     sdk: flutter
-  meta: ^1.10.0
-  provider: ^6.1.2
+  meta: ^1.12.0
+  provider: ^6.1.1
   rxdart: ^0.27.7
   subx: ^1.16.0
   tmodel: ^0.5.17
@@ -16,8 +16,8 @@ dev_dependencies:
     sdk: flutter
   import_sorter: ^4.6.0
 environment:
-  flutter: ">=3.16.0"
-  sdk: ">=3.2.0 <4.0.0"
+  flutter: '>=3.16.0'
+  sdk: '>=3.2.0 <4.0.0'
 homepage: https://github.com/tyrcord/t/tree/main/packages/tbloc
 issue_tracker: https://github.com/tyrcord/t/tree/main/packages/tbloc/issues
 name: tbloc
