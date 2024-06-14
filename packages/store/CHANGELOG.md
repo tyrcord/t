@@ -1,3 +1,31 @@
+## 0.8.28
+
+ - **FIX**: avoid to clear the activeStoresRegistry store when clearing the stores.
+ - **FIX**: regression.
+ - **FIX**: dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: updated dependencies.
+ - **FEAT**: add listActiveStores and clearActiveStores.
+ - **FEAT**: better web support.
+ - **FEAT**: update dependencies.
+ - **FEAT**: minor improvements.
+ - **FEAT**: document have a default version.
+ - **FEAT**: update dependencies.
+ - **FEAT**: add storeExists method.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: added value helpers.
+ - **FEAT**: add deleteAll.
+ - **FEAT**: add a reference count system when connecting/disconnecting to a store.
+ - **FEAT**: add a reference count system when connecting/disconnecting".
+ - **FEAT**: add a reference count system when connecting/disconnecting.
+ - **FEAT**: minor improvements.
+ - **FEAT**: add persistAll method.
+ - **FEAT**: add setUpTStoreTesting.
+ - **FEAT**: update to dart 3 & flutter 3.10.0.
+ - **FEAT**: update dependencies.
+ - **FEAT**: add existing libraries.
+
 ## 0.8.27
 
  - **FEAT**: update dependencies.

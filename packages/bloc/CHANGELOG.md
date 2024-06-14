@@ -1,3 +1,33 @@
+## 0.25.0
+
+> Note: This release has breaking changes.
+
+ - **REFACTOR**: BlocAnalyticsEvent.
+ - **FIX**: example.
+ - **FIX**: make sure building options works in any circumstances.
+ - **FIX**: dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: updated dependencies.
+ - **FEAT**: allow to reset a bloc.
+ - **FEAT**: updated dependencies.
+ - **FEAT**: add onAnalyticsEvents on blocs.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: minor improvements.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: minor improvements.
+ - **FEAT**: minor improvements.
+ - **FEAT**: update to dart 3 & flutter 3.10.0.
+ - **FEAT**: update dependencies.
+ - **FEAT**: sampleEvent.
+ - **FEAT**: minor improvements.
+ - **FEAT**: add existing libraries.
+ - **BREAKING** **CHANGE**: add an uuid property to blocState.
+
 ## 0.24.1
 
  - **FEAT**: update dependencies.

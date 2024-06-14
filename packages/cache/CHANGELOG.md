@@ -1,3 +1,24 @@
+## 0.0.19
+
+ - **REFACTOR**: better logs.
+ - **FIX**: log.
+ - **FIX**: avoid to clean when there is nothing to clean.
+ - **FEAT**: update dependencies.
+ - **FEAT**: updated dependencies.
+ - **FEAT**: updated dependencies.
+ - **FEAT**: minor improvements.
+ - **FEAT**: use tlogger for logging messages.
+ - **FEAT**: update dependencies.
+ - **FEAT**: added clear method.
+ - **FEAT**: add updateCleaningInterval.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: update dependencies.
+ - **FEAT**: add a silent option.
+ - **FEAT**: add debugLabel to CacheManager.
+ - **FEAT**: add cache package.
+
 ## 0.0.18
 
  - **FEAT**: update dependencies.

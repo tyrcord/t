@@ -1,3 +1,25 @@
+## 0.0.14
+
+ - **FIX**: avoid to display color characters in the journal.
+ - **FIX**: avoid to use Date Format not initialized locales.
+ - **FIX**: typo.
+ - **FEAT**: update dependencies.
+ - **FEAT**: updated dependencies.
+ - **FEAT**: set the default size of the journal logs to 64KB.
+ - **FEAT**: TLoggerJournal save logs into a file instead of keeping log in memory.
+ - **FEAT**: make TLoggerManager instance public.
+ - **FEAT**: info can display a value.
+ - **FEAT**: allow to print the stackTrace.
+ - **FEAT**: change default journal size to 256.
+ - **FEAT**: add removeLogger.
+ - **FEAT**: added logger journal.
+ - **FEAT**: update dependencies.
+ - **FEAT**: minor improvements.
+ - **FEAT**: minor improvements.
+ - **FEAT**: minor improvements.
+ - **FEAT**: minor improvements.
+ - **FEAT**: add tLogger package.
+
 ## 0.0.13
 
  - **FEAT**: update dependencies.
