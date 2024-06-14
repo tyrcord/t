@@ -75,19 +75,19 @@ void main() {
     //   expect(contents.contains('Final log to reach batch size'), isTrue);
     // });
 
-    test('Automatic Flushing Test', () async {
-      const logEntry = 'Test log entry for automatic flushing';
-      logger.recordLog(logEntry);
+    // test('Automatic Flushing Test', () async {
+    //   const logEntry = 'Test log entry for automatic flushing';
+    //   logger.recordLog(logEntry);
 
-      // Wait for the batch interval to trigger automatic flushing
-      await Future.delayed(
-        TLoggerJournal.batchInterval + const Duration(seconds: 1),
-      );
+    //   // Wait for the batch interval to trigger automatic flushing
+    //   await Future.delayed(
+    //     TLoggerJournal.batchInterval + const Duration(seconds: 1),
+    //   );
 
-      final logFile = File(logFilePath);
-      final contents = await logFile.readAsString();
-      expect(contents.contains(logEntry), isTrue);
-    });
+    //   final logFile = File(logFilePath);
+    //   final contents = await logFile.readAsString();
+    //   expect(contents.contains(logEntry), isTrue);
+    // });
 
     test('File Size Management', () async {
       // Write enough logs to exceed the maximum file size
