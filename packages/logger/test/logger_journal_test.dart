@@ -2,7 +2,7 @@
 // ignore_for_file: avoid_slow_async_io
 
 // Dart imports:
-import 'dart:io';
+// import 'dart:io';
 
 // Package imports:
 import 'package:flutter_test/flutter_test.dart';
@@ -13,13 +13,13 @@ import 'package:tlogger/logger.dart';
 void main() {
   group('TLoggerJournal Tests', () {
     late TLoggerJournal logger;
-    late String logFilePath;
+    // late String logFilePath;
 
     setUp(() async {
       // Initialize the logger before each test
       logger = TLoggerJournal(maxSize: 1024 * 8 /* 8 KB */);
-      logFilePath =
-          '${Directory.systemTemp.path}/${TLoggerJournal.defaultLogFileName}';
+      // logFilePath =
+      //     '${Directory.systemTemp.path}/${TLoggerJournal.defaultLogFileName}';
     });
 
     tearDown(() async {
