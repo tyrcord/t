@@ -1,3 +1,7 @@
+## 0.0.21
+
+ - **FEAT**: updated dependencies.
+
 ## 0.0.20
 
  - **FEAT**: updated dependencies.
