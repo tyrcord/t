@@ -1,8 +1,8 @@
 dependencies:
   flutter:
     sdk: flutter
-  go_router: ^14.1.3
-  rational: ^2.2.2
+  go_router: ^14.2.7
+  rational: ^2.2.3
   t_helpers: ^0.0.58
 description: A dart library provide a bunch of extenstion.
 dev_dependencies:
@@ -11,8 +11,8 @@ dev_dependencies:
     sdk: flutter
   import_sorter: ^4.6.0
 environment:
-  flutter: '>=3.16.0'
-  sdk: '>=3.2.0 <4.0.0'
+  flutter: ">=3.24.0"
+  sdk: ">=3.5.0 <4.0.0"
 issue_tracker: https://github.com/tyrcord/t/tree/main/packages/enhance/issues
 name: tenhance
 repository: https://github.com/tyrcord/t/tree/main/packages/enhance

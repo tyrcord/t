@@ -6,7 +6,7 @@ dependencies:
   hive_flutter: ^1.1.0
   meta: ^1.12.0
   path: ^1.9.0
-  rxdart: ^0.27.7
+  rxdart: ^0.28.0
   t_helpers: ^0.0.58
   tmodel: ^0.5.18
   tsub: ^1.15.0
@@ -17,8 +17,8 @@ dev_dependencies:
     sdk: flutter
   import_sorter: ^4.6.0
 environment:
-  flutter: '>=3.16.0'
-  sdk: '>=3.2.0 <4.0.0'
+  flutter: ">=3.24.0"
+  sdk: ">=3.5.0 <4.0.0"
 issue_tracker: https://github.com/tyrcord/t/tree/main/packages/tstore/issues
 name: tstore
 repository: https://github.com/tyrcord/t/tree/main/packages/tstore
