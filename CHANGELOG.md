@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2025-01-26
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`t_helpers` - `v0.0.60`](#t_helpers---v0060)
+ - [`t_cache` - `v0.0.21+1`](#t_cache---v00211)
+ - [`tmodel` - `v0.5.19+1`](#tmodel---v05191)
+ - [`tenhance` - `v0.0.15+1`](#tenhance---v00151)
+ - [`tlogger` - `v0.0.16+1`](#tlogger---v00161)
+ - [`tstore` - `v0.8.30+1`](#tstore---v08301)
+ - [`tbloc` - `v0.25.2+1`](#tbloc---v02521)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `t_cache` - `v0.0.21+1`
+ - `tmodel` - `v0.5.19+1`
+ - `tenhance` - `v0.0.15+1`
+ - `tlogger` - `v0.0.16+1`
+ - `tstore` - `v0.8.30+1`
+ - `tbloc` - `v0.25.2+1`
+
+---
+
+#### `t_helpers` - `v0.0.60`
+
+ - **FEAT**: added getNumberSignIndicator helper.
+
+
 ## 2024-08-27
 
 ### Changes

@@ -1,3 +1,7 @@
+## 0.0.60
+
+ - **FEAT**: added getNumberSignIndicator helper.
+
 ## 0.0.59
 
  - **FEAT**: updated dependencies.
