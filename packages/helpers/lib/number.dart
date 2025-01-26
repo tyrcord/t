@@ -281,3 +281,8 @@ NumberFormat getCurrencyNumberFormat({
 double scientificNotationValue(int exponent) {
   return double.parse('1e$exponent');
 }
+
+
+String getNumberSignIndicator(num value) {
+  return value > 0 ? '+' : '';
+}
