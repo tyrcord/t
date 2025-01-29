@@ -282,7 +282,34 @@ double scientificNotationValue(int exponent) {
   return double.parse('1e$exponent');
 }
 
-
 String getNumberSignIndicator(num value) {
   return value > 0 ? '+' : '';
+}
+
+/// Validates and normalizes the input value to stay within bounds
+/// TODO: add tests
+double validateAndNormalizeValue(
+  double value,
+  double minValue,
+  double maxValue,
+) {
+  assert(
+    minValue < maxValue,
+    'Minimum value must be less than maximum value',
+  );
+
+  return value.clamp(minValue, maxValue);
+}
+
+/// Converts a value from the original range (minValue-maxValue) to
+/// percentage (0-100)
+/// TODO: add tests
+double normalizeToPercentage(double value, double minValue, double maxValue) {
+  final normalizedValue = validateAndNormalizeValue(
+    value,
+    minValue,
+    maxValue,
+  );
+
+  return ((normalizedValue - minValue) / (maxValue - minValue)) * 100;
 }
