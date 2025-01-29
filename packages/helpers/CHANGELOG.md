@@ -1,3 +1,7 @@
+## 0.0.61
+
+ - **FEAT**: added more number helpers.
+
 ## 0.0.60
 
  - **FEAT**: added getNumberSignIndicator helper.

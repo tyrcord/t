@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2025-01-29
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`t_helpers` - `v0.0.61`](#t_helpers---v0061)
+ - [`tstore` - `v0.8.30+2`](#tstore---v08302)
+ - [`t_cache` - `v0.0.21+2`](#t_cache---v00212)
+ - [`tmodel` - `v0.5.19+2`](#tmodel---v05192)
+ - [`tenhance` - `v0.0.15+2`](#tenhance---v00152)
+ - [`tlogger` - `v0.0.16+2`](#tlogger---v00162)
+ - [`tbloc` - `v0.25.2+2`](#tbloc---v02522)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `tstore` - `v0.8.30+2`
+ - `t_cache` - `v0.0.21+2`
+ - `tmodel` - `v0.5.19+2`
+ - `tenhance` - `v0.0.15+2`
+ - `tlogger` - `v0.0.16+2`
+ - `tbloc` - `v0.25.2+2`
+
+---
+
+#### `t_helpers` - `v0.0.61`
+
+ - **FEAT**: added more number helpers.
+
+
 ## 2025-01-26
 
 ### Changes
