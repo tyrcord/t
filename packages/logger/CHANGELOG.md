@@ -1,3 +1,8 @@
+## 0.0.17
+
+ - **FIX**: revert intl version.
+ - **FEAT**: update dependencies.
+
 ## 0.0.16+2
 
  - Update a dependency to the latest release.

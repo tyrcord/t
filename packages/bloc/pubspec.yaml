@@ -5,8 +5,8 @@ dependencies:
   meta: ^1.16.0
   provider: ^6.1.2
   rxdart: ^0.28.0
-  subx: ^1.18.0
-  tmodel: ^0.5.19+2
+  subx: ^1.19.0
+  tmodel: ^0.5.20
   tuple: ^2.0.2
   uuid: ^4.5.1
 description: A dart library that helps you to implement the BLoC pattern.
@@ -21,4 +21,4 @@ environment:
 homepage: https://github.com/tyrcord/t/tree/main/packages/tbloc
 issue_tracker: https://github.com/tyrcord/t/tree/main/packages/tbloc/issues
 name: tbloc
-version: 0.25.2+2
+version: 0.25.3

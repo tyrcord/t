@@ -1,3 +1,8 @@
+## 0.0.62
+
+ - **FIX**: revert intl version.
+ - **FEAT**: update dependencies.
+
 ## 0.0.61
 
  - **FEAT**: added more number helpers.
