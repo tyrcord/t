@@ -100,8 +100,6 @@ class TLogger {
         return "\x1B[31m"; // Red
       case LogLevel.info:
         return "\x1B[32m"; // Green
-      default:
-        return "\x1B[0m"; // Default
     }
   }
 
