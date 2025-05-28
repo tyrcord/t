@@ -1,3 +1,7 @@
+## 0.8.32+1
+
+ - Update a dependency to the latest release.
+
 ## 0.8.32
 
  - **FEAT**: updated dependencies.
