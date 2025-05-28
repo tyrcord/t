@@ -1,7 +1,7 @@
 dependencies:
   flutter:
     sdk: flutter
-  intl: ^0.19.0
+  intl: '>=0.17.0-0 <0.21.0'
   t_helpers: ^0.0.63
   tenhance: ^0.0.17
 description: A dart library that helps you to logs your app.
